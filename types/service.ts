@@ -50,9 +50,12 @@ export interface Provenance {
  * Service object definition.
  */
 export interface Service {
+    // Core Identity
     id: string;
     name: string;
+    name_fr?: string; // French translation
     description: string;
+    description_fr?: string; // French translation
 
     /** Website URL */
     url: string;
@@ -65,6 +68,7 @@ export interface Service {
 
     /** Physical Address */
     address?: string;
+    address_fr?: string; // French translation (if format differs)
 
     /** The verification level of this data record. */
     verification_level: VerificationLevel;

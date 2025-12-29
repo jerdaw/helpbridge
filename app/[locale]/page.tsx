@@ -1,13 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Search, Loader2 } from 'lucide-react';
-import { searchServices, SearchResult } from '../lib/search';
-import ServiceCard from '../components/ServiceCard';
-import { logSearchEvent } from '../lib/analytics';
-import { useSemanticSearch } from '../hooks/useSemanticSearch';
+import { Search, Loader2, ShieldCheck } from 'lucide-react';
+import { searchServices, SearchResult } from '../../lib/search';
+import ServiceCard from '../../components/ServiceCard';
+import { logSearchEvent } from '../../lib/analytics';
+import { useSemanticSearch } from '../../hooks/useSemanticSearch';
+import { useTranslations } from 'next-intl';
+import { Link } from '../../i18n/routing';
 
 export default function Home() {
+  const t = useTranslations();
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
@@ -56,7 +59,7 @@ export default function Home() {
           Kingston Care Connect.
         </h1>
         <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
-          The fastest way to find verified food, crisis, and housing support in Kingston.
+          {t('Footer.disclaimer')}
         </p>
 
         {/* Model Status Indicator (Subtle) */}
@@ -79,10 +82,10 @@ export default function Home() {
           <input
             type="text"
             className="block w-full rounded-2xl border-0 py-4 pl-12 pr-4 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-neutral-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 dark:bg-neutral-900 dark:ring-neutral-800 dark:text-white sm:text-lg sm:leading-6"
-            placeholder="Describe what you need (e.g., 'hungry', 'homeless', 'anxious')"
+            placeholder={t('Search.placeholder')}
+            aria-label={t('Search.label')}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            autoFocus
           />
         </div>
 
@@ -126,7 +129,7 @@ export default function Home() {
         {!hasSearched && (
           <div className="mt-20 border-t border-neutral-200 pt-10 text-center dark:border-neutral-800">
             <p className="text-sm text-neutral-500">
-              Trusted by <strong>Queen&apos;s University</strong> students.
+              {t('Footer.disclaimer')}
             </p>
             <div className="mt-8 text-center text-sm text-neutral-400">
               <p>
@@ -134,6 +137,14 @@ export default function Home() {
                 <a href="mailto:feedback@kingstoncare.ca?subject=Data%20Correction" className="underline hover:text-neutral-600">
                   Report Incorrect Data
                 </a>
+              </p>
+              <p className="mt-2 flex items-center justify-center gap-2 text-xs">
+                <Link href="/privacy" className="flex items-center gap-1 hover:text-neutral-600 hover:underline">
+                  <ShieldCheck className="h-3 w-3" />
+                  {t('Privacy.simplified')}
+                </Link>
+                <span>•</span>
+                <span>no cookies, no tracking</span>
               </p>
               <p className="mt-2 text-xs">
                 Not a substitute for professional medical advice. In an emergency, call 911 or 988.

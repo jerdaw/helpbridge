@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Loader2, Plus, Save, RefreshCw } from 'lucide-react';
-import { Service, IntentCategory, VerificationLevel } from '../../types/service';
+import { Service, IntentCategory, VerificationLevel } from '../../../types/service';
 
 export default function AdminPage() {
     const [services, setServices] = useState<Service[]>([]);

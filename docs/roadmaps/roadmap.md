@@ -1,62 +1,57 @@
-# Product Roadmap: Kingston Care Connect 🗺️
+# Roadmap V2: Community Expansion & Technical Maturity
 
-**Current Phase:** Pilot / Beta (v1.0)
-**Next Major Milestone:** "The Kingston 150" Completion
+> **Status:** Active
+> **Focus:** Generalizing for Kingston Community, Bilingual Support, and Data Completion.
 
----
+## Phase 2: Community Expansion (Current)
 
-## ✅ Phase 1: Foundation (Completed Dec 2025)
+The goal of Phase 2 is to transition from a student-focused pilot to a general community resource for all Kingston residents.
 
-We have built the "Progressive Web Brain" — a privacy-first, zero-cost search engine.
+### 2.1 Audience Shift (Completed)
+- [x] Remove "Student/Queen's" branding from landing page.
+- [x] Sanitize `services.json` of exclusive campus-only services.
+- [x] Update README and documentation to reflect community mission.
+- [x] Retarget "Beta" messaging.
 
-- [x] **Core Data:** 50 High-Fidelity Services (Crisis, Food, Housing).
-- [x] **Search Architecture:** Keyword + Client-Side Semantic Vectors (`transformers.js`).
-- [x] **Operations:** Vercel Deployment, CI/CD Pipeline.
-- [x] **Admin:** Local CMS for managing data without coding.
-- [x] **Quality:** Automated Search QA Suite (100% Pass Rate).
+### 2.2 Data Verification ("The Kingston 150")
+- [ ] Complete the "Kingston 150" dataset (Add remaining ~100 high-impact services).
+- [ ] Audit existing data for freshness (verify phone numbers/hours).
+- [ ] Implement automated link checking.
 
----
+### 2.3 Bilingual Foundations
+- [ ] Implement `next-intl` routing.
+- [ ] Extract hardcoded UI strings to `messages/en.json`.
+- [ ] Translate core UI path to French (`messages/fr.json`).
+- [ ] *Stretch:* Auto-translate service descriptions (with manual review flag).
 
-## 🚧 Phase 2: The Pilot (Current Focus)
+### 2.4 EDIA Review & Upgrade (New)
+- [ ] Conduct reduced-barrier accessibility audit (WCAG AA).
+- [ ] Review content for inclusive language and representation.
+- [ ] Publish Transparency Statement / EDIA findings.
 
-**Goal:** Validate utility with real students and expand the dataset.
-
-### 2.1 Operations & Feedback
-- [x] **Beta Banners:** "Pilot" warnings visible on all pages.
-- [x] **Feedback Loop:** `mailto` integration for reporting data errors.
-- [ ] **User Testing:** Conduct monitored sessions with 5-10 students.
-
-### 2.2 Data Scaling ("The Kingston 150")
-**Goal:** Expand from 50 -> 150 Services.
-
-| Domain | Current | Target | Gap |
-| :--- | :--- | :--- | :--- |
-| **Crisis** | 8 | 10 | 2 |
-| **Food Security** | 6 | 30 | 24 |
-| **Mental Health** | 10 | 40 | 30 |
-| **Housing** | 6 | 20 | 14 |
-| **Primary Care** | 5 | 20 | 15 |
-| **Legal/Financial** | 4 | 30 | 26 |
-
-**Action Item:** Use the `/admin` panel to manually verify and add these missing services.
+### 2.5 Privacy & Trust Verification (New)
+- [ ] Formal "No-Tracking" Audit (Cookies/Network).
+- [ ] Add visible Privacy Badge to UI.
+- [ ] Publish plain-language Privacy Policy.
 
 ---
 
-## 🔭 Phase 3: Future Highlights (2026+)
+## Phase 3: Technical Maturity (Q3 2025)
 
-### 3.1 "Verified Partner" Portal
-- Allow service providers (e.g., KCHC) to log in and update their *own* hours/status.
-- Upgrade them to **L4 (Partner)** status.
+### 3.1 Progressive Web App (PWA) (Active)
+- [ ] Install PWA support (Service Workers).
+- [ ] Create Manifest and Icons.
+- [ ] Verify installability (Lighthouse).
 
-### 3.2 Offline-First PWA
-- Make the entire app work offline (Service Workers).
-- "Download the Kingston Safety Net to your phone."
+### 3.2 Feedback Loop
+- [ ] Replace `mailto` links with structured feedback forms.
+- [ ] Implement "Report Inaccurate Information" button on service cards.
 
-### 3.3 The "Warm Handoff"
-- One-click "Call and Read Script" feature (Teleprompter mode for anxiety).
+### 3.3 Partner Portal (Concept)
+- [ ] Design simple auth flow for Service Providers.
+- [ ] Allow claim/edit functionality for verified organizations.
 
 ---
 
-## 📜 Governance & Standards
-
-See [Governance Protocol](../docs/governance_protocol.md) for details on L0-L4 verification and data ethics.
+## Archive
+- [v1-pilot](archive/v1-pilot.md): Initial Queen's University focused pilot (Completed Dec 2024).

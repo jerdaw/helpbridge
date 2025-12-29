@@ -1,6 +1,6 @@
 # Kingston Care Connect 🇨🇦
 
-> **The "Semantic Bridge" for Student Social Services.**
+> **The "Semantic Bridge" for Kingston Social Services.**
 > A verified, governance-first search engine for food, crisis, and housing support in Kingston, ON.
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
@@ -10,23 +10,33 @@
 
 Scraping 60,000 messy records helps no one. **Kingston Care Connect** takes a different approach: **Manual Curation over Automatic Extraction.**
 
-We maintain a strict, hand-verified dataset of the **Top 150 High-Impact Services** for Queen's University students, ensuring that every result is:
+We maintain a strict, hand-verified dataset of the **Top 150 High-Impact Services** for Kingston residents, ensuring that every result is:
+
 1.  **Verified** (No broken links or dead numbers).
 2.  **Accessible** (Clear eligibility criteria).
 3.  **Identity-Aware** (Evidence-backed safety tags).
 
 ---
 
-## 🛡️ Governance & Verification Levels
+## ✨ Features
 
-We utilize a rigorous verification schema to ensure data integrity.
+-   **🧠 Semantic Search:** Type "I feel unsafe" instead of guessing keywords like "Shelter Intake." We use local embeddings to understand intent.
+-   **🔒 Privacy-First:** No cookies, no tracking, and no search logs. All inference happens in your browser or anonymously.
+-   **⚡ Zero-Latency:** optimized for instant loads even on poor data connections.
+-   **📱 Mobile-First:** Designed for verify accessibility on any device.
 
-| Level | Status | Definition | Action |
-| :--- | :--- | :--- | :--- |
-| **L0** | Unverified | Raw data from web/referral. | ❌ Not Displayed |
-| **L1** | **Verified** | Existence confirmed (Phone/URL active). | ✅ **Displayed** |
-| **L2** | Vetted | Eligibility criteria cross-referenced with official docs. | ✅ **Verified Badge** |
-| **L3** | Partner | Direct confirmation from the service provider. | 🌟 **Partner Badge** |
+---
+
+## 🛠️ Tech Stack
+
+Built with modern web technologies for performance and maintainability:
+
+-   **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+-   **Language:** TypeScript
+-   **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+-   **UI Components:** [Radix UI](https://www.radix-ui.com/)
+-   **AI/Embeddings:** [@xenova/transformers](https://huggingface.co/docs/transformers.js/) (Client-side execution)
+-   **Testing:** Vitest
 
 ---
 
@@ -34,54 +44,50 @@ We utilize a rigorous verification schema to ensure data integrity.
 
 ### Prerequisites
 
-- Node.js 18+ (Node 20 recommended)
-- `npm` or `pnpm`
+-   Node.js 20+
+-   npm 10+
 
 ### Installation
 
-```bash
-git clone https://github.com/jerdaw/kingston-care-connect.git
-cd kingston-care-connect
-npm install
-```
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/jerdaw/kingston-care-connect.git
+    cd kingston-care-connect
+    ```
 
-### Running Locally
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-Start the development server:
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
 
-```bash
-npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000) to browse the app.
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Running the CLI Search Tool
+### Environment Variables
 
-Test the search algorithm directly from your terminal:
-
-```bash
-npm run search "I need food tonight"
-```
-
-### Running Tests
-
-```bash
-npm run test
-```
+Copy `.env.example` to `.env.local` (if applicable) for standard setup.
+Note: Client-side features work without API keys. Data generation scripts may require an `OPENAI_API_KEY`.
 
 ---
 
-## 🏗️ Architecture
+## 🤝 Contributing & Governance
 
-- **Frontend**: Next.js 15 (App Router) + Tailwind CSS v4
-- **Search Engine**: In-memory, weighted scoring algorithm (`lib/search.ts`) - Privacy first.
-- **Data Source**: `data/services.json` (Curated JSON-based DB).
-- **Icons**: Lucide React.
-- **Animations**: Framer Motion.
+This project is community-led. We prioritize safety and accuracy over quantity.
 
-## 🔒 Privacy Policy
+-   **[Documentation Guidelines](documentation-guidelines.md):** How we write and maintain docs.
+-   **[Testing Guidelines](testing-guidelines.md):** Our testing standards.
+-   **[Bilingual Guide](bilingual-dev-guide.md):** Our approach to English/French support.
 
-**We do not log user searches.**
-All search processing happens transiently. Your queries for "crisis support" or "shelter" stay on the machine and are never recorded in a database.
+### Adding a Service
+To propose a new service, please ensure it meets our "High Impact" criteria:
+-   Must physically serve the Kingston, ON area.
+-   Must have a verifiable phone number or physical address.
+-   Must be free or low-cost (subsidized).
 
 ---
-*Built with ❤️ for Kingston Students.*
+
+*Built with ❤️ for Kingston.*

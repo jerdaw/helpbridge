@@ -36,10 +36,15 @@ const normalize = (text: string): string => {
 };
 
 /**
- * Tokenizes a query string into an array of words, removing common stop words.
+ * Tokenizes a query string into an array of words, removing common stop words (English & French).
  */
 const tokenize = (query: string): string[] => {
-    const stopWords = new Set(['a', 'an', 'the', 'in', 'on', 'at', 'for', 'to', 'of', 'and', 'is', 'are', 'i', 'need', 'help', 'want', 'where', 'can', 'get']);
+    const stopWords = new Set([
+        // English
+        'a', 'an', 'the', 'in', 'on', 'at', 'for', 'to', 'of', 'and', 'is', 'are', 'i', 'need', 'help', 'want', 'where', 'can', 'get',
+        // French
+        'le', 'la', 'les', 'un', 'une', 'de', 'des', 'en', 'et', 'est', 'a', 'il', 'elle', 'je', 'tu', 'nous', 'vous', 'ils', 'pour', 'sur', 'dans', 'avec', 'qui', 'que', 'si', 'ou'
+    ]);
     return normalize(query)
         .split(/\s+/)
         .filter((word) => word.length > 2 && !stopWords.has(word)); // Filter short words and stop words
@@ -92,7 +97,7 @@ const scoreServiceKeyword = (service: Service, tokens: string[]): { score: numbe
     let score = 0;
     const matchReasons: string[] = [];
 
-    // 1. Check Synthetic Queries (High Impact)
+    // 1. Check Synthetic Queries (High Impact) - Currently English Only
     for (const query of service.synthetic_queries) {
         const queryText = normalize(query);
         let queryMatches = 0;
@@ -111,12 +116,17 @@ const scoreServiceKeyword = (service: Service, tokens: string[]): { score: numbe
         }
     }
 
-    // 2. Check Name (Medium Impact)
+    // 2. Check Name (Medium Impact) - English & French
     const nameText = normalize(service.name);
+    const nameFrText = service.name_fr ? normalize(service.name_fr) : '';
+
     for (const token of tokens) {
         if (nameText.includes(token)) {
             score += WEIGHTS.name;
             matchReasons.push(`Matched name: "${service.name}" (+${WEIGHTS.name})`);
+        } else if (nameFrText && nameFrText.includes(token)) {
+            score += WEIGHTS.name;
+            matchReasons.push(`Matched name (FR): "${service.name_fr}" (+${WEIGHTS.name})`);
         }
     }
 
@@ -131,12 +141,15 @@ const scoreServiceKeyword = (service: Service, tokens: string[]): { score: numbe
         }
     }
 
-    // 4. Check Description (Low Impact / Catch-all)
+    // 4. Check Description (Low Impact / Catch-all) - English & French
     const descText = normalize(service.description);
+    const descFrText = service.description_fr ? normalize(service.description_fr) : '';
     let descScore = 0;
 
     for (const token of tokens) {
         if (descText.includes(token)) {
+            descScore += WEIGHTS.description;
+        } else if (descFrText && descFrText.includes(token)) {
             descScore += WEIGHTS.description;
         }
     }

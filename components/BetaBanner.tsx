@@ -1,13 +1,16 @@
 
+import { useTranslations } from 'next-intl';
 
 export default function BetaBanner() {
+    const t = useTranslations('BetaBanner');
+
     return (
-        <div className="bg-blue-600 px-4 py-2 text-white dark:bg-blue-800">
+        <aside role="complementary" aria-label="Beta Information" className="bg-blue-600 px-4 py-2 text-white dark:bg-blue-800">
             <div className="mx-auto flex max-w-7xl items-center justify-between text-sm">
                 <div className="flex items-center gap-2">
                     <span className="font-bold rounded bg-white/20 px-1.5 py-0.5 text-xs">PILOT</span>
                     <span className="opacity-90">
-                        This is a student-led project. Data may be incomplete.
+                        {t('title')}
                     </span>
                 </div>
                 <div className="hidden sm:block">
@@ -21,6 +24,6 @@ export default function BetaBanner() {
                     </a>
                 </div>
             </div>
-        </div>
+        </aside>
     );
 }
