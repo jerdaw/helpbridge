@@ -5,22 +5,16 @@ const nextConfig: NextConfig = {
   images: {
     domains: [],
   },
+  serverExternalPackages: ['@xenova/transformers'],
+  webpack: (config) => {
+    // See https://webpack.js.org/configuration/resolve/#resolvealias
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "sharp$": false,
+      "onnxruntime-node$": false,
+    }
+    return config;
+  },
 };
-
-// Polyfill for Node 25+ localStorage crash
-if (typeof global !== 'undefined' && !global.localStorage) {
-  // It might be already defined but broken, so we force a mock
-}
-// Force mock if we are in Node
-if (typeof window === 'undefined') {
-  (global as any).localStorage = {
-    getItem: () => null,
-    setItem: () => { },
-    removeItem: () => { },
-    clear: () => { },
-    length: 0,
-    key: () => null,
-  };
-}
 
 export default nextConfig;
