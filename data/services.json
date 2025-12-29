@@ -441,5 +441,268 @@
             "Transitional housing dawn house",
             "Emergency bed for woman"
         ]
+    },
+    {
+        "id": "kchc-weller-clinic",
+        "name": "Kingston Community Health Centres (KCHC) - Weller Clinic",
+        "description": "Primary health care services for unattached patients who are pregnant. Comprehensive team includes nurses, dietitians, and social workers.",
+        "url": "https://kchc.ca/weller-avenue/weller-clinic/",
+        "phone": "613-542-2949",
+        "address": "263 Weller Ave, Kingston, ON K7K 2V2",
+        "verification_level": "L2",
+        "intent_category": "Health",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:05:00Z",
+            "evidence_url": "https://kchc.ca/weller-avenue/weller-clinic/",
+            "method": "Web Scrape & Manual Verification of Eligibility"
+        },
+        "identity_tags": [
+            {
+                "tag": "Unattached Patients (Pregnant)",
+                "evidence_url": "https://kchc.ca/weller-avenue/weller-clinic/"
+            }
+        ],
+        "synthetic_queries": [
+            "Pregnant and no doctor",
+            "New baby clinic weller ave",
+            "Prenatal care without family doctor",
+            "Community health centre kingston",
+            "See a nurse practitioner"
+        ]
+    },
+    {
+        "id": "kfla-sexual-health-clinic",
+        "name": "KFL&A Public Health: Sexual Health Clinic",
+        "description": "Confidential, non-judgmental sexual health services including testing for STIs/HIV, free condoms, and birth control. No health card required.",
+        "url": "https://www.kflaph.ca/en/health-topics/sexual-health-clinic.aspx",
+        "address": "221 Portsmouth Ave, Kingston, ON",
+        "verification_level": "L2",
+        "intent_category": "Health",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:05:00Z",
+            "evidence_url": "https://www.kflaph.ca/en/health-topics/sexual-health-clinic.aspx",
+            "method": "Web Search & Verification of Service Description"
+        },
+        "identity_tags": [
+            {
+                "tag": "Open Access (No Health Card)",
+                "evidence_url": "https://www.kflaph.ca/en/health-topics/sexual-health-clinic.aspx"
+            }
+        ],
+        "synthetic_queries": [
+            "Free STI test kingston",
+            "Plan B pill where to get",
+            "Sexual health clinic hours",
+            "HIV testing confidential",
+            "Birth control clinic public health"
+        ]
+    },
+    {
+        "id": "cdk-family-medicine-walk-in",
+        "name": "CDK Family Medicine Walk-In Clinic",
+        "description": "Walk-in medical clinic for patients without a family doctor or with urgent issues. Open 7 days a week.",
+        "url": "https://cdkmd.com",
+        "phone": "613-766-0318",
+        "address": "175 Princess St, Kingston, ON K7L 1A9",
+        "verification_level": "L2",
+        "intent_category": "Health",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:05:00Z",
+            "evidence_url": "https://cdkmd.com",
+            "method": "Web Search & Verification of Walk-In Status"
+        },
+        "identity_tags": [
+            {
+                "tag": "Open Access (Walk-In)",
+                "evidence_url": "https://cdkmd.com"
+            }
+        ],
+        "synthetic_queries": [
+            "Walk in clinic downtown kingston",
+            "See a doctor today",
+            "Sick need antibiotics",
+            "Weekend clinic hours",
+            "CDK wait times"
+        ]
+    },
+    {
+        "id": "queens-legal-aid",
+        "name": "Queen's Legal Aid",
+        "description": "Free legal services for low-income residents and Queen's students. Assistance with landlord/tenant issues, academic appeals, and provincial offences.",
+        "url": "https://queenslawclinics.ca/queens-legal-aid",
+        "phone": "613-533-2102",
+        "address": "303 Bagot Street, Suite 500, Kingston, ON K7K 5W7",
+        "verification_level": "L2",
+        "intent_category": "Legal",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:05:00Z",
+            "evidence_url": "https://queenslawclinics.ca/queens-legal-aid",
+            "method": "Web Scrape & Manual Verification of Eligibility"
+        },
+        "identity_tags": [
+            {
+                "tag": "Low Income / Student",
+                "evidence_url": "https://queenslawclinics.ca/queens-legal-aid"
+            }
+        ],
+        "synthetic_queries": [
+            "Landlord trying to evict me help",
+            "Free lawyer for students",
+            "Academic appeal help queens",
+            "Traffic ticket legal aid",
+            "Disability benefits appeal lawyer"
+        ]
+    },
+    {
+        "id": "ontario-works-kingston",
+        "name": "Ontario Works Kingston",
+        "description": "Financial and employment assistance for people in immediate financial need. Administered by the City of Kingston.",
+        "url": "https://www.cityofkingston.ca/resident/community-services/health-social-services/financial-assistance/ontario-works",
+        "phone": "613-546-2695",
+        "address": "362 Montreal St, Kingston, ON",
+        "verification_level": "L2",
+        "intent_category": "Financial",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:05:00Z",
+            "evidence_url": "https://www.cityofkingston.ca/resident/community-services/health-social-services/financial-assistance/ontario-works",
+            "method": "Web Search & Verification of City Program"
+        },
+        "identity_tags": [
+            {
+                "tag": "Financial Need",
+                "evidence_url": "https://www.cityofkingston.ca/resident/community-services/health-social-services/financial-assistance/ontario-works"
+            }
+        ],
+        "synthetic_queries": [
+            "Apply for welfare kingston",
+            "No money for rent help",
+            "Ontario works office address",
+            "Emergency financial assistance",
+            "Social assistance application"
+        ]
+    },
+    {
+        "id": "queens-financial-aid-osap",
+        "name": "Queen's Financial Aid & Awards (OSAP)",
+        "description": "Information and support for government student aid (OSAP), bursaries, and awards for Queen's students.",
+        "url": "https://www.queensu.ca/studentawards/financial-aid",
+        "email": "financialaid@queensu.ca",
+        "phone": "613-533-2216",
+        "address": "Gordon Hall, 74 Union St, Kingston, ON K7L 3N6",
+        "verification_level": "L2",
+        "intent_category": "Financial",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:05:00Z",
+            "evidence_url": "https://www.queensu.ca/studentawards/financial-aid",
+            "method": "Web Search & Verification of Office"
+        },
+        "identity_tags": [
+            {
+                "tag": "Queen's University Student",
+                "evidence_url": "https://www.queensu.ca/studentawards/financial-aid"
+            }
+        ],
+        "synthetic_queries": [
+            "OSAP didn't come in yet",
+            "Apply for queen's bursary",
+            "Student loan help office",
+            "Financial aid advisor appointment",
+            "Can't pay tuition what to do"
+        ]
+    },
+    {
+        "id": "queens-student-accessibility-services",
+        "name": "Queen's Student Accessibility Services (QSAS)",
+        "description": "Supports students with disabilities in their academic success. Manages academic accommodations and advocacy.",
+        "url": "https://www.queensu.ca/studentwellness/accessibility-services",
+        "email": "qsas.intake@queensu.ca",
+        "phone": "613-533-6467",
+        "address": "Mitchell Hall, 69 Union St, Kingston, ON K7L 3N6",
+        "verification_level": "L2",
+        "intent_category": "Wellness",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:05:00Z",
+            "evidence_url": "https://www.queensu.ca/studentwellness/accessibility-services/registration",
+            "method": "Web Scrape & Verification of Intake Process"
+        },
+        "identity_tags": [
+            {
+                "tag": "Students with Disabilities",
+                "evidence_url": "https://www.queensu.ca/studentwellness/accessibility-services"
+            }
+        ],
+        "synthetic_queries": [
+            "Accommodations for exam anxiety",
+            "Register with QSAS",
+            "Note taker for classes",
+            "Extra time on tests",
+            "Disability support services queens"
+        ]
+    },
+    {
+        "id": "four-directions-centre",
+        "name": "Four Directions Indigenous Student Centre",
+        "description": "A home away from home for Indigenous students at Queen's. providing cultural support, advising, and community events.",
+        "url": "https://www.queensu.ca/fourdirections/",
+        "email": "4direct@queensu.ca",
+        "address": "146 Barrie St, Kingston, ON K7L 3N6",
+        "verification_level": "L2",
+        "intent_category": "Wellness",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:05:00Z",
+            "evidence_url": "https://www.queensu.ca/fourdirections/",
+            "method": "Web Search & Verification of Mandate"
+        },
+        "identity_tags": [
+            {
+                "tag": "Indigenous Students",
+                "evidence_url": "https://www.queensu.ca/fourdirections/"
+            }
+        ],
+        "synthetic_queries": [
+            "Indigenous student support",
+            "Visiting elder appointment",
+            "Smudging on campus",
+            "Four directions events",
+            "Metis student funding help"
+        ]
+    },
+    {
+        "id": "ban-righ-centre",
+        "name": "Ban Righ Centre",
+        "description": "A supportive community for women-identified students of all ages, especially those returning to school. Financial assistance and advising available.",
+        "url": "https://www.queensu.ca/ban-righ-centre/",
+        "email": "banrigh@queensu.ca",
+        "phone": "613-533-2976",
+        "address": "32 Bader Lane, Kingston, ON K7L 3N6",
+        "verification_level": "L2",
+        "intent_category": "Wellness",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:05:00Z",
+            "evidence_url": "https://www.queensu.ca/ban-righ-centre/",
+            "method": "Web Search & Verification of Mandate"
+        },
+        "identity_tags": [
+            {
+                "tag": "Women-Identified Students",
+                "evidence_url": "https://www.queensu.ca/ban-righ-centre/"
+            }
+        ],
+        "synthetic_queries": [
+            "Mature student support queen's",
+            "Financial aid for student mothers",
+            "Quiet place to study on campus",
+            "Women's centre events",
+            "Soup lunch ban righ"
+        ]
     }
 ]
