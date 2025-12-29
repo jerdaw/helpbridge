@@ -1,5 +1,812 @@
 [
     {
+        "id": "kids-help-phone",
+        "name": "Kids Help Phone",
+        "description": "Canada's only 24/7, national support service. Professional counselling, information, and referrals for young people in English and French.",
+        "url": "https://kidshelpphone.ca",
+        "phone": "1-800-668-6868",
+        "verification_level": "L1",
+        "intent_category": "Crisis",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:50:00Z",
+            "evidence_url": "https://kidshelpphone.ca",
+            "method": "Web Search & National Service Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "Youth (National)",
+                "evidence_url": "https://kidshelpphone.ca"
+            }
+        ],
+        "synthetic_queries": [
+            "Text someone about depression",
+            "Suicidal thoughts help line",
+            "Bullying advice for kids",
+            "Anonymous counselling chat",
+            "Help I'm scared at home"
+        ],
+        "eligibility_notes": "Inclusion: All youth (5-29) in Canada. Mental health support. Exclusion: None (24/7 anonymous).",
+        "access_script": "Hi, I'm feeling really overwhelmed right now and just need someone to talk to. Is this a safe place to share?"
+    },
+    {
+        "id": "trans-lifeline-canada",
+        "name": "Trans Lifeline",
+        "description": "Grassroots hotline offering direct emotional and financial support to trans people in crisis. Operated by trans people for trans people.",
+        "url": "https://translifeline.org",
+        "phone": "1-877-330-6366",
+        "verification_level": "L1",
+        "intent_category": "Crisis",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:50:00Z",
+            "evidence_url": "https://translifeline.org",
+            "method": "Web Search & Peer Support Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "Trans-Led",
+                "evidence_url": "https://translifeline.org"
+            }
+        ],
+        "synthetic_queries": [
+            "Trans peer support line",
+            "Dysphoria help chat",
+            "Crisis line for transgender",
+            "Coming out advice from trans person",
+            "Name change funding help"
+        ],
+        "eligibility_notes": "Inclusion: Trans, non-binary, and questioning individuals. Peer support. Exclusion: Cisgender individuals seeking info (refer to allies line).",
+        "access_script": "Hi, I'm trans and I'm really struggling with dysphoria today. Can I talk to someone who understands?"
+    },
+    {
+        "id": "hope-for-wellness-helpline",
+        "name": "Hope for Wellness Helpline",
+        "description": "Immediate mental health counselling and crisis intervention for all Indigenous peoples across Canada. Available 24/7.",
+        "url": "https://www.hopeforwellness.ca",
+        "phone": "1-855-242-3310",
+        "verification_level": "L1",
+        "intent_category": "Crisis",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:50:00Z",
+            "evidence_url": "https://www.hopeforwellness.ca",
+            "method": "Web Search & Indigenous Service Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "Indigenous Peoples",
+                "evidence_url": "https://www.hopeforwellness.ca"
+            }
+        ],
+        "synthetic_queries": [
+            "Indigenous mental health support",
+            "Residential school survivor trauma",
+            "Cree speaking counsellor",
+            "Crisis line for first nations",
+            "Mental health chat indigenous"
+        ],
+        "eligibility_notes": "Inclusion: First Nations, Inuit, and Métis peoples across Canada. Culturally competent counselling.",
+        "access_script": "Hi, I am an Indigenous student and I'm having a hard time. I'd like to speak with a culturally safe counsellor."
+    },
+    {
+        "id": "assaulted-womens-helpline",
+        "name": "Assaulted Women's Helpline",
+        "description": "24-hour telephone and TTY crisis line for all women in Ontario who have experienced any form of abuse.",
+        "url": "https://www.awhl.org",
+        "phone": "1-866-863-0511",
+        "verification_level": "L1",
+        "intent_category": "Crisis",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:50:00Z",
+            "evidence_url": "https://www.awhl.org",
+            "method": "Web Search & Provincial Service Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "Women (Abuse Survivors)",
+                "evidence_url": "https://www.awhl.org"
+            }
+        ],
+        "synthetic_queries": [
+            "Domestic abuse hotline ontario",
+            "Help escaping violent partner",
+            "Womens shelter referral line",
+            "Anonymous abuse reporting",
+            "Safety planning for women"
+        ],
+        "eligibility_notes": "Inclusion: Women in Ontario experiencing abuse/violence. Exclusion: Men (refer to other lines).",
+        "access_script": "Hello, I am in an unsafe situation at home and I need to know my options for leaving."
+    },
+    {
+        "id": "iska-newcomer-support",
+        "name": "Immigrant Services Kingston & Area (ISKA)",
+        "description": "Settlement services for immigrants and refugees. Assistance with housing, employment, language, and community connection.",
+        "url": "https://kchc.ca/weller-avenue/immigrant-services/",
+        "phone": "613-544-4661",
+        "address": "837 Princess St, Unit 201, Kingston, ON K7L 1G9",
+        "verification_level": "L1",
+        "intent_category": "Community",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:35:00Z",
+            "evidence_url": "https://kchc.ca/weller-avenue/immigrant-services/",
+            "method": "Web Search & Location Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "Newcomers / Refugees",
+                "evidence_url": "https://kchc.ca/weller-avenue/immigrant-services/"
+            }
+        ],
+        "synthetic_queries": [
+            "New to canada help",
+            "Refugee housing kingston",
+            "Learn english classes",
+            "Immigration paperwork help",
+            "OSAP calculator"
+        ],
+        "eligibility_notes": "Inclusion: Newcomers, immigrants, refugees in KFL&A. Settlement support. Exclusion: None.",
+        "access_script": "Hi, I'm new to Kingston and looking for help with settlement and housing. Do I need an appointment?"
+    },
+    {
+        "id": "trellis-hiv-community-care",
+        "name": "Trellis HIV & Community Care",
+        "description": "Support for individuals affected by HIV/AIDS and STBBIs. Harm reduction supplies, education, and stigma-free support.",
+        "url": "https://trellishiv.ca",
+        "phone": "613-545-3698",
+        "address": "844a Princess St, Kingston, ON K7L 1G5",
+        "verification_level": "L1",
+        "intent_category": "Health",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:35:00Z",
+            "evidence_url": "https://trellishiv.ca",
+            "method": "Web Search & Mandate Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "2SLGBTQI+ Affirming",
+                "evidence_url": "https://trellishiv.ca"
+            },
+            {
+                "tag": "Harm Reduction",
+                "evidence_url": "https://trellishiv.ca"
+            }
+        ],
+        "synthetic_queries": [
+            "HIV testing kingston",
+            "Safe injection supplies",
+            "Naloxone kit free",
+            "Support for HIV positive",
+            "Harm reduction services"
+        ],
+        "eligibility_notes": "Inclusion: Open to all. Focus on HIV/STBBI and substance use. Exclusion: None.",
+        "access_script": "Hi, I'd like to pick up some harm reduction supplies. Do I need an appointment or can I just drop in?"
+    },
+    {
+        "id": "one-roof-youth-hub",
+        "name": "One Roof Kingston Youth Hub",
+        "description": "One-stop access to housing, mental health, addiction, and employment services for youth (16-24). Drop-in centre available.",
+        "url": "https://www.unitedwaykfla.ca/oneroof/",
+        "phone": "613-542-6672",
+        "address": "620 Princess St, Kingston, ON K7L 1E3",
+        "verification_level": "L1",
+        "intent_category": "Community",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:35:00Z",
+            "evidence_url": "https://www.unitedwaykfla.ca/oneroof/",
+            "method": "Web Search & Age Eligibility Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "Youth (16-24)",
+                "evidence_url": "https://www.unitedwaykfla.ca/oneroof/"
+            }
+        ],
+        "synthetic_queries": [
+            "Youth drop in centre",
+            "Help finding work for teenager",
+            "Youth housing support",
+            "One roof hours",
+            "Mental health help for young adults"
+        ],
+        "eligibility_notes": "Inclusion: Youth 16-24. Housing, employment, mental health. Drop-in available. Exclusion: Adults 25+.",
+        "access_script": "Hi, I'm 20 and having a hard time finding a job and a place to live. Can I drop by to see a worker?"
+    },
+    {
+        "id": "victim-services-kingston",
+        "name": "Victim Services of Kingston and Frontenac",
+        "description": "24/7 crisis response and practical assistance for victims of crime and tragic circumstances. VQRP+ funding helper.",
+        "url": "https://www.victimserviceskingston.ca",
+        "phone": "613-548-4834",
+        "verification_level": "L1",
+        "intent_category": "Crisis",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:35:00Z",
+            "evidence_url": "https://www.victimserviceskingston.ca",
+            "method": "Web Search & Crisis Service Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "Crime Victims",
+                "evidence_url": "https://www.victimserviceskingston.ca"
+            }
+        ],
+        "synthetic_queries": [
+            "Help after a robbery",
+            "Victim of crime compensation",
+            "Police referred me to victim services",
+            "Support for family after tragedy",
+            "Immediate crisis assistance"
+        ],
+        "eligibility_notes": "Inclusion: Victims of crime/tragedy in Frontenac. Exclusion: Non-victims.",
+        "access_script": "Hi, I was recently a victim of a crime and the police mentioned I could call you for support. What kind of help do you offer?"
+    },
+    {
+        "id": "queens-yellow-house",
+        "name": "Yellow House Centre for Equity & Inclusion",
+        "description": "Safe, accountable, and empowering space for QTBIPoC (Queer, Trans, Black, Indigenous, and People of Colour) students.",
+        "url": "https://www.queensu.ca/yellow-house",
+        "phone": "613-533-6000",
+        "address": "207 Stuart St (Rideau Building), 3rd Floor, Kingston, ON K7L 3N6",
+        "verification_level": "L1",
+        "intent_category": "Wellness",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:25:00Z",
+            "evidence_url": "https://www.queensu.ca/yellow-house",
+            "method": "Web Search & Location Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "QTBIPoC Students",
+                "evidence_url": "https://www.queensu.ca/yellow-house"
+            },
+            {
+                "tag": "2SLGBTQI+ Affirming",
+                "evidence_url": "https://www.queensu.ca/yellow-house"
+            }
+        ],
+        "synthetic_queries": [
+            "Black student support queen's",
+            "LGBTQ club space",
+            "Safe space for people of colour",
+            "Yellow House events",
+            "Connect with other queer students"
+        ],
+        "eligibility_notes": "Inclusion: QTBIPoC Queen's students. Safe space & community building. Exclusion: Non-Queen's (though likely welcoming).",
+        "access_script": "Hi, I'm a first-year student looking to connect with other QTBIPoC students. When is the best time to drop by?"
+    },
+    {
+        "id": "queens-hreo",
+        "name": "Queen's Human Rights & Equity Office",
+        "description": "Receives and investigates complaints of harassment, discrimination, and hate crimes on campus. Provides advice on human rights.",
+        "url": "https://www.queensu.ca/hreo/",
+        "phone": "613-533-2563",
+        "address": "Mackintosh-Corry Hall, Room B506, Kingston, ON K7L 3N6",
+        "verification_level": "L1",
+        "intent_category": "Legal",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:25:00Z",
+            "evidence_url": "https://www.queensu.ca/hreo/",
+            "method": "Web Search & Service Mandate Check"
+        },
+        "identity_tags": [
+            {
+                "tag": "Queen's University Student",
+                "evidence_url": "https://www.queensu.ca/hreo/"
+            }
+        ],
+        "synthetic_queries": [
+            "Report discrimination at Queen's",
+            "Professor was racist what do I do",
+            "Harassment complaint help",
+            "Human rights advisor appointment",
+            "Hate crime reporting on campus"
+        ],
+        "eligibility_notes": "Inclusion: Queen's community (students, staff, faculty). Discrimination/Harassment issues. Exclusion: General legal disputes.",
+        "access_script": "Hi, I experienced an incident on campus that felt discriminatory and I'd like to talk to an advisor about it."
+    },
+    {
+        "id": "queens-svprc",
+        "name": "Sexual Violence Prevention & Response Coordinator (SVPRC)",
+        "description": "Confidential, non-judgmental support for students impacted by sexual violence. Assistance with academic accommodations and reporting options.",
+        "url": "https://www.queensu.ca/sexual-violence/prevention-response",
+        "phone": "613-533-6330",
+        "email": "bjl7@queensu.ca",
+        "verification_level": "L1",
+        "intent_category": "Crisis",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:25:00Z",
+            "evidence_url": "https://www.queensu.ca/sexual-violence/prevention-response",
+            "method": "Web Search & Contact Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "Survivors of Sexual Violence",
+                "evidence_url": "https://www.queensu.ca/sexual-violence/prevention-response"
+            }
+        ],
+        "synthetic_queries": [
+            "Barb Lotan contact",
+            "Report sexual assault Queen's",
+            "Accommodations for trauma",
+            "Support after sexual violence",
+            "Confidential help for survivors"
+        ],
+        "eligibility_notes": "Inclusion: Queen's students impacted by sexual violence. Exclusion: Non-Queen's community (refer to SAC Kingston).",
+        "access_script": "Hi, I experienced an incident recently and I'd like to understand my options for reporting and academic considerations."
+    },
+    {
+        "id": "ams-peer-support-centre",
+        "name": "AMS Peer Support Centre (PSC)",
+        "description": "Student-run listening service offering non-judgmental peer support. Drop-in or appointment. (Located in JDUC Room 430).",
+        "url": "https://amspeersupport.com",
+        "address": "JDUC Room 430, 99 University Ave, Kingston, ON K7L 3N6",
+        "verification_level": "L1",
+        "intent_category": "Wellness",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:25:00Z",
+            "evidence_url": "https://amspeersupport.com",
+            "method": "Web Search & Location Verification (New JDUC)"
+        },
+        "identity_tags": [
+            {
+                "tag": "Queen's University Student",
+                "evidence_url": "https://amspeersupport.com"
+            },
+            {
+                "tag": "Student-Led",
+                "evidence_url": "https://amspeersupport.com"
+            }
+        ],
+        "synthetic_queries": [
+            "Need someone to talk to student",
+            "Peer support drop in hours",
+            "Lonely and depressed at uni",
+            "Talk to another student active listening",
+            "PSC room location"
+        ],
+        "eligibility_notes": "Inclusion: Queen's students. Peer-based active listening. Exclusion: Crisis intervention (Refer to crisis lines).",
+        "access_script": "Hi, I'm feeling pretty lonely lately and just wanted to chat with someone who gets the student life."
+    },
+    {
+        "id": "hotel-dieu-urgent-care",
+        "name": "Hotel Dieu Hospital Urgent Care Centre",
+        "description": "Urgent care for non-life-threatening injuries and illnesses (e.g., cuts, burns, broken bones). Open daily.",
+        "url": "https://kingstonhsc.ca/urgent-care-centre",
+        "phone": "613-546-1240",
+        "address": "144 Brock Street, Kingston, ON K7L 5G2",
+        "verification_level": "L1",
+        "intent_category": "Health",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:10:00Z",
+            "evidence_url": "https://kingstonhsc.ca/urgent-care-centre",
+            "method": "Web Search & Verification of Hours/Triage"
+        },
+        "identity_tags": [
+            {
+                "tag": "Open Access",
+                "evidence_url": "https://kingstonhsc.ca/urgent-care-centre"
+            }
+        ],
+        "synthetic_queries": [
+            "Broken bone where to go",
+            "Stitches for cut",
+            "Urgent care hours kingston",
+            "See a doctor today not emergency",
+            "Infection need antibiotics now"
+        ],
+        "eligibility_notes": "Inclusion: Non-life-threatening urgent issues (cuts, breaks). Exclusion: Critical trauma (Go to KGH). Note: Registration closes when capacity reached.",
+        "access_script": "Hi, I think I have a minor bone break. Are you still accepting patients for today, or is capacity reached?"
+    },
+    {
+        "id": "kgh-emergency-department",
+        "name": "Kingston General Hospital (KGH) Emergency",
+        "description": "24/7 Emergency Department for life-threatening conditions, trauma, and critical care.",
+        "url": "https://kingstonhsc.ca/emergency-care",
+        "phone": "613-548-2333",
+        "address": "41 King Street West, Kingston, ON K7L 2V7",
+        "verification_level": "L1",
+        "intent_category": "Health",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:10:00Z",
+            "evidence_url": "https://kingstonhsc.ca/emergency-care",
+            "method": "Web Search & Verification of 24/7 Status"
+        },
+        "identity_tags": [
+            {
+                "tag": "Open Access (Emergency)",
+                "evidence_url": "https://kingstonhsc.ca/emergency-care"
+            }
+        ],
+        "synthetic_queries": [
+            "Emergency room kingston",
+            "Heart attack help",
+            "Severe bleeding help",
+            "KGH emergency address",
+            "Life threatening injury"
+        ],
+        "eligibility_notes": "Inclusion: Life-threatening injuries, trauma, critical care. Exclusion: Minor ailments (Go to Urgent Care/Walk-in).",
+        "access_script": "Hi, I'm bringing in a friend who is having severe chest pain. Where is the best place to drop them off?"
+    },
+    {
+        "id": "kfla-public-health-dental",
+        "name": "KFL&A Public Health Dental Services",
+        "description": "Dental care for eligible low-income children and seniors, and emergency dental for social assistance recipients.",
+        "url": "https://www.kflaph.ca/en/health-topics/dental-health.aspx",
+        "phone": "613-549-1232",
+        "address": "221 Portsmouth Avenue, Kingston, ON K7M 1V5",
+        "verification_level": "L1",
+        "intent_category": "Health",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:10:00Z",
+            "evidence_url": "https://www.kflaph.ca/en/health-topics/dental-health.aspx",
+            "method": "Web Search & Verification of Eligibility"
+        },
+        "identity_tags": [
+            {
+                "tag": "Low Income",
+                "evidence_url": "https://www.kflaph.ca/en/health-topics/dental-health.aspx"
+            }
+        ],
+        "synthetic_queries": [
+            "Free dentist kingston",
+            "Toothache no money",
+            "Dental help for welfare",
+            "Healthy smiles ontario kingston",
+            "Emergency dental public health"
+        ],
+        "eligibility_notes": "Inclusion: Low-income (HSO/OSDCP) or adults on OW/ODSP with emergency. Exclusion: General public without coverage.",
+        "access_script": "Hi, I have a severe toothache and I am on Ontario Works. Can I book an emergency appointment?"
+    },
+    {
+        "id": "community-legal-clinic-kingston",
+        "name": "Kingston Community Legal Clinic",
+        "description": "Free legal advice and representation for low-income residents regarding housing, income assistance (OW/ODSP), and tenants rights.",
+        "url": "https://kclc.ca",
+        "phone": "613-541-0777",
+        "address": "345 Bagot Street, Kingston, ON K7K 6T8",
+        "verification_level": "L1",
+        "intent_category": "Legal",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:15:00Z",
+            "evidence_url": "https://kclc.ca",
+            "method": "Web Search & Verification of Law Focus"
+        },
+        "identity_tags": [
+            {
+                "tag": "Low Income (Poverty Law)",
+                "evidence_url": "https://kclc.ca"
+            }
+        ],
+        "synthetic_queries": [
+            "Landlord evicting me legal help",
+            "Denied ODSP appeal",
+            "Free lawyer for tenant issues",
+            "Legal aid clinic kingston",
+            "Help with ontario works appeal"
+        ],
+        "eligibility_notes": "Inclusion: Low-income Kingston residents. Housing, OW/ODSP, Employment law. Exclusion: Criminal/Family law (Refer to Legal Aid).",
+        "access_script": "Hi, my landlord is threatening to evict me and I'd like to speak to a lawyer about my rights."
+    },
+    {
+        "id": "salvation-army-housing-help",
+        "name": "Salvation Army Housing Help Centre",
+        "description": "Housing listings, eviction prevention grants, and support for those at risk of homelessness. (Formerly Housing Resource Centre).",
+        "url": "https://sacfs.ca/programs/housing-help-centre/",
+        "phone": "613-542-6672",
+        "address": "540 Montreal Street, Kingston, ON K7K 3H9",
+        "verification_level": "L1",
+        "intent_category": "Housing",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:15:00Z",
+            "evidence_url": "https://sacfs.ca/programs/housing-help-centre/",
+            "method": "Web Search & Program Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "Housing Risk",
+                "evidence_url": "https://sacfs.ca/programs/housing-help-centre/"
+            }
+        ],
+        "synthetic_queries": [
+            "Rent bank kingston application",
+            "Help with last month's rent",
+            "Eviction prevention fund",
+            "Housing worker help",
+            "List of cheap apartments kingston"
+        ],
+        "eligibility_notes": "Inclusion: At risk of homelessness or low-income. Rent/Utility arrears. Exclusion: Must meet income cap for grants.",
+        "access_script": "Hi, I'm behind on my rent and worried about losing my apartment. Can I apply for the rent bank?"
+    },
+    {
+        "id": "queens-ocla-community-relations",
+        "name": "Queen's Off-Campus Living Advisor (OCLA)",
+        "description": "Confidential guidance for Queen's students on landlord disputes, lease reviews, and tenant rights.",
+        "url": "https://www.queensu.ca/ocla/",
+        "email": "ocla@queensu.ca",
+        "verification_level": "L1",
+        "intent_category": "Legal",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-29T00:15:00Z",
+            "evidence_url": "https://www.queensu.ca/ocla/",
+            "method": "Web Search & Service Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "Queen's University Student",
+                "evidence_url": "https://www.queensu.ca/ocla/"
+            }
+        ],
+        "synthetic_queries": [
+            "Landlord won't fix heating",
+            "Review my lease before I sign",
+            "Housemate dispute help",
+            "Bad landlord queen's",
+            "Tenant rights advisor"
+        ],
+        "eligibility_notes": "Inclusion: Queen's students living off-campus. Lease reviews, landlord disputes. Exclusion: Formal legal representation in court.",
+        "access_script": "Hi, I'm a student looking at a new apartment. Could you review this lease before I sign it?"
+    },
+    {
+        "id": "kchc-transgender-health-care",
+        "name": "KCHC Transgender Health Care",
+        "description": "Specialized primary care and hormone therapy initiation for transgender and gender-diverse individuals (Age 12+).",
+        "url": "https://kchc.ca/weller-avenue/transgender-health-care/",
+        "phone": "613-542-2949",
+        "address": "263 Weller Ave, Kingston, ON K7K 2V2",
+        "verification_level": "L1",
+        "intent_category": "Health",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:55:00Z",
+            "evidence_url": "https://kchc.ca/weller-avenue/transgender-health-care/",
+            "method": "Web Search & Verified Referral Process"
+        },
+        "identity_tags": [
+            {
+                "tag": "2SLGBTQI+ Affirming",
+                "evidence_url": "https://kchc.ca/weller-avenue/transgender-health-care/"
+            }
+        ],
+        "synthetic_queries": [
+            "Hormone replacement therapy kingston",
+            "Trans friendly doctor",
+            "Gender affirming care",
+            "Testosterone prescription help",
+            "Transgender health clinic"
+        ],
+        "eligibility_notes": "Inclusion: Trans/Gender-diverse individuals (12+). Self-referral accepted. Exclusion: None stated.",
+        "access_script": "Hi, I am looking to start hormone therapy. Are you currently accepting new patients for gender-affirming care?"
+    },
+    {
+        "id": "street-health-centre",
+        "name": "Street Health Centre",
+        "description": "Barrier-free primary care, addiction services, and harm reduction for vulnerable populations. Needle exchange and opioid treatment available.",
+        "url": "https://kchc.ca/barrack-street/street-health-centre/",
+        "phone": "613-549-1440",
+        "address": "115 Barrack St, Kingston, ON K7K 1G2",
+        "verification_level": "L1",
+        "intent_category": "Health",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:55:00Z",
+            "evidence_url": "https://kchc.ca/barrack-street/street-health-centre/",
+            "method": "Web Search & Service Listing Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "Open Access (Barrier-Free)",
+                "evidence_url": "https://kchc.ca/barrack-street/street-health-centre/"
+            }
+        ],
+        "synthetic_queries": [
+            "Needle exchange kingston",
+            "Methadone clinic walk in",
+            "Doctor for homeless person",
+            "Street health centre hours",
+            "Harm reduction supplies"
+        ],
+        "eligibility_notes": "Inclusion: Vulnerable populations, substance use, homelessness. Open access. Exclusion: None.",
+        "access_script": "Hi, I'm helping a friend who uses substances and I want to find out about your needle exchange hours."
+    },
+    {
+        "id": "kingston-interval-house",
+        "name": "Kingston Interval House (Crisis & Shelter)",
+        "description": "Emergency shelter and 24/7 crisis line for women, children, and youth experiencing violence. Confidential and safe.",
+        "url": "https://kingstonintervalhouse.com",
+        "phone": "613-546-1777",
+        "verification_level": "L1",
+        "intent_category": "Crisis",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:50:00Z",
+            "evidence_url": "https://kingstonintervalhouse.com/contact-us/",
+            "method": "Web Search & Verified Crisis Line"
+        },
+        "identity_tags": [
+            {
+                "tag": "Women & Children",
+                "evidence_url": "https://kingstonintervalhouse.com"
+            }
+        ],
+        "synthetic_queries": [
+            "Domestic violence shelter kingston",
+            "Husband beat me need help",
+            "Safe place for women fleeing abuse",
+            "Crisis line domestic abuse",
+            "Emergency women's housing"
+        ],
+        "eligibility_notes": "Inclusion: Women and children escaping violence/abuse. Exclusion: Men (Refer to other shelters).",
+        "access_script": "I need a safe place to stay tonight away from my partner. Do you have any beds available?"
+    },
+    {
+        "id": "telephone-aid-line-kingston-talk",
+        "name": "Telephone Aid Line Kingston (TALK)",
+        "description": "Confidential, anonymous listening service for anyone who needs to talk. Open nightly from 6pm to 2am.",
+        "url": "https://telephoneaidlinekingston.com",
+        "phone": "613-544-1771",
+        "verification_level": "L1",
+        "intent_category": "Crisis",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:50:00Z",
+            "evidence_url": "https://telephoneaidlinekingston.com",
+            "method": "Web Search & Hours Check"
+        },
+        "identity_tags": [
+            {
+                "tag": "Open Access (Anonymous)",
+                "evidence_url": "https://telephoneaidlinekingston.com"
+            }
+        ],
+        "synthetic_queries": [
+            "Lonely need someone to talk to",
+            "Depressed phone line",
+            "Listening service kingston",
+            "Talk to someone anonymous",
+            "Night time distress line"
+        ],
+        "eligibility_notes": "Inclusion: Anyone needing a listening ear. 6pm-2am. Exclusion: None.",
+        "access_script": "Hi, I'm just feeling really lonely tonight and need someone to listen."
+    },
+    {
+        "id": "elizabeth-fry-society-kingston",
+        "name": "Elizabeth Fry Society (Housing Support)",
+        "description": "Supportive housing and homelessness prevention for women, including those involved in the justice system.",
+        "url": "https://efrykingston.ca",
+        "phone": "613-544-1744",
+        "address": "127 Charles St, Kingston, ON K7K 1V8",
+        "verification_level": "L1",
+        "intent_category": "Housing",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:50:00Z",
+            "evidence_url": "https://efrykingston.ca/contact-us/",
+            "method": "Web Search & Address Verification"
+        },
+        "identity_tags": [
+            {
+                "tag": "Women",
+                "evidence_url": "https://efrykingston.ca"
+            }
+        ],
+        "synthetic_queries": [
+            "Women's housing support kingston",
+            "Help after prison release",
+            "Homelessness prevention women",
+            "Supportive housing application",
+            "Elizabeth Fry contact"
+        ],
+        "eligibility_notes": "Inclusion: Women (18+) at risk of homelessness or in justice system. Exclusion: Men.",
+        "access_script": "Hi, I am being released soon and will have nowhere to go. Do you have any supportive housing units available?"
+    },
+    {
+        "id": "st-vincent-de-paul-kingston",
+        "name": "St. Vincent de Paul Society (WearHouse & Pantry)",
+        "description": "Emergency food pantry and take-out lunch program. Providing groceries, clothing, and household items to those in need.",
+        "url": "https://www.svdpkingston.com",
+        "phone": "613-766-8432",
+        "address": "85 Stephen St, Kingston, ON K7K 2C5",
+        "verification_level": "L1",
+        "intent_category": "Food",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:45:00Z",
+            "evidence_url": "https://www.svdpkingston.com/programs/",
+            "method": "Web Search & Verification of Hours"
+        },
+        "identity_tags": [
+            {
+                "tag": "Open Access",
+                "evidence_url": "https://www.svdpkingston.com/programs/"
+            }
+        ],
+        "synthetic_queries": [
+            "Free lunch weekdays kingston",
+            "Emergency grocery pantry",
+            "Free clothing store",
+            "St vincent de paul hours",
+            "Help with food and supplies"
+        ],
+        "eligibility_notes": "Inclusion: Anyone in need. Daily lunch & pantry (once/month). Exclusion: None.",
+        "access_script": "Hi, I'm struggling with groceries this month. What do I need to bring to access the pantry?"
+    },
+    {
+        "id": "lunch-by-george",
+        "name": "Lunch by George",
+        "description": "Drop-in meal program serving free breakfast and lunch. Note: Currently relocating - check website for latest location.",
+        "url": "http://www.lunchbygeorge.ca",
+        "verification_level": "L1",
+        "intent_category": "Food",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:45:00Z",
+            "evidence_url": "http://www.lunchbygeorge.ca",
+            "method": "Web Search & Status Check"
+        },
+        "identity_tags": [
+            {
+                "tag": "Open Access",
+                "evidence_url": "http://www.lunchbygeorge.ca"
+            }
+        ],
+        "synthetic_queries": [
+            "Free breakfast kingston",
+            "Hot lunch drop in",
+            "Where to eat for free today",
+            "Lunch by george location",
+            "Soup kitchen downtown"
+        ],
+        "eligibility_notes": "Inclusion: Anyone hungry. Drop-in breakfast/lunch. Exclusion: None.",
+        "access_script": "Hi, I heard you offer a hot lunch. What time do you start serving?"
+    },
+    {
+        "id": "salvation-army-rideau-heights",
+        "name": "Salvation Army Rideau Heights Food Bank",
+        "description": "Emergency food bank and hamper service. By appointment only (Tues/Thurs). Income verification required.",
+        "url": "https://rideauheightscorps.org/",
+        "phone": "613-541-3947",
+        "address": "183 Weller Ave, Kingston, ON K7K 2V2",
+        "verification_level": "L1",
+        "intent_category": "Food",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-28T23:45:00Z",
+            "evidence_url": "https://rideauheightscorps.org/",
+            "method": "Web Search & Verification of Appointment System"
+        },
+        "identity_tags": [
+            {
+                "tag": "Low Income",
+                "evidence_url": "https://rideauheightscorps.org/"
+            }
+        ],
+        "synthetic_queries": [
+            "Food bank appointment kingston",
+            "Salvation army food hamper",
+            "Rideau heights food assistance",
+            "Help with groceries weller ave",
+            "Emergency food box sign up"
+        ],
+        "eligibility_notes": "Inclusion: Catchment area residents (Rideau Heights). Income verification required. By Appointment.",
+        "access_script": "Hi, I live in Rideau Heights and need food assistance. Can I book an appointment for a hamper?"
+    },
+    {
         "id": "ams-food-bank-queens",
         "name": "AMS Food Bank",
         "description": "The AMS Food Bank provides confidential, non-judgmental food service to Queen's University students. We aim to ensure that students can stay healthy and focus on their academic potential.",
@@ -31,7 +838,9 @@
             "Where can I get food assistance at Queen's University?",
             "AMS food support services",
             "Emergency food for unexpected expenses student"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Queen's students. Confidential. No means test. Exclusion: Non-students.",
+        "access_script": "Hi, I'm a student and I'm out of food money. Can I come pick up a package today?"
     },
     {
         "id": "partners-in-mission-food-bank",
@@ -61,7 +870,9 @@
             "Food hamper help near me",
             "Can't afford food this week due to rent",
             "Emergency food assistance Kingston"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Kingston residents. Hamper program. Exclusion: Frequency limits apply.",
+        "access_script": "Hi, I'd like to register for a food hamper. What documents do you need me to bring?"
     },
     {
         "id": "marthas-table-kingston",
@@ -90,7 +901,9 @@
             "Soup kitchen kingston open now",
             "Hungry and broke student",
             "Community meal program"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Anyone in need of a meal. Small fee ($2) or free meal ticket. Social hub.",
+        "access_script": "Hi, I don't have any money for lunch today. Do you accept meal tickets?"
     },
     {
         "id": "good-food-box-kingston",
@@ -120,7 +933,9 @@
             "Grocery deals for students on a budget",
             "Healthy food box KCHC",
             "Where to buy cheap fruit in Kingston"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: fresh produce box (low cost). Open to all. Exclusion: Not a free food bank (subsidy available).",
+        "access_script": "Hi, I'd like to order a Good Food Box for this month. When is the deadline?"
     },
     {
         "id": "amhs-kfla-crisis-line",
@@ -149,7 +964,9 @@
             "Mental health emergency kingston",
             "Crisis line phone number",
             "Help I can't stop crying"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Anyone experiencing mental health or addiction crisis. Exclusion: None.",
+        "access_script": "Hi, I'm feeling really overwhelmed and having suicidal thoughts. I need to talk to someone right away."
     },
     {
         "id": "kingston-detox-centre",
@@ -178,7 +995,9 @@
             "Withdrawal help alcohol",
             "Where to go for drug detox",
             "Safe place to get sober"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Individuals 16+ seeking non-medical detox from alcohol/drugs. Exclusion: Medical detox needs (refer to hospital).",
+        "access_script": "Hi, I'm looking to get sober and need a safe place to detox. Do you have any beds available?"
     },
     {
         "id": "kingston-youth-shelter",
@@ -207,7 +1026,9 @@
             "Place to sleep tonight for teenager",
             "Emergency youth housing",
             "19 year old homeless help"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Youth aged 16-24. Homeless or unsafe at home. Exclusion: Adults 25+.",
+        "access_script": "Hi, I'm 19 and I got kicked out of my house. Can I stay at the shelter tonight?"
     },
     {
         "id": "sack-sexual-assault-centre",
@@ -240,7 +1061,9 @@
             "Counselling for sexual abuse",
             "Support for survivors of violence",
             "Confidential help after assault"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Survivors of sexual violence (12+). All genders. Exclusion: None.",
+        "access_script": "Hi, I experienced sexual assault and need to talk to someone confidentially. Can I get counselling here?"
     },
     {
         "id": "queens-student-wellness",
@@ -269,7 +1092,9 @@
             "Queen's therapy appointment",
             "Book counsellor queensu",
             "Medical note for missed exam"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Queen's students. Medical, mental health, wellness coaching. Exclusion: Non-Queen's community.",
+        "access_script": "Hi, I'm a Queen's student and I'm feeling really stressed about my exams. Can I book a counselling appointment?"
     },
     {
         "id": "maltby-centre-mental-health",
@@ -298,7 +1123,9 @@
             "Help for teenager with anxiety",
             "Autism support kingston",
             "Mental health help for kids free"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Children/Youth (0-24) in KFL&A. Mental health & autism services. Exclusion: Adults 25+.",
+        "access_script": "Hi, I'm 17 and struggling with anxiety. Can I set up an appointment to talk to a counsellor?"
     },
     {
         "id": "resolve-counselling",
@@ -327,7 +1154,9 @@
             "Family counsellor near me",
             "Depression help not expensive",
             "Employee assistance program counselling"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: All residents. Sliding scale counselling. Exclusion: None.",
+        "access_script": "Hi, I'm looking for counselling but I don't have insurance. Can you tell me about your sliding scale options?"
     },
     {
         "id": "good2talk-ontario",
@@ -355,7 +1184,9 @@
             "Exam stress help phone",
             "Suicidal thoughts student helpline",
             "Confidential counselling for uni students"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Post-secondary students in Ontario. 24/7 counselling & crisis support. Exclusion: Non-students.",
+        "access_script": "Hi, I'm a university student and I'm feeling really overwhelmed and anxious. Can I talk to someone now?"
     },
     {
         "id": "kingston-home-base-housing",
@@ -383,7 +1214,9 @@
             "Housing support worker",
             "Emergency family shelter",
             "Affordable housing list kingston"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Homeless men, women, families. Transitional housing focus. Exclusion: Active substance use on site (dry shelter).",
+        "access_script": "Hi, I have nowhere to sleep tonight. Do you have any beds available?"
     },
     {
         "id": "ryandale-shelter",
@@ -412,7 +1245,9 @@
             "Sober living house kingston",
             "Homeless man needs place to stay",
             "Housing support for men"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Adults (18+). Low-barrier shelter services. Housing first approach.",
+        "access_script": "Hi, I'm currently on the street and need a place to warm up. Are you open for drop-in?"
     },
     {
         "id": "dawn-house-womens-shelter",
@@ -440,7 +1275,9 @@
             "Homeless support for women",
             "Transitional housing dawn house",
             "Emergency bed for woman"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Women (16+) who are homeless. Long-term supportive housing. Exclusion: Not an emergency drop-in (application based).",
+        "access_script": "Hi, I'm looking for long-term housing support for women. How can I get on your waitlist?"
     },
     {
         "id": "kchc-weller-clinic",
@@ -469,7 +1306,9 @@
             "Prenatal care without family doctor",
             "Community health centre kingston",
             "See a nurse practitioner"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Pregnant individuals without a family doctor. Comprehensive prenatal care. Exclusion: None.",
+        "access_script": "Hi, I'm pregnant and don't have a family doctor. Are you accepting new patients for prenatal care?"
     },
     {
         "id": "kfla-sexual-health-clinic",
@@ -497,7 +1336,9 @@
             "Sexual health clinic hours",
             "HIV testing confidential",
             "Birth control clinic public health"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: All individuals seeking sexual health services. Confidential. No health card required. Exclusion: None.",
+        "access_script": "Hi, I'd like to get tested for STIs. Do I need an appointment or can I just walk in?"
     },
     {
         "id": "cdk-family-medicine-walk-in",
@@ -526,7 +1367,9 @@
             "Sick need antibiotics",
             "Weekend clinic hours",
             "CDK wait times"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Patients without a family doctor or with urgent, non-emergency issues. Exclusion: Life-threatening conditions (Go to ER).",
+        "access_script": "Hi, I have a bad cough and fever and need to see a doctor today. Are you accepting walk-ins?"
     },
     {
         "id": "queens-legal-aid",
@@ -555,7 +1398,9 @@
             "Academic appeal help queens",
             "Traffic ticket legal aid",
             "Disability benefits appeal lawyer"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Queen's students and low-income residents. Criminal/Tenant/Academic law. Exclusion: Family law (Refer to private bar).",
+        "access_script": "Hi, I've been charged with an offence and I can't afford a lawyer. Can I speak to someone at the clinic?"
     },
     {
         "id": "ontario-works-kingston",
@@ -584,7 +1429,9 @@
             "Ontario works office address",
             "Emergency financial assistance",
             "Social assistance application"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Residents of Kingston in immediate financial need. Employment assistance. Exclusion: None.",
+        "access_script": "Hi, I'm currently unemployed and have no income. How do I apply for Ontario Works?"
     },
     {
         "id": "queens-financial-aid-osap",
@@ -614,7 +1461,9 @@
             "Student loan help office",
             "Financial aid advisor appointment",
             "Can't pay tuition what to do"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Queen's students. Financial need based awards/bursaries. Exclusion: Non-students.",
+        "access_script": "Hi, I have an unexpected expense and can't pay my rent this month. Do I qualify for a general bursary?"
     },
     {
         "id": "queens-student-accessibility-services",
@@ -644,7 +1493,9 @@
             "Note taker for classes",
             "Extra time on tests",
             "Disability support services queens"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Queen's students with disabilities (diagnosed or functional limitations). Academic accommodations. Exclusion: Temporary illness (short-term overrides).",
+        "access_script": "Hi, I have a learning disability documentation and need to set up my exam accommodations for this term."
     },
     {
         "id": "four-directions-centre",
@@ -673,7 +1524,9 @@
             "Smudging on campus",
             "Four directions events",
             "Metis student funding help"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Indigenous students at Queen's. Cultural support & community. Exclusion: None (Allies welcome for specific events).",
+        "access_script": "Hi, I'm an Indigenous student new to Queen's. I'd like to come by and meet the staff/elders."
     },
     {
         "id": "ban-righ-centre",
@@ -703,6 +1556,8 @@
             "Quiet place to study on campus",
             "Women's centre events",
             "Soup lunch ban righ"
-        ]
+        ],
+        "eligibility_notes": "Inclusion: Women-identifying students returning to studies (mature/mothers). Exclusion: Men.",
+        "access_script": "Hi, I'm a mature student returning to school. I heard you offer a quiet place to study and lunch?"
     }
 ]

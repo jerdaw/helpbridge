@@ -20,6 +20,7 @@ export enum IntentCategory {
     Wellness = 'Wellness',
     Financial = 'Financial',
     Employment = 'Employment',
+    Community = 'Community',
 }
 
 /**
@@ -83,4 +84,14 @@ export interface Service {
      * AI-generated enrichment data (e.g. synthetic queries for semantic search).
      */
     synthetic_queries: string[];
+
+    /**
+     * Summarized eligibility criteria (e.g. "Students only. No fees.").
+     */
+    eligibility_notes?: string;
+
+    /**
+     * A self-advocacy script for reducing phone anxiety.
+     */
+    access_script?: string;
 }

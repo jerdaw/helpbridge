@@ -18,6 +18,7 @@ const IntentCategory = z.enum([
     'Wellness',
     'Financial',
     'Employment',
+    'Community',
 ]);
 
 // Identify Tag Schema
@@ -48,6 +49,8 @@ const ServiceSchema = z.object({
     provenance: ProvenanceSchema,
     identity_tags: z.array(IdentityTagSchema),
     synthetic_queries: z.array(z.string()),
+    eligibility_notes: z.string().optional(),
+    access_script: z.string().max(280, "Access script must be tweet-sized (<280 chars)").optional(),
 }).refine((data) => {
     // Logic Check: If L2 or higher, must have rigorous valid provenance (already enforced by schema, but extra check if needed)
     if (['L2', 'L3'].includes(data.verification_level)) {

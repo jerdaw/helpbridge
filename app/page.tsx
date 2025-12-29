@@ -6,6 +6,8 @@ import { searchServices, SearchResult } from '../lib/search';
 import ServiceCard from '../components/ServiceCard';
 // import { Service } from '../types/service';
 
+import { logSearchEvent } from '../lib/analytics';
+
 // Import all data once (Client Side Load - acceptable for small dataset)
 // import servicesData from '../data/services.json';
 
@@ -28,6 +30,9 @@ export default function Home() {
       const searchResults = searchServices(query);
       setResults(searchResults);
       setHasSearched(true);
+
+      // Analytics (Privacy-Preserving)
+      logSearchEvent(query, searchResults.map(r => r.service));
     }, 150); // 150ms debounce for smoothness
 
     return () => clearTimeout(timer);
