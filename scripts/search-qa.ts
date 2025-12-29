@@ -46,7 +46,7 @@ const SCENARIOS: TestScenario[] = [
     },
     {
         query: "free food",
-        expectedServiceNames: ["Martha's Table", "Lunch by George", "AMS Food Bank"],
+        expectedServiceNames: ["Martha's Table", "Lunch by George", "AMS Food Bank", "Salvation Army Rideau Heights Food Bank", "The Good Food Box"],
         description: "Direct food request"
     },
     {

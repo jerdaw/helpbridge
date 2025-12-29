@@ -1,0 +1,32 @@
+{
+    "BetaBanner": {
+        "title": "This is a community-led project"
+    },
+    "Footer": {
+        "disclaimer": "Supporting the Kingston community"
+    },
+    "Search": {
+        "placeholder": "Search for help...",
+        "label": "Search for services",
+        "loading": "Enhancing search capability...",
+        "active": "Private Neural Search Active"
+    },
+    "Navigation": {
+        "home": "Home",
+        "admin": "Admin"
+    },
+    "Common": {
+        "openInNewTab": "(opens in a new tab)"
+    },
+    "Privacy": {
+        "title": "Privacy Policy",
+        "simplified": "Privacy Simplified",
+        "intro": "At Kingston Care Connect, your privacy is not an afterthought—it's our core architecture.",
+        "points": {
+            "noTracking": "No Tracking: We do not use Google Analytics, Facebook Pixels, or any third-party trackers.",
+            "noCookies": "No Cookies: We do not store personal data in cookies. We use a single essential cookie only to remember your language preference.",
+            "noLogging": "No Query Logging: Your search terms are processed anonymously and are not linked to your identity."
+        },
+        "contact": "Questions? Contact us at privacy@kingstoncare.ca"
+    }
+}

@@ -11,8 +11,17 @@ interface ServiceCardProps {
     matchReasons?: string[];
 }
 
+import { useLocale, useTranslations } from 'next-intl';
+
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, score, matchReasons }) => {
+    const locale = useLocale();
+    const t = useTranslations('Common');
     const isVerified = service.verification_level === VerificationLevel.L2 || service.verification_level === VerificationLevel.L3;
+
+    // Localized Content Selection
+    const name = (locale === 'fr' && service.name_fr) ? service.name_fr : service.name;
+    const description = (locale === 'fr' && service.description_fr) ? service.description_fr : service.description;
+    const address = (locale === 'fr' && service.address_fr) ? service.address_fr : service.address;
 
     return (
         <motion.div
@@ -32,7 +41,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, score, matchReasons 
                 <div>
                     <div className="flex items-center gap-2">
                         <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
-                            {service.name}
+                            {name}
                         </h3>
                         {isVerified && (
                             <span className="flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
@@ -46,18 +55,18 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, score, matchReasons 
                     </div>
 
                     <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-                        {service.description.length > 150
-                            ? `${service.description.substring(0, 150)}...`
-                            : service.description}
+                        {description.length > 150
+                            ? `${description.substring(0, 150)}...`
+                            : description}
                     </p>
                 </div>
             </div>
 
             <div className="mt-4 flex flex-col gap-2 text-sm text-neutral-500 dark:text-neutral-400">
-                {service.address && (
+                {address && (
                     <div className="flex items-center gap-2">
                         <MapPin className="h-4 w-4 shrink-0 text-neutral-400" />
-                        <span>{service.address}</span>
+                        <span>{address}</span>
                     </div>
                 )}
                 {service.phone && (
@@ -89,6 +98,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, score, matchReasons 
                     className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400"
                 >
                     Details <ExternalLink className="h-3 w-3" />
+                    <span className="sr-only">{t('openInNewTab')}</span>
                 </a>
             </div>
         </motion.div>
