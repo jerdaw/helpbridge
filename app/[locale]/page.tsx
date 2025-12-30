@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Search, Loader2, ShieldCheck, MapPin, Heart, X } from 'lucide-react';
 import { searchServices, SearchResult } from '../../lib/search';
 import ServiceCard from '../../components/ServiceCard';
+import ServiceCardSkeleton from '../../components/ServiceCardSkeleton';
 import { useSemanticSearch } from '../../hooks/useSemanticSearch';
 import { useTranslations } from 'next-intl';
 import { Link } from '../../i18n/routing';
@@ -19,6 +20,7 @@ export default function Home() {
   const [isLocating, setIsLocating] = useState(false);
   const [results, setResults] = useState<SearchResult[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [savedSearches, setSavedSearches] = useState<string[]>([]);
 
   // Progressive Search Hook
@@ -28,7 +30,11 @@ export default function Home() {
   useEffect(() => {
     const saved = localStorage.getItem('kcc_saved_searches');
     if (saved) {
-      setSavedSearches(JSON.parse(saved) as string[]);
+      try {
+        setSavedSearches(JSON.parse(saved) as string[]);
+      } catch (e) {
+        console.error("Failed to parse saved searches", e);
+      }
     }
   }, []);
 
@@ -83,35 +89,42 @@ export default function Home() {
       }
 
       setHasSearched(true);
+      setIsLoading(true);
 
-      // 1. Instant Keyword/Filter Search (First Pass)
-      const initialResults = await searchServices(query, { category, location: userLocation });
-      setResults(initialResults);
+      try {
+        // 1. Instant Keyword/Filter Search (First Pass)
+        const initialResults = await searchServices(query, { category, location: userLocation });
+        setResults(initialResults);
+        setIsLoading(false); // Show initial results immediately
 
-      // 2. Progressive Upgrade (If Model Ready & Query exists)
-      if (isReady && query.trim().length > 0) {
-        const embedding = await generateEmbedding(query);
-        if (embedding) {
-          const enhancedResults = await searchServices(query, {
-            category,
-            location: userLocation,
-            vectorOverride: embedding
-          });
-          setResults(enhancedResults);
+        // 2. Progressive Upgrade (If Model Ready & Query exists)
+        if (isReady && query.trim().length > 0) {
+          const embedding = await generateEmbedding(query);
+          if (embedding) {
+            const enhancedResults = await searchServices(query, {
+              category,
+              location: userLocation,
+              vectorOverride: embedding
+            });
+            setResults(enhancedResults);
+          }
         }
-      }
 
-      // Analytics
-      fetch('/api/v1/analytics/search', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          query,
-          category,
-          hasLocation: !!userLocation,
-          resultCount: initialResults.length
-        })
-      }).catch(err => console.error(err));
+        // Analytics
+        fetch('/api/v1/analytics/search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            query,
+            category,
+            hasLocation: !!userLocation,
+            resultCount: initialResults.length
+          })
+        }).catch(err => console.error(err));
+      } catch (err) {
+        console.error("Search failed", err);
+        setIsLoading(false);
+      }
     };
 
     const timer = setTimeout(performSearch, 150);
@@ -165,6 +178,7 @@ export default function Home() {
                 onClick={handleSaveSearch}
                 className="absolute inset-y-0 right-0 flex items-center pr-4 text-neutral-400 hover:text-red-500"
                 title="Save this search"
+                aria-label="Save this search"
               >
                 <Heart className="h-5 w-5" />
               </button>
@@ -176,6 +190,8 @@ export default function Home() {
             {/* Location Toggle */}
             <button
               onClick={toggleLocation}
+              aria-pressed={!!userLocation}
+              aria-label={userLocation ? "Clear location filter" : "Filter by current location"}
               className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors ${userLocation
                 ? 'bg-blue-100 text-blue-700 ring-1 ring-blue-300 dark:bg-blue-900/30 dark:text-blue-300'
                 : 'bg-white text-neutral-600 ring-1 ring-neutral-200 hover:bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-400 dark:ring-neutral-800'
@@ -186,9 +202,10 @@ export default function Home() {
             </button>
 
             {/* Category Scroll */}
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide max-w-full">
+            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide max-w-full" role="group" aria-label="Filter by category">
               <button
                 onClick={() => setCategory(undefined)}
+                aria-pressed={!category}
                 className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium ${!category
                   ? 'bg-neutral-900 text-white dark:bg-white dark:text-black'
                   : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400'
@@ -200,6 +217,7 @@ export default function Home() {
                 <button
                   key={cat}
                   onClick={() => setCategory(cat === category ? undefined : cat)}
+                  aria-pressed={category === cat}
                   className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${category === cat
                     ? 'bg-blue-600 text-white'
                     : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400'
@@ -222,7 +240,13 @@ export default function Home() {
                 {savedSearches.map(s => (
                   <div key={s} className="group flex items-center gap-1 rounded-full bg-blue-50 pl-3 pr-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:ring-blue-800">
                     <button onClick={() => setQuery(s)}>{s}</button>
-                    <button onClick={(e) => { e.stopPropagation(); removeSavedSearch(s); }} className="text-blue-400 hover:text-blue-600"><X className="h-3 w-3" /></button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); removeSavedSearch(s); }}
+                      className="text-blue-400 hover:text-blue-600"
+                      aria-label={`Remove saved search ${s}`}
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
                   </div>
                 ))}
               </div>
@@ -246,7 +270,15 @@ export default function Home() {
       </div>
 
       <div className="mx-auto mt-10 max-w-2xl space-y-4">
-        {hasSearched && results.length === 0 && (
+        {isLoading && (
+          <>
+            <ServiceCardSkeleton />
+            <ServiceCardSkeleton />
+            <ServiceCardSkeleton />
+          </>
+        )}
+
+        {!isLoading && hasSearched && results.length === 0 && (
           <div className="rounded-lg bg-neutral-100 p-6 text-center dark:bg-neutral-900">
             <p className="text-neutral-600 dark:text-neutral-400">
               No results found for &quot;{query}&quot; {category && `in ${category}`}.
@@ -255,13 +287,13 @@ export default function Home() {
         )}
 
         {/* Results Counter if filters active */}
-        {hasSearched && results.length > 0 && (userLocation || category) && (
+        {!isLoading && hasSearched && results.length > 0 && (userLocation || category) && (
           <div className="text-xs text-neutral-400 text-right">
             {results.length} results {userLocation && 'sorted by distance'}
           </div>
         )}
 
-        {results.map((result) => (
+        {!isLoading && results.map((result) => (
           <ServiceCard
             key={result.service.id}
             service={result.service}
