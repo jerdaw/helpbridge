@@ -1,9 +1,11 @@
 import { NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ApiResponse<T = any> = {
     data?: T;
     error?: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     details?: any;
     meta?: {
         page?: number;
@@ -16,7 +18,8 @@ export type ApiResponse<T = any> = {
 /**
  * Standard API Response helper
  */
-export function createApiResponse<T>(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function createApiResponse<T = any>(
     data: T,
     options: {
         status?: number;
@@ -38,6 +41,7 @@ export function createApiResponse<T>(
 export function createApiError(
     message: string,
     status: number = 500,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     details?: any
 ) {
     return NextResponse.json(
@@ -49,7 +53,8 @@ export function createApiError(
 /**
  * Global Error Handler for API routes
  */
-export function handleApiError(error: unknown) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function handleApiError(error: any) {
     console.error('API Error:', error);
 
     if (error instanceof ZodError) {

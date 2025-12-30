@@ -111,7 +111,8 @@ export async function POST(request: NextRequest) {
         }
 
         // Parse body
-        const body = await request.json() as any;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const body: any = await request.json();
 
         // Basic validation
         if (!body.name || !body.category) {

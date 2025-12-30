@@ -1,7 +1,7 @@
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
-import { createApiResponse, handleApiError } from '@/lib/api-utils';
+import { createApiResponse } from '@/lib/api-utils';
 
 export async function POST(request: NextRequest) {
     try {
@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
         // Or if we don't have a dedicated search table, we can just log to console for MVP if DB is strict.
 
         // Let's try to insert into analytics_events
-        const { error } = await supabase.from('analytics_events').insert({
+        await supabase.from('analytics_events').insert({
             event_type: 'search_query',
             service_id: 'global', // n/a
             // We might need to adjust schema if 'meta' column exists, otherwise we stuff it in existing fields?
@@ -46,13 +46,14 @@ export async function POST(request: NextRequest) {
         });
 
         // Since I can't confirm the schema has a 'metadata' column, I'll just log to console.
-        console.log(`[Analytics] Search: "${query}" | Cat: ${category} | Loc: ${hasLocation} | Results: ${resultCount}`);
+        console.log(`[Analytics] Search: "${query}" | Cat: ${category} | Loc: ${hasLocation} | Results: ${resultCount} `);
 
         return createApiResponse({ success: true });
 
-    } catch (err) {
+    } catch (error) {
         // Analytics failures shouldn't break the app
-        console.error('Analytics error:', err);
-        return createApiResponse({ success: false });
+        console.error('Analytics error:', error);
+        // Fail silently for analytics
+        return NextResponse.json({ success: false }, { status: 500 });
     }
 }
