@@ -1,9 +1,10 @@
 import React from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Card } from '@/components/ui/card';
 
 const ServiceCardSkeleton = () => {
     return (
-        <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <Card className="h-full p-6">
             <div className="flex items-start gap-4">
                 {/* Icon Skeleton */}
                 <Skeleton className="h-12 w-12 rounded-xl" />
@@ -43,7 +44,7 @@ const ServiceCardSkeleton = () => {
                 <Skeleton className="h-4 w-20" />
                 <Skeleton className="h-4 w-24" />
             </div>
-        </div>
+        </Card>
     );
 };
 

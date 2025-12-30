@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from '@/components/layout/ThemeToggle';
+import BetaBanner from '@/components/BetaBanner';
 
 export function Header() {
     const [scrolled, setScrolled] = useState(false);
@@ -24,10 +25,17 @@ export function Header() {
         <header className={cn(
             "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
             scrolled
-                ? "glass py-3 shadow-md border-b border-neutral-200/50 dark:border-neutral-800/50"
-                : "bg-transparent py-5"
+                ? "glass shadow-md border-b border-neutral-200/50 dark:border-neutral-800/50"
+                : "bg-transparent"
         )}>
-            <nav className="mx-auto max-w-7xl px-4 flex items-center justify-between sm:px-6 lg:px-8">
+            <div className={cn("transition-all duration-300", scrolled ? "h-0 overflow-hidden opacity-0" : "h-auto opacity-100")}>
+                <BetaBanner />
+            </div>
+
+            <nav className={cn(
+                "mx-auto max-w-7xl px-4 flex items-center justify-between sm:px-6 lg:px-8 transition-all duration-300",
+                scrolled ? "py-3" : "py-5"
+            )}>
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 group">
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:shadow-primary-500/30 transition-shadow">
@@ -35,7 +43,7 @@ export function Header() {
                     </div>
                     <span className={cn(
                         "text-xl font-bold tracking-tight transition-colors heading-display",
-                        scrolled ? "text-neutral-900 dark:text-white" : "text-white"
+                        "text-neutral-900 dark:text-white"
                     )}>
                         Care Connect
                     </span>
@@ -45,16 +53,24 @@ export function Header() {
                 <div className="hidden md:flex items-center gap-6">
                     <Link href="/about" className={cn(
                         "text-sm font-medium transition-colors hover:text-primary-500",
-                        scrolled ? "text-neutral-600 dark:text-neutral-300" : "text-white/90 hover:text-white"
+                        "text-neutral-600 dark:text-neutral-300"
                     )}>
                         About
                     </Link>
                     <Link href="/partners" className={cn(
                         "text-sm font-medium transition-colors hover:text-primary-500",
-                        scrolled ? "text-neutral-600 dark:text-neutral-300" : "text-white/90 hover:text-white"
+                        "text-neutral-600 dark:text-neutral-300"
                     )}>
                         For Partners
                     </Link>
+
+                    <a href="tel:911" className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-red-100 px-3 py-1 text-xs font-bold text-red-700 transition-colors hover:bg-red-200 dark:bg-red-900/30 dark:text-red-300 dark:hover:bg-red-900/50">
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                        </span>
+                        Emergency: 911
+                    </a>
 
                     <ThemeToggle />
 
@@ -76,7 +92,7 @@ export function Header() {
                         className="p-2 text-neutral-600 dark:text-neutral-300"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
-                        {mobileMenuOpen ? <X /> : <Menu className={scrolled ? "" : "text-white"} />}
+                        {mobileMenuOpen ? <X /> : <Menu className="text-neutral-900 dark:text-white" />}
                     </button>
                 </div>
             </nav>

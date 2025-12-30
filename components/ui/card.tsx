@@ -7,11 +7,11 @@ const cardVariants = cva(
     {
         variants: {
             variant: {
-                default: "bg-white border border-neutral-200 shadow-sm hover:shadow-md dark:bg-neutral-900 dark:border-neutral-800",
-                elevated: "bg-white shadow-lg hover:shadow-xl dark:bg-neutral-900 border-none",
-                glass: "glass-card",
-                gradient: "bg-gradient-to-br from-white to-neutral-50 border border-neutral-100 shadow-md dark:from-neutral-900 dark:to-neutral-950 dark:border-neutral-800",
-                interactive: "bg-white border border-neutral-200 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-primary-200 cursor-pointer dark:bg-neutral-900 dark:border-neutral-800 dark:hover:border-primary-800",
+                default: "bg-white border border-neutral-100 shadow-sm hover:shadow-md dark:bg-white/5 dark:border-white/5",
+                elevated: "bg-white shadow-xl shadow-neutral-200/50 dark:bg-neutral-900 dark:shadow-black/20 border-none",
+                glass: "glass-card hover:bg-white/80 dark:hover:bg-neutral-900/60 transition-colors",
+                gradient: "bg-gradient-to-br from-white to-primary-50/30 border border-white/50 shadow-lg dark:from-neutral-900 dark:to-primary-950/30 dark:border-white/5",
+                interactive: "group bg-white border border-neutral-100 shadow-sm hover:shadow-xl hover:shadow-primary-500/10 hover:-translate-y-1 hover:border-primary-500/20 cursor-pointer dark:bg-white/5 dark:border-white/5 dark:hover:border-primary-500/30 dark:hover:bg-white/10",
                 flat: "bg-neutral-50 border border-neutral-100 dark:bg-neutral-900 dark:border-neutral-800",
             },
             padding: {
