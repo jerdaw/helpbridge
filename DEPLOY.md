@@ -29,7 +29,7 @@ This project is optimized for deployment on **Vercel**.
 8.  **Data Integrity Check (Mandatory):**
     After any data migration or deployment, run this script locally to ensure the database is healthy:
     ```bash
-    npm run verify-db
+    npm run db:verify
     ```
     *Expect "🎉 Verification PASSED"*
 

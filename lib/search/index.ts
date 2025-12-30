@@ -3,8 +3,12 @@ import { SearchResult, SearchOptions } from './types';
 import { loadServices } from './data';
 import { tokenize } from './utils';
 import { scoreServiceKeyword, WEIGHTS } from './scoring';
-import { fetchQueryEmbedding, cosineSimilarity } from './vector';
+import { cosineSimilarity } from './vector';
 import { resortByDistance, calculateDistanceKm } from './geo';
+import { detectCrisis, boostCrisisResults } from './crisis';
+
+import { isOpenNow } from './hours';
+import { expandQuery } from './synonyms';
 
 /**
  * Main Hybrid Search Function (Optimized for Cost)
@@ -15,12 +19,19 @@ import { resortByDistance, calculateDistanceKm } from './geo';
  */
 export const searchServices = async (query: string, options: SearchOptions = {}): Promise<SearchResult[]> => {
     const services = await loadServices();
-    const tokens = tokenize(query);
+    const rawTokens = tokenize(query);
+    const tokens = expandQuery(rawTokens);
 
-    // Category Filter (Hard filter)
-    const filteredServices = options.category
-        ? services.filter(s => s.intent_category === options.category)
-        : services;
+    // Initial Filter: Category + Open Now
+    let filteredServices = services;
+
+    if (options.category) {
+        filteredServices = filteredServices.filter(s => s.intent_category === options.category);
+    }
+
+    if (options.openNow) {
+        filteredServices = filteredServices.filter(s => isOpenNow(s.hours));
+    }
 
     // Special Case: Empty Query but Category/Location selected
     if (query.trim().length === 0) {
@@ -75,28 +86,21 @@ export const searchServices = async (query: string, options: SearchOptions = {})
 
     let queryVector: number[] | null = options.vectorOverride || null;
 
-    // 2. Cost Optimization Check (Only if no override provided)
+    // 2. Cost Optimization & Privacy Check
     if (!options.vectorOverride) {
-        // 30 points = Name Match. 50 points = Intent Match.
-        const KEYWORD_CONFIDENCE_THRESHOLD = 40;
-        const bestScore = results.length > 0 ? results[0]!.score : 0;
+        // Privacy: We do NOT fetch embeddings from server/OpenAI.
+        // If no vector passed from client, we fall back to pure keyword search.
 
-        if (bestScore >= KEYWORD_CONFIDENCE_THRESHOLD) {
-            // High confidence! Skip expensive vector search.
-            // Apply Geo Sort if needed
-            if (options.location) {
-                return resortByDistance(results, options.location);
-            }
-            return results;
+        // Apply Geo Sort if needed
+        if (options.location) {
+            return resortByDistance(results, options.location);
         }
-
-        // 3. Low Confidence? Pay for Vector Search (Semantic Fallback)
-        queryVector = await fetchQueryEmbedding(query);
+        return results;
     }
 
-    if (!queryVector) {
-        return options.location ? resortByDistance(results, options.location) : results; // Fallback
-    }
+    // 3. Vector Search (Semantic) - Only if client provided embedding
+    queryVector = options.vectorOverride;
+
 
     // We need to re-score or add semantic matches that weren't found by keywords
     const resultsMap = new Map<string, SearchResult>();
@@ -147,6 +151,12 @@ export const searchServices = async (query: string, options: SearchOptions = {})
         finalResults = resortByDistance(finalResults, options.location);
     } else {
         finalResults.sort((a, b) => b.score - a.score);
+    }
+
+    // Safety Override: Check for Crisis intent
+    const isCrisis = detectCrisis(query);
+    if (isCrisis) {
+        finalResults = boostCrisisResults(finalResults, true);
     }
 
     return finalResults;

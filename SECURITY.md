@@ -15,4 +15,4 @@ Kingston Care Connect is designed to be privacy-first:
 - **Client-Side Inference:** Semantic search embeddings are computed in your browser or anonymously on the server.
 - **Zero Logging Policy:** We do not log user search queries or personal identifiers.
 
-For more details, see our [Privacy Audit](docs/PRIVACY_AUDIT.md).
+For more details, see our [Privacy Audit](docs/audits/PRIVACY_AUDIT.md).

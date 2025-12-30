@@ -49,7 +49,26 @@ export interface Provenance {
 /**
  * Service object definition.
  */
+/**
+ * Structured operating hours.
+ * 24-hour format "HH:MM".
+ */
+export interface ServiceHours {
+    monday?: { open: string; close: string };
+    tuesday?: { open: string; close: string };
+    wednesday?: { open: string; close: string };
+    thursday?: { open: string; close: string };
+    friday?: { open: string; close: string };
+    saturday?: { open: string; close: string };
+    sunday?: { open: string; close: string };
+    notes?: string; // e.g., "Closed on public holidays"
+}
+
+/**
+ * Service object definition.
+ */
 export interface Service {
+    // ... existing fields ...
     // Core Identity
     id: string;
     name: string;
@@ -88,6 +107,7 @@ export interface Service {
      * AI-generated enrichment data (e.g. synthetic queries for semantic search).
      */
     synthetic_queries: string[];
+    synthetic_queries_fr?: string[];
 
     /**
      * Summarized eligibility criteria (e.g. "Students only. No fees.").
@@ -101,7 +121,7 @@ export interface Service {
     org_id?: string;
 
     // --- Expanded Fields for Migration ---
-    hours?: string;
+    hours?: ServiceHours; // Updated from string to structured object
     fees?: string;
     eligibility?: string; // Raw text eligibility
     application_process?: string;
@@ -115,3 +135,4 @@ export interface Service {
         lng: number;
     };
 }
+

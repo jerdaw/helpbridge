@@ -18,6 +18,18 @@ We maintain a strict, hand-verified dataset of the **Top 150 High-Impact Service
 
 ---
 
+## 🚀 New Features (v4.1)
+
+- **Advanced Search Intelligence**:
+  - **Synonym Expansion**: Searches for "hungry" find food banks; "rent" finds eviction prevention.
+  - **"Open Now" Filter**: Real-time filtering based on structured operating hours.
+  - **Privacy-First Analytics**: Anonymously tracks unmet needs (Zero-Result patterns) without logging queries.
+  - **Crisis Detection**: Instant boosting of emergency services for high-risk queries.
+- **Bilingual Ready**: Full support for English and French content switching.
+- **Global Deployment**: Specialized Crisis Mode instantly boosts emergency services.
+
+---
+
 -   **🧠 Semantic & Fuzzy Search:** Multi-layered search experience. Type natural language like "I feel unsafe" (Semantic) or fix typos like "fod" (Fuzzy).
 -   **🔒 Privacy-First:** No cookies, no tracking, and no search logs. All inference happens in your browser or anonymously.
 -   **📄 Internal Detail Pages:** High-resolution public service pages with rich metadata, contact info, and localized content.
@@ -110,8 +122,8 @@ To enable the Partner Portal, Login, and Analytics:
 
 This project is community-led. We prioritize safety and accuracy over quantity.
 
--   **[Documentation Guidelines](documentation-guidelines.md):** How we write and maintain docs.
--   **[Testing Guidelines](testing-guidelines.md):** Our testing standards.
+-   **[Documentation Guidelines](docs/documentation-guidelines.md):** How we write and maintain docs.
+-   **[Testing Guidelines](docs/development/testing.md):** Our testing standards.
 -   **[Bilingual Guide](bilingual-dev-guide.md):** Our approach to English/French support.
 
 ### Adding a Service

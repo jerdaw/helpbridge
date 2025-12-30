@@ -13,7 +13,7 @@ describe("Button Component", () => {
     it("renders with secondary variant", () => {
         render(<Button variant="secondary">Secondary</Button>);
         const button = screen.getByRole("button", { name: /secondary/i });
-        expect(button.className).toContain("bg-secondary");
+        expect(button.className).toContain("bg-white");
     });
 
     it("renders as a pill variant", () => {

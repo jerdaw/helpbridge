@@ -1,40 +1,59 @@
-# Governance Protocol: The Kingston 150
-> **Version:** 1.0
-> **Status:** Active
-> **Enforcement:** Strict L1+ requirement for production.
+# Governance Protocol: The Kingston 150 Standard 🛡️
 
-This document defines the rules for data inclusion, verification, and ethical management in Kingston Care Connect.
+**Document Version:** 1.0
+**Effective Date:** Dec 29, 2025
+**Scope:** All services listed in the Kingston Care Connect database.
 
-## 1. Verification Levels
-We adhere to a rigorous audit trail. Every service record must be assigned a `verification_level`.
+---
 
-| Level | Name | Definition | Action |
-| :--- | :--- | :--- | :--- |
-| **L0** | Unverified | Raw data scraped or imported. No human eyes have checked it. | **HIDDEN**. Do not display. |
-| **L1** | Contact Verified | A student has confirmed the phone number works and the website is live. | **DISPLAY**. Tag as "Verified". |
-| **L2** | Eligibility Verified | Inclusion/Exclusion criteria have been cross-referenced with official docs (PDF, Policy Page). | **DISPLAY**. "High Confidence". |
-| **L3** | Provider Confirmed | Direct email/phone confirmation from the agency staff. | **DISPLAY**. "Provider Partner". |
+## 1. The "Do No Harm" Mandate
 
-## 2. Privacy & The "Do-Not-Log" List
-To protect vulnerable users, the following intent categories invoke our **Privacy Shield Protocol**:
+We prioritize **accuracy over coverage**. It is better to return *no result* than to send a vulnerable user to a closed door, a disconnected phone line, or an unsafe environment.
 
-*   **Self-Harm / Suicide**
-*   **Sexual Violence / Assault**
-*   **Domestic Abuse / IPV**
-*   **Human Trafficking**
+### 1.1 The "Do-Not-Log" List
+To protect user privacy, the following intent categories triggers a **Zero-Log Policy**. No query text, IP address, or metadata is recorded for these searches:
+*   Suicide / Self-Harm
+*   Sexual Violence / Assault
+*   Domestic Violence
+*   Substance Use / Overdose
 
-**Protocol:**
-1.  **Zero Persistence:** No user query text is written to disk or database.
-2.  **Safety Intercept:** Immediate routing to 9-8-8 or crisis resources.
-3.  **Null Analytics:** We do not track "how many people asked for suicide help" beyond a transient, non-identifiable counter in volatile memory (optional).
+---
 
-## 3. Identity-Aware Filters
-We reject subjective tagging. All identity tags must be **Evidence-Based**.
+## 2. Verification Levels (L-Scale)
 
-*   **Incorrect:** Tagging a clinic as "LGBTQ+ Friendly" because it "seems nice."
-*   **Correct:** Tagging a clinic as "Provider-Stated Affirming" because their website says: *"We are a designated safe space for the 2SLGBTQ+ community."*
-*   **Requirement:** Every tag in `identity_tags` must include an `evidence_url` pointing to the source of truth.
+Every service in the database must be assigned a verification level.
 
-## 4. Updates & Lineage
-*   **Expiration:** Any record not verified in the last **6 months** degrades to **L0** automatically.
-*   **Provenance:** All changes to `last_verified_at` must include the `verified_by` field (Role or Name).
+| Level | Definition | Display Policy |
+| :--- | :--- | :--- |
+| **L0** | **Unverified.** Raw data scraped from web or submitted by public. | ⛔ **HIDDEN** |
+| **L1** | **Existence Verified.** Phone number calls through, Website loads. Confirmed active within 90 days. | ✅ **VISIBLE** |
+| **L2** | **Eligibility Verified.** Inclusion/Exclusion criteria verified against official documentation (PDF, About Page). | ✅ **VISIBLE** |
+| **L3** | **Provider Confirmed.** Direct contact (email/phone) with service provider confirming details. | ✅ **VISIBLE** (Preferred) |
+| **L4** | **Official Partner.** Signed MOU or Data Sharing Agreement. | 🌟 **FEATURED** |
+
+> **Current Pilot Standard:** All visible services must be **L1 or higher**.
+
+---
+
+## 3. Identity & Equity Attributes
+
+We do not apply "vibes-based" tagging. All identity tags must be **Evidence-Based**.
+
+### 3.1 Affirming Care Standards
+To tag a service as `2SLGBTQI+ Friendly` or `Indigenous-Led`, the record must include an `evidence_url` pointing to a public statement by the organization.
+
+*   **Acceptable Evidence:** "About Us" page stating mandate, Board of Directors list, official mandate.
+*   **Unacceptable Evidence:** Third-party directories, assumptions based on name/logo.
+
+---
+
+## 4. Maintenance Cycle
+
+*   **Crisis Services:** Verified Monthly.
+*   **General Services:** Verified Quarterly.
+*   **Stale Data:** Any record not verified in > 6 months is auto-downgraded to **L0** (Hidden).
+
+---
+
+**Approved By:**
+Kingston Care Connect Steering Committee

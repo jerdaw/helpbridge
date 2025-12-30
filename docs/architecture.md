@@ -12,6 +12,8 @@
 - `app/`: Next.js App Router pages and API routes.
   - `[locale]/`: Localized routes.
   - `api/v1/`: RESTful API endpoints.
+  - `offline/`: PWA offline fallback page.
+  - `worker.ts`: Semantic search Web Worker.
 - `components/`: UI components.
   - `ui/`: Standardized primitives (Button, etc.).
 - `hooks/`: Custom React hooks (`useSearch`, `useServices`).

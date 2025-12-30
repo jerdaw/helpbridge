@@ -54,6 +54,7 @@ export default function SearchResultsList({
                     service={result.service}
                     score={result.score}
                     matchReasons={result.matchReasons}
+                    highlightTokens={query ? query.toLowerCase().split(/\s+/).filter(Boolean) : []}
                 />
             ))}
         </div>
