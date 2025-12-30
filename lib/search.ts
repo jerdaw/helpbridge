@@ -31,15 +31,24 @@ const loadServices = async (): Promise<Service[]> => {
                 // Parse embedding strings if they come back as strings (pgvector behavior pending client version)
                 // mappedData ensures types match Service interface
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                const mappedData: Service[] = data.map((row: any) => ({
-                    ...row,
-                    // Parse embedding if it's a string, or keep if array, or undefined
-                    embedding: typeof row.embedding === 'string' ? JSON.parse(row.embedding) : row.embedding,
-                    // Cast jsonb fields
-                    identity_tags: typeof row.tags === 'string' ? JSON.parse(row.tags) : row.tags,
-                    intent_category: row.category, // Map DB column back to TS property
-                    verification_level: row.verification_status,
-                }));
+                const mappedData: Service[] = data.map((row: any) => {
+                    // Find static metadata from services.json to overlay (AI metadata)
+                    const staticService = fallbackServices.find(s => s.id === row.id);
+
+                    return {
+                        ...row,
+                        // Parse embedding if it's a string, or keep if array, or undefined
+                        embedding: typeof row.embedding === 'string' ? JSON.parse(row.embedding) : row.embedding,
+                        // Cast jsonb fields
+                        identity_tags: typeof row.tags === 'string' ? JSON.parse(row.tags) : row.tags,
+                        intent_category: row.category, // Map DB column back to TS property
+                        verification_level: row.verification_status,
+                        // Overlay rich metadata if missing in DB
+                        synthetic_queries: staticService?.synthetic_queries || [],
+                        // If tags are missing in DB, use static
+                        ...(!row.tags && staticService?.identity_tags ? { identity_tags: staticService.identity_tags } : {})
+                    };
+                });
 
                 dataCache = { services: mappedData };
 
