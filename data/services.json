@@ -494,7 +494,7 @@
         "synthetic_queries": [
             "Needle exchange kingston",
             "Methadone clinic walk in",
-            "Doctor for homeless person",
+            "Doctor for person experiencing homelessness",
             "Street health centre hours",
             "Harm reduction supplies"
         ],
@@ -897,11 +897,11 @@
             }
         ],
         "synthetic_queries": [
-            "Homeless youth shelter kingston",
+            "Youth shelter for those experiencing homelessness",
             "Kicked out of parents house",
             "Place to sleep tonight for teenager",
             "Emergency youth housing",
-            "19 year old homeless help"
+            "19 year old help for those experiencing homelessness"
         ],
         "eligibility_notes": "Inclusion: Youth aged 16-24. Experiencing homelessness or unsafe at home. Exclusion: Adults 25+.",
         "access_script": "Hi, I'm 19 and I got kicked out of my house. Can I stay at the shelter tonight?"
@@ -1040,7 +1040,7 @@
             "Need a place to stay",
             "Need somewhere to stay",
             "I have nowhere to go",
-            "Homeless and need help"
+            "Experiencing homelessness and need help"
         ],
         "eligibility_notes": "Inclusion: Men experiencing homelessness, families. Transitional housing focus. Exclusion: Active substance use on site (dry shelter).",
         "access_script": "Hi, I have nowhere to sleep tonight. Do you have any beds available?"
@@ -1072,7 +1072,7 @@
             "Men's shelter kingston",
             "Transitional housing for men recovering",
             "Sober living house kingston",
-            "Homeless man needs place to stay",
+            "Man experiencing homelessness needs place to stay",
             "Housing support for men"
         ],
         "eligibility_notes": "Inclusion: Adults (18+). Low-barrier shelter services. Housing first approach.",
@@ -1103,7 +1103,7 @@
         "synthetic_queries": [
             "Women's shelter kingston",
             "Safe housing for woman fleeing violence",
-            "Homeless support for women",
+            "Support for women experiencing homelessness",
             "Transitional housing dawn house",
             "Emergency bed for woman"
         ],

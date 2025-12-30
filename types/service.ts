@@ -107,7 +107,7 @@ export interface Service {
     application_process?: string;
     languages?: string[];
     bus_routes?: string[];
-    accessibility?: any; // Keeping loose for now, strictly it's Record<string, boolean>
+    accessibility?: Record<string, boolean>;
     last_verified?: string;
     embedding?: number[]; // Vector embedding
     coordinates?: {

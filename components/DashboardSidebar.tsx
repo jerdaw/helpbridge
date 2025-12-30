@@ -6,6 +6,8 @@ import { useAuth } from '@/components/AuthProvider';
 import { LayoutDashboard, List, Settings, LogOut, ExternalLink, Bell, BarChart3 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { cn } from '@/lib/utils';
 
 export default function DashboardSidebar() {
     const pathname = usePathname();
@@ -22,81 +24,100 @@ export default function DashboardSidebar() {
     return (
         <aside className="fixed inset-y-0 left-0 z-50 w-64 transform bg-white transition-transform duration-300 ease-in-out dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 lg:translate-x-0 lg:static lg:inset-auto lg:flex lg:flex-col">
             {/* Logo Area */}
-            <div className="flex h-16 items-center border-b border-neutral-200 px-6 dark:border-neutral-800">
-                <Link href="/" className="flex items-center gap-2 font-bold text-xl tracking-tight text-blue-600">
-                    <span>Care Connect</span>
+            <div className="flex h-20 items-center px-6 border-b border-neutral-100 dark:border-neutral-800">
+                <Link href="/" className="flex items-center gap-2 group">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:shadow-primary-500/30 transition-shadow">
+                        K
+                    </div>
+                    <span className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white heading-display">
+                        Care Connect
+                    </span>
                 </Link>
             </div>
 
             {/* Navigation */}
-            <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
+            <nav className="flex-1 overflow-y-auto px-4 py-6 space-y-1">
                 <Link
                     href="/dashboard"
-                    className={`group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${isActive('/dashboard') && !isActive('/dashboard/services') && !isActive('/dashboard/settings')
-                        ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300'
-                        : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800'
-                        }`}
+                    className={cn(
+                        "group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
+                        isActive('/dashboard') && !isActive('/dashboard/services') && !isActive('/dashboard/settings')
+                            ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-300 shadow-sm'
+                            : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200'
+                    )}
                 >
-                    <LayoutDashboard className="h-5 w-5" />
+                    <LayoutDashboard className={cn("h-5 w-5 transition-colors", isActive('/dashboard') ? "text-primary-600" : "text-neutral-400 group-hover:text-neutral-600")} />
                     Overview
                 </Link>
 
                 <Link
                     href="/dashboard/services"
-                    className={`group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${isActive('/dashboard/services')
-                        ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300'
-                        : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800'
-                        }`}
+                    className={cn(
+                        "group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
+                        isActive('/dashboard/services')
+                            ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-300 shadow-sm'
+                            : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200'
+                    )}
                 >
-                    <List className="h-5 w-5" />
+                    <List className={cn("h-5 w-5 transition-colors", isActive('/dashboard/services') ? "text-primary-600" : "text-neutral-400 group-hover:text-neutral-600")} />
                     My Services
                 </Link>
 
                 <Link
                     href="/dashboard/notifications"
-                    className={`group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${isActive('/dashboard/notifications')
-                        ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300'
-                        : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800'
-                        }`}
+                    className={cn(
+                        "group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
+                        isActive('/dashboard/notifications')
+                            ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-300 shadow-sm'
+                            : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200'
+                    )}
                 >
                     <div className="relative">
-                        <Bell className="h-5 w-5" />
-                        <span className="absolute -right-1 -top-1 flex h-3 w-3 items-center justify-center rounded-full bg-red-500 text-[8px] font-bold text-white">2</span>
+                        <Bell className={cn("h-5 w-5 transition-colors", isActive('/dashboard/notifications') ? "text-primary-600" : "text-neutral-400 group-hover:text-neutral-600")} />
+                        <span className="absolute -right-1 -top-1 flex h-3 w-3 items-center justify-center rounded-full bg-red-500 ring-2 ring-white dark:ring-neutral-900">
+                            <span className="h-1.5 w-1.5 rounded-full bg-white"></span>
+                        </span>
                     </div>
                     Notifications
                 </Link>
 
                 <Link
                     href="/dashboard/analytics"
-                    className={`group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${isActive('/dashboard/analytics')
-                        ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300'
-                        : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800'
-                        }`}
+                    className={cn(
+                        "group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
+                        isActive('/dashboard/analytics')
+                            ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-300 shadow-sm'
+                            : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200'
+                    )}
                 >
-                    <BarChart3 className="h-5 w-5" />
+                    <BarChart3 className={cn("h-5 w-5 transition-colors", isActive('/dashboard/analytics') ? "text-primary-600" : "text-neutral-400 group-hover:text-neutral-600")} />
                     Analytics
                 </Link>
 
                 <Link
                     href="/dashboard/settings"
-                    className={`group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${isActive('/dashboard/settings')
-                        ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/20 dark:text-blue-300'
-                        : 'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800'
-                        }`}
+                    className={cn(
+                        "group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200",
+                        isActive('/dashboard/settings')
+                            ? 'bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-300 shadow-sm'
+                            : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200'
+                    )}
                 >
-                    <Settings className="h-5 w-5" />
+                    <Settings className={cn("h-5 w-5 transition-colors", isActive('/dashboard/settings') ? "text-primary-600" : "text-neutral-400 group-hover:text-neutral-600")} />
                     Settings
                 </Link>
             </nav>
 
             {/* User Profile / Footer */}
-            <div className="border-t border-neutral-200 p-4 dark:border-neutral-800">
+            <div className="border-t border-neutral-200 p-4 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/50">
                 <div className="flex items-center gap-3 px-2 pb-4">
-                    <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold border border-blue-200 dark:bg-blue-900 dark:text-blue-300 dark:border-blue-800">
-                        {user?.email?.charAt(0).toUpperCase() || 'U'}
-                    </div>
+                    <Avatar className="h-9 w-9 border-2 border-white dark:border-neutral-800 shadow-sm">
+                        <AvatarFallback className="bg-gradient-to-br from-primary-100 to-primary-200 text-primary-700 font-bold text-xs">
+                            {user?.email?.charAt(0).toUpperCase() || 'U'}
+                        </AvatarFallback>
+                    </Avatar>
                     <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-medium text-neutral-900 dark:text-white">
+                        <p className="truncate text-sm font-semibold text-neutral-900 dark:text-white">
                             {user?.email || 'Partner'}
                         </p>
                         <p className="truncate text-xs text-neutral-500 dark:text-neutral-400">
@@ -109,7 +130,7 @@ export default function DashboardSidebar() {
                     <Link
                         href="/"
                         target="_blank"
-                        className="group flex w-full items-center gap-3 rounded-md px-2 py-2 text-sm font-medium text-neutral-600 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800"
+                        className="group flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm font-medium text-neutral-600 hover:bg-white hover:shadow-sm hover:text-primary-600 transition-all dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
                     >
                         <ExternalLink className="h-4 w-4" />
                         View Public Site
@@ -117,10 +138,10 @@ export default function DashboardSidebar() {
 
                     <Button
                         variant="ghost"
-                        className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
+                        className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20 h-9"
                         onClick={handleSignOut}
                     >
-                        <LogOut className="h-4 w-4" />
+                        <LogOut className="h-4 w-4 mr-2" />
                         Sign Out
                     </Button>
                 </div>

@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { routing } from './i18n/routing';
 import { createServerClient } from '@supabase/ssr';
+import { env } from '@/lib/env';
 
 // Initialize Internationalization Middleware
 const intlMiddleware = createMiddleware(routing);
@@ -15,8 +16,8 @@ export async function middleware(request: NextRequest) {
     });
 
     const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
+        env.NEXT_PUBLIC_SUPABASE_URL,
+        env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
         {
             cookies: {
                 getAll() {
@@ -46,16 +47,22 @@ export async function middleware(request: NextRequest) {
 
 
     // 2. Internationalization (Run after auth check)
-    // We pass the potentially modified request/response to next-intl
-    // Note: next-intl middleware returns a response. We might need to copy over cookies 
-    // if supabase refreshed them. Using a chained approach or merged response is tricky. 
-    // Standard pattern: Run Supabase first, then return intlMiddleware(request) if public.
+    const intlResponse = intlMiddleware(request);
 
-    // For now, simple composition:
-    return intlMiddleware(request);
+    // 3. Protected Route Logic
+    const { pathname } = request.nextUrl;
+    const isProtectedRoute = pathname.includes('/dashboard') || pathname.includes('/admin');
 
-    // TODO: Add Protected Route Logic here later
-    // if (request.nextUrl.pathname.startsWith('/dashboard') && !user) { ... }
+    if (isProtectedRoute && !user) {
+        // Redirect to login, preserving the intended destination if possible
+        // Note: We need to handle localized paths (e.g. /en/dashboard)
+        const locale = pathname.split('/')[1] || 'en';
+        const loginUrl = new URL(`/${locale}/login`, request.url);
+        loginUrl.searchParams.set('next', pathname);
+        return NextResponse.redirect(loginUrl);
+    }
+
+    return intlResponse;
 }
 
 export const config = {

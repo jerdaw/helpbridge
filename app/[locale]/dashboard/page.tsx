@@ -1,146 +1,115 @@
-'use client';
+import DashboardSidebar from '@/components/DashboardSidebar';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ShieldCheck, Eye, MousePointerClick, TrendingUp } from 'lucide-react';
+import { Link } from '@/i18n/routing';
 
-import { useAuth } from '@/components/AuthProvider';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase';
-import { getAnalyticsForServices } from '@/lib/analytics';
-import AnalyticsCard from '@/components/AnalyticsCard';
-import { useTranslations } from 'next-intl';
-
-export default function DashboardPage() {
-    const { user } = useAuth();
-    const [stats, setStats] = useState<{ total: number; recent: number }>({ total: 0, recent: 0 });
-    const [serviceCount, setServiceCount] = useState(0);
-    const [loading, setLoading] = useState(true);
-    const t = useTranslations('Dashboard');
-    const tAnalytics = useTranslations('Analytics');
-
-    useEffect(() => {
-        async function loadStats() {
-            if (!user) return;
-
-            // 1. Fetch user's services (IDs only)
-            // Mock: Fetching first 5 services as we did in services/page.tsx
-            const { data: services } = await supabase
-                .from('services')
-                .select('id')
-                .limit(5);
-
-            if (services && services.length > 0) {
-                setServiceCount(services.length);
-                const ids = services.map(s => s.id);
-
-                // 2. Fetch analytics for these services
-                const analyticsData = await getAnalyticsForServices(ids);
-
-                // 3. Aggregate
-                let total = 0;
-                let recent = 0;
-                Object.values(analyticsData).forEach(stat => {
-                    total += stat.totalViews;
-                    recent += stat.recentViews;
-                });
-
-                setStats({ total, recent });
-            }
-            setLoading(false);
-        }
-
-        loadStats();
-    }, [user]);
-
+export default async function DashboardPage() {
     return (
-        <div className="space-y-6">
-            <header>
-                <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">
-                    {t('title')}
-                </h1>
-                <p className="mt-2 text-lg text-neutral-600 dark:text-neutral-400">
-                    {t('welcome', { email: user?.email || 'Partner' })}
-                </p>
-            </header>
+        <div className="flex min-h-screen bg-stone-50 dark:bg-neutral-950">
+            <DashboardSidebar />
 
-            {/* Quick Stats */}
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                <AnalyticsCard
-                    title={tAnalytics('totalServices')}
-                    value={serviceCount}
-                    loading={loading}
-                />
+            <main className="flex-1 p-8 lg:p-12 overflow-y-auto">
+                <div className="max-w-6xl mx-auto space-y-8">
+                    {/* Header */}
+                    <div className="flex flex-col gap-2">
+                        <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white heading-display">
+                            Welcome back, Partner
+                        </h1>
+                        <p className="text-neutral-500 dark:text-neutral-400">
+                            Here&apos;s an overview of your organization&apos;s performance on Care Connect.
+                        </p>
+                    </div>
 
-                <AnalyticsCard
-                    title={tAnalytics('totalViews')}
-                    value={stats.recent}
-                    loading={loading}
-                    change={0} // TODO: Calculate change from previous period
-                />
+                    {/* Stats Grid */}
+                    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                        <Card variant="interactive">
+                            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                                <CardTitle className="text-sm font-medium text-neutral-500">Total Views</CardTitle>
+                                <Eye className="h-4 w-4 text-neutral-400" />
+                            </CardHeader>
+                            <CardContent>
+                                <div className="text-2xl font-bold">1,234</div>
+                                <p className="text-xs text-neutral-500 flex items-center gap-1 mt-1">
+                                    <TrendingUp className="h-3 w-3 text-emerald-500" />
+                                    <span className="text-emerald-600 font-medium">+12%</span> from last month
+                                </p>
+                            </CardContent>
+                        </Card>
 
-                <div className="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
-                    <p className="text-sm font-medium text-neutral-500 dark:text-neutral-400">
-                        {t('verificationStatus')}
-                    </p>
-                    <p className="mt-2 text-xl font-bold text-yellow-600 dark:text-yellow-500">
-                        {t('pending')}
-                    </p>
-                    <div className="mt-4">
-                        <Link href="/dashboard/settings" className="text-sm font-medium text-blue-600 hover:text-blue-500">
-                            {t('completeProfile')} &rarr;
-                        </Link>
+                        <Card variant="interactive">
+                            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                                <CardTitle className="text-sm font-medium text-neutral-500">Referrals</CardTitle>
+                                <MousePointerClick className="h-4 w-4 text-neutral-400" />
+                            </CardHeader>
+                            <CardContent>
+                                <div className="text-2xl font-bold">85</div>
+                                <p className="text-xs text-neutral-500 flex items-center gap-1 mt-1">
+                                    <TrendingUp className="h-3 w-3 text-emerald-500" />
+                                    <span className="text-emerald-600 font-medium">+5%</span> from last month
+                                </p>
+                            </CardContent>
+                        </Card>
+
+                        <Card variant="interactive">
+                            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                                <CardTitle className="text-sm font-medium text-neutral-500">Verified Services</CardTitle>
+                                <ShieldCheck className="h-4 w-4 text-neutral-400" />
+                            </CardHeader>
+                            <CardContent>
+                                <div className="text-2xl font-bold">3</div>
+                                <p className="text-xs text-neutral-500 mt-1">
+                                    All services up to date
+                                </p>
+                            </CardContent>
+                        </Card>
+                    </div>
+
+                    {/* Recent Activity / Prompt */}
+                    <div className="grid gap-6 md:grid-cols-2">
+                        <Card className="col-span-1">
+                            <CardHeader>
+                                <CardTitle>Data Quality Score</CardTitle>
+                                <CardDescription>Your organization&apos;s data completeness rating.</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="flex items-center gap-4">
+                                    <div className="relative h-24 w-24 rounded-full border-8 border-emerald-100 flex items-center justify-center">
+                                        <span className="text-3xl font-bold text-emerald-600">A</span>
+                                    </div>
+                                    <div className="space-y-1">
+                                        <p className="font-medium">Excellent!</p>
+                                        <p className="text-sm text-neutral-500">Your services have complete descriptions, hours, and contact info.</p>
+                                    </div>
+                                </div>
+                            </CardContent>
+                        </Card>
+
+                        <Card className="col-span-1 bg-gradient-to-br from-primary-900 to-primary-800 text-white border-none">
+                            <CardHeader>
+                                <CardTitle className="text-white">Verify your listings</CardTitle>
+                                <CardDescription className="text-primary-100">
+                                    It&apos;s been 30 days since your last verification. Confirm your service details are still accurate.
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <Button variant="secondary" className="w-full sm:w-auto">
+                                    Start Verification
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    </div>
+
+                    {/* Quick Link - Manage Services */}
+                    <div className="flex justify-end">
+                        <Button asChild className="gap-2">
+                            <Link href="/dashboard/services">
+                                Manage Services &rarr;
+                            </Link>
+                        </Button>
                     </div>
                 </div>
-            </div>
-
-            {/* Tasks / Action Items */}
-            <div className="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
-                <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4">
-                    Action Items
-                </h3>
-                <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-orange-50 border border-orange-100 dark:bg-orange-900/10 dark:border-orange-900/20">
-                        <div className="h-2 w-2 rounded-full bg-orange-500"></div>
-                        <div className="flex-1">
-                            <p className="text-sm font-medium text-neutral-900 dark:text-white">Complete your organization profile</p>
-                            <p className="text-xs text-neutral-500">Add a logo and website to increase trust.</p>
-                        </div>
-                        <Link href="/dashboard/settings" className="text-xs font-semibold text-blue-600 hover:underline">Complete</Link>
-                    </div>
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-50 border border-blue-100 dark:bg-blue-900/10 dark:border-blue-900/20">
-                        <div className="h-2 w-2 rounded-full bg-blue-500"></div>
-                        <div className="flex-1">
-                            <p className="text-sm font-medium text-neutral-900 dark:text-white">Review new analytics suggestions</p>
-                            <p className="text-xs text-neutral-500">Based on recent search trends in your area.</p>
-                        </div>
-                        <Link href="/dashboard/analytics" className="text-xs font-semibold text-blue-600 hover:underline">View</Link>
-                    </div>
-                </div>
-            </div>
-
-            {/* Recent Activity / Actions */}
-            <div className="rounded-xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
-                <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
-                    {t('getStarted')}
-                </h3>
-                <p className="mt-2 text-neutral-600 dark:text-neutral-400">
-                    {serviceCount === 0
-                        ? t('noServices')
-                        : t('hasServices')}
-                </p>
-                <div className="mt-6 flex gap-4">
-                    <Link
-                        href="/dashboard/services"
-                        className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                    >
-                        {t('manageServices')}
-                    </Link>
-                    <Link
-                        href="/dashboard/services/import"
-                        className="inline-flex items-center justify-center rounded-md bg-white border border-neutral-300 px-4 py-2 text-sm font-semibold text-neutral-700 shadow-sm hover:bg-neutral-50 dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700"
-                    >
-                        Bulk Import
-                    </Link>
-                </div>
-            </div>
+            </main>
         </div>
     );
 }

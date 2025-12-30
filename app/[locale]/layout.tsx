@@ -5,6 +5,8 @@ import "../globals.css";
 import BetaBanner from "../../components/BetaBanner";
 import { AuthProvider } from "../../components/AuthProvider";
 import { ErrorBoundary } from "../../components/ErrorBoundary";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { Outfit, Inter } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Kingston Care Connect",
@@ -25,9 +27,17 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-import { Inter } from "next/font/google";
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  display: "swap",
+});
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export default async function RootLayout({
   children,
@@ -41,14 +51,16 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body className={inter.className}>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={`${inter.variable} ${outfit.variable} font-sans antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
-            <BetaBanner />
-            <ErrorBoundary>
-              {children}
-            </ErrorBoundary>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+              <BetaBanner />
+              <ErrorBoundary>
+                {children}
+              </ErrorBoundary>
+            </ThemeProvider>
           </AuthProvider>
         </NextIntlClientProvider>
       </body>

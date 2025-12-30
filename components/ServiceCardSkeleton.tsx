@@ -1,42 +1,47 @@
-'use client';
-
 import React from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const ServiceCardSkeleton = () => {
     return (
-        <div className="relative overflow-hidden rounded-xl bg-white p-5 shadow-sm border border-neutral-100 dark:bg-neutral-900 dark:border-neutral-800 animate-pulse">
-            <div className="flex items-start justify-between">
-                <div className="w-full">
-                    {/* Header: Name + Badge */}
-                    <div className="flex items-center gap-2 mb-2">
-                        <div className="h-6 w-1/3 rounded bg-neutral-200 dark:bg-neutral-800"></div>
-                        <div className="h-5 w-16 rounded-full bg-neutral-100 dark:bg-neutral-800"></div>
-                    </div>
+        <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+            <div className="flex items-start gap-4">
+                {/* Icon Skeleton */}
+                <Skeleton className="h-12 w-12 rounded-xl" />
 
-                    {/* Description */}
-                    <div className="space-y-2 mt-3">
-                        <div className="h-4 w-full rounded bg-neutral-100 dark:bg-neutral-800"></div>
-                        <div className="h-4 w-5/6 rounded bg-neutral-100 dark:bg-neutral-800"></div>
+                <div className="flex-1 space-y-2">
+                    {/* Title and Badge */}
+                    <div className="flex items-center gap-2">
+                        <Skeleton className="h-6 w-3/4" />
+                        <Skeleton className="h-5 w-16 rounded-full" />
                     </div>
+                    {/* Category Badge */}
+                    <Skeleton className="h-5 w-24 rounded-full" />
                 </div>
             </div>
 
-            {/* Address / Phone */}
-            <div className="mt-4 flex flex-col gap-2">
-                <div className="h-4 w-1/2 rounded bg-neutral-100 dark:bg-neutral-800"></div>
-                <div className="h-4 w-1/3 rounded bg-neutral-100 dark:bg-neutral-800"></div>
+            {/* Description */}
+            <div className="mt-4 space-y-2">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+            </div>
+
+            {/* Address */}
+            <div className="mt-4 flex gap-2">
+                <Skeleton className="h-4 w-4" />
+                <Skeleton className="h-4 w-1/2" />
             </div>
 
             {/* Tags */}
             <div className="mt-4 flex gap-2">
-                <div className="h-6 w-16 rounded-md bg-neutral-100 dark:bg-neutral-800"></div>
-                <div className="h-6 w-20 rounded-md bg-neutral-100 dark:bg-neutral-800"></div>
+                <Skeleton className="h-6 w-16 rounded-md" />
+                <Skeleton className="h-6 w-20 rounded-md" />
+                <Skeleton className="h-6 w-14 rounded-md" />
             </div>
 
-            {/* Footer Links */}
-            <div className="mt-4 flex items-center justify-between border-t border-neutral-100 pt-3 dark:border-neutral-800">
-                <div className="h-4 w-20 rounded bg-neutral-100 dark:bg-neutral-800"></div>
-                <div className="h-4 w-16 rounded bg-neutral-100 dark:bg-neutral-800"></div>
+            {/* Footer */}
+            <div className="mt-6 flex items-center justify-between border-t border-neutral-100 pt-4 dark:border-neutral-800">
+                <Skeleton className="h-4 w-20" />
+                <Skeleton className="h-4 w-24" />
             </div>
         </div>
     );
