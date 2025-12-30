@@ -21,7 +21,7 @@ This project is optimized for deployment on **Vercel**.
     -   Expand the **"Environment Variables"** section.
     -   Add `OPENAI_API_KEY` = `sk-...` (Your key).
     -   Add `NEXT_PUBLIC_SUPABASE_URL` = `https://...` (Your Supabase Project URL).
-    -   Add `NEXT_PUBLIC_SUPABASE_ANON_KEY` = `ey...` (Your Supabase Anon Key).
+    -   Add `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` = `sb_publishable_...` (Your Supabase Publishable Key).
     -   *Reason:* The build process runs `generate-embeddings.ts` (via the "Lazy" logic logic check) or simply needs the types to be valid. Even if using "Zero Cost", the build might strict check env vars.
 
 7.  **Deploy:** Click **"Deploy"**.

@@ -1,11 +1,11 @@
 # Roadmap V3: Partner Platform & Data Sovereignty
 
-> **Status:** Active
+> **Status:** Completed (v1.0 Partner Launch)
 > **Focus:** Empowering service providers to manage their own data via a secure Partner Portal.
 
 ## Phase 30: Foundation & Infrastructure 🏗️
 - [x] Initialize Supabase project (Auth + Postgres).
-- [ ] Migrate `services.json` to Postgres Database. (Blocked on Credentials)
+- [x] Migrate `services.json` to Postgres Database.
 - [x] Create Database Types / ORM Layer.
 - [x] Update `Search` to query DB instead of local JSON.
 
