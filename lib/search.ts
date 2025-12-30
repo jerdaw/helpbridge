@@ -285,7 +285,13 @@ export const searchServices = async (query: string, options: SearchOptions = {})
                         return { ...r, distance: dist };
                     }
                     return { ...r, distance: Infinity };
-                }).sort((a, b) => (a as any).distance - (b as any).distance);
+                }).sort((a, b) => {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    const distA = (a as any).distance ?? Infinity;
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    const distB = (b as any).distance ?? Infinity;
+                    return distA - distB;
+                });
             }
             return results;
         }

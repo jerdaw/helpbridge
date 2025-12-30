@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { WifiOff, Phone } from 'lucide-react';
 
 export default function OfflinePage() {
@@ -11,7 +10,7 @@ export default function OfflinePage() {
                 You are offline
             </h1>
             <p className="mt-2 max-w-sm text-neutral-600 dark:text-neutral-400">
-                It looks like you lost your internet connection. We can't search for new services right now.
+                It looks like you lost your internet connection. We can&apos;t search for new services right now.
             </p>
 
             <div className="mt-8 w-full max-w-md space-y-4">
