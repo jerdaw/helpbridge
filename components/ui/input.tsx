@@ -19,13 +19,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 <input
                     type={type}
                     className={cn(
-                        "peer w-full rounded-2xl border-2 border-neutral-200 bg-white/80 backdrop-blur-sm",
-                        "px-4 py-3 text-neutral-900 placeholder-transparent outline-none",
-                        "transition-all duration-200",
-                        "focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10",
-                        "hover:border-neutral-300 dark:bg-neutral-900/80 dark:border-neutral-800 dark:text-white dark:focus:border-primary-500",
+                        "peer w-full rounded-2xl border border-neutral-200 bg-white/50 backdrop-blur-xl shadow-inner-light",
+                        "px-5 py-3.5 text-neutral-900 placeholder-transparent outline-none",
+                        "transition-all duration-300",
+                        "focus:border-primary-500 focus:bg-white focus:ring-4 focus:ring-primary-500/20 focus:shadow-lg focus:shadow-primary-500/10",
+                        "hover:border-neutral-300 hover:bg-white/80",
+                        "dark:bg-white/5 dark:border-white/10 dark:text-white dark:focus:border-primary-500 dark:focus:bg-neutral-900/80 dark:focus:ring-primary-500/10",
                         "disabled:cursor-not-allowed disabled:opacity-50",
-                        icon && "pl-11",
+                        icon && "pl-12",
                         error && "border-red-500 focus:border-red-500 focus:ring-red-500/10",
                         className
                     )}
@@ -35,12 +36,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 />
                 {label && (
                     <label className={cn(
-                        "absolute left-4 -top-2.5 bg-white px-2 text-xs font-medium text-neutral-500 rounded-md",
+                        "absolute left-4 -top-2.5 bg-white px-2 text-xs font-semibold text-neutral-500 rounded-full shadow-sm",
                         "transition-all duration-200 pointer-events-none",
-                        "peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-400 peer-placeholder-shown:bg-transparent",
-                        "peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-primary-600 peer-focus:bg-white dark:peer-focus:bg-neutral-950",
-                        "dark:bg-neutral-950 dark:text-neutral-400",
-                        icon && "peer-placeholder-shown:left-11 peer-focus:left-4"
+                        "peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-500 peer-placeholder-shown:bg-transparent peer-placeholder-shown:shadow-none",
+                        "peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-primary-600 peer-focus:bg-white peer-focus:shadow-sm dark:peer-focus:bg-neutral-900",
+                        "dark:bg-neutral-900 dark:text-neutral-400",
+                        icon && "peer-placeholder-shown:left-12 peer-focus:left-4"
                     )}>
                         {label}
                     </label>

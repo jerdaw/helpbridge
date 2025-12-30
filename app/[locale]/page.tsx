@@ -15,6 +15,7 @@ import SearchBar from '../../components/home/SearchBar';
 import SearchControls from '../../components/home/SearchControls';
 import SearchChips from '../../components/home/SearchChips';
 import SearchResultsList from '../../components/home/SearchResultsList';
+import SafetyAlert from '../../components/home/SafetyAlert';
 
 export default function Home() {
   const t = useTranslations();
@@ -46,24 +47,27 @@ export default function Home() {
   });
 
   return (
-    <main className="min-h-screen bg-stone-50 dark:bg-neutral-950 flex flex-col">
+    <main className="min-h-screen flex flex-col relative overflow-hidden">
+      <div className="bg-noise" />
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 via-purple-50/50 to-pink-50/50 dark:from-indigo-950/20 dark:via-purple-950/20 dark:to-pink-950/20 -z-10" />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-200/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 dark:bg-primary-900/10" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent-200/20 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 dark:bg-accent-900/10" />
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32">
+        {/* Mesh Gradient Background */}
+        <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary-400/40 rounded-full blur-[100px] mix-blend-multiply animate-float dark:bg-primary-900/30 dark:mix-blend-screen" />
+          <div className="absolute top-[10%] right-[-10%] w-[50%] h-[50%] bg-accent-400/40 rounded-full blur-[100px] mix-blend-multiply animate-float-delayed dark:bg-accent-900/30 dark:mix-blend-screen" />
+          <div className="absolute bottom-[-10%] left-[20%] w-[60%] h-[60%] bg-indigo-300/40 rounded-full blur-[100px] mix-blend-multiply animate-pulse-glow dark:bg-indigo-900/30 dark:mix-blend-screen" />
+        </div>
 
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="space-y-6"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="space-y-8"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/50 border border-neutral-200 backdrop-blur-sm text-xs font-semibold text-primary-600 dark:bg-white/5 dark:border-white/10 dark:text-primary-400">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/40 border border-white/60 backdrop-blur-md shadow-sm text-xs font-semibold text-primary-700 dark:bg-white/5 dark:border-white/10 dark:text-primary-300">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
@@ -71,13 +75,13 @@ export default function Home() {
               Pilot v1.0 Live
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-neutral-900 dark:text-white heading-display">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-500 to-accent-500">
-                Kingston
-              </span> Care Connect
+            <h1 className="heading-1 text-neutral-900 dark:text-white heading-display relative">
+              <span className="relative z-10">Kingston</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-primary-500 to-accent-500 relative z-10"> Care Connect</span>
+              <div className="absolute -inset-x-8 -inset-y-4 bg-white/30 dark:bg-white/5 blur-3xl -z-10 rounded-[50%]" />
             </h1>
 
-            <p className="mx-auto max-w-2xl text-xl text-neutral-600 dark:text-neutral-300">
+            <p className="mx-auto max-w-2xl text-lg md:text-xl text-neutral-600 dark:text-neutral-300 leading-relaxed">
               {t('Footer.disclaimer')}
             </p>
 
@@ -87,10 +91,11 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-10"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-12"
           >
-            <div className="glass p-2 rounded-3xl shadow-xl dark:shadow-primary-900/5 border border-white/50 dark:border-white/5">
+            <div className="glass-card p-2 rounded-[2rem] shadow-2xl shadow-primary-900/5 ring-1 ring-white/50 dark:ring-white/10 relative overflow-hidden transform transition-transform hover:scale-[1.01] duration-500">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-shimmer" />
               <SearchBar
                 query={query}
                 setQuery={setQuery}
@@ -138,6 +143,8 @@ export default function Home() {
             </p>
           </div>
         )}
+
+        <SafetyAlert query={query} category={category} />
 
         <SearchResultsList
           isLoading={isLoading}

@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import "../globals.css";
-import BetaBanner from "../../components/BetaBanner";
 import { AuthProvider } from "../../components/AuthProvider";
 import { ErrorBoundary } from "../../components/ErrorBoundary";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -56,7 +55,6 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-              <BetaBanner />
               <ErrorBoundary>
                 {children}
               </ErrorBoundary>

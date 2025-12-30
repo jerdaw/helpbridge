@@ -40,17 +40,27 @@
     }
   }
 
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
+  @keyframes gradient-xy {
+
+    0%,
+    100% {
+      background-size: 400% 400%;
+      background-position: 0% 0%;
+    }
+
+    25% {
+      background-size: 400% 400%;
+      background-position: 100% 0%;
     }
 
     50% {
-      background-position: 100% 50%;
+      background-size: 400% 400%;
+      background-position: 100% 100%;
     }
 
-    100% {
-      background-position: 0% 50%;
+    75% {
+      background-size: 400% 400%;
+      background-position: 0% 100%;
     }
   }
 
@@ -66,15 +76,61 @@
     }
   }
 
+  @keyframes grain {
+
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+
+    10% {
+      transform: translate(-5%, -10%);
+    }
+
+    20% {
+      transform: translate(-15%, 5%);
+    }
+
+    30% {
+      transform: translate(7%, -25%);
+    }
+
+    40% {
+      transform: translate(-5%, 25%);
+    }
+
+    50% {
+      transform: translate(-15%, 10%);
+    }
+
+    60% {
+      transform: translate(15%, 0%);
+    }
+
+    70% {
+      transform: translate(0%, 15%);
+    }
+
+    80% {
+      transform: translate(3%, 35%);
+    }
+
+    90% {
+      transform: translate(-10%, 10%);
+    }
+  }
+
   /* Animation Utilities */
   --animate-shimmer: shimmer 2s infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-delayed: float-delayed 6s ease-in-out infinite 3s;
-  --animate-gradient: gradient 15s ease infinite;
+  --animate-gradient-xy: gradient-xy 15s ease infinite;
   --animate-pulse-glow: pulse-glow 2s infinite;
+  --animate-grain: grain 8s steps(10) infinite;
 
-  /* Colors - Extending Tailwind Palette */
-  --color-primary-50: #eef2ff;
+  /* Colors - Modern, Vibrant Palette */
+  /* Primary - Indigo/Violet mix for a premium tech feel */
+  --color-primary-50: #f0f3ff;
   --color-primary-100: #e0e7ff;
   --color-primary-200: #c7d2fe;
   --color-primary-300: #a5b4fc;
@@ -86,6 +142,7 @@
   --color-primary-900: #312e81;
   --color-primary-950: #1e1b4b;
 
+  /* Accent - Cyan/Teal for fresh highlights */
   --color-accent-50: #ecfeff;
   --color-accent-100: #cffafe;
   --color-accent-200: #a5f3fc;
@@ -102,30 +159,47 @@
 :root {
   /* Semantic Surfaces */
   --surface-glass: rgba(255, 255, 255, 0.7);
-  --surface-elevated: rgba(255, 255, 255, 0.95);
+  --surface-glass-strong: rgba(255, 255, 255, 0.9);
+  --surface-elevated: #ffffff;
+
+  /* Borders */
+  --border-glass: rgba(255, 255, 255, 0.5);
+  --border-glass-inner: rgba(255, 255, 255, 0.3);
 
   /* Gradients */
   --gradient-hero: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-  --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4));
+  --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
   --gradient-cta: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --gradient-mesh: radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%), radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
 
-  /* Shadows */
+  /* Shadows - Layered for depth */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.2);
+  --shadow-inner-light: inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
 
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  /* Cool gray 50 */
+  --foreground: #0f172a;
+  /* Slate 900 */
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #020617;
+  /* Slate 950 */
+  --foreground: #f8fafc;
 
-  --surface-glass: rgba(23, 23, 23, 0.8);
-  --surface-elevated: rgba(38, 38, 38, 0.95);
-  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.25);
+  --surface-glass: rgba(15, 23, 42, 0.6);
+  --surface-glass-strong: rgba(15, 23, 42, 0.8);
+  --surface-elevated: #1e293b;
+
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glass-inner: rgba(255, 255, 255, 0.05);
+
+  --shadow-glow: 0 0 50px rgba(99, 102, 241, 0.15);
+  --shadow-inner-light: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
 }
 
 body {
@@ -134,28 +208,52 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Background Noise Texture */
+.bg-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.dark .bg-noise {
+  opacity: 0.04;
 }
 
 /* Typography Utilities */
 .heading-display {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 .heading-1 {
   font-size: 3.5rem;
   line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .heading-2 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 
 .heading-3 {
   font-size: 1.5rem;
   line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 @media (max-width: 768px) {
@@ -164,7 +262,7 @@ body {
   }
 
   .heading-2 {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .heading-3 {
@@ -172,37 +270,39 @@ body {
   }
 }
 
-/* Glassmorphism Utilities */
+/* Advanced Glassmorphism Utilities */
 .glass {
   background: var(--surface-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dark .glass {
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-sm), var(--shadow-inner-light);
 }
 
 .glass-card {
-  background: linear-gradient(135deg,
-      rgba(255, 255, 255, 0.9) 0%,
-      rgba(255, 255, 255, 0.6) 100%);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: var(--surface-glass-strong);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--border-glass);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.08),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    var(--shadow-lg),
+    0 0 0 1px var(--border-glass-inner);
 }
 
 .dark .glass-card {
-  background: linear-gradient(135deg,
-      rgba(30, 30, 30, 0.9) 0%,
-      rgba(30, 30, 30, 0.6) 100%);
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.6) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 /* Premium Elevation Utilities */
@@ -215,7 +315,7 @@ body {
 }
 
 .elevated-lg {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg), var(--shadow-inner-light);
 }
 
 .elevated-glow {
@@ -224,7 +324,8 @@ body {
 
 /* Custom Scrollbar for a premium feel */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -232,10 +333,20 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(156, 163, 175, 0.5);
-  border-radius: 20px;
-  border: 3px solid transparent;
-  background-clip: content-box;
+  background-color: rgba(148, 163, 184, 0.4);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(148, 163, 184, 0.6);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(71, 85, 105, 0.4);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(71, 85, 105, 0.6);
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

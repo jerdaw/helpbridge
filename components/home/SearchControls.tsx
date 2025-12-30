@@ -1,6 +1,7 @@
 import { Loader2, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { IntentCategory } from '@/types/service';
+import { cn } from '@/lib/utils';
 
 const CATEGORIES = Object.values(IntentCategory);
 
@@ -52,9 +53,13 @@ export default function SearchControls({
                         size="sm"
                         onClick={() => setCategory(cat === category ? undefined : cat)}
                         aria-pressed={category === cat}
-                        className="rounded-full whitespace-nowrap"
+                        className={cn(
+                            "rounded-full whitespace-nowrap transition-all duration-300",
+                            cat === 'Crisis' && !category && "bg-red-50 text-red-700 hover:bg-red-100 hover:text-red-800 border-red-200 shadow-sm dark:bg-red-900/20 dark:text-red-300 dark:border-red-800/50 dark:hover:bg-red-900/40",
+                            cat === 'Crisis' && category === 'Crisis' && "bg-red-600 text-white hover:bg-red-700 shadow-md shadow-red-500/30 border-transparent dark:bg-red-600 dark:hover:bg-red-700"
+                        )}
                     >
-                        {cat}
+                        {cat === 'Crisis' ? '🗣️ Crisis' : cat}
                     </Button>
                 ))}
             </div>

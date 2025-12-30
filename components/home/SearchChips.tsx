@@ -37,19 +37,7 @@ export default function SearchChips({ savedSearches, removeSavedSearch, startSea
                 </div>
             )}
 
-            {/* Default Suggestions */}
-            <div className="flex flex-wrap justify-center gap-2">
-                <div className="w-full text-xs font-semibold uppercase text-neutral-400 tracking-wider text-center">Popular</div>
-                <Button variant="pill" onClick={() => startSearch("I need food")}>
-                    🍞 I need food
-                </Button>
-                <Button variant="pill" onClick={() => startSearch("I need to talk to someone")}>
-                    🗣️ Crisis Support
-                </Button>
-                <Button variant="pill" onClick={() => startSearch("See a doctor")}>
-                    🩺 Medical Care
-                </Button>
-            </div>
+
         </div>
     );
 }
