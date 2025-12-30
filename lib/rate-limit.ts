@@ -39,7 +39,8 @@ export function checkRateLimit(
 
     // Clean up expired entries periodically
     if (rateLimitStore.size > 10000) {
-        for (const [key, val] of rateLimitStore) {
+        const entries = Array.from(rateLimitStore.entries());
+        for (const [key, val] of entries) {
             if (val.resetAt < now) {
                 rateLimitStore.delete(key);
             }
