@@ -20,7 +20,7 @@ const loadServices = async (): Promise<Service[]> => {
 
     try {
         // Check if we have credentials to attempt DB fetch
-        const hasCredentials = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+        const hasCredentials = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
         if (hasCredentials) {
             const { data, error } = await supabase
