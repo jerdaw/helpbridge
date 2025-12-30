@@ -81,15 +81,55 @@ export default function BulkImportPage() {
         reader.readAsText(file);
     };
 
-    const handleStartImport = () => {
+    const handleStartImport = async () => {
         setIsProcessing(true);
-        // Simulate API call
-        setTimeout(() => {
-            setIsProcessing(false);
-            setUploadStatus('success');
-            setFile(null);
-            setParsedData([]);
-        }, 2000);
+        let successCount = 0;
+        let errorCount = 0;
+
+        // Process sequentially to avoid rate limits
+        for (const row of parsedData) {
+            try {
+                // Map CSV row to API schema
+                // TODO: Robust mapping needed here. For now, assuming CSV headers match fields or close enough.
+                const payload = {
+                    name: row.name || row.Name || 'Untitled Service',
+                    description: row.description || row.Description || '',
+                    category: row.category || row.Category || 'Other',
+                    // Defaulting required fields for V1
+                    address: row.address || row.Address || '',
+                    phone: row.phone || row.Phone || '',
+                    url: row.url || row.website || row.Website || '',
+                    eligibility: row.eligibility || '',
+                    fees: row.fees || '',
+                    email: row.email || '',
+                };
+
+                const res = await fetch('/api/v1/services', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                });
+
+                if (res.ok) {
+                    successCount++;
+                } else {
+                    console.warn(`Failed to import ${payload.name}:`, await res.text());
+                    errorCount++;
+                }
+            } catch (err) {
+                console.error("Import error", err);
+                errorCount++;
+            }
+        }
+
+        setIsProcessing(false);
+        setUploadStatus('success'); // In a real app, show partial success/error report
+        setFile(null);
+        setParsedData([]);
+
+        if (errorCount > 0) {
+            alert(`Import completed with ${successCount} successes and ${errorCount} failures.`);
+        }
     };
 
     return (
