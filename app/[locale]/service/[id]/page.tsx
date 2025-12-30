@@ -1,329 +1,274 @@
-'use client';
-
-import { useEffect, useState, use } from 'react';
-import { supabase } from '@/lib/supabase';
-import { Service, VerificationLevel } from '@/types/service';
-import { useAuth } from '@/components/AuthProvider';
-import { claimService } from '@/lib/services';
+import { notFound } from 'next/navigation';
+import { getServiceById } from '@/lib/services';
+import { generateFeedbackLink } from '@/lib/feedback';
+import { Metadata } from 'next';
 import {
-    MapPin, Phone, Globe, Mail, Clock,
-    ShieldCheck, AlertCircle, ArrowLeft,
-    Share2, Flag, Building2, Info
+    MapPin,
+    Phone,
+    Globe,
+    Clock,
+    ShieldCheck,
+    CheckCircle2,
+    Flag,
+    Share2,
+    Navigation,
+    Printer,
+    Mail
 } from 'lucide-react';
-import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { Section } from '@/components/ui/section';
 import { Button } from '@/components/ui/button';
-import { useTranslations, useLocale } from 'next-intl';
-import { motion } from 'framer-motion';
+import { Badge } from '@/components/ui/badge';
+import { Card } from '@/components/ui/card';
+import { VerificationLevel } from '@/types/service';
 
-export default function ServiceDetailPage({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = use(params);
-    const { user } = useAuth();
-    const t = useTranslations('ServiceDetail');
-    const locale = useLocale();
-    const [service, setService] = useState<Service | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [copying, setCopying] = useState(false);
-    const [claiming, setClaiming] = useState(false);
-    const [claimError, setClaimError] = useState<string | null>(null);
-    const [claimSuccess, setClaimSuccess] = useState(false);
+interface Props {
+    params: Promise<{ id: string; locale: string }>;
+}
 
-    useEffect(() => {
-        async function fetchService() {
-            const { data, error: _error } = await supabase
-                .from('services')
-                .select('*')
-                .eq('id', id)
-                .single();
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { id, locale } = await params;
+    const service = await getServiceById(id);
+    if (!service) return { title: 'Service Not Found' };
 
-            if (data) {
-                const mappedData = {
-                    ...data,
-                    embedding: typeof data.embedding === 'string' ? JSON.parse(data.embedding) : data.embedding,
-                    identity_tags: typeof data.tags === 'string' ? JSON.parse(data.tags) : data.tags,
-                    intent_category: data.category,
-                    verification_level: data.verification_status,
-                } as unknown as Service;
-                setService(mappedData);
-            }
-            setLoading(false);
-        }
-        fetchService();
-    }, [id]);
+    const name = locale === 'fr' && service.name_fr ? service.name_fr : service.name;
+    const description = locale === 'fr' && service.description_fr ? service.description_fr : service.description;
 
-    const handleShare = () => {
-        navigator.clipboard.writeText(window.location.href);
-        setCopying(true);
-        setTimeout(() => setCopying(false), 2000);
+    return {
+        title: `${name} | Kingston Care Connect`,
+        description: description,
     };
+}
 
-    const handleClaim = async () => {
-        if (!user) return; // User should be logged in via login redirect link
-
-        // Mock organization ID for now since we don't have a full org management UI yet
-        // In a real app, this would come from the user's profile/claims
-        const mockOrgId = 'org_' + user.id.substring(0, 8);
-
-        setClaiming(true);
-        setClaimError(null);
-
-        const result = await claimService(id, mockOrgId);
-
-        if (result.success) {
-            setClaimSuccess(true);
-            // Refresh service data
-            const { data } = await supabase.from('services').select('*').eq('id', id).single();
-            if (data) {
-                setService({
-                    ...data,
-                    embedding: typeof data.embedding === 'string' ? JSON.parse(data.embedding) : data.embedding,
-                    identity_tags: typeof data.tags === 'string' ? JSON.parse(data.tags) : data.tags,
-                    intent_category: data.category,
-                    verification_level: data.verification_status,
-                } as unknown as Service);
-            }
-        } else {
-            setClaimError(result.error || 'Claim failed');
-        }
-        setClaiming(false);
-    };
-
-    if (loading) {
-        return (
-            <div className="flex min-h-screen items-center justify-center bg-stone-50 dark:bg-neutral-950">
-                <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"></div>
-            </div>
-        );
-    }
+export default async function ServicePage({ params }: Props) {
+    const { id, locale } = await params;
+    const service = await getServiceById(id);
+    const t = await getTranslations('ServiceDetail');
 
     if (!service) {
-        return (
-            <div className="flex min-h-screen flex-col items-center justify-center bg-stone-50 p-6 text-center dark:bg-neutral-950">
-                <AlertCircle className="mb-4 h-16 w-16 text-neutral-300" />
-                <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">{t('notFound')}</h1>
-                <p className="mt-2 text-neutral-600 dark:text-neutral-400">{t('notFoundText')}</p>
-                <Button asChild className="mt-8">
-                    <Link href="/">&larr; {t('backToSearch')}</Link>
-                </Button>
-            </div>
-        );
+        notFound();
     }
 
+    const name = locale === 'fr' && service.name_fr ? service.name_fr : service.name;
+    const description = (locale === 'fr' && service.description_fr ? service.description_fr : service.description).split('\n');
+    const address = locale === 'fr' && service.address_fr ? service.address_fr : service.address;
+
     const isVerified = service.verification_level === VerificationLevel.L2 || service.verification_level === VerificationLevel.L3;
-    const name = (locale === 'fr' && service.name_fr) ? service.name_fr : service.name;
-    const description = (locale === 'fr' && service.description_fr) ? service.description_fr : service.description;
-    const address = (locale === 'fr' && service.address_fr) ? service.address_fr : service.address;
+
+    // Helper to format date
+    const formatDate = (dateStr?: string) => {
+        if (!dateStr) return null;
+        return new Date(dateStr).toLocaleDateString(locale, {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    };
 
     return (
-        <main className="min-h-screen bg-stone-50 dark:bg-neutral-950">
-            {/* Header / Navigation */}
-            <div className="sticky top-0 z-10 border-b border-neutral-200 bg-white/80 backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-900/80">
-                <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4 sm:px-6">
-                    <Button variant="ghost" size="sm" asChild className="gap-2">
-                        <Link href="/">
-                            <ArrowLeft className="h-4 w-4" />
-                            {t('back')}
-                        </Link>
-                    </Button>
-                    <div className="flex gap-2">
-                        <Button variant="outline" size="sm" onClick={handleShare} className="gap-2">
-                            <Share2 className="h-4 w-4" />
-                            {copying ? t('shareSuccess') : t('share')}
-                        </Button>
-                    </div>
-                </div>
-            </div>
+        <main className="min-h-screen bg-stone-50 dark:bg-neutral-950 flex flex-col">
+            <Header />
 
-            <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:py-12">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="grid grid-cols-1 gap-8 lg:grid-cols-3"
-                >
-                    {/* Main Content */}
-                    <div className="lg:col-span-2 space-y-8">
-                        <section>
-                            <div className="flex flex-wrap items-center gap-3 mb-4">
-                                {isVerified && (
-                                    <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
-                                        <ShieldCheck className="h-3.5 w-3.5" />
-                                        {t('officialProvider')}
-                                    </span>
-                                )}
-                                <span className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-semibold text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400">
+            {/* Hero Header */}
+            <div className="relative pt-32 pb-12 overflow-hidden bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-50/50 to-transparent dark:from-primary-950/20 pointer-events-none" />
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="flex flex-col md:flex-row gap-6 md:items-start md:justify-between">
+                        <div className="space-y-4 flex-1">
+                            <div className="flex items-center gap-3 flex-wrap">
+                                <Badge variant="outline" className="text-sm py-1">
                                     {service.intent_category}
-                                </span>
+                                </Badge>
+                                {isVerified && (
+                                    <Badge variant="primary" className="text-sm py-1 gap-1.5">
+                                        <ShieldCheck className="h-4 w-4" /> Verified Service
+                                    </Badge>
+                                )}
                             </div>
-                            <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+
+                            <h1 className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white leading-tight heading-display">
                                 {name}
                             </h1>
-                            <div className="mt-6 prose prose-neutral dark:prose-invert max-w-none">
-                                <p className="text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">
-                                    {description}
-                                </p>
-                            </div>
-                        </section>
 
-                        {/* Service Metadata Blocks */}
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                            {service.hours && (
-                                <div className="rounded-xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
-                                    <div className="flex items-center gap-3 mb-3 text-neutral-900 dark:text-white font-semibold">
-                                        <Clock className="h-5 w-5 text-blue-600" />
-                                        {t('hours')}
-                                    </div>
-                                    <p className="text-sm text-neutral-600 dark:text-neutral-400 whitespace-pre-wrap">{service.hours}</p>
-                                </div>
-                            )}
-                            {service.fees && (
-                                <div className="rounded-xl border border-neutral-200 bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
-                                    <div className="flex items-center gap-3 mb-3 text-neutral-900 dark:text-white font-semibold">
-                                        <Building2 className="h-5 w-5 text-blue-600" />
-                                        {t('fees')}
-                                    </div>
-                                    <p className="text-sm text-neutral-600 dark:text-neutral-400">{service.fees}</p>
+                            {address && (
+                                <div className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
+                                    <MapPin className="h-5 w-5 shrink-0" />
+                                    <span className="text-lg">{address}</span>
                                 </div>
                             )}
                         </div>
 
-                        {service.eligibility && (
-                            <section className="rounded-xl border border-blue-100 bg-blue-50/30 p-6 dark:border-blue-900/20 dark:bg-blue-900/10">
-                                <div className="flex items-center gap-3 mb-3 text-blue-900 dark:text-blue-100 font-semibold">
-                                    <Info className="h-5 w-5 text-blue-600" />
-                                    {t('eligibility')}
-                                </div>
-                                <p className="text-sm text-blue-800/80 dark:text-blue-300/80 leading-relaxed italic">
-                                    {service.eligibility}
-                                </p>
-                            </section>
-                        )}
+                        <div className="flex flex-wrap gap-3">
+                            <Button variant="outline" className="gap-2">
+                                <Share2 className="h-4 w-4" /> Share
+                            </Button>
+                            <Button variant="outline" className="gap-2">
+                                <Printer className="h-4 w-4" /> Print
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                        {service.application_process && (
-                            <section>
-                                <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-3">{t('access')}</h3>
-                                <p className="text-sm text-neutral-600 dark:text-neutral-400">{service.application_process}</p>
-                            </section>
-                        )}
-
-                        {/* Tags */}
-                        <section>
-                            <h3 className="text-sm font-semibold text-neutral-400 uppercase tracking-wider mb-4">{t('focusedOn')}</h3>
-                            <div className="flex flex-wrap gap-2">
-                                {service.identity_tags.map((tag, idx) => (
-                                    <span key={idx} className="rounded-lg bg-white px-3 py-1.5 text-xs font-medium text-neutral-600 border border-neutral-200 dark:bg-neutral-900 dark:text-neutral-400 dark:border-neutral-800">
-                                        {tag.tag}
-                                    </span>
+            <Section className="py-12">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {/* Main Content */}
+                    <div className="lg:col-span-2 space-y-8">
+                        {/* About */}
+                        <Card className="p-8">
+                            <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                                About this Service
+                            </h2>
+                            <div className="prose prose-neutral dark:prose-invert max-w-none text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                                {description.map((paragraph, idx) => (
+                                    <p key={idx} className="mb-4">{paragraph}</p>
                                 ))}
                             </div>
-                        </section>
+                        </Card>
+
+                        {/* Eligibility & Requirements */}
+                        {(service.eligibility || service.eligibility_notes) && (
+                            <Card className="p-8">
+                                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                                    <CheckCircle2 className="h-6 w-6 text-primary-600" />
+                                    Eligibility
+                                </h2>
+                                <div className="bg-primary-50 dark:bg-primary-900/10 rounded-xl p-6 border border-primary-100 dark:border-primary-800/50">
+                                    <p className="text-neutral-700 dark:text-neutral-300">
+                                        {service.eligibility_notes || service.eligibility}
+                                    </p>
+                                </div>
+                            </Card>
+                        )}
+
+                        {/* Application Process */}
+                        {service.application_process && (
+                            <Card className="p-8">
+                                <h2 className="text-2xl font-bold mb-4">Application Process</h2>
+                                <p className="text-neutral-600 dark:text-neutral-300">
+                                    {service.application_process}
+                                </p>
+                            </Card>
+                        )}
+
+                        {/* Accessibility */}
+                        {service.accessibility && Object.keys(service.accessibility).length > 0 && (
+                            <Card className="p-8">
+                                <h2 className="text-2xl font-bold mb-4">Accessibility</h2>
+                                <div className="flex flex-wrap gap-2">
+                                    {Object.entries(service.accessibility).map(([key, value]) => (
+                                        value && (
+                                            <Badge key={key} variant="secondary" className="capitalize">
+                                                {key.replace('_', ' ')}
+                                            </Badge>
+                                        )
+                                    ))}
+                                </div>
+                            </Card>
+                        )}
                     </div>
 
-                    {/* Sidebar / Quick Actions */}
+                    {/* Sidebar */}
                     <div className="space-y-6">
-                        <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
-                            <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-6">{t('contactInfo')}</h3>
-
+                        {/* Contact Card */}
+                        <Card className="p-6 sticky top-24">
+                            <h3 className="font-semibold text-lg mb-4">Contact Information</h3>
                             <div className="space-y-4">
-                                {address && (
-                                    <div className="flex items-start gap-4">
-                                        <div className="mt-1 rounded-full bg-neutral-100 p-2 dark:bg-neutral-800">
-                                            <MapPin className="h-4 w-4 text-neutral-500" />
-                                        </div>
-                                        <div>
-                                            <div className="text-xs font-medium text-neutral-400 uppercase tracking-tighter">{t('location')}</div>
-                                            <p className="text-sm text-neutral-900 dark:text-white mt-0.5">{address}</p>
-                                        </div>
-                                    </div>
-                                )}
-
                                 {service.phone && (
-                                    <div className="flex items-start gap-4">
-                                        <div className="mt-1 rounded-full bg-neutral-100 p-2 dark:bg-neutral-800">
-                                            <Phone className="h-4 w-4 text-neutral-500" />
+                                    <div className="flex items-start gap-3">
+                                        <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-600 shrink-0">
+                                            <Phone className="h-5 w-5" />
                                         </div>
                                         <div>
-                                            <div className="text-xs font-medium text-neutral-400 uppercase tracking-tighter">{t('phone')}</div>
-                                            <a href={`tel:${service.phone}`} className="text-sm text-blue-600 hover:underline hover:text-blue-500 dark:text-blue-400 block mt-0.5">{service.phone}</a>
+                                            <p className="text-sm font-medium text-neutral-500">Phone</p>
+                                            <a href={`tel:${service.phone}`} className="text-primary-600 hover:underline font-medium">
+                                                {service.phone}
+                                            </a>
                                         </div>
                                     </div>
                                 )}
 
                                 {service.url && (
-                                    <div className="flex items-start gap-4">
-                                        <div className="mt-1 rounded-full bg-neutral-100 p-2 dark:bg-neutral-800">
-                                            <Globe className="h-4 w-4 text-neutral-500" />
+                                    <div className="flex items-start gap-3">
+                                        <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-600 shrink-0">
+                                            <Globe className="h-5 w-5" />
                                         </div>
                                         <div>
-                                            <div className="text-xs font-medium text-neutral-400 uppercase tracking-tighter">{t('website')}</div>
-                                            <a href={service.url} target="_blank" rel="noopener" className="text-sm text-blue-600 hover:underline hover:text-blue-500 dark:text-blue-400 block mt-0.5 break-all">
-                                                {new URL(service.url).hostname}
+                                            <p className="text-sm font-medium text-neutral-500">Website</p>
+                                            <a href={service.url} target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:underline font-medium break-all">
+                                                Visit Website
                                             </a>
                                         </div>
                                     </div>
                                 )}
 
                                 {service.email && (
-                                    <div className="flex items-start gap-4">
-                                        <div className="mt-1 rounded-full bg-neutral-100 p-2 dark:bg-neutral-800">
-                                            <Mail className="h-4 w-4 text-neutral-500" />
+                                    <div className="flex items-start gap-3">
+                                        <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-600 shrink-0">
+                                            <Mail className="h-5 w-5" />
                                         </div>
                                         <div>
-                                            <div className="text-xs font-medium text-neutral-400 uppercase tracking-tighter">{t('email')}</div>
-                                            <a href={`mailto:${service.email}`} className="text-sm text-blue-600 hover:underline hover:text-blue-500 dark:text-blue-400 block mt-0.5 break-all">{service.email}</a>
+                                            <p className="text-sm font-medium text-neutral-500">Email</p>
+                                            <a href={`mailto:${service.email}`} className="text-primary-600 hover:underline font-medium break-all">
+                                                {service.email}
+                                            </a>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {address && (
+                                    <div className="flex items-start gap-3">
+                                        <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-600 shrink-0">
+                                            <Navigation className="h-5 w-5" />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-medium text-neutral-500">Address</p>
+                                            <p className="text-neutral-900 dark:text-neutral-200">{address}</p>
+                                            <Button variant="link" className="h-auto p-0 mt-1 text-xs" asChild>
+                                                <a href={`https://maps.google.com/?q=${encodeURIComponent(address)}`} target="_blank" rel="noopener noreferrer">
+                                                    Get Directions
+                                                </a>
+                                            </Button>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {service.hours && (
+                                    <div className="flex items-start gap-3">
+                                        <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-600 shrink-0">
+                                            <Clock className="h-5 w-5" />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-medium text-neutral-500">Hours</p>
+                                            <p className="text-sm text-neutral-900 dark:text-neutral-200 whitespace-pre-line">{service.hours}</p>
                                         </div>
                                     </div>
                                 )}
                             </div>
 
-                            <div className="mt-8 pt-6 border-t border-neutral-100 dark:border-neutral-800">
-                                <Button asChild className="w-full">
-                                    <a href={service.url} target="_blank" rel="noopener">{t('visitWebsite')}</a>
-                                </Button>
-                            </div>
-                        </div>
-
-                        {/* Help / Reporting */}
-                        <div className="rounded-xl border border-dashed border-neutral-300 p-4 dark:border-neutral-700">
-                            <p className="text-xs text-neutral-500 dark:text-neutral-400 text-center mb-4">
-                                {t('incorrectInfo')}
-                            </p>
-                            <Button variant="outline" size="sm" className="w-full gap-2 text-xs" asChild>
-                                <a href={`mailto:feedback@kingstoncare.ca?subject=Data%20Update:%20${service.name}`}>
-                                    <Flag className="h-3 w-3" />
-                                    {t('reportIssue')}
-                                </a>
-                            </Button>
-                        </div>
-
-                        {/* Claim CTA (If unverified/unclaimed) */}
-                        {!service.org_id && !isVerified && (
-                            <div className="rounded-xl bg-emerald-50 p-6 border border-emerald-100 dark:bg-emerald-900/10 dark:border-emerald-900/20">
-                                <h4 className="text-sm font-bold text-emerald-900 dark:text-emerald-100 mb-2">{t('claimTitle')}</h4>
-                                <p className="text-xs text-emerald-700 dark:text-emerald-300 mb-4">
-                                    {t('claimText')}
-                                </p>
-
-                                {user ? (
-                                    <Button
-                                        onClick={handleClaim}
-                                        disabled={claiming || claimSuccess}
-                                        className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
+                            <div className="mt-6 pt-6 border-t border-neutral-100 dark:border-neutral-800">
+                                <div className="flex items-center justify-between text-xs text-neutral-500">
+                                    <span>Last Verified:</span>
+                                    <span>{formatDate(service.last_verified) || 'Unknown'}</span>
+                                </div>
+                                <div className="mt-4">
+                                    <a
+                                        href={generateFeedbackLink(service)}
+                                        className="flex items-center justify-center gap-2 w-full py-2 text-xs font-medium text-neutral-500 hover:text-neutral-700 hover:bg-neutral-50 rounded-lg transition-colors border border-transparent hover:border-neutral-200"
                                     >
-                                        {claiming ? t('claiming') : claimSuccess ? t('claimed') : t('confirmClaim')}
-                                    </Button>
-                                ) : (
-                                    <Button variant="secondary" size="sm" className="w-full bg-white hover:bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-neutral-900 dark:text-emerald-400 dark:border-emerald-800" asChild>
-                                        <Link href={`/login?claim=${service.id}`}>{t('claimListing')}</Link>
-                                    </Button>
-                                )}
-
-                                {claimError && (
-                                    <p className="mt-2 text-xs text-red-600 dark:text-red-400">{claimError}</p>
-                                )}
+                                        <Flag className="h-3 w-3" />
+                                        {t('reportIssue')}
+                                    </a>
+                                </div>
                             </div>
-                        )}
+                        </Card>
                     </div>
-                </motion.div>
-            </div>
+                </div>
+            </Section>
+
+            <Footer />
         </main>
     );
 }

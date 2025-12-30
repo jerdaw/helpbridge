@@ -1,9 +1,9 @@
 # Kingston Care Connect - Architecture Overview
 
 ## Tech Stack
-- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS + Shadcn UI (Primitives)
+- **Styling**: Tailwind CSS v4 + Radix UI
 - **Database**: Supabase (PostgreSQL + Vector)
 - **Internationalization**: `next-intl`
 - **Testing**: Playwright (E2E), Vitest (Unit)

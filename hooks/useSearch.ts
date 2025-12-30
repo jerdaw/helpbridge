@@ -4,6 +4,16 @@ import { useLocalStorage } from './useLocalStorage';
 import { useGeolocation } from './useGeolocation';
 import { logger } from '@/lib/logger';
 
+/**
+ * Primary search state management hook.
+ * Handles query state, category filtering, geolocation, and saved searches.
+ * 
+ * @example
+ * const { query, setQuery, results, isLoading } = useSearch();
+ * 
+ * @param initialQuery - Optional starting query string.
+ * @returns An object containing search states and handlers.
+ */
 export function useSearch(initialQuery = '') {
     const [query, setQuery] = useState(initialQuery);
     const [category, setCategory] = useState<string | undefined>(undefined);

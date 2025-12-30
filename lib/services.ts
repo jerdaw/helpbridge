@@ -1,5 +1,6 @@
 import { supabase } from './supabase';
 import { logger } from './logger';
+import { Service } from '@/types/service';
 
 /**
  * Claims a service for the current authenticated user's organization.
@@ -28,5 +29,42 @@ export async function claimService(serviceId: string, orgId: string) {
     } catch (err) {
         logger.error('Unexpected error in claimService', err as Error, { serviceId, orgId });
         return { error: 'An unexpected error occurred' };
+    }
+}
+
+/**
+ * Fetches a service by ID and maps it to the Service type.
+ */
+export async function getServiceById(id: string): Promise<Service | null> {
+    try {
+        const { data, error } = await supabase
+            .from('services')
+            .select('*')
+            .eq('id', id)
+            .single();
+
+        if (error) {
+            if (error.code !== 'PGRST116') { // Not found code
+                logger.error('Error fetching service by ID', error, { id });
+            }
+            return null;
+        }
+
+        if (!data) return null;
+
+        // Map database fields to Service type
+        const service: Service = {
+            ...data,
+            embedding: typeof data.embedding === 'string' ? JSON.parse(data.embedding) : data.embedding,
+            identity_tags: typeof data.tags === 'string' ? JSON.parse(data.tags) : data.tags,
+            intent_category: data.category,
+            verification_level: data.verification_status,
+            // Ensure optional fields are handled if missing in DB but required in type (adjust as needed)
+        } as unknown as Service;
+
+        return service;
+    } catch (error) {
+        logger.error('Unexpected error in getServiceById', error as Error, { id });
+        return null;
     }
 }

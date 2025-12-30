@@ -33,11 +33,12 @@ We maintain a strict, hand-verified dataset of the **Top 150 High-Impact Service
 Built with modern web technologies for performance and maintainability:
 
 -   **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
--   **Language:** TypeScript
+-   **Language:** [TypeScript](https://www.typescriptlang.org/)
 -   **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
 -   **UI Components:** [Radix UI](https://www.radix-ui.com/)
 -   **AI/Embeddings:** [@xenova/transformers](https://huggingface.co/docs/transformers.js/) (Client-side execution)
--   **Testing:** Vitest
+-   **Testing:** [Vitest](https://vitest.dev/) (Unit/Integration), [Playwright](https://playwright.dev/) (E2E)
+-   **Database:** [Supabase](https://supabase.com/) (PostgreSQL + Vector)
 
 ---
 
@@ -68,10 +69,23 @@ Built with modern web technologies for performance and maintainability:
 
     Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+### Available Scripts
+
+| Command | Purpose |
+| :--- | :--- |
+| `npm run dev` | Starts development server with Turbo |
+| `npm run build` | Builds the production application |
+| `npm test` | Runs unit and integration tests (Vitest) |
+| `npx playwright test` | Runs end-to-end tests |
+| `npm run type-check` | Runs TypeScript compiler check |
+| `npm run lint` | Runs ESLint for code quality |
+| `npm run validate-data` | Validates local services JSON data |
+| `npm run analyze` | Analyzes production bundle size |
+
 ### Environment Variables
 
-Copy `.env.example` to `.env.local` (if applicable) for standard setup.
-Note: Client-side features work without API keys. Data generation scripts may require an `OPENAI_API_KEY`.
+Copy `.env.example` to `.env.local` for standard setup.
+Note: Search and core features work without API keys. Database features require Supabase keys.
 
 ### Partner Platform Setup (Supabase)
 
