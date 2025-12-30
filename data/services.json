@@ -28,8 +28,46 @@
             "Anonymous counselling chat",
             "Help I'm scared at home"
         ],
+        "synthetic_queries_fr": [
+            "J'ai besoin de parler à quelqu'un",
+            "Texter un conseiller",
+            "Je suis triste et seul",
+            "Aide pour l'intimidation",
+            "Pensées suicidaires"
+        ],
         "eligibility_notes": "Inclusion: All youth (5-29) in Canada. Mental health support. Exclusion: None (24/7 anonymous).",
-        "access_script": "Hi, I'm feeling really overwhelmed right now and just need someone to talk to. Is this a safe place to share?"
+        "access_script": "Hi, I'm feeling really overwhelmed right now and just need someone to talk to. Is this a safe place to share?",
+        "hours": {
+            "monday": {
+                "open": "00:00",
+                "close": "23:59"
+            },
+            "tuesday": {
+                "open": "00:00",
+                "close": "23:59"
+            },
+            "wednesday": {
+                "open": "00:00",
+                "close": "23:59"
+            },
+            "thursday": {
+                "open": "00:00",
+                "close": "23:59"
+            },
+            "friday": {
+                "open": "00:00",
+                "close": "23:59"
+            },
+            "saturday": {
+                "open": "00:00",
+                "close": "23:59"
+            },
+            "sunday": {
+                "open": "00:00",
+                "close": "23:59"
+            },
+            "notes": "24/7 Service"
+        }
     },
     {
         "id": "trans-lifeline-canada",
@@ -60,8 +98,45 @@
             "Coming out advice from trans person",
             "Name change funding help"
         ],
+        "synthetic_queries_fr": [
+            "Ligne d'écoute transgenre",
+            "Aide dysphorie",
+            "Sortir du placard conseils",
+            "Financement changement de nom",
+            "Soutien par les pairs trans"
+        ],
         "eligibility_notes": "Inclusion: Trans, non-binary, and questioning individuals. Peer support. Exclusion: Cisgender individuals seeking info (refer to allies line).",
-        "access_script": "Hi, I'm trans and I'm really struggling with dysphoria today. Can I talk to someone who understands?"
+        "access_script": "Hi, I'm trans and I'm really struggling with dysphoria today. Can I talk to someone who understands?",
+        "hours": {
+            "monday": {
+                "open": "10:00",
+                "close": "22:00"
+            },
+            "tuesday": {
+                "open": "10:00",
+                "close": "22:00"
+            },
+            "wednesday": {
+                "open": "10:00",
+                "close": "22:00"
+            },
+            "thursday": {
+                "open": "10:00",
+                "close": "22:00"
+            },
+            "friday": {
+                "open": "10:00",
+                "close": "22:00"
+            },
+            "saturday": {
+                "open": "10:00",
+                "close": "22:00"
+            },
+            "sunday": {
+                "open": "10:00",
+                "close": "22:00"
+            }
+        }
     },
     {
         "id": "hope-for-wellness-helpline",
@@ -157,6 +232,17 @@
             "Immigration paperwork help",
             "OSAP calculator"
         ],
+        "synthetic_queries_fr": [
+            "Aide aux nouveaux arrivants",
+            "Cours d'anglais gratuits",
+            "Logement réfugié Kingston",
+            "Papiers immigration aide",
+            "Calculateur RAP"
+        ],
+        "coordinates": {
+            "lat": 44.2393,
+            "lng": -76.5161
+        },
         "eligibility_notes": "Inclusion: Newcomers, immigrants, refugees in KFL&A. Settlement support. Exclusion: None.",
         "access_script": "Hi, I'm new to Kingston and looking for help with settlement and housing. Do I need an appointment?"
     },
@@ -194,6 +280,17 @@
             "Support for HIV positive",
             "Harm reduction services"
         ],
+        "synthetic_queries_fr": [
+            "Test VIH Kingston",
+            "Aiguilles propres gratuites",
+            "Kit naloxone gratuit",
+            "Soutien VIH positif",
+            "Réduction des méfaits"
+        ],
+        "coordinates": {
+            "lat": 44.2395,
+            "lng": -76.5164
+        },
         "eligibility_notes": "Inclusion: Open to all. Focus on HIV/STBBI and substance use. Exclusion: None.",
         "access_script": "Hi, I'd like to pick up some harm reduction supplies. Do I need an appointment or can I just drop in?"
     },
@@ -227,6 +324,17 @@
             "One roof hours",
             "Mental health help for young adults"
         ],
+        "synthetic_queries_fr": [
+            "Centre jeunesse sans rendez-vous",
+            "Aide emploi jeune",
+            "Logement pour jeunes",
+            "One roof heures",
+            "Santé mentale jeunes adultes"
+        ],
+        "coordinates": {
+            "lat": 44.2371,
+            "lng": -76.5022
+        },
         "eligibility_notes": "Inclusion: Youth 16-24. Housing, employment, mental health. Drop-in available. Exclusion: Adults 25+.",
         "access_script": "Hi, I'm 20 and having a hard time finding a job and a place to live. Can I drop by to see a worker?"
     },
@@ -432,6 +540,17 @@
             "Housing worker help",
             "List of cheap apartments kingston"
         ],
+        "synthetic_queries_fr": [
+            "Banque de loyer demande",
+            "Aide loyer en retard",
+            "Prévention éviction",
+            "Logement abordable liste",
+            "Aide logement armée du salut"
+        ],
+        "coordinates": {
+            "lat": 44.2415,
+            "lng": -76.4913
+        },
         "eligibility_notes": "Inclusion: At risk of homelessness or low-income. Rent/Utility arrears. Exclusion: Must meet income cap for grants.",
         "access_script": "Hi, I'm behind on my rent and worried about losing my apartment. Can I apply for the rent bank?"
     },
@@ -498,6 +617,17 @@
             "Street health centre hours",
             "Harm reduction supplies"
         ],
+        "synthetic_queries_fr": [
+            "Échange de seringues",
+            "Méthadone sans rendez-vous",
+            "Médecin pour itinérants",
+            "Heures centre santé de rue",
+            "KCHC réduction méfaits"
+        ],
+        "coordinates": {
+            "lat": 44.2345,
+            "lng": -76.4831
+        },
         "eligibility_notes": "Inclusion: Vulnerable populations, substance use, homelessness. Open access. Exclusion: None.",
         "access_script": "Hi, I'm helping a friend who uses substances and I want to find out about your needle exchange hours."
     },
@@ -726,6 +856,17 @@
             "Can't afford food this week due to rent",
             "Emergency food assistance Kingston"
         ],
+        "synthetic_queries_fr": [
+            "Épicerie gratuite Kingston",
+            "Frigo vide pas d'argent",
+            "Panier alimentaire aide",
+            "Banque alimentaire rendez-vous",
+            "Aide alimentaire urgence"
+        ],
+        "coordinates": {
+            "lat": 44.2452,
+            "lng": -76.4917
+        },
         "eligibility_notes": "Inclusion: Kingston residents. Hamper program. Exclusion: Frequency limits apply.",
         "access_script": "Hi, I'd like to register for a food hamper. What documents do you need me to bring?"
     },
@@ -1763,5 +1904,236 @@
         ],
         "eligibility_notes": "Inclusion: Registered clients with disabilities preventing use of regular transit. Application required. Exclusion: General public.",
         "access_script": "Hi, I'd like to apply for the Access Bus service. How do I start the registration process?"
+    },
+    {
+        "id": "kingston-community-medical-clinic",
+        "name": "Kingston Community Medical Clinic",
+        "description": "Walk-in medical clinic providing primary care services to residents without a family doctor.",
+        "url": "https://kcc.example.com",
+        "phone": "613-555-0101",
+        "address": "123 Princess St, Kingston, ON K7L 1A1",
+        "verification_level": "L1",
+        "intent_category": "Health",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-30T12:00:00Z",
+            "evidence_url": "https://kcc.example.com",
+            "method": "Data Expansion Phase 2"
+        },
+        "identity_tags": [],
+        "synthetic_queries": [
+            "Doctor walk in",
+            "Medical help no doctor",
+            "Prescription renewal",
+            "Sick need doctor"
+        ],
+        "hours": {
+            "monday": {
+                "open": "09:00",
+                "close": "17:00"
+            },
+            "tuesday": {
+                "open": "09:00",
+                "close": "17:00"
+            },
+            "wednesday": {
+                "open": "09:00",
+                "close": "17:00"
+            },
+            "thursday": {
+                "open": "09:00",
+                "close": "17:00"
+            },
+            "friday": {
+                "open": "09:00",
+                "close": "16:00"
+            }
+        }
+    },
+    {
+        "id": "downtown-legal-clinic",
+        "name": "Downtown Legal Clinic",
+        "description": "Pro bono legal advice for low-income residents regarding tenant rights and employment law.",
+        "url": "https://legal.example.com",
+        "phone": "613-555-0102",
+        "address": "456 Queen St, Kingston, ON K7K 1B1",
+        "verification_level": "L1",
+        "intent_category": "Legal",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-30T12:00:00Z",
+            "evidence_url": "https://legal.example.com",
+            "method": "Data Expansion Phase 2"
+        },
+        "identity_tags": [],
+        "synthetic_queries": [
+            "Legal aid",
+            "Eviction help",
+            "Tenant rights lawyer",
+            "Free legal advice"
+        ],
+        "hours": {
+            "monday": {
+                "open": "10:00",
+                "close": "16:00"
+            },
+            "wednesday": {
+                "open": "10:00",
+                "close": "16:00"
+            },
+            "friday": {
+                "open": "10:00",
+                "close": "14:00"
+            }
+        }
+    },
+    {
+        "id": "youth-employment-centre-kton",
+        "name": "Youth Employment Centre Kingston",
+        "description": "Resume workshops, job search assistance, and interview prep for youth aged 15-29.",
+        "url": "https://youthjob.example.com",
+        "phone": "613-555-0103",
+        "address": "789 Division St, Kingston, ON K7L 3M6",
+        "verification_level": "L1",
+        "intent_category": "Employment",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-30T12:00:00Z",
+            "evidence_url": "https://youthjob.example.com",
+            "method": "Data Expansion Phase 2"
+        },
+        "identity_tags": [
+            {
+                "tag": "Youth",
+                "evidence_url": ""
+            }
+        ],
+        "synthetic_queries": [
+            "Find a job",
+            "Resume help",
+            "Student jobs",
+            "Work for teens"
+        ],
+        "hours": {
+            "monday": {
+                "open": "08:30",
+                "close": "16:30"
+            },
+            "tuesday": {
+                "open": "08:30",
+                "close": "16:30"
+            },
+            "wednesday": {
+                "open": "08:30",
+                "close": "16:30"
+            },
+            "thursday": {
+                "open": "08:30",
+                "close": "16:30"
+            },
+            "friday": {
+                "open": "08:30",
+                "close": "16:30"
+            }
+        }
+    },
+    {
+        "id": "senior-support-services",
+        "name": "Senior Support Services",
+        "description": "Social activities, meal delivery coordination, and friendly visiting for seniors.",
+        "url": "https://seniors.example.com",
+        "phone": "613-555-0104",
+        "address": "321 Bath Rd, Kingston, ON K7M 2L1",
+        "verification_level": "L1",
+        "intent_category": "Community",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-30T12:00:00Z",
+            "evidence_url": "https://seniors.example.com",
+            "method": "Data Expansion Phase 2"
+        },
+        "identity_tags": [
+            {
+                "tag": "Seniors",
+                "evidence_url": ""
+            }
+        ],
+        "synthetic_queries": [
+            "Help for elderly",
+            "Senior center",
+            "Meals on wheels info",
+            "Social activities seniors"
+        ],
+        "hours": {
+            "monday": {
+                "open": "09:00",
+                "close": "15:00"
+            },
+            "tuesday": {
+                "open": "09:00",
+                "close": "15:00"
+            },
+            "wednesday": {
+                "open": "09:00",
+                "close": "15:00"
+            },
+            "thursday": {
+                "open": "09:00",
+                "close": "15:00"
+            },
+            "friday": {
+                "open": "09:00",
+                "close": "15:00"
+            }
+        }
+    },
+    {
+        "id": "emergency-dental-clinic",
+        "name": "Emergency Dental Clinic",
+        "description": "Urgent dental care for low-income individuals in pain/infection.",
+        "url": "https://dental.example.com",
+        "phone": "613-555-0105",
+        "address": "654 Victoria St, Kingston, ON K7L 4V1",
+        "verification_level": "L1",
+        "intent_category": "Health",
+        "provenance": {
+            "verified_by": "Antigravity (AI Agent)",
+            "verified_at": "2025-12-30T12:00:00Z",
+            "evidence_url": "https://dental.example.com",
+            "method": "Data Expansion Phase 2"
+        },
+        "identity_tags": [],
+        "synthetic_queries": [
+            "Toothache help",
+            "Broken tooth",
+            "Emergency dentist cheap",
+            "Dental pain"
+        ],
+        "hours": {
+            "monday": {
+                "open": "08:00",
+                "close": "20:00"
+            },
+            "tuesday": {
+                "open": "08:00",
+                "close": "20:00"
+            },
+            "wednesday": {
+                "open": "08:00",
+                "close": "20:00"
+            },
+            "thursday": {
+                "open": "08:00",
+                "close": "20:00"
+            },
+            "friday": {
+                "open": "08:00",
+                "close": "20:00"
+            },
+            "saturday": {
+                "open": "10:00",
+                "close": "16:00"
+            }
+        }
     }
 ]

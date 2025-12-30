@@ -150,6 +150,17 @@ import BetaBanner from '@/components/BetaBanner';
 <BetaBanner />
 ```
 
+### ThemeProvider
+Manages light/dark mode state using `next-themes`.
+
+```tsx
+import { ThemeProvider } from '@/components/ThemeProvider';
+
+<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+  <App />
+</ThemeProvider>
+```
+
 ---
 
 ### DashboardSidebar
@@ -162,7 +173,7 @@ import DashboardSidebar from '@/components/DashboardSidebar';
 ```
 
 ### ServiceDetailPage
-Dedicated public route for detailed service information, contact details, and claiming.
+Dedicated public route for service information.
 
 ```tsx
 // Route: /service/[id]
@@ -172,6 +183,15 @@ import ServiceDetailPage from '@/app/[locale]/service/[id]/page.tsx';
 ---
 
 ## Layout Components
+
+### Header & Footer
+Global shell components.
+
+```tsx
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { ThemeToggle } from '@/components/layout/ThemeToggle';
+```
 
 ### Tooltip
 Accessible tooltip component.

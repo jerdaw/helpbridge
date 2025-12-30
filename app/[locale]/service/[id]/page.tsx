@@ -240,9 +240,28 @@ export default async function ServicePage({ params }: Props) {
                                         <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-600 shrink-0">
                                             <Clock className="h-5 w-5" />
                                         </div>
-                                        <div>
-                                            <p className="text-sm font-medium text-neutral-500">Hours</p>
-                                            <p className="text-sm text-neutral-900 dark:text-neutral-200 whitespace-pre-line">{service.hours}</p>
+                                        <div className="flex-1">
+                                            <p className="text-sm font-medium text-neutral-500 mb-2">Hours</p>
+                                            <div className="text-sm">
+                                                {['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'].map((day) => {
+                                                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                                    const dayHours = (service.hours as any)[day];
+                                                    if (!dayHours) return null;
+                                                    return (
+                                                        <div key={day} className="flex justify-between py-0.5 border-b border-neutral-100 dark:border-neutral-800 last:border-0">
+                                                            <span className="capitalize w-24 text-neutral-500 dark:text-neutral-400">{day}</span>
+                                                            <span className="text-neutral-900 dark:text-neutral-200 font-medium">
+                                                                {dayHours.open} - {dayHours.close}
+                                                            </span>
+                                                        </div>
+                                                    );
+                                                })}
+                                                {service.hours.notes && (
+                                                    <p className="text-xs text-neutral-400 mt-2 italic bg-neutral-50 dark:bg-neutral-800/50 p-2 rounded">
+                                                        Note: {service.hours.notes}
+                                                    </p>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
                                 )}

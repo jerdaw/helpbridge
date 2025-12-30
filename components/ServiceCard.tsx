@@ -11,6 +11,7 @@ import { scaleOnHover } from '@/lib/motion';
 
 import { useLocale, useTranslations } from 'next-intl';
 import { trackEvent } from '../lib/analytics';
+import { highlightMatches } from '../lib/search/highlight';
 
 /**
  * Props for the ServiceCard component.
@@ -19,6 +20,7 @@ interface ServiceCardProps {
     service: Service;
     score?: number;
     matchReasons?: string[];
+    highlightTokens?: string[];
 }
 
 const CategoryIcon = ({ category, className }: { category: string, className?: string }) => {
@@ -31,15 +33,19 @@ const CategoryIcon = ({ category, className }: { category: string, className?: s
     }
 };
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ service, highlightTokens = [] }) => {
     const locale = useLocale();
     const t = useTranslations('Common');
     const isVerified = service.verification_level === VerificationLevel.L2 || service.verification_level === VerificationLevel.L3;
 
     // Localized Content
-    const name = (locale === 'fr' && service.name_fr) ? service.name_fr : service.name;
-    const description = (locale === 'fr' && service.description_fr) ? service.description_fr : service.description;
+    const rawName = (locale === 'fr' && service.name_fr) ? service.name_fr : service.name;
+    const rawDescription = (locale === 'fr' && service.description_fr) ? service.description_fr : service.description;
     const address = (locale === 'fr' && service.address_fr) ? service.address_fr : service.address;
+
+    // Apply Highlighting
+    const nameHtml = highlightMatches(rawName, highlightTokens);
+    const descriptionHtml = highlightMatches(rawDescription, highlightTokens);
 
     // Cast to any to safely access distance if it's not on the main type yet
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -71,9 +77,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 
                         <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 flex-wrap">
-                                <h3 className="text-lg font-bold text-neutral-900 dark:text-white truncate leading-tight">
-                                    {name}
-                                </h3>
+                                <h3
+                                    className="text-lg font-bold text-neutral-900 dark:text-white truncate leading-tight"
+                                    dangerouslySetInnerHTML={{ __html: nameHtml }}
+                                />
                                 {isVerified && (
                                     <Badge variant="primary" size="sm" className="gap-1 px-1.5 py-0">
                                         <ShieldCheck className="w-3 h-3" /> Verified
@@ -95,9 +102,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
                     </div>
 
                     {/* Description */}
-                    <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed flex-grow">
-                        {description}
-                    </p>
+                    <div
+                        className="mt-4 text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed flex-grow"
+                        dangerouslySetInnerHTML={{ __html: descriptionHtml }}
+                    />
 
                     {/* Info Grid */}
                     <div className="mt-4 grid grid-cols-1 gap-2 text-sm text-neutral-500 dark:text-neutral-400">

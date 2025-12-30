@@ -1,11 +1,22 @@
 import { levenshteinDistance } from './utils';
 
 export const DICTIONARY = [
-    'food', 'shelter', 'housing', 'health', 'mental health', 'crisis',
-    'financial', 'employment', 'legal', 'youth', 'senior', 'disability',
-    'transportation', 'addiction', 'clothing', 'education', 'immigrant',
-    'refugee', 'family', 'parenting', 'childcare', 'elderly',
-    'harm reduction', 'outreach', 'drop-in'
+    // Categories
+    'food', 'housing', 'shelter', 'health', 'mental', 'dental', 'legal', 'employment', 'crisis',
+
+    // Local Agencies & Acronyms
+    'kchc', 'iska', 'amhs', 'cmha', 'martha', 'marthas', 'partner', 'mission',
+    'salvation', 'army', 'maltby', 'hospice', 'providence', 'hotel', 'dieu',
+    'interval', 'house', 'dawn', 'access', 'bus',
+
+    // Neighborhoods/Locations
+    'downtown', 'north', 'end', 'west', 'east', 'rideau', 'heights', 'kingscourt',
+    'cataraqui', 'pittsburgh', 'sydenham',
+
+    // Common Needs
+    'hungry', 'starving', 'homeless', 'eviction', 'rent', 'subsidy', 'utility', 'hydro',
+    'doctor', 'nurse', 'pill', 'prescription', 'addiction', 'rehab', 'detox',
+    'suicide', 'help', 'emergency', 'urgent'
 ];
 
 /**

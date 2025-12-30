@@ -34,7 +34,7 @@ export default function EditServiceForm({ service, onSubmit }: EditServiceFormPr
             phone: service?.phone || '',
             url: service?.url || '',
             email: service?.email || '',
-            hours: service?.hours || '',
+            hours: typeof service?.hours === 'object' ? JSON.stringify(service.hours, null, 2) : (service?.hours || ''),
             fees: service?.fees || '',
             eligibility: service?.eligibility || '',
             application_process: service?.application_process || '',

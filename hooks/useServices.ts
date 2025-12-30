@@ -6,6 +6,7 @@ interface UseServicesProps {
     query: string;
     category?: string;
     userLocation?: { lat: number; lng: number };
+    openNow?: boolean;
     isReady: boolean;
     generateEmbedding: (text: string) => Promise<number[] | null>;
     setResults: (results: SearchResult[]) => void;
@@ -18,6 +19,7 @@ export function useServices({
     query,
     category,
     userLocation,
+    openNow,
     isReady,
     generateEmbedding,
     setResults,
@@ -41,7 +43,7 @@ export function useServices({
 
             try {
                 // 1. Instant Keyword/Filter Search (First Pass)
-                const initialResults = await searchServices(query, { category, location: userLocation });
+                const initialResults = await searchServices(query, { category, location: userLocation, openNow });
                 setResults(initialResults);
                 setIsLoading(false); // Show initial results immediately
 
@@ -56,7 +58,8 @@ export function useServices({
                         const enhancedResults = await searchServices(query, {
                             category,
                             location: userLocation,
-                            vectorOverride: embedding
+                            vectorOverride: embedding,
+                            openNow
                         });
                         setResults(enhancedResults);
                     }
@@ -81,5 +84,5 @@ export function useServices({
 
         const timer = setTimeout(performSearch, 150);
         return () => clearTimeout(timer);
-    }, [query, category, userLocation, isReady, generateEmbedding, setResults, setIsLoading, setHasSearched]);
+    }, [query, category, userLocation, openNow, isReady, generateEmbedding, setResults, setIsLoading, setHasSearched]);
 }

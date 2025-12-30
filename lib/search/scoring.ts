@@ -17,7 +17,7 @@ export const scoreServiceKeyword = (service: Service, tokens: string[]): { score
     let score = 0;
     const matchReasons: string[] = [];
 
-    // 1. Check Synthetic Queries (High Impact) - Currently English Only
+    // 1a. Check Synthetic Queries (English) - High Impact
     if (service.synthetic_queries) {
         for (const query of service.synthetic_queries) {
             const queryText = normalize(query);
@@ -33,6 +33,27 @@ export const scoreServiceKeyword = (service: Service, tokens: string[]): { score
                 const points = WEIGHTS.syntheticQuery * queryMatches;
                 score += points;
                 matchReasons.push(`Matched intent: "${query}" (+${points})`);
+                break;
+            }
+        }
+    }
+
+    // 1b. Check Synthetic Queries (French) - High Impact
+    if (service.synthetic_queries_fr) {
+        for (const query of service.synthetic_queries_fr) {
+            const queryText = normalize(query);
+            let queryMatches = 0;
+
+            for (const token of tokens) {
+                if (queryText.includes(token)) {
+                    queryMatches++;
+                }
+            }
+
+            if (queryMatches > 0) {
+                const points = WEIGHTS.syntheticQuery * queryMatches;
+                score += points;
+                matchReasons.push(`Matched intent (FR): "${query}" (+${points})`);
                 break;
             }
         }

@@ -7,11 +7,12 @@
 - **Library:** Use `next-intl` or React Context for dictionary management.
 - **Data:** `services.json` text fields (name, description) will eventually need French counterparts (e.g., `name_fr`, `description_fr`).
 
-## 2. Implementation Status (Pilot)
-- **Current Mode:** English-First.
-- **Requirement:** All new UI components must accept content as props or use a dictionary object, ensuring future translatability.
-- **Progress:** `ServiceDetail` and `Search.didYouMean` namespaces added to locales.
-- **Note:** The current codebase contains hardcoded English. Transition to full bilingual support is ongoing.
+## 2. Implementation Status
+- **Current Mode:** Hybrid (English/French).
+- **Data Layer:** Schema successfully updated. `Service` objects now support `name_fr`, `description_fr`, and `address_fr` overrides.
+- **Search:** "Open Now" and "Crisis" filters are localized in `messages/*.json`.
+- **UI Components:** Major components (`ServiceCard`, `SearchControls`) use `next-intl` hooks.
+- **Hours:** Timestamps are stored as data (`09:00`); formatting (AM/PM vs 24h) is handled by the UI based on locale.
 
 ## 3. Rules
 1. Do not hardcode "Click Here". Use variables.

@@ -9,7 +9,8 @@ export interface SearchResult {
 export interface SearchOptions {
     category?: string;
     location?: { lat: number; lng: number };
-    vectorOverride?: number[];
+    vectorOverride?: number[] | null;
+    openNow?: boolean;
 }
 
 export interface ScoringWeights {

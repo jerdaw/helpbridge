@@ -10,7 +10,14 @@
         "label": "Search for services",
         "loading": "Enhancing search capability...",
         "active": "Private Neural Search Active",
-        "didYouMean": "Did you mean:"
+        "didYouMean": "Did you mean:",
+        "openNow": "Open Now",
+        "nearMe": "Near Me",
+        "useLocation": "Use Location",
+        "clearLocation": "Clear location filter",
+        "filterByLocation": "Filter by current location",
+        "all": "All",
+        "crisis": "🗣️ Crisis"
     },
     "Navigation": {
         "home": "Home",

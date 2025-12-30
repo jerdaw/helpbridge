@@ -10,7 +10,14 @@
         "label": "Rechercher des services",
         "loading": "Amélioration de la capacité de recherche...",
         "active": "Recherche neuronale privée active",
-        "didYouMean": "Vouliez-vous dire :"
+        "didYouMean": "Vouliez-vous dire :",
+        "openNow": "Ouvert",
+        "nearMe": "Près de moi",
+        "useLocation": "Utiliser ma position",
+        "clearLocation": "Effacer le filtre de localisation",
+        "filterByLocation": "Filtrer par position actuelle",
+        "all": "Tous",
+        "crisis": "🗣️ Crise"
     },
     "Navigation": {
         "home": "Accueil",

@@ -22,6 +22,7 @@ export default function Home() {
   const {
     query, setQuery,
     category, setCategory,
+    openNow, setOpenNow,
     userLocation, toggleLocation, isLocating,
     results, setResults,
     hasSearched, setHasSearched,
@@ -38,6 +39,7 @@ export default function Home() {
     query,
     category,
     userLocation,
+    openNow,
     isReady,
     generateEmbedding,
     setResults,
@@ -112,6 +114,8 @@ export default function Home() {
                 isLocating={isLocating}
                 category={category}
                 setCategory={setCategory}
+                openNow={openNow}
+                setOpenNow={setOpenNow}
               />
             </div>
 

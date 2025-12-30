@@ -17,6 +17,7 @@ import { logger } from '@/lib/logger';
 export function useSearch(initialQuery = '') {
     const [query, setQuery] = useState(initialQuery);
     const [category, setCategory] = useState<string | undefined>(undefined);
+    const [openNow, setOpenNow] = useState(false);
     const [results, setResults] = useState<SearchResult[]>([]);
     const [hasSearched, setHasSearched] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -64,6 +65,8 @@ export function useSearch(initialQuery = '') {
         setQuery,
         category,
         setCategory,
+        openNow,
+        setOpenNow,
         userLocation: userLocation || undefined,
         toggleLocation,
         isLocating,
