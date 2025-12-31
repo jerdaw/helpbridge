@@ -1,88 +1,106 @@
 {
-    "BetaBanner": {
-        "title": "Ceci est un projet dirigé par la communauté"
+  "BetaBanner": {
+    "title": "Ceci est un projet dirigé par la communauté"
+  },
+  "Footer": {
+    "disclaimer": "Soutenir la communauté de Kingston"
+  },
+  "Search": {
+    "placeholder": "Chercher de l'aide...",
+    "label": "Rechercher des services",
+    "loading": "Amélioration de la capacité de recherche...",
+    "active": "Recherche neuronale privée active",
+    "didYouMean": "Vouliez-vous dire :",
+    "openNow": "Ouvert",
+    "nearMe": "Près de moi",
+    "useLocation": "Utiliser ma position",
+    "clearLocation": "Effacer le filtre de localisation",
+    "filterByLocation": "Filtrer par position actuelle",
+    "all": "Tous",
+    "crisis": "🗣️ Crise"
+  },
+  "Navigation": {
+    "home": "Accueil",
+    "admin": "Admin"
+  },
+  "Common": {
+    "openInNewTab": "(s'ouvre dans un nouvel onglet)"
+  },
+  "Privacy": {
+    "title": "Politique de confidentialité",
+    "simplified": "Confidentialité simplifiée",
+    "intro": "Chez Kingston Care Connect, votre vie privée n'est pas une réflexion après coup, c'est notre architecture de base.",
+    "points": {
+      "noTracking": "Pas de suivi : Nous n'utilisons pas Google Analytics, Facebook Pixels ou d'autres traceurs tiers.",
+      "noCookies": "Pas de cookies : Nous ne stockons pas de données personnelles dans les cookies. Nous utilisons un seul cookie essentiel pour mémoriser votre choix de langue.",
+      "noLogging": "Pas d'enregistrement de requêtes : Vos termes de recherche sont traités de manière anonyme et ne sont pas liés à votre identité."
     },
-    "Footer": {
-        "disclaimer": "Soutenir la communauté de Kingston"
-    },
-    "Search": {
-        "placeholder": "Chercher de l'aide...",
-        "label": "Rechercher des services",
-        "loading": "Amélioration de la capacité de recherche...",
-        "active": "Recherche neuronale privée active",
-        "didYouMean": "Vouliez-vous dire :",
-        "openNow": "Ouvert",
-        "nearMe": "Près de moi",
-        "useLocation": "Utiliser ma position",
-        "clearLocation": "Effacer le filtre de localisation",
-        "filterByLocation": "Filtrer par position actuelle",
-        "all": "Tous",
-        "crisis": "🗣️ Crise"
-    },
-    "Navigation": {
-        "home": "Accueil",
-        "admin": "Admin"
-    },
-    "Common": {
-        "openInNewTab": "(s'ouvre dans un nouvel onglet)"
-    },
-    "Privacy": {
-        "title": "Politique de confidentialité",
-        "simplified": "Confidentialité simplifiée",
-        "intro": "Chez Kingston Care Connect, votre vie privée n'est pas une réflexion après coup, c'est notre architecture de base.",
-        "points": {
-            "noTracking": "Pas de suivi : Nous n'utilisons pas Google Analytics, Facebook Pixels ou d'autres traceurs tiers.",
-            "noCookies": "Pas de cookies : Nous ne stockons pas de données personnelles dans les cookies. Nous utilisons un seul cookie essentiel pour mémoriser votre choix de langue.",
-            "noLogging": "Pas d'enregistrement de requêtes : Vos termes de recherche sont traités de manière anonyme et ne sont pas liés à votre identité."
-        },
-        "contact": "Des questions ? Contactez-nous à privacy@kingstoncare.ca"
-    },
-    "ServiceCard": {
-        "reportIssue": "Signaler un problème"
-    },
-    "Dashboard": {
-        "title": "Tableau de bord",
-        "welcome": "Bon retour, {email}",
-        "verificationStatus": "Statut de vérification",
-        "pending": "En attente",
-        "completeProfile": "Compléter le profil",
-        "getStarted": "Commencer",
-        "noServices": "Vous n'avez pas encore réclamé de services. Trouvez votre organisation ou créez une nouvelle fiche.",
-        "hasServices": "Gérez vos services existants et tenez vos données à jour.",
-        "manageServices": "Gérer les services"
-    },
-    "Analytics": {
-        "totalServices": "Total des services",
-        "totalViews": "Vues totales (30j)",
-        "vsPeriod": "vs {period}",
-        "totalAllTime": "Total de tous les temps"
-    },
-    "ServiceDetail": {
-        "back": "Retour",
-        "share": "Partager",
-        "shareSuccess": "Copié !",
-        "officialProvider": "Fournisseur officiel",
-        "hours": "Heures",
-        "fees": "Frais",
-        "eligibility": "Admissibilité et exigences",
-        "access": "Comment y accéder",
-        "focusedOn": "Concentré sur",
-        "contactInfo": "Informations de contact",
-        "location": "Emplacement",
-        "phone": "Téléphone",
-        "website": "Site web",
-        "email": "Email",
-        "visitWebsite": "Visiter le site web du fournisseur",
-        "incorrectInfo": "Ces informations sont-elles incorrectes ou obsolètes ?",
-        "reportIssue": "Signaler un problème",
-        "claimTitle": "Vous possédez cette organisation ?",
-        "claimText": "Réclamez cette fiche pour maintenir vos informations à jour et accéder aux analyses.",
-        "confirmClaim": "Confirmer la réclamation",
-        "claiming": "Réclamation en cours...",
-        "claimed": "Réclamé !",
-        "claimListing": "Réclamer la fiche",
-        "notFound": "Service introuvable",
-        "notFoundText": "Le service que vous recherchez n'existe plus ou a été supprimé.",
-        "backToSearch": "Retour à la recherche"
-    }
+    "contact": "Des questions ? Contactez-nous à privacy@kingstoncare.ca"
+  },
+  "ServiceCard": {
+    "reportIssue": "Signaler un problème"
+  },
+  "Dashboard": {
+    "title": "Tableau de bord",
+    "welcome": "Bon retour, {email}",
+    "verificationStatus": "Statut de vérification",
+    "pending": "En attente",
+    "completeProfile": "Compléter le profil",
+    "getStarted": "Commencer",
+    "noServices": "Vous n'avez pas encore réclamé de services. Trouvez votre organisation ou créez une nouvelle fiche.",
+    "hasServices": "Gérez vos services existants et tenez vos données à jour.",
+    "manageServices": "Gérer les services"
+  },
+  "Analytics": {
+    "totalServices": "Total des services",
+    "totalViews": "Vues totales (30j)",
+    "vsPeriod": "vs {period}",
+    "totalAllTime": "Total de tous les temps"
+  },
+  "ServiceDetail": {
+    "back": "Retour",
+    "share": "Partager",
+    "shareSuccess": "Copié !",
+    "officialProvider": "Fournisseur officiel",
+    "hours": "Heures",
+    "fees": "Frais",
+    "eligibility": "Admissibilité et exigences",
+    "access": "Comment y accéder",
+    "focusedOn": "Concentré sur",
+    "contactInfo": "Informations de contact",
+    "location": "Emplacement",
+    "phone": "Téléphone",
+    "website": "Site web",
+    "email": "Email",
+    "visitWebsite": "Visiter le site web du fournisseur",
+    "incorrectInfo": "Ces informations sont-elles incorrectes ou obsolètes ?",
+    "reportIssue": "Signaler un problème",
+    "claimTitle": "Vous possédez cette organisation ?",
+    "claimText": "Réclamez cette fiche pour maintenir vos informations à jour et accéder aux analyses.",
+    "confirmClaim": "Confirmer la réclamation",
+    "claiming": "Réclamation en cours...",
+    "claimed": "Réclamé !",
+    "claimListing": "Réclamer la fiche",
+    "notFound": "Service introuvable",
+    "notFoundText": "Le service que vous recherchez n'existe plus ou a été supprimé.",
+    "backToSearch": "Retour à la recherche"
+  },
+  "AI": {
+    "title": "Assistant KCC",
+    "initializing": "Initialisation du l'IA...",
+    "privacyNote": "IA Privée",
+    "privacyDesc": "Cet assistant fonctionne à 100% sur votre appareil. Aucune donnée n'est envoyée dans le cloud. Nécessite un téléchargement unique de ~2 Go.",
+    "enable": "Activer l'assistant",
+    "retry": "Réessayer",
+    "initFailed": "Échec de l'initialisation",
+    "placeholderReady": "Écrivez un message...",
+    "placeholderWaiting": "En attente de l'IA...",
+    "welcome": "👋 Bonjour! Je peux vous aider à trouver des services.",
+    "suggestion": "Essayez: \"Où trouver de la nourriture?\" ou \"J'ai besoin d'un refuge.\"",
+    "errorThinking": "J'ai du mal à réfléchir pour le moment. Veuillez essayer la recherche.",
+    "systemPrompt": "Vous êtes un assistant utile et bienveillant pour Kingston Care Connect. Vous aidez les gens à trouver des services sociaux à Kingston, Ontario. Gardez les réponses concises, sûres et empathiques. Si vous ne savez pas, conseillez-leur d'utiliser la barre de recherche.",
+    "contextIntro": "Voici quelques services locaux pertinents que j'ai trouvés :",
+    "noMatches": "Aucune correspondance directe trouvée dans notre base de données.",
+    "crisisPrompt": "Si l'utilisateur est en crise, incitez-le à appeler le 911."
+  }
 }
