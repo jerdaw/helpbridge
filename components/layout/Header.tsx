@@ -76,6 +76,7 @@ export function Header() {
                         Emergency: 911
                     </a>
 
+                    <ProfileSettings />
                     <ThemeToggle />
 
                     {user ? (
@@ -92,7 +93,7 @@ export function Header() {
                 {/* Mobile Menu Button */}
                 <div className="flex items-center gap-4 md:hidden">
                     <ThemeToggle />
-                    {user && <ProfileSettings />} {/* Show ProfileSettings on mobile if logged in */}
+                    <ProfileSettings />
                     <button
                         className="p-2 text-neutral-600 dark:text-neutral-300"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -118,11 +119,9 @@ export function Header() {
                             <Link href="/partners" className="text-sm font-medium text-neutral-600 dark:text-neutral-300 p-2">
                                 For Partners
                             </Link>
-                            {user && (
-                                <div className="pt-2">
-                                    <ProfileSettings />
-                                </div>
-                            )}
+                            <div className="pt-2">
+                                <ProfileSettings />
+                            </div>
                             {user ? (
                                 <Button className="w-full" asChild>
                                     <Link href="/dashboard">Dashboard</Link>

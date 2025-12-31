@@ -1,2139 +1,2177 @@
 [
-    {
-        "id": "kids-help-phone",
-        "name": "Kids Help Phone",
-        "name_fr": "Jeunesse, J'écoute",
-        "description": "Canada's only 24/7, national support service. Professional counselling, information, and referrals for young people in English and French.",
-        "description_fr": "Le seul service de soutien national 24/7 au Canada. Counseling professionnel, information et références pour les jeunes en anglais et en français.",
-        "url": "https://kidshelpphone.ca",
-        "phone": "1-800-668-6868",
-        "verification_level": "L1",
-        "intent_category": "Crisis",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:50:00Z",
-            "evidence_url": "https://kidshelpphone.ca",
-            "method": "Web Search & National Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Youth (National)",
-                "evidence_url": "https://kidshelpphone.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Text someone about depression",
-            "Suicidal thoughts help line",
-            "Bullying advice for kids",
-            "Anonymous counselling chat",
-            "Help I'm scared at home"
-        ],
-        "synthetic_queries_fr": [
-            "J'ai besoin de parler à quelqu'un",
-            "Texter un conseiller",
-            "Je suis triste et seul",
-            "Aide pour l'intimidation",
-            "Pensées suicidaires"
-        ],
-        "eligibility_notes": "Inclusion: All youth (5-29) in Canada. Mental health support. Exclusion: None (24/7 anonymous).",
-        "access_script": "Hi, I'm feeling really overwhelmed right now and just need someone to talk to. Is this a safe place to share?",
-        "hours": {
-            "monday": {
-                "open": "00:00",
-                "close": "23:59"
-            },
-            "tuesday": {
-                "open": "00:00",
-                "close": "23:59"
-            },
-            "wednesday": {
-                "open": "00:00",
-                "close": "23:59"
-            },
-            "thursday": {
-                "open": "00:00",
-                "close": "23:59"
-            },
-            "friday": {
-                "open": "00:00",
-                "close": "23:59"
-            },
-            "saturday": {
-                "open": "00:00",
-                "close": "23:59"
-            },
-            "sunday": {
-                "open": "00:00",
-                "close": "23:59"
-            },
-            "notes": "24/7 Service"
-        }
+  {
+    "id": "kids-help-phone",
+    "name": "Kids Help Phone",
+    "name_fr": "Jeunesse, J'écoute",
+    "description": "Canada's only 24/7, national support service. Professional counselling, information, and referrals for young people in English and French.",
+    "description_fr": "Le seul service de soutien national 24/7 au Canada. Counseling professionnel, information et références pour les jeunes en anglais et en français.",
+    "url": "https://kidshelpphone.ca",
+    "phone": "1-800-668-6868",
+    "verification_level": "L1",
+    "intent_category": "Crisis",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:50:00Z",
+      "evidence_url": "https://kidshelpphone.ca",
+      "method": "Web Search & National Service Verification"
     },
-    {
-        "id": "trans-lifeline-canada",
-        "name": "Trans Lifeline",
-        "name_fr": "Ligne d'assistance Trans",
-        "description": "Grassroots hotline offering direct emotional and financial support to trans people in crisis. Operated by trans people for trans people.",
-        "description_fr": "Ligne d'assistance locale offrant un soutien émotionnel et financier direct aux personnes trans en crise. Géré par des personnes trans pour des personnes trans.",
-        "url": "https://translifeline.org",
-        "phone": "1-877-330-6366",
-        "verification_level": "L1",
-        "intent_category": "Crisis",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:50:00Z",
-            "evidence_url": "https://translifeline.org",
-            "method": "Web Search & Peer Support Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Trans-Led",
-                "evidence_url": "https://translifeline.org"
-            }
-        ],
-        "synthetic_queries": [
-            "Trans peer support line",
-            "Dysphoria help chat",
-            "Crisis line for transgender",
-            "Coming out advice from trans person",
-            "Name change funding help"
-        ],
-        "synthetic_queries_fr": [
-            "Ligne d'écoute transgenre",
-            "Aide dysphorie",
-            "Sortir du placard conseils",
-            "Financement changement de nom",
-            "Soutien par les pairs trans"
-        ],
-        "eligibility_notes": "Inclusion: Trans, non-binary, and questioning individuals. Peer support. Exclusion: Cisgender individuals seeking info (refer to allies line).",
-        "access_script": "Hi, I'm trans and I'm really struggling with dysphoria today. Can I talk to someone who understands?",
-        "hours": {
-            "monday": {
-                "open": "10:00",
-                "close": "22:00"
-            },
-            "tuesday": {
-                "open": "10:00",
-                "close": "22:00"
-            },
-            "wednesday": {
-                "open": "10:00",
-                "close": "22:00"
-            },
-            "thursday": {
-                "open": "10:00",
-                "close": "22:00"
-            },
-            "friday": {
-                "open": "10:00",
-                "close": "22:00"
-            },
-            "saturday": {
-                "open": "10:00",
-                "close": "22:00"
-            },
-            "sunday": {
-                "open": "10:00",
-                "close": "22:00"
-            }
-        }
-    },
-    {
-        "id": "hope-for-wellness-helpline",
-        "name": "Hope for Wellness Helpline",
-        "name_fr": "Ligne d'écoute d'espoir pour le mieux-être",
-        "description": "Immediate mental health counselling and crisis intervention for all Indigenous peoples across Canada. Available 24/7.",
-        "description_fr": "Counseling immédiat en santé mentale et intervention de crise pour tous les peuples autochtones du Canada. Disponible 24/7.",
-        "url": "https://www.hopeforwellness.ca",
-        "phone": "1-855-242-3310",
-        "verification_level": "L1",
-        "intent_category": "Crisis",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:50:00Z",
-            "evidence_url": "https://www.hopeforwellness.ca",
-            "method": "Web Search & Indigenous Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Indigenous Peoples",
-                "evidence_url": "https://www.hopeforwellness.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Indigenous mental health support",
-            "Residential school survivor trauma",
-            "Cree speaking counsellor",
-            "Crisis line for first nations",
-            "Mental health chat indigenous"
-        ],
-        "eligibility_notes": "Inclusion: First Nations, Inuit, and Métis peoples across Canada. Culturally competent counselling.",
-        "access_script": "Hi, I am Indigenous and I'm having a hard time. I'd like to speak with a culturally safe counsellor."
-    },
-    {
-        "id": "assaulted-womens-helpline",
-        "name": "Assaulted Women's Helpline",
-        "name_fr": "Fem'aide (Assaulted Women's Helpline)",
-        "description": "24-hour telephone and TTY crisis line for all women in Ontario who have experienced any form of abuse.",
-        "description_fr": "Ligne de crise téléphonique et ATS 24h/24 pour toutes les femmes en Ontario ayant subi toute forme de violence.",
-        "url": "https://www.awhl.org",
-        "phone": "1-866-863-0511",
-        "verification_level": "L1",
-        "intent_category": "Crisis",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:50:00Z",
-            "evidence_url": "https://www.awhl.org",
-            "method": "Web Search & Provincial Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Women (Abuse Survivors)",
-                "evidence_url": "https://www.awhl.org"
-            }
-        ],
-        "synthetic_queries": [
-            "Domestic abuse hotline ontario",
-            "Help escaping violent partner",
-            "Womens shelter referral line",
-            "Anonymous abuse reporting",
-            "Safety planning for women"
-        ],
-        "eligibility_notes": "Inclusion: Women in Ontario experiencing abuse/violence. Exclusion: Men (refer to other lines).",
-        "access_script": "Hello, I am in an unsafe situation at home and I need to know my options for leaving."
-    },
-    {
-        "id": "iska-newcomer-support",
-        "name": "Immigrant Services Kingston & Area (ISKA)",
-        "name_fr": "Services aux immigrants de Kingston et de la région (ISKA)",
-        "description": "Settlement services for immigrants and refugees. Assistance with housing, employment, language, and community connection.",
-        "description_fr": "Services d'établissement pour les immigrants et les réfugiés. Aide au logement, à l'emploi, à la langue et à la connexion communautaire.",
-        "url": "https://kchc.ca/weller-avenue/immigrant-services/",
-        "phone": "613-544-4661",
-        "address": "837 Princess St, Unit 201, Kingston, ON K7L 1G9",
-        "verification_level": "L1",
-        "intent_category": "Community",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:35:00Z",
-            "evidence_url": "https://kchc.ca/weller-avenue/immigrant-services/",
-            "method": "Web Search & Location Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Newcomers / Refugees",
-                "evidence_url": "https://kchc.ca/weller-avenue/immigrant-services/"
-            }
-        ],
-        "synthetic_queries": [
-            "New to canada help",
-            "Refugee housing kingston",
-            "Learn english classes",
-            "Immigration paperwork help",
-            "OSAP calculator"
-        ],
-        "synthetic_queries_fr": [
-            "Aide aux nouveaux arrivants",
-            "Cours d'anglais gratuits",
-            "Logement réfugié Kingston",
-            "Papiers immigration aide",
-            "Calculateur RAP"
-        ],
-        "coordinates": {
-            "lat": 44.2393,
-            "lng": -76.5161
-        },
-        "eligibility_notes": "Inclusion: Newcomers, immigrants, refugees in KFL&A. Settlement support. Exclusion: None.",
-        "access_script": "Hi, I'm new to Kingston and looking for help with settlement and housing. Do I need an appointment?"
-    },
-    {
-        "id": "trellis-hiv-community-care",
-        "name": "Trellis HIV & Community Care",
-        "name_fr": "Trellis VIH et soins communautaires",
-        "description": "Support for individuals affected by HIV/AIDS and STBBIs. Harm reduction supplies, education, and stigma-free support.",
-        "description_fr": "Soutien aux personnes touchées par le VIH/SIDA et les ITSS. Fournitures de réduction méfaits, éducation et soutien sans stigmatisation.",
-        "url": "https://trellishiv.ca",
-        "phone": "613-545-3698",
-        "address": "844a Princess St, Kingston, ON K7L 1G5",
-        "verification_level": "L1",
-        "intent_category": "Health",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:35:00Z",
-            "evidence_url": "https://trellishiv.ca",
-            "method": "Web Search & Mandate Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "2SLGBTQI+ Affirming",
-                "evidence_url": "https://trellishiv.ca"
-            },
-            {
-                "tag": "Harm Reduction",
-                "evidence_url": "https://trellishiv.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "HIV testing kingston",
-            "Safe injection supplies",
-            "Naloxone kit free",
-            "Support for HIV positive",
-            "Harm reduction services"
-        ],
-        "synthetic_queries_fr": [
-            "Test VIH Kingston",
-            "Aiguilles propres gratuites",
-            "Kit naloxone gratuit",
-            "Soutien VIH positif",
-            "Réduction des méfaits"
-        ],
-        "coordinates": {
-            "lat": 44.2395,
-            "lng": -76.5164
-        },
-        "eligibility_notes": "Inclusion: Open to all. Focus on HIV/STBBI and substance use. Exclusion: None.",
-        "access_script": "Hi, I'd like to pick up some harm reduction supplies. Do I need an appointment or can I just drop in?"
-    },
-    {
-        "id": "one-roof-youth-hub",
-        "name": "One Roof Kingston Youth Hub",
-        "name_fr": "One Roof Kingston Youth Hub (Carrefour jeunesse)",
-        "description": "One-stop access to housing, mental health, addiction, and employment services for youth (16-24). Drop-in centre available.",
-        "description_fr": "Accès unique aux services de logement, de santé mentale, de toxicomanie et d'emploi pour les jeunes (16-24 ans). Centre d'accueil disponible.",
-        "url": "https://kingstonhomebase.ca/one-roof/",
-        "phone": "613-542-6672",
-        "address": "620 Princess St, Kingston, ON K7L 1E3",
-        "verification_level": "L1",
-        "intent_category": "Community",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:35:00Z",
-            "evidence_url": "https://www.unitedwaykfla.ca/oneroof/",
-            "method": "Web Search & Age Eligibility Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Youth (16-24)",
-                "evidence_url": "https://www.unitedwaykfla.ca/oneroof/"
-            }
-        ],
-        "synthetic_queries": [
-            "Youth drop in centre",
-            "Help finding work for teenager",
-            "Youth housing support",
-            "One roof hours",
-            "Mental health help for young adults"
-        ],
-        "synthetic_queries_fr": [
-            "Centre jeunesse sans rendez-vous",
-            "Aide emploi jeune",
-            "Logement pour jeunes",
-            "One roof heures",
-            "Santé mentale jeunes adultes"
-        ],
-        "coordinates": {
-            "lat": 44.2371,
-            "lng": -76.5022
-        },
-        "eligibility_notes": "Inclusion: Youth 16-24. Housing, employment, mental health. Drop-in available. Exclusion: Adults 25+.",
-        "access_script": "Hi, I'm 20 and having a hard time finding a job and a place to live. Can I drop by to see a worker?"
-    },
-    {
-        "id": "victim-services-kingston",
-        "name": "Victim Services of Kingston and Frontenac",
-        "name_fr": "Services aux victimes de Kingston et Frontenac",
-        "description": "24/7 crisis response and practical assistance for victims of crime and tragic circumstances. VQRP+ funding helper.",
-        "description_fr": "Intervention de crise 24/7 et aide pratique pour les victimes d'actes criminels et de circonstances tragiques. Aide au financement VQRP+.",
-        "url": "https://www.victimserviceskingston.ca",
-        "phone": "613-548-4834",
-        "verification_level": "L1",
-        "intent_category": "Crisis",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:35:00Z",
-            "evidence_url": "https://www.victimserviceskingston.ca",
-            "method": "Web Search & Crisis Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Crime Victims",
-                "evidence_url": "https://www.victimserviceskingston.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Help after a robbery",
-            "Victim of crime compensation",
-            "Police referred me to victim services",
-            "Support for family after tragedy",
-            "Immediate crisis assistance"
-        ],
-        "eligibility_notes": "Inclusion: Victims of crime/tragedy in Frontenac. Exclusion: Non-victims.",
-        "access_script": "Hi, I was recently a victim of a crime and the police mentioned I could call you for support. What kind of help do you offer?"
-    },
-    {
-        "id": "hotel-dieu-urgent-care",
-        "name": "Hotel Dieu Hospital Urgent Care Centre",
-        "name_fr": "Centre de soins urgents de l'Hôpital Hôtel-Dieu",
-        "description": "Urgent care for non-life-threatening injuries and illnesses (e.g., cuts, burns, broken bones). Open daily.",
-        "description_fr": "Soins urgents pour blessures et maladies ne mettant pas la vie en danger (coupures, brûlures, fractures). Ouvert tous les jours.",
-        "url": "https://kingstonhsc.ca",
-        "phone": "613-546-1240",
-        "address": "144 Brock Street, Kingston, ON K7L 5G2",
-        "coordinates": {
-            "lat": 44.2298,
-            "lng": -76.4889
-        },
-        "verification_level": "L1",
-        "intent_category": "Health",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:10:00Z",
-            "evidence_url": "https://kingstonhsc.ca/urgent-care-centre",
-            "method": "Web Search & Verification of Hours/Triage"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access",
-                "evidence_url": "https://kingstonhsc.ca/urgent-care-centre"
-            }
-        ],
-        "synthetic_queries": [
-            "Broken bone where to go",
-            "Stitches for cut",
-            "Urgent care hours kingston",
-            "See a doctor today not emergency",
-            "Infection need antibiotics now"
-        ],
-        "eligibility_notes": "Inclusion: Non-life-threatening urgent issues (cuts, breaks). Exclusion: Critical trauma (Go to KGH). Note: Registration closes when capacity reached.",
-        "access_script": "Hi, I think I have a minor bone break. Are you still accepting patients for today, or is capacity reached?"
-    },
-    {
-        "id": "kgh-emergency-department",
-        "name": "Kingston General Hospital (KGH) Emergency",
-        "name_fr": "Urgences de l'Hôpital général de Kingston (KGH)",
-        "description": "24/7 Emergency Department for life-threatening conditions, trauma, and critical care.",
-        "description_fr": "Service des urgences 24/7 pour les conditions mettant la vie en danger, les traumatismes et les soins critiques.",
-        "url": "https://kingstonhsc.ca/emergency-care",
-        "phone": "613-548-2333",
-        "address": "41 King Street West, Kingston, ON K7L 2V7",
-        "coordinates": {
-            "lat": 44.2239,
-            "lng": -76.4939
-        },
-        "verification_level": "L1",
-        "intent_category": "Health",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:10:00Z",
-            "evidence_url": "https://kingstonhsc.ca/emergency-care",
-            "method": "Web Search & Verification of 24/7 Status"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access (Emergency)",
-                "evidence_url": "https://kingstonhsc.ca/emergency-care"
-            }
-        ],
-        "synthetic_queries": [
-            "Emergency room kingston",
-            "Heart attack help",
-            "Severe bleeding help",
-            "KGH emergency address",
-            "Life threatening injury"
-        ],
-        "eligibility_notes": "Inclusion: Life-threatening injuries, trauma, critical care. Exclusion: Minor ailments (Go to Urgent Care/Walk-in).",
-        "access_script": "Hi, I'm bringing in a friend who is having severe chest pain. Where is the best place to drop them off?"
-    },
-    {
-        "id": "kfla-public-health-dental",
-        "name": "KFL&A Public Health Dental Services",
-        "name_fr": "Services dentaires de santé publique KFL&A",
-        "description": "Dental care for eligible low-income children and seniors, and emergency dental for social assistance recipients.",
-        "description_fr": "Soins dentaires pour les enfants et aînés à faible revenu admissibles, et soins d'urgence pour les bénéficiaires de l'aide sociale.",
-        "url": "https://www.kflaph.ca/en/health-topics/dental-health.aspx",
-        "phone": "613-549-1232",
-        "address": "221 Portsmouth Avenue, Kingston, ON K7M 1V5",
-        "verification_level": "L1",
-        "intent_category": "Health",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:10:00Z",
-            "evidence_url": "https://www.kflaph.ca/en/health-topics/dental-health.aspx",
-            "method": "Web Search & Verification of Eligibility"
-        },
-        "identity_tags": [
-            {
-                "tag": "Low Income",
-                "evidence_url": "https://www.kflaph.ca/en/health-topics/dental-health.aspx"
-            }
-        ],
-        "synthetic_queries": [
-            "Free dentist kingston",
-            "Toothache no money",
-            "Dental help for welfare",
-            "Healthy smiles ontario kingston",
-            "Emergency dental public health"
-        ],
-        "eligibility_notes": "Inclusion: Low-income (HSO/OSDCP) or adults on OW/ODSP with emergency. Exclusion: General public without coverage.",
-        "access_script": "Hi, I have a severe toothache and I am on Ontario Works. Can I book an emergency appointment?"
-    },
-    {
-        "id": "community-legal-clinic-kingston",
-        "name": "Kingston Community Legal Clinic",
-        "name_fr": "Clinique juridique communautaire de Kingston",
-        "description": "Free legal advice and representation for low-income residents regarding housing, income assistance (OW/ODSP), and tenants rights.",
-        "description_fr": "Conseils et représentation juridiques gratuits pour les résidents à faible revenu concernant le logement, l'aide au revenu (OT/POSPH) et les droits des locataires.",
-        "url": "https://kclc.ca",
-        "phone": "613-541-0777",
-        "address": "345 Bagot Street, Kingston, ON K7K 6T8",
-        "verification_level": "L1",
-        "intent_category": "Legal",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:15:00Z",
-            "evidence_url": "https://kclc.ca",
-            "method": "Web Search & Verification of Law Focus"
-        },
-        "identity_tags": [
-            {
-                "tag": "Low Income (Poverty Law)",
-                "evidence_url": "https://kclc.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Landlord evicting me legal help",
-            "Denied ODSP appeal",
-            "Free lawyer for tenant issues",
-            "Legal aid clinic kingston",
-            "Help with ontario works appeal"
-        ],
-        "eligibility_notes": "Inclusion: Low-income Kingston residents. Housing, OW/ODSP, Employment law. Exclusion: Criminal/Family law (Refer to Legal Aid).",
-        "access_script": "Hi, my landlord is threatening to evict me and I'd like to speak to a lawyer about my rights."
-    },
-    {
-        "id": "salvation-army-housing-help",
-        "name": "Salvation Army Housing Help Centre",
-        "name_fr": "Centre d'aide au logement de l'Armée du Salut",
-        "description": "Housing listings, eviction prevention grants, and support for those at risk of homelessness. (Formerly Housing Resource Centre).",
-        "description_fr": "Listes de logements, subventions de prévention d'éviction et soutien pour les personnes à risque d'itinérance.",
-        "url": "https://sacfs.ca",
-        "phone": "613-542-6672",
-        "address": "540 Montreal Street, Kingston, ON K7K 3H9",
-        "verification_level": "L1",
-        "intent_category": "Housing",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T00:15:00Z",
-            "evidence_url": "https://sacfs.ca/programs/housing-help-centre/",
-            "method": "Web Search & Program Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Housing Risk",
-                "evidence_url": "https://sacfs.ca/programs/housing-help-centre/"
-            }
-        ],
-        "synthetic_queries": [
-            "Rent bank kingston application",
-            "Help with last month's rent",
-            "Eviction prevention fund",
-            "Housing worker help",
-            "List of cheap apartments kingston"
-        ],
-        "synthetic_queries_fr": [
-            "Banque de loyer demande",
-            "Aide loyer en retard",
-            "Prévention éviction",
-            "Logement abordable liste",
-            "Aide logement armée du salut"
-        ],
-        "coordinates": {
-            "lat": 44.2415,
-            "lng": -76.4913
-        },
-        "eligibility_notes": "Inclusion: At risk of homelessness or low-income. Rent/Utility arrears. Exclusion: Must meet income cap for grants.",
-        "access_script": "Hi, I'm behind on my rent and worried about losing my apartment. Can I apply for the rent bank?"
-    },
-    {
-        "id": "kchc-transgender-health-care",
-        "name": "KCHC Transgender Health Care",
-        "name_fr": "Soins de santé transgenres KCHC",
-        "description": "Specialized primary care and hormone therapy initiation for transgender and gender-diverse individuals (Age 12+).",
-        "description_fr": "Soins primaires spécialisés et initiation à l'hormonothérapie pour les personnes transgenres et de diverses identités de genre (12 ans et plus).",
-        "url": "https://kchc.ca/programs/transgender-health-program/",
-        "phone": "613-542-2949",
-        "address": "263 Weller Ave, Kingston, ON K7K 2V2",
-        "verification_level": "L1",
-        "intent_category": "Health",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:55:00Z",
-            "evidence_url": "https://kchc.ca/weller-avenue/transgender-health-care/",
-            "method": "Web Search & Verified Referral Process"
-        },
-        "identity_tags": [
-            {
-                "tag": "2SLGBTQI+ Affirming",
-                "evidence_url": "https://kchc.ca/weller-avenue/transgender-health-care/"
-            }
-        ],
-        "synthetic_queries": [
-            "Hormone replacement therapy kingston",
-            "Trans friendly doctor",
-            "Gender affirming care",
-            "Testosterone prescription help",
-            "Transgender health clinic"
-        ],
-        "eligibility_notes": "Inclusion: Trans/Gender-diverse individuals (12+). Self-referral accepted. Exclusion: None stated.",
-        "access_script": "Hi, I am looking to start hormone therapy. Are you currently accepting new patients for gender-affirming care?"
-    },
-    {
-        "id": "street-health-centre",
-        "name": "Street Health Centre",
-        "name_fr": "Centre de santé de rue (Street Health Centre)",
-        "description": "Barrier-free primary care, addiction services, and harm reduction for vulnerable populations. Needle exchange and opioid treatment available.",
-        "description_fr": "Soins primaires sans obstacle, services de toxicomanie et réduction des méfaits pour les populations vulnérables. Échange de seringues disponible.",
-        "url": "https://kchc.ca/barrack-street/street-health-centre/",
-        "phone": "613-549-1440",
-        "address": "115 Barrack St, Kingston, ON K7K 1G2",
-        "verification_level": "L1",
-        "intent_category": "Health",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:55:00Z",
-            "evidence_url": "https://kchc.ca/barrack-street/street-health-centre/",
-            "method": "Web Search & Service Listing Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access (Barrier-Free)",
-                "evidence_url": "https://kchc.ca/barrack-street/street-health-centre/"
-            }
-        ],
-        "synthetic_queries": [
-            "Needle exchange kingston",
-            "Methadone clinic walk in",
-            "Doctor for person experiencing homelessness",
-            "Street health centre hours",
-            "Harm reduction supplies"
-        ],
-        "synthetic_queries_fr": [
-            "Échange de seringues",
-            "Méthadone sans rendez-vous",
-            "Médecin pour itinérants",
-            "Heures centre santé de rue",
-            "KCHC réduction méfaits"
-        ],
-        "coordinates": {
-            "lat": 44.2345,
-            "lng": -76.4831
-        },
-        "eligibility_notes": "Inclusion: Vulnerable populations, substance use, homelessness. Open access. Exclusion: None.",
-        "access_script": "Hi, I'm helping a friend who uses substances and I want to find out about your needle exchange hours."
-    },
-    {
-        "id": "kingston-interval-house",
-        "name": "Kingston Interval House (Crisis & Shelter)",
-        "name_fr": "Kingston Interval House (Crise et refuge)",
-        "description": "Emergency shelter and 24/7 crisis line for women, children, and youth experiencing violence. Confidential and safe.",
-        "description_fr": "Refuge d'urgence et ligne de crise 24/7 pour les femmes, enfants et jeunes victimes de violence. Confidentiel et sécuritaire.",
-        "url": "https://kingstonintervalhouse.com",
-        "phone": "613-546-1777",
-        "verification_level": "L1",
-        "intent_category": "Crisis",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:50:00Z",
-            "evidence_url": "https://kingstonintervalhouse.com/contact-us/",
-            "method": "Web Search & Verified Crisis Line"
-        },
-        "identity_tags": [
-            {
-                "tag": "Women & Children",
-                "evidence_url": "https://kingstonintervalhouse.com"
-            }
-        ],
-        "synthetic_queries": [
-            "Domestic violence shelter kingston",
-            "Husband beat me need help",
-            "Safe place for women fleeing abuse",
-            "Crisis line domestic abuse",
-            "Emergency women's housing"
-        ],
-        "eligibility_notes": "Inclusion: Women and children escaping violence/abuse. Exclusion: Men (Refer to other shelters).",
-        "access_script": "I need a safe place to stay tonight away from my partner. Do you have any beds available?"
-    },
-    {
-        "id": "telephone-aid-line-kingston-talk",
-        "name": "Telephone Aid Line Kingston (TALK)",
-        "name_fr": "Ligne d'aide téléphonique de Kingston (TALK)",
-        "description": "Confidential, anonymous listening service for anyone who needs to talk. Open nightly from 6pm to 2am.",
-        "description_fr": "Service d'écoute confidentiel et anonyme pour toute personne ayant besoin de parler. Ouvert tous les soirs de 18h à 2h.",
-        "url": "https://telephoneaidlinekingston.com",
-        "phone": "613-544-1771",
-        "verification_level": "L1",
-        "intent_category": "Crisis",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:50:00Z",
-            "evidence_url": "https://telephoneaidlinekingston.com",
-            "method": "Web Search & Hours Check"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access (Anonymous)",
-                "evidence_url": "https://telephoneaidlinekingston.com"
-            }
-        ],
-        "synthetic_queries": [
-            "Lonely need someone to talk to",
-            "Depressed phone line",
-            "Listening service kingston",
-            "Talk to someone anonymous",
-            "Night time distress line"
-        ],
-        "eligibility_notes": "Inclusion: Anyone needing a listening ear. 6pm-2am. Exclusion: None.",
-        "access_script": "Hi, I'm just feeling really lonely tonight and need someone to listen."
-    },
-    {
-        "id": "elizabeth-fry-society-kingston",
-        "name": "Elizabeth Fry Society (Housing Support)",
-        "name_fr": "Société Elizabeth Fry (Soutien au logement)",
-        "description": "Supportive housing and homelessness prevention for women, including those involved in the justice system.",
-        "description_fr": "Logement avec services de soutien et prévention de l'itinérance pour les femmes, y compris celles impliquées dans le système judiciaire.",
-        "url": "https://efrykingston.ca",
-        "phone": "613-544-1744",
-        "address": "127 Charles St, Kingston, ON K7K 1V8",
-        "verification_level": "L1",
-        "intent_category": "Housing",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:50:00Z",
-            "evidence_url": "https://efrykingston.ca/contact-us/",
-            "method": "Web Search & Address Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Women",
-                "evidence_url": "https://efrykingston.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Women's housing support kingston",
-            "Help after prison release",
-            "Homelessness prevention women",
-            "Supportive housing application",
-            "Elizabeth Fry contact"
-        ],
-        "eligibility_notes": "Inclusion: Women (18+) at risk of homelessness or in justice system. Exclusion: Men.",
-        "access_script": "Hi, I am being released soon and will have nowhere to go. Do you have any supportive housing units available?"
-    },
-    {
-        "id": "st-vincent-de-paul-kingston",
-        "name": "St. Vincent de Paul Society (WearHouse & Pantry)",
-        "name_fr": "Société Saint-Vincent-de-Paul (WearHouse & Garde-manger)",
-        "description": "Emergency food pantry and take-out lunch program. Providing groceries, clothing, and household items to those in need.",
-        "description_fr": "Garde-manger d'urgence et programme de repas à emporter. Fournit épicerie, vêtements et articles ménagers aux personnes dans le besoin.",
-        "url": "https://www.svdpkingston.com",
-        "phone": "613-766-8432",
-        "address": "85 Stephen St, Kingston, ON K7K 2C5",
-        "verification_level": "L1",
-        "intent_category": "Food",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:45:00Z",
-            "evidence_url": "https://www.svdpkingston.com/programs/",
-            "method": "Web Search & Verification of Hours"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access",
-                "evidence_url": "https://www.svdpkingston.com/programs/"
-            }
-        ],
-        "synthetic_queries": [
-            "Free lunch weekdays kingston",
-            "Emergency grocery pantry",
-            "Free clothing store",
-            "St vincent de paul hours",
-            "Help with food and supplies"
-        ],
-        "eligibility_notes": "Inclusion: Anyone in need. Daily lunch & pantry (once/month). Exclusion: None.",
-        "access_script": "Hi, I'm struggling with groceries this month. What do I need to bring to access the pantry?"
-    },
-    {
-        "id": "lunch-by-george",
-        "name": "Lunch by George",
-        "name_fr": "Lunch by George",
-        "description": "Drop-in meal program serving free breakfast and lunch. Note: Currently relocating - check website for latest location.",
-        "description_fr": "Programme de repas sans rendez-vous servant le petit-déjeuner et le déjeuner gratuits. Note: Déménagement en cours - vérifiez le site web.",
-        "url": "http://www.lunchbygeorge.ca",
-        "verification_level": "L1",
-        "intent_category": "Food",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:45:00Z",
-            "evidence_url": "http://www.lunchbygeorge.ca",
-            "method": "Web Search & Status Check"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access",
-                "evidence_url": "http://www.lunchbygeorge.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Free breakfast kingston",
-            "Hot lunch drop in",
-            "Where to eat for free today",
-            "Lunch by george location",
-            "Soup kitchen downtown"
-        ],
-        "eligibility_notes": "Inclusion: Anyone hungry. Drop-in breakfast/lunch. Exclusion: None.",
-        "access_script": "Hi, I heard you offer a hot lunch. What time do you start serving?"
-    },
-    {
-        "id": "salvation-army-rideau-heights",
-        "name": "Salvation Army Rideau Heights Food Bank",
-        "name_fr": "Banque alimentaire Armée du Salut Rideau Heights",
-        "description": "Emergency food bank and hamper service. By appointment only (Tues/Thurs). Income verification required.",
-        "description_fr": "Banque alimentaire d'urgence et service de paniers. Sur rendez-vous seulement (mar/jeu). Preuve de revenu requise.",
-        "url": "https://salvationarmy.ca/",
-        "phone": "613-541-3947",
-        "address": "183 Weller Ave, Kingston, ON K7K 2V2",
-        "verification_level": "L1",
-        "intent_category": "Food",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:45:00Z",
-            "evidence_url": "https://rideauheightscorps.org/",
-            "method": "Web Search & Verification of Appointment System"
-        },
-        "identity_tags": [
-            {
-                "tag": "Low Income",
-                "evidence_url": "https://rideauheightscorps.org/"
-            }
-        ],
-        "synthetic_queries": [
-            "Food bank appointment kingston",
-            "Salvation army food hamper",
-            "Rideau heights food assistance",
-            "Help with groceries weller ave",
-            "Emergency food box sign up"
-        ],
-        "eligibility_notes": "Inclusion: Catchment area residents (Rideau Heights). Income verification required. By Appointment.",
-        "access_script": "Hi, I live in Rideau Heights and need food assistance. Can I book an appointment for a hamper?"
-    },
-    {
-        "id": "partners-in-mission-food-bank",
-        "name": "Partners in Mission Food Bank",
-        "name_fr": "Banque alimentaire Partners in Mission",
-        "description": "Registered Charity providing food hamper services to Kingston residents in need.",
-        "description_fr": "Organisme de bienfaisance enregistré fournissant des paniers alimentaires aux résidents de Kingston dans le besoin.",
-        "url": "https://kingstonfoodbank.ca",
-        "email": "info@kingstonfoodbank.ca",
-        "phone": "613.544.4100",
-        "address": "4 Harvey Street, Kingston, ON, K7K 5B9",
-        "verification_level": "L2",
-        "intent_category": "Food",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T22:50:00Z",
-            "evidence_url": "https://kingstonfoodbank.ca/get-assistance",
-            "method": "Web Scrape & Manual Verification of Eligibility Page"
-        },
-        "identity_tags": [
-            {
-                "tag": "Kingston Resident",
-                "evidence_url": "https://kingstonfoodbank.ca/get-assistance"
-            }
-        ],
-        "synthetic_queries": [
-            "Free groceries kingston",
-            "Empty fridge no money to buy food",
-            "Food hamper help near me",
-            "Can't afford food this week due to rent",
-            "Emergency food assistance Kingston"
-        ],
-        "synthetic_queries_fr": [
-            "Épicerie gratuite Kingston",
-            "Frigo vide pas d'argent",
-            "Panier alimentaire aide",
-            "Banque alimentaire rendez-vous",
-            "Aide alimentaire urgence"
-        ],
-        "coordinates": {
-            "lat": 44.2452,
-            "lng": -76.4917
-        },
-        "eligibility_notes": "Inclusion: Kingston residents. Hamper program. Exclusion: Frequency limits apply.",
-        "access_script": "Hi, I'd like to register for a food hamper. What documents do you need me to bring?"
-    },
-    {
-        "id": "marthas-table-kingston",
-        "name": "Martha's Table",
-        "name_fr": "Martha's Table",
-        "description": "A caring place where people in need can have access to a nutritious meal and find community social support. Serving Breakfast, Lunch, and Dinner.",
-        "description_fr": "Un lieu bienveillant où les gens dans le besoin peuvent accéder à un repas nutritif et trouver du soutien social. Sert déjeuner, dîner et souper.",
-        "url": "https://marthastable.ca",
-        "phone": "613-546-0320",
-        "address": "629 Princess Street, Kingston, ON",
-        "coordinates": {
-            "lat": 44.2373,
-            "lng": -76.5028
-        },
-        "verification_level": "L2",
-        "intent_category": "Food",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T22:50:00Z",
-            "evidence_url": "https://marthastable.ca",
-            "method": "Web Scrape & Manual Verification of Hours"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access",
-                "evidence_url": "https://marthastable.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Free hot meal kingston",
-            "Place to eat for free downtown",
-            "Soup kitchen kingston open now",
-            "Hungry and broke",
-            "Community meal program"
-        ],
-        "eligibility_notes": "Inclusion: Anyone in need of a meal. Small fee ($2) or free meal ticket. Social hub.",
-        "access_script": "Hi, I don't have any money for lunch today. Do you accept meal tickets?"
-    },
-    {
-        "id": "good-food-box-kingston",
-        "name": "The Good Food Box",
-        "name_fr": "The Good Food Box (La Boîte de bonne nourriture)",
-        "description": "Non-profit program powered by KCHC offering fresh fruits and vegetables at an affordable cost. Order online and pick up at volunteer host sites.",
-        "description_fr": "Programme à but non lucratif propulsé par KCHC offrant des fruits et légumes frais à coût abordable. Commandez en ligne et ramassez aux sites bénévoles.",
-        "url": "https://goodfoodboxkingston.com",
-        "email": "goodfoodbox@kchc.ca",
-        "phone": "613-530-2239",
-        "address": "263 Weller Ave., Kingston, ON K7K 2V2",
-        "verification_level": "L2",
-        "intent_category": "Food",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T22:50:00Z",
-            "evidence_url": "https://goodfoodboxkingston.com",
-            "method": "Web Scrape & Manual Verification of Store"
-        },
-        "identity_tags": [
-            {
-                "tag": "Kingston Community Health Centres Program",
-                "evidence_url": "https://goodfoodboxkingston.com"
-            }
-        ],
-        "synthetic_queries": [
-            "Cheap vegetables kingston",
-            "Affordable produce box delivery",
-            "Grocery deals for budget",
-            "Healthy food box KCHC",
-            "Where to buy cheap fruit in Kingston"
-        ],
-        "eligibility_notes": "Inclusion: fresh produce box (low cost). Open to all. Exclusion: Not a free food bank (subsidy available).",
-        "access_script": "Hi, I'd like to order a Good Food Box for this month. When is the deadline?"
-    },
-    {
-        "id": "amhs-kfla-crisis-line",
-        "name": "AMHS-KFLA 24/7 Crisis Line",
-        "name_fr": "Ligne de crise AMHS-KFLA 24/7",
-        "description": "Immediate and urgent support for individuals experiencing emotional or mental distress. Staffed by mental health and addiction specialists.",
-        "description_fr": "Soutien immédiat et urgent pour les personnes en détresse émotionnelle ou mentale. Doté de spécialistes en santé mentale et toxicomanie.",
-        "url": "https://amhs-kfla.ca",
-        "phone": "613-544-4229",
-        "address": "552 Princess Street, Kingston, ON K7L 1C7",
-        "verification_level": "L2",
-        "intent_category": "Crisis",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T22:55:00Z",
-            "evidence_url": "https://amhs-kfla.ca",
-            "method": "Web Scrape & Manual Verification of Crisis Page"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access",
-                "evidence_url": "https://amhs-kfla.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "I want to kill myself",
-            "Panic attack help now",
-            "Mental health emergency kingston",
-            "Crisis line phone number",
-            "Help I can't stop crying",
-            "I'm sad",
-            "I feel sad",
-            "I feel empty",
-            "I feel lonely",
-            "I'm so depressed",
-            "I don't want to be here anymore",
-            "I feel hopeless"
-        ],
-        "eligibility_notes": "Inclusion: Anyone experiencing mental health or addiction crisis. Exclusion: None.",
-        "access_script": "Hi, I'm feeling really overwhelmed and having suicidal thoughts. I need to talk to someone right away."
-    },
-    {
-        "id": "kingston-detox-centre",
-        "name": "Kingston Detoxification Centre",
-        "name_fr": "Centre de désintoxication de Kingston",
-        "description": "Short-term, non-medical treatment service for detoxification from alcohol and/or street drugs. Open 24/7.",
-        "description_fr": "Service de traitement non médical à court terme pour la désintoxication de l'alcool et/ou des drogues de rue. Ouvert 24/7.",
-        "url": "https://kingstonhsc.ca/programs-and-departments/detoxification-centre",
-        "phone": "613-549-6461",
-        "address": "240 Brock St, Kingston, ON K7L 5G2",
-        "verification_level": "L2",
-        "intent_category": "Crisis",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T22:55:00Z",
-            "evidence_url": "https://kingstonhsc.ca/programs-and-departments/detoxification-centre",
-            "method": "Web Scrape & Manual Verification of Program Page"
-        },
-        "identity_tags": [
-            {
-                "tag": "Age 16+",
-                "evidence_url": "https://kingstonhsc.ca/programs-and-departments/detoxification-centre"
-            }
-        ],
-        "synthetic_queries": [
-            "Sobering up center kingston",
-            "Detox bed availability",
-            "Withdrawal help alcohol",
-            "Where to go for drug detox",
-            "Safe place to get sober"
-        ],
-        "eligibility_notes": "Inclusion: Individuals 16+ seeking non-medical detox from alcohol/drugs. Exclusion: Medical detox needs (refer to hospital).",
-        "access_script": "Hi, I'm looking to get sober and need a safe place to detox. Do you have any beds available?"
-    },
-    {
-        "id": "kingston-youth-shelter",
-        "name": "Kingston Youth Shelter",
-        "name_fr": "Refuge pour jeunes de Kingston",
-        "description": "Emergency overnight shelter and transitional housing for youth aged 16-24. Open 24/7.",
-        "description_fr": "Refuge d'urgence pour la nuit et logement de transition pour les jeunes de 16 à 24 ans. Ouvert 24/7.",
-        "url": "https://kingstonyouthshelter.com",
-        "phone": "613-549-4236",
-        "address": "234 Brock St, Kingston, ON K7L 1S4",
-        "verification_level": "L2",
-        "intent_category": "Housing",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T22:55:00Z",
-            "evidence_url": "https://kingstonyouthshelter.com",
-            "method": "Web Scrape & Manual Verification of Mission Statement"
-        },
-        "identity_tags": [
-            {
-                "tag": "Youth (16-24)",
-                "evidence_url": "https://kingstonyouthshelter.com"
-            }
-        ],
-        "synthetic_queries": [
-            "Youth shelter for those experiencing homelessness",
-            "Kicked out of parents house",
-            "Place to sleep tonight for teenager",
-            "Emergency youth housing",
-            "19 year old help for those experiencing homelessness"
-        ],
-        "eligibility_notes": "Inclusion: Youth aged 16-24. Experiencing homelessness or unsafe at home. Exclusion: Adults 25+.",
-        "access_script": "Hi, I'm 19 and I got kicked out of my house. Can I stay at the shelter tonight?"
-    },
-    {
-        "id": "sack-sexual-assault-centre",
-        "name": "Sexual Assault Centre Kingston (SACK)",
-        "name_fr": "Centre d'aide aux agressions sexuelles de Kingston (SACK)",
-        "description": "Free, confidential support for survivors of sexual violence aged 12+. Crisis line, counselling, and advocacy.",
-        "description_fr": "Soutien gratuit et confidentiel pour les survivant(e)s de violence sexuelle de 12 ans et plus. Ligne de crise, counseling et défense des droits.",
-        "url": "https://www.sackingston.com",
-        "phone": "613-544-6424",
-        "address": "400 Elliott Avenue, Unit 1, Kingston, ON K7K 6M9",
-        "verification_level": "L2",
-        "intent_category": "Crisis",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T22:55:00Z",
-            "evidence_url": "https://www.sackingston.com",
-            "method": "Web Scrape & Manual Verification of Services Page"
-        },
-        "identity_tags": [
-            {
-                "tag": "Survivors 12+",
-                "evidence_url": "https://www.sackingston.com"
-            },
-            {
-                "tag": "Inclusive (All Genders)",
-                "evidence_url": "https://www.sackingston.com"
-            }
-        ],
-        "synthetic_queries": [
-            "Raped and need help",
-            "Sexual assault crisis line kingston",
-            "Counselling for sexual abuse",
-            "Support for survivors of violence",
-            "Confidential help after assault"
-        ],
-        "eligibility_notes": "Inclusion: Survivors of sexual violence (12+). All genders. Exclusion: None.",
-        "access_script": "Hi, I experienced sexual assault and need to talk to someone confidentially. Can I get counselling here?"
-    },
-    {
-        "id": "maltby-centre-mental-health",
-        "name": "Maltby Centre",
-        "name_fr": "Centre Maltby",
-        "description": "Mental health and autism services for children and youth (0-24) and their families. Free, confidential counselling.",
-        "description_fr": "Services de santé mentale et d'autisme pour les enfants et les jeunes (0-24 ans) et leurs familles. Counseling gratuit et confidentiel.",
-        "url": "https://maltbycentre.ca",
-        "phone": "613-546-8535",
-        "address": "31 Hyperion Court, Suite 100, Kingston, ON K7K 7G3",
-        "verification_level": "L2",
-        "intent_category": "Wellness",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:00:00Z",
-            "evidence_url": "https://maltbycentre.ca",
-            "method": "Web Search & Verification of Eligibility (Search Result)"
-        },
-        "identity_tags": [
-            {
-                "tag": "Youth (0-24)",
-                "evidence_url": "https://maltbycentre.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Child therapy kingston",
-            "Free youth counselling near me",
-            "Help for teenager with anxiety",
-            "Autism support kingston",
-            "Mental health help for kids free"
-        ],
-        "eligibility_notes": "Inclusion: Children/Youth (0-24) in KFL&A. Mental health & autism services. Exclusion: Adults 25+.",
-        "access_script": "Hi, I'm 17 and struggling with anxiety. Can I set up an appointment to talk to a counsellor?"
-    },
-    {
-        "id": "resolve-counselling",
-        "name": "Resolve Counselling Services",
-        "name_fr": "Services de counseling Resolve",
-        "description": "Confidential, non-judgmental mental health and financial counselling for individuals, families, and workplaces.",
-        "description_fr": "Counseling confidentiel et sans jugement en santé mentale et financière pour les individus, les familles et les lieux de travail.",
-        "url": "https://resolvecounselling.org",
-        "phone": "613-549-7850",
-        "address": "417 Bagot Street, Kingston, ON K7K 3C1",
-        "verification_level": "L2",
-        "intent_category": "Wellness",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:00:00Z",
-            "evidence_url": "https://resolvecounselling.org",
-            "method": "Web Scrape & Manual Verification of Services Page"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access",
-                "evidence_url": "https://resolvecounselling.org"
-            }
-        ],
-        "synthetic_queries": [
-            "Couples therapy kingston",
-            "Credit counselling help",
-            "Family counsellor near me",
-            "Depression help not expensive",
-            "Employee assistance program counselling"
-        ],
-        "eligibility_notes": "Inclusion: All residents. Sliding scale counselling. Exclusion: None.",
-        "access_script": "Hi, I'm looking for counselling but I don't have insurance. Can you tell me about your sliding scale options?"
-    },
-    {
-        "id": "kingston-home-base-housing",
-        "name": "Kingston Home Base Housing",
-        "name_fr": "Kingston Home Base Housing",
-        "description": "Supportive and transitional housing, emergency shelters, and support services for youth, adults, and families at risk of homelessness.",
-        "description_fr": "Logement avec services de soutien et de transition, refuges d'urgence et services de soutien pour les jeunes, les adultes et les familles à risque d'itinérance.",
-        "url": "https://kingstonhomebase.ca",
-        "phone": "613-542-6672",
-        "verification_level": "L2",
-        "intent_category": "Housing",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:00:00Z",
-            "evidence_url": "https://kingstonhomebase.ca",
-            "method": "Web Scrape & Manual Verification of Services"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access (Housing Risk)",
-                "evidence_url": "https://kingstonhomebase.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Help finding an apartment kingston",
-            "About to be evicted what do I do",
-            "Housing support worker",
-            "Emergency family shelter",
-            "Affordable housing list kingston",
-            "Need a place to stay",
-            "Need somewhere to stay",
-            "I have nowhere to go",
-            "Experiencing homelessness and need help"
-        ],
-        "eligibility_notes": "Inclusion: Men experiencing homelessness, families. Transitional housing focus. Exclusion: Active substance use on site (dry shelter).",
-        "access_script": "Hi, I have nowhere to sleep tonight. Do you have any beds available?"
-    },
-    {
-        "id": "ryandale-shelter",
-        "name": "Ryandale Shelter",
-        "name_fr": "Refuge Ryandale",
-        "description": "Transitional housing for men experiencing homelessness. Focus on healing, life skills, and sobriety.",
-        "description_fr": "Logement de transition pour les hommes sans-abri. Accent sur la guérison, les compétences de vie et la sobriété.",
-        "url": "https://ryandale.ca",
-        "phone": "613-766-1925",
-        "address": "494 Fieldstone Drive, Kingston, ON",
-        "verification_level": "L2",
-        "intent_category": "Housing",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:00:00Z",
-            "evidence_url": "https://ryandale.ca",
-            "method": "Web Scrape & Manual Verification of Mission"
-        },
-        "identity_tags": [
-            {
-                "tag": "Men (Transitional)",
-                "evidence_url": "https://ryandale.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Men's shelter kingston",
-            "Transitional housing for men recovering",
-            "Sober living house kingston",
-            "Man experiencing homelessness needs place to stay",
-            "Housing support for men"
-        ],
-        "eligibility_notes": "Inclusion: Adults (18+). Low-barrier shelter services. Housing first approach.",
-        "access_script": "Hi, I'm currently on the street and need a place to warm up. Are you open for drop-in?"
-    },
-    {
-        "id": "dawn-house-womens-shelter",
-        "name": "Dawn House",
-        "name_fr": "Dawn House",
-        "description": "Transitional and supportive housing for marginalized or vulnerably housed women. Empowering women to find permanent solutions.",
-        "description_fr": "Logement de transition et de soutien pour les femmes marginalisées ou logées de façon précaire. Autonomiser les femmes pour trouver des solutions permanentes.",
-        "url": "https://dawnhouse.ca",
-        "address": "965 Milford Drive, Kingston, ON",
-        "verification_level": "L2",
-        "intent_category": "Housing",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:00:00Z",
-            "evidence_url": "https://dawnhouse.ca",
-            "method": "Web Scrape & Manual Verification of Vision"
-        },
-        "identity_tags": [
-            {
-                "tag": "Women",
-                "evidence_url": "https://dawnhouse.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Women's shelter kingston",
-            "Safe housing for woman fleeing violence",
-            "Support for women experiencing homelessness",
-            "Transitional housing dawn house",
-            "Emergency bed for woman"
-        ],
-        "eligibility_notes": "Inclusion: Women (16+) who are experiencing homelessness. Long-term supportive housing. Exclusion: Not an emergency drop-in (application based).",
-        "access_script": "Hi, I'm looking for long-term housing support for women. How can I get on your waitlist?"
-    },
-    {
-        "id": "kchc-weller-clinic",
-        "name": "Kingston Community Health Centres (KCHC) - Weller Clinic",
-        "name_fr": "Centre de santé communautaire de Kingston (KCHC) - Clinique Weller",
-        "description": "Primary health care services for unattached patients who are pregnant. Comprehensive team includes nurses, dietitians, and social workers.",
-        "description_fr": "Services de soins primaires pour les patientes sans médecin de famille qui sont enceintes. Équipe complète comprenant infirmières, diététistes et travailleurs sociaux.",
-        "url": "https://kchc.ca/weller-avenue/weller-clinic/",
-        "phone": "613-542-2949",
-        "address": "263 Weller Ave, Kingston, ON K7K 2V2",
-        "verification_level": "L2",
-        "intent_category": "Health",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:05:00Z",
-            "evidence_url": "https://kchc.ca/weller-avenue/weller-clinic/",
-            "method": "Web Scrape & Manual Verification of Eligibility"
-        },
-        "identity_tags": [
-            {
-                "tag": "Unattached Patients (Pregnant)",
-                "evidence_url": "https://kchc.ca/weller-avenue/weller-clinic/"
-            }
-        ],
-        "synthetic_queries": [
-            "Pregnant and no doctor",
-            "New baby clinic weller ave",
-            "Prenatal care without family doctor",
-            "Community health centre kingston",
-            "See a nurse practitioner"
-        ],
-        "eligibility_notes": "Inclusion: Pregnant individuals without a family doctor. Comprehensive prenatal care. Exclusion: None.",
-        "access_script": "Hi, I'm pregnant and don't have a family doctor. Are you accepting new patients for prenatal care?"
-    },
-    {
-        "id": "kfla-sexual-health-clinic",
-        "name": "KFL&A Public Health: Sexual Health Clinic",
-        "name_fr": "Santé publique KFL&A : Clinique de santé sexuelle",
-        "description": "Confidential, non-judgmental sexual health services including testing for STIs/HIV, free condoms, and birth control. No health card required.",
-        "description_fr": "Services de santé sexuelle confidentiels et sans jugement, y compris dépistage des ITS/VIH, préservatifs gratuits et contraception. Aucune carte santé requise.",
-        "url": "https://www.kflaph.ca",
-        "address": "221 Portsmouth Ave, Kingston, ON",
-        "verification_level": "L2",
-        "intent_category": "Health",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:05:00Z",
-            "evidence_url": "https://www.kflaph.ca/en/health-topics/sexual-health-clinic.aspx",
-            "method": "Web Search & Verification of Service Description"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access (No Health Card)",
-                "evidence_url": "https://www.kflaph.ca/en/health-topics/sexual-health-clinic.aspx"
-            }
-        ],
-        "synthetic_queries": [
-            "Free STI test kingston",
-            "Plan B pill where to get",
-            "Sexual health clinic hours",
-            "HIV testing confidential",
-            "Birth control clinic public health"
-        ],
-        "eligibility_notes": "Inclusion: All individuals seeking sexual health services. Confidential. No health card required. Exclusion: None.",
-        "access_script": "Hi, I'd like to get tested for STIs. Do I need an appointment or can I just walk in?"
-    },
-    {
-        "id": "cdk-family-medicine-walk-in",
-        "name": "CDK Family Medicine Walk-In Clinic",
-        "name_fr": "Clinique sans rendez-vous de médecine familiale CDK",
-        "description": "Walk-in medical clinic for patients without a family doctor or with urgent issues. Open 7 days a week.",
-        "description_fr": "Clinique médicale sans rendez-vous pour les patients sans médecin de famille ou ayant des problèmes urgents. Ouvert 7 jours sur 7.",
-        "url": "https://cdkmd.com",
-        "phone": "613-766-0318",
-        "address": "175 Princess St, Kingston, ON K7L 1A9",
-        "verification_level": "L2",
-        "intent_category": "Health",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:05:00Z",
-            "evidence_url": "https://cdkmd.com",
-            "method": "Web Search & Verification of Walk-In Status"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access (Walk-In)",
-                "evidence_url": "https://cdkmd.com"
-            }
-        ],
-        "synthetic_queries": [
-            "Walk in clinic downtown kingston",
-            "See a doctor today",
-            "Sick need antibiotics",
-            "Weekend clinic hours",
-            "CDK wait times"
-        ],
-        "eligibility_notes": "Inclusion: Patients without a family doctor or with urgent, non-emergency issues. Exclusion: Life-threatening conditions (Go to ER).",
-        "access_script": "Hi, I have a bad cough and fever and need to see a doctor today. Are you accepting walk-ins?"
-    },
-    {
-        "id": "queens-legal-aid",
-        "name": "Queen's Legal Aid",
-        "name_fr": "Services d'aide juridique Queen's",
-        "description": "Free legal services for low-income residents and students. Assistance with landlord/tenant issues, academic appeals, and provincial offences.",
-        "description_fr": "Services juridiques gratuits pour les résidents à faible revenu et les étudiants. Aide pour les questions de locataire/propriétaire, appels académiques et infractions provinciales.",
-        "url": "https://queenslawclinics.ca/queens-legal-aid",
-        "phone": "613-533-2102",
-        "address": "303 Bagot Street, Suite 500, Kingston, ON K7K 5W7",
-        "verification_level": "L2",
-        "intent_category": "Legal",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:05:00Z",
-            "evidence_url": "https://queenslawclinics.ca/queens-legal-aid",
-            "method": "Web Scrape & Manual Verification of Eligibility"
-        },
-        "identity_tags": [
-            {
-                "tag": "Low Income / Student",
-                "evidence_url": "https://queenslawclinics.ca/queens-legal-aid"
-            }
-        ],
-        "synthetic_queries": [
-            "Landlord trying to evict me help",
-            "Free lawyer for students",
-            "Traffic ticket legal aid",
-            "Disability benefits appeal lawyer"
-        ],
-        "eligibility_notes": "Inclusion: Students and low-income residents. Criminal/Tenant/Academic law. Exclusion: Family law (Refer to private bar).",
-        "access_script": "Hi, I've been charged with an offence and I can't afford a lawyer. Can I speak to someone at the clinic?"
-    },
-    {
-        "id": "ontario-works-kingston",
-        "name": "Ontario Works Kingston",
-        "name_fr": "Ontario au travail Kingston",
-        "description": "Financial and employment assistance for people in immediate financial need. Administered by the City of Kingston.",
-        "description_fr": "Aide financière et à l'emploi pour les personnes dans un besoin financier immédiat. Administré par la Ville de Kingston.",
-        "url": "https://www.cityofkingston.ca/resident/community-services",
-        "phone": "613-546-2695",
-        "address": "362 Montreal St, Kingston, ON",
-        "verification_level": "L2",
-        "intent_category": "Financial",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-28T23:05:00Z",
-            "evidence_url": "https://www.cityofkingston.ca/resident/community-services/health-social-services/financial-assistance/ontario-works",
-            "method": "Web Search & Verification of City Program"
-        },
-        "identity_tags": [
-            {
-                "tag": "Financial Need",
-                "evidence_url": "https://www.cityofkingston.ca/resident/community-services/health-social-services/financial-assistance/ontario-works"
-            }
-        ],
-        "synthetic_queries": [
-            "Apply for welfare kingston",
-            "No money for rent help",
-            "Ontario works office address",
-            "Emergency financial assistance",
-            "Social assistance application"
-        ],
-        "eligibility_notes": "Inclusion: Residents of Kingston in immediate financial need. Employment assistance. Exclusion: None.",
-        "access_script": "Hi, I'm currently unemployed and have no income. How do I apply for Ontario Works?"
-    },
-    {
-        "id": "kfpl-central-branch",
-        "name": "Kingston Frontenac Public Library (Central Branch)",
-        "name_fr": "Bibliothèque publique Kingston Frontenac (Succursale centrale)",
-        "description": "Public library offering free access to books, computers, Wi-Fi, and community programs. Open to all residents.",
-        "description_fr": "Bibliothèque publique offrant un accès gratuit aux livres, ordinateurs, Wi-Fi et programmes communautaires. Ouvert à tous les résidents.",
-        "url": "https://www.kfpl.ca",
-        "phone": "613-549-8888",
-        "address": "130 Johnson St, Kingston, ON K7L 1X8",
-        "verification_level": "L1",
-        "intent_category": "Community",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://www.kfpl.ca",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access",
-                "evidence_url": "https://www.kfpl.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Free internet access",
-            "Where to borrow books",
-            "Public computer use",
-            "Quiet place to study",
-            "Community programs for kids"
-        ],
-        "eligibility_notes": "Inclusion: Open to all. Library card required for borrowing. Exclusion: None.",
-        "access_script": "Hi, I'd like to sign up for a library card. What ID do I need to bring?"
-    },
-    {
-        "id": "keys-job-centre",
-        "name": "KEYS Job Centre",
-        "name_fr": "Centre d'emploi KEYS",
-        "description": "Comprehensive employment services for job seekers, including resume help, workshops, and job matching. Specialized support for newcomers and youth.",
-        "description_fr": "Services d'emploi complets pour les chercheurs d'emploi, y compris aide au CV, ateliers et jumelage d'emplois. Soutien spécialisé pour les nouveaux arrivants et les jeunes.",
-        "url": "https://keys.ca",
-        "phone": "613-546-5559",
-        "address": "182 Sydenham St, Kingston, ON K7K 3M2",
-        "verification_level": "L1",
-        "intent_category": "Employment",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://keys.ca",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Job Seekers",
-                "evidence_url": "https://keys.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Help finding a job",
-            "Resume writing assistance",
-            "Employment workshops",
-            "Jobs for newcomers",
-            "Youth employment help"
-        ],
-        "eligibility_notes": "Inclusion: Unemployed or underemployed individuals. Exclusion: None.",
-        "access_script": "Hi, I'm looking for work and need help with my resume. Can I book an appointment with a counsellor?"
-    },
-    {
-        "id": "seniors-association-kingston",
-        "name": "Seniors Association Kingston Region",
-        "name_fr": "Association des aînés de la région de Kingston",
-        "description": "Recreation, education, and social activities for adults 50+. Promoting active living and community connection.",
-        "description_fr": "Activités récréatives, éducatives et sociales pour les adultes de 50 ans et plus. Promotion de la vie active et de la connexion communautaire.",
-        "url": "https://seniorskingston.ca",
-        "phone": "613-548-7810",
-        "address": "56 Francis St, Kingston, ON K7M 1L7",
-        "verification_level": "L1",
-        "intent_category": "Community",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://seniorskingston.ca",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Seniors (50+)",
-                "evidence_url": "https://seniorskingston.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Activities for seniors",
-            "Social groups for older adults",
-            "Fitness classes for 50+",
-            "Volunteer opportunities for seniors",
-            "Seniors centre events"
-        ],
-        "eligibility_notes": "Inclusion: Adults 50+. Membership fees may apply for some programs. Exclusion: Under 50.",
-        "access_script": "Hi, I'm interested in joining the Seniors Association. Can I come in for a tour?"
-    },
-    {
-        "id": "community-living-kingston",
-        "name": "Community Living Kingston and District",
-        "name_fr": "Intégration communautaire Kingston et district",
-        "description": "Support and advocacy for individuals with intellectual disabilities. Residential, employment, and community inclusion services.",
-        "description_fr": "Soutien et défense des droits des personnes ayant une déficience intellectuelle. Services résidentiels, d'emploi et d'inclusion communautaire.",
-        "url": "https://myclkd.ca",
-        "phone": "613-546-6613",
-        "address": "541 Days Rd, Unit 6, Kingston, ON K7M 3R8",
-        "verification_level": "L1",
-        "intent_category": "Community",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://myclkd.ca",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Disability Support",
-                "evidence_url": "https://myclkd.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Support for intellectual disability",
-            "Community living programs",
-            "Inclusive employment help",
-            "Respite for caregivers",
-            "Group home information"
-        ],
-        "eligibility_notes": "Inclusion: Individuals with intellectual disabilities and their families. Exclusion: None.",
-        "access_script": "Hi, I'm looking for support services for my adult child with an intellectual disability. Who can I speak to?"
-    },
-    {
-        "id": "restart-kingston",
-        "name": "ReStart Kingston",
-        "name_fr": "ReStart Kingston",
-        "description": "Employment services and job search support. access to job boards, training, and employer connections.",
-        "description_fr": "Services d'emploi et soutien à la recherche d'emploi. Accès aux babillards d'emploi, formation et connexions avec les employeurs.",
-        "url": "https://restartnow.ca",
-        "phone": "613-542-7373",
-        "address": "900 Montreal St, Kingston, ON K7K 3J9",
-        "verification_level": "L1",
-        "intent_category": "Employment",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://restartnow.ca",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Job Seekers",
-                "evidence_url": "https://restartnow.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Help getting a job",
-            "ReStart employment services",
-            "Job search workshops",
-            "Training for employment",
-            "Career counselling"
-        ],
-        "eligibility_notes": "Inclusion: Unemployed or underemployed individuals. Exclusion: None.",
-        "access_script": "Hi, I need help finding a job. Do I need an appointment to see an employment counsellor?"
-    },
-    {
-        "id": "acfomi-kingston",
-        "name": "ACFOMI",
-        "description": "Bilingual employment and settlement services. Helping French-speaking newcomers and job seekers integration into the community.",
-        "url": "https://acfomi.ca",
-        "phone": "613-546-7863",
-        "address": "760 Highway 15, Unit 11, Kingston, ON K7L 0C3",
-        "verification_level": "L1",
-        "intent_category": "Employment",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://acfomi.ca",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Francophone / Bilingual",
-                "evidence_url": "https://acfomi.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "French employment services",
-            "Newcomer settlement help French",
-            "Bilingual job search",
-            "Services en français",
-            "Aide à l'emploi"
-        ],
-        "eligibility_notes": "Inclusion: French-speaking individuals, authorized to work in Canada. Exclusion: None.",
-        "access_script": "Bonjour, je cherche de l'aide pour trouver un emploi à Kingston. Offrez-vous des services en français?"
-    },
-    {
-        "id": "ymca-eastern-ontario",
-        "name": "YMCA of Eastern Ontario",
-        "name_fr": "YMCA de l'Est de l'Ontario",
-        "description": "Community centre offering fitness, aquatics, day camps, and youth programs. Promoting health and wellness for all ages.",
-        "description_fr": "Centre communautaire offrant conditionnement physique, activités aquatiques, camps de jour et programmes jeunesse. Promotion de la santé et du bien-être pour tous les âges.",
-        "url": "https://eo.ymca.ca",
-        "phone": "613-546-2647",
-        "address": "100 Wright Crescent, Kingston, ON K7L 4T9",
-        "verification_level": "L1",
-        "intent_category": "Wellness",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://eo.ymca.ca",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access",
-                "evidence_url": "https://eo.ymca.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Gym membership",
-            "Swimming lessons",
-            "Summer camps for kids",
-            "Youth recreation programs",
-            "Family fitness activities"
-        ],
-        "eligibility_notes": "Inclusion: Open to all. Membership fees apply (financial assistance available). Exclusion: None.",
-        "access_script": "Hi, I'm interested in a gym membership. Do you offer financial assistance or subsidized rates?"
-    },
-    {
-        "id": "bgc-south-east",
-        "name": "BGC South East (Boys and Girls Club)",
-        "name_fr": "BGC Sud-Est (Repaire jeunesse)",
-        "description": "Safe, supportive place for children and youth. Offering after-school programs, camps, sports, and educational activities.",
-        "description_fr": "Lieu sûr et solidaire pour les enfants et les jeunes. Offre des programmes parascolaires, camps, sports et activités éducatives.",
-        "url": "https://www.bgcsoutheast.ca",
-        "phone": "613-507-3306",
-        "address": "1300 Bath Rd, Kingston, ON K7M 4X4",
-        "verification_level": "L1",
-        "intent_category": "Community",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://www.bgcsoutheast.ca",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Youth & Children",
-                "evidence_url": "https://www.bgcsoutheast.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "After school programs",
-            "Summer camps",
-            "Youth sports leagues",
-            "Kids recreation centre",
-            "Safe place for teens"
-        ],
-        "eligibility_notes": "Inclusion: Children and youth. Membership required (often low cost/free access). Exclusion: Adults (except for specific programs).",
-        "access_script": "Hi, I'd like to register my child for the after-school program. Is there space available?"
-    },
-    {
-        "id": "hart-centre",
-        "name": "H'art Centre",
-        "name_fr": "Centre H'art",
-        "description": "Inclusive arts hub providing opportunities for people with disabilities to study, practice, and produce works in the arts.",
-        "description_fr": "Carrefour artistique inclusif offrant aux personnes handicapées des opportunités d'étudier, de pratiquer et de produire des œuvres artistiques.",
-        "url": "https://www.hartcentre.ca",
-        "phone": "613-545-1392",
-        "address": "1200 Princess St, Kingston, ON K7M 3C9",
-        "verification_level": "L1",
-        "intent_category": "Community",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://www.hartcentre.ca",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Disability Arts",
-                "evidence_url": "https://www.hartcentre.ca"
-            }
-        ],
-        "synthetic_queries": [
-            "Art classes for disabled adults",
-            "Inclusive theatre program",
-            "Creative activities for special needs",
-            "Accessible arts centre",
-            "Volunteer art opportunities"
-        ],
-        "eligibility_notes": "Inclusion: Adults with intellectual/physical disabilities. Exclusion: None.",
-        "access_script": "Hi, I'm interested in your art programs for my sibling with a disability. Can we visit the studio?"
-    },
-    {
-        "id": "loving-spoonful",
-        "name": "Loving Spoonful",
-        "name_fr": "Loving Spoonful",
-        "description": "Connecting people with healthy, fresh food. Programs include community gardens, cooking workshops, and Grow-A-Row.",
-        "description_fr": "Connecter les gens avec des aliments sains et frais. Les programmes incluent jardins communautaires, ateliers de cuisine et cultiver un rang.",
-        "url": "https://www.lovingspoonful.org",
-        "phone": "613-507-8848",
-        "address": "263 Weller Ave, Kingston, ON K7K 2V4",
-        "verification_level": "L1",
-        "intent_category": "Food",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://www.lovingspoonful.org",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Food Security",
-                "evidence_url": "https://www.lovingspoonful.org"
-            }
-        ],
-        "synthetic_queries": [
-            "Cooking classes",
-            "Community garden info",
-            "Fresh food donation",
-            "Healthy eating workshops",
-            "Volunteer for food rescue"
-        ],
-        "eligibility_notes": "Inclusion: Open to community members interested in food security. Programs vary. Exclusion: None.",
-        "access_script": "Hi, I'd like to learn more about joining a community garden or cooking workshop."
-    },
-    {
-        "id": "ongwanada",
-        "name": "Ongwanada",
-        "name_fr": "Ongwanada",
-        "description": "Non-profit organization supporting people with developmental disabilities and their families. Community-based services and residential support.",
-        "description_fr": "Organisme à but non lucratif soutenant les personnes ayant une déficience intellectuelle et leurs familles. Services communautaires et soutien résidentiel.",
-        "url": "https://www.ongwanada.com",
-        "phone": "613-548-4417",
-        "address": "191 Portsmouth Ave, Kingston, ON K7M 8A6",
-        "verification_level": "L1",
-        "intent_category": "Community",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://www.ongwanada.com",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Disability Support",
-                "evidence_url": "https://www.ongwanada.com"
-            }
-        ],
-        "synthetic_queries": [
-            "Developmental disability support",
-            "Respite care for disabled child",
-            "Community participation support",
-            "Clinical services for disability",
-            "Ongwanada resource centre"
-        ],
-        "eligibility_notes": "Inclusion: Individuals with developmental disabilities. Referral required for some services. Exclusion: None.",
-        "access_script": "Hi, I need information about support services for my child with a developmental disability."
-    },
-    {
-        "id": "kmfrc",
-        "name": "Kingston Military Family Resource Centre (KMFRC)",
-        "name_fr": "Centre de ressources pour les familles des militaires de Kingston (CRFMK)",
-        "description": "Dedicated support for military families. Mental health services, child care, deployment support, and community integration.",
-        "description_fr": "Soutien dédié aux familles des militaires. Services de santé mentale, garde d'enfants, soutien au déploiement et intégration communautaire.",
-        "url": "https://kmfrc.com",
-        "phone": "613-541-5010",
-        "address": "32 Lundy's Lane, Kingston, ON K7K 5G2",
-        "verification_level": "L1",
-        "intent_category": "Community",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://kmfrc.com",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Military Families",
-                "evidence_url": "https://kmfrc.com"
-            }
-        ],
-        "synthetic_queries": [
-            "Military family support",
-            "Deployment help",
-            "Child care for military",
-            "Mental health for soldiers families",
-            "New to base integration"
-        ],
-        "eligibility_notes": "Inclusion: Canadian Armed Forces members and their families. Exclusion: General public (some programs may be open).",
-        "access_script": "Hi, my partner is being deployed and I'm looking for support resources for our family."
-    },
-    {
-        "id": "earlyon-kchc",
-        "name": "EarlyON Child and Family Centre (KCHC)",
-        "name_fr": "Centre pour l'enfant et la famille ON y va (KCHC)",
-        "description": "Free high-quality drop-in programs for families and children from birth to 6 years old. Learn and play together.",
-        "description_fr": "Programmes sans rendez-vous gratuits de haute qualité pour les familles et les enfants de la naissance à 6 ans. Apprendre et jouer ensemble.",
-        "url": "https://kchc.ca/weller-avenue/earlyon/",
-        "phone": "613-542-2949",
-        "address": "263 Weller Ave, Kingston, ON K7K 2V4",
-        "verification_level": "L1",
-        "intent_category": "Community",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://kchc.ca/weller-avenue/earlyon/",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Families (0-6)",
-                "evidence_url": "https://kchc.ca/weller-avenue/earlyon/"
-            }
-        ],
-        "synthetic_queries": [
-            "Playgroup for toddlers",
-            "Free activities for babies",
-            "Parenting support",
-            "Early childhood education",
-            "Drop in centre for kids"
-        ],
-        "eligibility_notes": "Inclusion: Children 0-6 years and their parents/caregivers. Free. Exclusion: Children over 6.",
-        "access_script": "Hi, I have a 2-year-old and I'm looking for a playgroup. Do I need to register for the drop-in?"
-    },
-    {
-        "id": "habitat-restore-kingston",
-        "name": "Habitat for Humanity Kingston ReStore",
-        "name_fr": "Habitat pour l'humanité Kingston ReStore",
-        "description": "Home improvement retail store selling new and gently used building materials and furniture. Proceeds support affordable housing.",
-        "description_fr": "Magasin de rénovation vendant des matériaux de construction et des meubles neufs et usagés. Les profits soutiennent le logement abordable.",
-        "url": "https://habitatkingston.com/restore/",
-        "phone": "613-547-4111",
-        "address": "607 Gardiners Rd, Kingston, ON K7M 3Y4",
-        "verification_level": "L1",
-        "intent_category": "Housing",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://habitatkingston.com/restore/",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Open Access",
-                "evidence_url": "https://habitatkingston.com/restore/"
-            }
-        ],
-        "synthetic_queries": [
-            "Cheap building materials",
-            "Used furniture store",
-            "Donate renovation supplies",
-            "Affordable home goods",
-            "Habitat for humanity store"
-        ],
-        "eligibility_notes": "Inclusion: Open to the public. Exclusion: None.",
-        "access_script": "Hi, I have some furniture I'd like to donate. Do you offer pick-up services?"
-    },
-    {
-        "id": "kingston-access-bus",
-        "name": "Kingston Access Services (Access Bus)",
-        "description": "Specialized transit service for persons with disabilities who are unable to use conventional transit.",
-        "url": "https://kingstonaccessbus.com",
-        "phone": "613-542-2512",
-        "address": "751 Dalton Ave, Kingston, ON K7M 8N6",
-        "verification_level": "L1",
-        "intent_category": "Community",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-29T12:00:00Z",
-            "evidence_url": "https://kingstonaccessbus.com",
-            "method": "Web Search & Service Verification"
-        },
-        "identity_tags": [
-            {
-                "tag": "Disability Transit",
-                "evidence_url": "https://kingstonaccessbus.com"
-            }
-        ],
-        "synthetic_queries": [
-            "Wheelchair accessible bus",
-            "Transportation for disabled",
-            "Book an access bus ride",
-            "Transit for seniors with mobility issues",
-            "Accessible transit application"
-        ],
-        "eligibility_notes": "Inclusion: Registered clients with disabilities preventing use of regular transit. Application required. Exclusion: General public.",
-        "access_script": "Hi, I'd like to apply for the Access Bus service. How do I start the registration process?"
-    },
-    {
-        "id": "kingston-community-medical-clinic",
-        "name": "Kingston Community Medical Clinic",
-        "description": "Walk-in medical clinic providing primary care services to residents without a family doctor.",
-        "url": "https://kcc.example.com",
-        "phone": "613-555-0101",
-        "address": "123 Princess St, Kingston, ON K7L 1A1",
-        "verification_level": "L1",
-        "intent_category": "Health",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-30T12:00:00Z",
-            "evidence_url": "https://kcc.example.com",
-            "method": "Data Expansion Phase 2"
-        },
-        "identity_tags": [],
-        "synthetic_queries": [
-            "Doctor walk in",
-            "Medical help no doctor",
-            "Prescription renewal",
-            "Sick need doctor"
-        ],
-        "hours": {
-            "monday": {
-                "open": "09:00",
-                "close": "17:00"
-            },
-            "tuesday": {
-                "open": "09:00",
-                "close": "17:00"
-            },
-            "wednesday": {
-                "open": "09:00",
-                "close": "17:00"
-            },
-            "thursday": {
-                "open": "09:00",
-                "close": "17:00"
-            },
-            "friday": {
-                "open": "09:00",
-                "close": "16:00"
-            }
-        }
-    },
-    {
-        "id": "downtown-legal-clinic",
-        "name": "Downtown Legal Clinic",
-        "description": "Pro bono legal advice for low-income residents regarding tenant rights and employment law.",
-        "url": "https://legal.example.com",
-        "phone": "613-555-0102",
-        "address": "456 Queen St, Kingston, ON K7K 1B1",
-        "verification_level": "L1",
-        "intent_category": "Legal",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-30T12:00:00Z",
-            "evidence_url": "https://legal.example.com",
-            "method": "Data Expansion Phase 2"
-        },
-        "identity_tags": [],
-        "synthetic_queries": [
-            "Legal aid",
-            "Eviction help",
-            "Tenant rights lawyer",
-            "Free legal advice"
-        ],
-        "hours": {
-            "monday": {
-                "open": "10:00",
-                "close": "16:00"
-            },
-            "wednesday": {
-                "open": "10:00",
-                "close": "16:00"
-            },
-            "friday": {
-                "open": "10:00",
-                "close": "14:00"
-            }
-        }
-    },
-    {
-        "id": "youth-employment-centre-kton",
-        "name": "Youth Employment Centre Kingston",
-        "description": "Resume workshops, job search assistance, and interview prep for youth aged 15-29.",
-        "url": "https://youthjob.example.com",
-        "phone": "613-555-0103",
-        "address": "789 Division St, Kingston, ON K7L 3M6",
-        "verification_level": "L1",
-        "intent_category": "Employment",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-30T12:00:00Z",
-            "evidence_url": "https://youthjob.example.com",
-            "method": "Data Expansion Phase 2"
-        },
-        "identity_tags": [
-            {
-                "tag": "Youth",
-                "evidence_url": ""
-            }
-        ],
-        "synthetic_queries": [
-            "Find a job",
-            "Resume help",
-            "Student jobs",
-            "Work for teens"
-        ],
-        "hours": {
-            "monday": {
-                "open": "08:30",
-                "close": "16:30"
-            },
-            "tuesday": {
-                "open": "08:30",
-                "close": "16:30"
-            },
-            "wednesday": {
-                "open": "08:30",
-                "close": "16:30"
-            },
-            "thursday": {
-                "open": "08:30",
-                "close": "16:30"
-            },
-            "friday": {
-                "open": "08:30",
-                "close": "16:30"
-            }
-        }
-    },
-    {
-        "id": "senior-support-services",
-        "name": "Senior Support Services",
-        "description": "Social activities, meal delivery coordination, and friendly visiting for seniors.",
-        "url": "https://seniors.example.com",
-        "phone": "613-555-0104",
-        "address": "321 Bath Rd, Kingston, ON K7M 2L1",
-        "verification_level": "L1",
-        "intent_category": "Community",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-30T12:00:00Z",
-            "evidence_url": "https://seniors.example.com",
-            "method": "Data Expansion Phase 2"
-        },
-        "identity_tags": [
-            {
-                "tag": "Seniors",
-                "evidence_url": ""
-            }
-        ],
-        "synthetic_queries": [
-            "Help for elderly",
-            "Senior center",
-            "Meals on wheels info",
-            "Social activities seniors"
-        ],
-        "hours": {
-            "monday": {
-                "open": "09:00",
-                "close": "15:00"
-            },
-            "tuesday": {
-                "open": "09:00",
-                "close": "15:00"
-            },
-            "wednesday": {
-                "open": "09:00",
-                "close": "15:00"
-            },
-            "thursday": {
-                "open": "09:00",
-                "close": "15:00"
-            },
-            "friday": {
-                "open": "09:00",
-                "close": "15:00"
-            }
-        }
-    },
-    {
-        "id": "emergency-dental-clinic",
-        "name": "Emergency Dental Clinic",
-        "description": "Urgent dental care for low-income individuals in pain/infection.",
-        "url": "https://dental.example.com",
-        "phone": "613-555-0105",
-        "address": "654 Victoria St, Kingston, ON K7L 4V1",
-        "verification_level": "L1",
-        "intent_category": "Health",
-        "provenance": {
-            "verified_by": "Antigravity (AI Agent)",
-            "verified_at": "2025-12-30T12:00:00Z",
-            "evidence_url": "https://dental.example.com",
-            "method": "Data Expansion Phase 2"
-        },
-        "identity_tags": [],
-        "synthetic_queries": [
-            "Toothache help",
-            "Broken tooth",
-            "Emergency dentist cheap",
-            "Dental pain"
-        ],
-        "hours": {
-            "monday": {
-                "open": "08:00",
-                "close": "20:00"
-            },
-            "tuesday": {
-                "open": "08:00",
-                "close": "20:00"
-            },
-            "wednesday": {
-                "open": "08:00",
-                "close": "20:00"
-            },
-            "thursday": {
-                "open": "08:00",
-                "close": "20:00"
-            },
-            "friday": {
-                "open": "08:00",
-                "close": "20:00"
-            },
-            "saturday": {
-                "open": "10:00",
-                "close": "16:00"
-            }
-        }
+    "identity_tags": [
+      {
+        "tag": "Youth (National)",
+        "evidence_url": "https://kidshelpphone.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Text someone about depression",
+      "Suicidal thoughts help line",
+      "Bullying advice for kids",
+      "Anonymous counselling chat",
+      "Help I'm scared at home"
+    ],
+    "synthetic_queries_fr": [
+      "J'ai besoin de parler à quelqu'un",
+      "Texter un conseiller",
+      "Je suis triste et seul",
+      "Aide pour l'intimidation",
+      "Pensées suicidaires"
+    ],
+    "eligibility_notes": "Inclusion: All youth (5-29) in Canada. Mental health support. Exclusion: None (24/7 anonymous).",
+    "access_script": "Hi, I'm feeling really overwhelmed right now and just need someone to talk to. Is this a safe place to share?",
+    "hours": {
+      "monday": {
+        "open": "00:00",
+        "close": "23:59"
+      },
+      "tuesday": {
+        "open": "00:00",
+        "close": "23:59"
+      },
+      "wednesday": {
+        "open": "00:00",
+        "close": "23:59"
+      },
+      "thursday": {
+        "open": "00:00",
+        "close": "23:59"
+      },
+      "friday": {
+        "open": "00:00",
+        "close": "23:59"
+      },
+      "saturday": {
+        "open": "00:00",
+        "close": "23:59"
+      },
+      "sunday": {
+        "open": "00:00",
+        "close": "23:59"
+      },
+      "notes": "24/7 Service"
     }
+  },
+  {
+    "id": "trans-lifeline-canada",
+    "name": "Trans Lifeline",
+    "name_fr": "Ligne d'assistance Trans",
+    "description": "Grassroots hotline offering direct emotional and financial support to trans people in crisis. Operated by trans people for trans people.",
+    "description_fr": "Ligne d'assistance locale offrant un soutien émotionnel et financier direct aux personnes trans en crise. Géré par des personnes trans pour des personnes trans.",
+    "url": "https://translifeline.org",
+    "phone": "1-877-330-6366",
+    "verification_level": "L1",
+    "intent_category": "Crisis",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:50:00Z",
+      "evidence_url": "https://translifeline.org",
+      "method": "Web Search & Peer Support Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Trans-Led",
+        "evidence_url": "https://translifeline.org"
+      }
+    ],
+    "synthetic_queries": [
+      "Trans peer support line",
+      "Dysphoria help chat",
+      "Crisis line for transgender",
+      "Coming out advice from trans person",
+      "Name change funding help"
+    ],
+    "synthetic_queries_fr": [
+      "Ligne d'écoute transgenre",
+      "Aide dysphorie",
+      "Sortir du placard conseils",
+      "Financement changement de nom",
+      "Soutien par les pairs trans"
+    ],
+    "eligibility_notes": "Inclusion: Trans, non-binary, and questioning individuals. Peer support. Exclusion: Cisgender individuals seeking info (refer to allies line).",
+    "access_script": "Hi, I'm trans and I'm really struggling with dysphoria today. Can I talk to someone who understands?",
+    "hours": {
+      "monday": {
+        "open": "10:00",
+        "close": "22:00"
+      },
+      "tuesday": {
+        "open": "10:00",
+        "close": "22:00"
+      },
+      "wednesday": {
+        "open": "10:00",
+        "close": "22:00"
+      },
+      "thursday": {
+        "open": "10:00",
+        "close": "22:00"
+      },
+      "friday": {
+        "open": "10:00",
+        "close": "22:00"
+      },
+      "saturday": {
+        "open": "10:00",
+        "close": "22:00"
+      },
+      "sunday": {
+        "open": "10:00",
+        "close": "22:00"
+      }
+    }
+  },
+  {
+    "id": "hope-for-wellness-helpline",
+    "name": "Hope for Wellness Helpline",
+    "name_fr": "Ligne d'écoute d'espoir pour le mieux-être",
+    "description": "Immediate mental health counselling and crisis intervention for all Indigenous peoples across Canada. Available 24/7.",
+    "description_fr": "Counseling immédiat en santé mentale et intervention de crise pour tous les peuples autochtones du Canada. Disponible 24/7.",
+    "url": "https://www.hopeforwellness.ca",
+    "phone": "1-855-242-3310",
+    "verification_level": "L1",
+    "intent_category": "Crisis",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:50:00Z",
+      "evidence_url": "https://www.hopeforwellness.ca",
+      "method": "Web Search & Indigenous Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Indigenous Peoples",
+        "evidence_url": "https://www.hopeforwellness.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Indigenous mental health support",
+      "Residential school survivor trauma",
+      "Cree speaking counsellor",
+      "Crisis line for first nations",
+      "Mental health chat indigenous"
+    ],
+    "eligibility_notes": "Inclusion: First Nations, Inuit, and Métis peoples across Canada. Culturally competent counselling.",
+    "access_script": "Hi, I am Indigenous and I'm having a hard time. I'd like to speak with a culturally safe counsellor."
+  },
+  {
+    "id": "assaulted-womens-helpline",
+    "name": "Assaulted Women's Helpline",
+    "name_fr": "Fem'aide (Assaulted Women's Helpline)",
+    "description": "24-hour telephone and TTY crisis line for all women in Ontario who have experienced any form of abuse.",
+    "description_fr": "Ligne de crise téléphonique et ATS 24h/24 pour toutes les femmes en Ontario ayant subi toute forme de violence.",
+    "url": "https://www.awhl.org",
+    "phone": "1-866-863-0511",
+    "verification_level": "L1",
+    "intent_category": "Crisis",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:50:00Z",
+      "evidence_url": "https://www.awhl.org",
+      "method": "Web Search & Provincial Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Women (Abuse Survivors)",
+        "evidence_url": "https://www.awhl.org"
+      }
+    ],
+    "synthetic_queries": [
+      "Domestic abuse hotline ontario",
+      "Help escaping violent partner",
+      "Womens shelter referral line",
+      "Anonymous abuse reporting",
+      "Safety planning for women"
+    ],
+    "eligibility_notes": "Inclusion: Women in Ontario experiencing abuse/violence. Exclusion: Men (refer to other lines).",
+    "access_script": "Hello, I am in an unsafe situation at home and I need to know my options for leaving."
+  },
+  {
+    "id": "iska-newcomer-support",
+    "name": "Immigrant Services Kingston & Area (ISKA)",
+    "name_fr": "Services aux immigrants de Kingston et de la région (ISKA)",
+    "description": "Settlement services for immigrants and refugees. Assistance with housing, employment, language, and community connection.",
+    "description_fr": "Services d'établissement pour les immigrants et les réfugiés. Aide au logement, à l'emploi, à la langue et à la connexion communautaire.",
+    "url": "https://kchc.ca/weller-avenue/immigrant-services/",
+    "phone": "613-544-4661",
+    "address": "837 Princess St, Unit 201, Kingston, ON K7L 1G9",
+    "verification_level": "L1",
+    "intent_category": "Community",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:35:00Z",
+      "evidence_url": "https://kchc.ca/weller-avenue/immigrant-services/",
+      "method": "Web Search & Location Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Newcomers / Refugees",
+        "evidence_url": "https://kchc.ca/weller-avenue/immigrant-services/"
+      }
+    ],
+    "synthetic_queries": [
+      "New to canada help",
+      "Refugee housing kingston",
+      "Learn english classes",
+      "Immigration paperwork help",
+      "OSAP calculator"
+    ],
+    "synthetic_queries_fr": [
+      "Aide aux nouveaux arrivants",
+      "Cours d'anglais gratuits",
+      "Logement réfugié Kingston",
+      "Papiers immigration aide",
+      "Calculateur RAP"
+    ],
+    "coordinates": {
+      "lat": 44.2393,
+      "lng": -76.5161
+    },
+    "eligibility_notes": "Inclusion: Newcomers, immigrants, refugees in KFL&A. Settlement support. Exclusion: None.",
+    "access_script": "Hi, I'm new to Kingston and looking for help with settlement and housing. Do I need an appointment?"
+  },
+  {
+    "id": "trellis-hiv-community-care",
+    "name": "Trellis HIV & Community Care",
+    "name_fr": "Trellis VIH et soins communautaires",
+    "description": "Support for individuals affected by HIV/AIDS and STBBIs. Harm reduction supplies, education, and stigma-free support.",
+    "description_fr": "Soutien aux personnes touchées par le VIH/SIDA et les ITSS. Fournitures de réduction méfaits, éducation et soutien sans stigmatisation.",
+    "url": "https://trellishiv.ca",
+    "phone": "613-545-3698",
+    "address": "844a Princess St, Kingston, ON K7L 1G5",
+    "verification_level": "L1",
+    "intent_category": "Health",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:35:00Z",
+      "evidence_url": "https://trellishiv.ca",
+      "method": "Web Search & Mandate Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "2SLGBTQI+ Affirming",
+        "evidence_url": "https://trellishiv.ca"
+      },
+      {
+        "tag": "Harm Reduction",
+        "evidence_url": "https://trellishiv.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "HIV testing kingston",
+      "Safe injection supplies",
+      "Naloxone kit free",
+      "Support for HIV positive",
+      "Harm reduction services"
+    ],
+    "synthetic_queries_fr": [
+      "Test VIH Kingston",
+      "Aiguilles propres gratuites",
+      "Kit naloxone gratuit",
+      "Soutien VIH positif",
+      "Réduction des méfaits"
+    ],
+    "coordinates": {
+      "lat": 44.2395,
+      "lng": -76.5164
+    },
+    "eligibility_notes": "Inclusion: Open to all. Focus on HIV/STBBI and substance use. Exclusion: None.",
+    "access_script": "Hi, I'd like to pick up some harm reduction supplies. Do I need an appointment or can I just drop in?"
+  },
+  {
+    "id": "one-roof-youth-hub",
+    "name": "One Roof Kingston Youth Hub",
+    "name_fr": "One Roof Kingston Youth Hub (Carrefour jeunesse)",
+    "description": "One-stop access to housing, mental health, addiction, and employment services for youth (16-24). Drop-in centre available.",
+    "description_fr": "Accès unique aux services de logement, de santé mentale, de toxicomanie et d'emploi pour les jeunes (16-24 ans). Centre d'accueil disponible.",
+    "url": "https://kingstonhomebase.ca/one-roof/",
+    "phone": "613-542-6672",
+    "address": "620 Princess St, Kingston, ON K7L 1E3",
+    "verification_level": "L1",
+    "intent_category": "Community",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:35:00Z",
+      "evidence_url": "https://www.unitedwaykfla.ca/oneroof/",
+      "method": "Web Search & Age Eligibility Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Youth (16-24)",
+        "evidence_url": "https://www.unitedwaykfla.ca/oneroof/"
+      }
+    ],
+    "synthetic_queries": [
+      "Youth drop in centre",
+      "Help finding work for teenager",
+      "Youth housing support",
+      "One roof hours",
+      "Mental health help for young adults"
+    ],
+    "synthetic_queries_fr": [
+      "Centre jeunesse sans rendez-vous",
+      "Aide emploi jeune",
+      "Logement pour jeunes",
+      "One roof heures",
+      "Santé mentale jeunes adultes"
+    ],
+    "coordinates": {
+      "lat": 44.2371,
+      "lng": -76.5022
+    },
+    "eligibility_notes": "Inclusion: Youth 16-24. Housing, employment, mental health. Drop-in available. Exclusion: Adults 25+.",
+    "access_script": "Hi, I'm 20 and having a hard time finding a job and a place to live. Can I drop by to see a worker?"
+  },
+  {
+    "id": "victim-services-kingston",
+    "name": "Victim Services of Kingston and Frontenac",
+    "name_fr": "Services aux victimes de Kingston et Frontenac",
+    "description": "24/7 crisis response and practical assistance for victims of crime and tragic circumstances. VQRP+ funding helper.",
+    "description_fr": "Intervention de crise 24/7 et aide pratique pour les victimes d'actes criminels et de circonstances tragiques. Aide au financement VQRP+.",
+    "url": "https://www.victimserviceskingston.ca",
+    "phone": "613-548-4834",
+    "verification_level": "L1",
+    "intent_category": "Crisis",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:35:00Z",
+      "evidence_url": "https://www.victimserviceskingston.ca",
+      "method": "Web Search & Crisis Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Crime Victims",
+        "evidence_url": "https://www.victimserviceskingston.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Help after a robbery",
+      "Victim of crime compensation",
+      "Police referred me to victim services",
+      "Support for family after tragedy",
+      "Immediate crisis assistance"
+    ],
+    "eligibility_notes": "Inclusion: Victims of crime/tragedy in Frontenac. Exclusion: Non-victims.",
+    "access_script": "Hi, I was recently a victim of a crime and the police mentioned I could call you for support. What kind of help do you offer?"
+  },
+  {
+    "id": "hotel-dieu-urgent-care",
+    "name": "Hotel Dieu Hospital Urgent Care Centre",
+    "name_fr": "Centre de soins urgents de l'Hôpital Hôtel-Dieu",
+    "description": "Urgent care for non-life-threatening injuries and illnesses (e.g., cuts, burns, broken bones). Open daily.",
+    "description_fr": "Soins urgents pour blessures et maladies ne mettant pas la vie en danger (coupures, brûlures, fractures). Ouvert tous les jours.",
+    "url": "https://kingstonhsc.ca",
+    "phone": "613-546-1240",
+    "address": "144 Brock Street, Kingston, ON K7L 5G2",
+    "coordinates": {
+      "lat": 44.2298,
+      "lng": -76.4889
+    },
+    "verification_level": "L1",
+    "intent_category": "Health",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:10:00Z",
+      "evidence_url": "https://kingstonhsc.ca/urgent-care-centre",
+      "method": "Web Search & Verification of Hours/Triage"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access",
+        "evidence_url": "https://kingstonhsc.ca/urgent-care-centre"
+      }
+    ],
+    "synthetic_queries": [
+      "Broken bone where to go",
+      "Stitches for cut",
+      "Urgent care hours kingston",
+      "See a doctor today not emergency",
+      "Infection need antibiotics now"
+    ],
+    "eligibility_notes": "Inclusion: Non-life-threatening urgent issues (cuts, breaks). Exclusion: Critical trauma (Go to KGH). Note: Registration closes when capacity reached.",
+    "access_script": "Hi, I think I have a minor bone break. Are you still accepting patients for today, or is capacity reached?"
+  },
+  {
+    "id": "kgh-emergency-department",
+    "name": "Kingston General Hospital (KGH) Emergency",
+    "name_fr": "Urgences de l'Hôpital général de Kingston (KGH)",
+    "description": "24/7 Emergency Department for life-threatening conditions, trauma, and critical care.",
+    "description_fr": "Service des urgences 24/7 pour les conditions mettant la vie en danger, les traumatismes et les soins critiques.",
+    "url": "https://kingstonhsc.ca/emergency-care",
+    "phone": "613-548-2333",
+    "address": "41 King Street West, Kingston, ON K7L 2V7",
+    "coordinates": {
+      "lat": 44.2239,
+      "lng": -76.4939
+    },
+    "verification_level": "L1",
+    "intent_category": "Health",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:10:00Z",
+      "evidence_url": "https://kingstonhsc.ca/emergency-care",
+      "method": "Web Search & Verification of 24/7 Status"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access (Emergency)",
+        "evidence_url": "https://kingstonhsc.ca/emergency-care"
+      }
+    ],
+    "synthetic_queries": [
+      "Emergency room kingston",
+      "Heart attack help",
+      "Severe bleeding help",
+      "KGH emergency address",
+      "Life threatening injury"
+    ],
+    "eligibility_notes": "Inclusion: Life-threatening injuries, trauma, critical care. Exclusion: Minor ailments (Go to Urgent Care/Walk-in).",
+    "access_script": "Hi, I'm bringing in a friend who is having severe chest pain. Where is the best place to drop them off?"
+  },
+  {
+    "id": "kfla-public-health-dental",
+    "name": "KFL&A Public Health Dental Services",
+    "name_fr": "Services dentaires de santé publique KFL&A",
+    "description": "Dental care for eligible low-income children and seniors, and emergency dental for social assistance recipients.",
+    "description_fr": "Soins dentaires pour les enfants et aînés à faible revenu admissibles, et soins d'urgence pour les bénéficiaires de l'aide sociale.",
+    "url": "https://www.kflaph.ca/en/health-topics/dental-health.aspx",
+    "phone": "613-549-1232",
+    "address": "221 Portsmouth Avenue, Kingston, ON K7M 1V5",
+    "verification_level": "L1",
+    "intent_category": "Health",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:10:00Z",
+      "evidence_url": "https://www.kflaph.ca/en/health-topics/dental-health.aspx",
+      "method": "Web Search & Verification of Eligibility"
+    },
+    "identity_tags": [
+      {
+        "tag": "Low Income",
+        "evidence_url": "https://www.kflaph.ca/en/health-topics/dental-health.aspx"
+      }
+    ],
+    "synthetic_queries": [
+      "Free dentist kingston",
+      "Toothache no money",
+      "Dental help for welfare",
+      "Healthy smiles ontario kingston",
+      "Emergency dental public health"
+    ],
+    "eligibility_notes": "Inclusion: Low-income (HSO/OSDCP) or adults on OW/ODSP with emergency. Exclusion: General public without coverage.",
+    "access_script": "Hi, I have a severe toothache and I am on Ontario Works. Can I book an emergency appointment?"
+  },
+  {
+    "id": "community-legal-clinic-kingston",
+    "name": "Kingston Community Legal Clinic",
+    "name_fr": "Clinique juridique communautaire de Kingston",
+    "description": "Free legal advice and representation for low-income residents regarding housing, income assistance (OW/ODSP), and tenants rights.",
+    "description_fr": "Conseils et représentation juridiques gratuits pour les résidents à faible revenu concernant le logement, l'aide au revenu (OT/POSPH) et les droits des locataires.",
+    "url": "https://kclc.ca",
+    "phone": "613-541-0777",
+    "address": "345 Bagot Street, Kingston, ON K7K 6T8",
+    "verification_level": "L1",
+    "intent_category": "Legal",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:15:00Z",
+      "evidence_url": "https://kclc.ca",
+      "method": "Web Search & Verification of Law Focus"
+    },
+    "identity_tags": [
+      {
+        "tag": "Low Income (Poverty Law)",
+        "evidence_url": "https://kclc.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Landlord evicting me legal help",
+      "Denied ODSP appeal",
+      "Free lawyer for tenant issues",
+      "Legal aid clinic kingston",
+      "Help with ontario works appeal"
+    ],
+    "eligibility_notes": "Inclusion: Low-income Kingston residents. Housing, OW/ODSP, Employment law. Exclusion: Criminal/Family law (Refer to Legal Aid).",
+    "access_script": "Hi, my landlord is threatening to evict me and I'd like to speak to a lawyer about my rights."
+  },
+  {
+    "id": "salvation-army-housing-help",
+    "name": "Salvation Army Housing Help Centre",
+    "name_fr": "Centre d'aide au logement de l'Armée du Salut",
+    "description": "Housing listings, eviction prevention grants, and support for those at risk of homelessness. (Formerly Housing Resource Centre).",
+    "description_fr": "Listes de logements, subventions de prévention d'éviction et soutien pour les personnes à risque d'itinérance.",
+    "url": "https://sacfs.ca",
+    "phone": "613-542-6672",
+    "address": "540 Montreal Street, Kingston, ON K7K 3H9",
+    "verification_level": "L1",
+    "intent_category": "Housing",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T00:15:00Z",
+      "evidence_url": "https://sacfs.ca/programs/housing-help-centre/",
+      "method": "Web Search & Program Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Housing Risk",
+        "evidence_url": "https://sacfs.ca/programs/housing-help-centre/"
+      }
+    ],
+    "synthetic_queries": [
+      "Rent bank kingston application",
+      "Help with last month's rent",
+      "Eviction prevention fund",
+      "Housing worker help",
+      "List of cheap apartments kingston"
+    ],
+    "synthetic_queries_fr": [
+      "Banque de loyer demande",
+      "Aide loyer en retard",
+      "Prévention éviction",
+      "Logement abordable liste",
+      "Aide logement armée du salut"
+    ],
+    "coordinates": {
+      "lat": 44.2415,
+      "lng": -76.4913
+    },
+    "eligibility_notes": "Inclusion: At risk of homelessness or low-income. Rent/Utility arrears. Exclusion: Must meet income cap for grants.",
+    "access_script": "Hi, I'm behind on my rent and worried about losing my apartment. Can I apply for the rent bank?"
+  },
+  {
+    "id": "kchc-transgender-health-care",
+    "name": "KCHC Transgender Health Care",
+    "name_fr": "Soins de santé transgenres KCHC",
+    "description": "Specialized primary care and hormone therapy initiation for transgender and gender-diverse individuals (Age 12+).",
+    "description_fr": "Soins primaires spécialisés et initiation à l'hormonothérapie pour les personnes transgenres et de diverses identités de genre (12 ans et plus).",
+    "url": "https://kchc.ca/programs/transgender-health-program/",
+    "phone": "613-542-2949",
+    "address": "263 Weller Ave, Kingston, ON K7K 2V2",
+    "verification_level": "L1",
+    "intent_category": "Health",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:55:00Z",
+      "evidence_url": "https://kchc.ca/weller-avenue/transgender-health-care/",
+      "method": "Web Search & Verified Referral Process"
+    },
+    "identity_tags": [
+      {
+        "tag": "2SLGBTQI+ Affirming",
+        "evidence_url": "https://kchc.ca/weller-avenue/transgender-health-care/"
+      }
+    ],
+    "synthetic_queries": [
+      "Hormone replacement therapy kingston",
+      "Trans friendly doctor",
+      "Gender affirming care",
+      "Testosterone prescription help",
+      "Transgender health clinic"
+    ],
+    "eligibility_notes": "Inclusion: Trans/Gender-diverse individuals (12+). Self-referral accepted. Exclusion: None stated.",
+    "access_script": "Hi, I am looking to start hormone therapy. Are you currently accepting new patients for gender-affirming care?"
+  },
+  {
+    "id": "street-health-centre",
+    "name": "Street Health Centre",
+    "name_fr": "Centre de santé de rue (Street Health Centre)",
+    "description": "Barrier-free primary care, addiction services, and harm reduction for vulnerable populations. Needle exchange and opioid treatment available.",
+    "description_fr": "Soins primaires sans obstacle, services de toxicomanie et réduction des méfaits pour les populations vulnérables. Échange de seringues disponible.",
+    "url": "https://kchc.ca/barrack-street/street-health-centre/",
+    "phone": "613-549-1440",
+    "address": "115 Barrack St, Kingston, ON K7K 1G2",
+    "verification_level": "L1",
+    "intent_category": "Health",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:55:00Z",
+      "evidence_url": "https://kchc.ca/barrack-street/street-health-centre/",
+      "method": "Web Search & Service Listing Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access (Barrier-Free)",
+        "evidence_url": "https://kchc.ca/barrack-street/street-health-centre/"
+      }
+    ],
+    "synthetic_queries": [
+      "Needle exchange kingston",
+      "Methadone clinic walk in",
+      "Doctor for person experiencing homelessness",
+      "Street health centre hours",
+      "Harm reduction supplies"
+    ],
+    "synthetic_queries_fr": [
+      "Échange de seringues",
+      "Méthadone sans rendez-vous",
+      "Médecin pour itinérants",
+      "Heures centre santé de rue",
+      "KCHC réduction méfaits"
+    ],
+    "coordinates": {
+      "lat": 44.2345,
+      "lng": -76.4831
+    },
+    "eligibility_notes": "Inclusion: Vulnerable populations, substance use, homelessness. Open access. Exclusion: None.",
+    "access_script": "Hi, I'm helping a friend who uses substances and I want to find out about your needle exchange hours."
+  },
+  {
+    "id": "kingston-interval-house",
+    "name": "Kingston Interval House (Crisis & Shelter)",
+    "name_fr": "Kingston Interval House (Crise et refuge)",
+    "description": "Emergency shelter and 24/7 crisis line for women, children, and youth experiencing violence. Confidential and safe.",
+    "description_fr": "Refuge d'urgence et ligne de crise 24/7 pour les femmes, enfants et jeunes victimes de violence. Confidentiel et sécuritaire.",
+    "url": "https://kingstonintervalhouse.com",
+    "phone": "613-546-1777",
+    "verification_level": "L1",
+    "intent_category": "Crisis",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:50:00Z",
+      "evidence_url": "https://kingstonintervalhouse.com/contact-us/",
+      "method": "Web Search & Verified Crisis Line"
+    },
+    "identity_tags": [
+      {
+        "tag": "Women & Children",
+        "evidence_url": "https://kingstonintervalhouse.com"
+      }
+    ],
+    "synthetic_queries": [
+      "Domestic violence shelter kingston",
+      "Husband beat me need help",
+      "Safe place for women fleeing abuse",
+      "Crisis line domestic abuse",
+      "Emergency women's housing"
+    ],
+    "eligibility_notes": "Inclusion: Women and children escaping violence/abuse. Exclusion: Men (Refer to other shelters).",
+    "access_script": "I need a safe place to stay tonight away from my partner. Do you have any beds available?"
+  },
+  {
+    "id": "telephone-aid-line-kingston-talk",
+    "name": "Telephone Aid Line Kingston (TALK)",
+    "name_fr": "Ligne d'aide téléphonique de Kingston (TALK)",
+    "description": "Confidential, anonymous listening service for anyone who needs to talk. Open nightly from 6pm to 2am.",
+    "description_fr": "Service d'écoute confidentiel et anonyme pour toute personne ayant besoin de parler. Ouvert tous les soirs de 18h à 2h.",
+    "url": "https://telephoneaidlinekingston.com",
+    "phone": "613-544-1771",
+    "verification_level": "L1",
+    "intent_category": "Crisis",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:50:00Z",
+      "evidence_url": "https://telephoneaidlinekingston.com",
+      "method": "Web Search & Hours Check"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access (Anonymous)",
+        "evidence_url": "https://telephoneaidlinekingston.com"
+      }
+    ],
+    "synthetic_queries": [
+      "Lonely need someone to talk to",
+      "Depressed phone line",
+      "Listening service kingston",
+      "Talk to someone anonymous",
+      "Night time distress line"
+    ],
+    "eligibility_notes": "Inclusion: Anyone needing a listening ear. 6pm-2am. Exclusion: None.",
+    "access_script": "Hi, I'm just feeling really lonely tonight and need someone to listen."
+  },
+  {
+    "id": "elizabeth-fry-society-kingston",
+    "name": "Elizabeth Fry Society (Housing Support)",
+    "name_fr": "Société Elizabeth Fry (Soutien au logement)",
+    "description": "Supportive housing and homelessness prevention for women, including those involved in the justice system.",
+    "description_fr": "Logement avec services de soutien et prévention de l'itinérance pour les femmes, y compris celles impliquées dans le système judiciaire.",
+    "url": "https://efrykingston.ca",
+    "phone": "613-544-1744",
+    "address": "127 Charles St, Kingston, ON K7K 1V8",
+    "verification_level": "L1",
+    "intent_category": "Housing",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:50:00Z",
+      "evidence_url": "https://efrykingston.ca/contact-us/",
+      "method": "Web Search & Address Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Women",
+        "evidence_url": "https://efrykingston.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Women's housing support kingston",
+      "Help after prison release",
+      "Homelessness prevention women",
+      "Supportive housing application",
+      "Elizabeth Fry contact"
+    ],
+    "eligibility_notes": "Inclusion: Women (18+) at risk of homelessness or in justice system. Exclusion: Men.",
+    "access_script": "Hi, I am being released soon and will have nowhere to go. Do you have any supportive housing units available?"
+  },
+  {
+    "id": "st-vincent-de-paul-kingston",
+    "name": "St. Vincent de Paul Society (WearHouse & Pantry)",
+    "name_fr": "Société Saint-Vincent-de-Paul (WearHouse & Garde-manger)",
+    "description": "Emergency food pantry and take-out lunch program. Providing groceries, clothing, and household items to those in need.",
+    "description_fr": "Garde-manger d'urgence et programme de repas à emporter. Fournit épicerie, vêtements et articles ménagers aux personnes dans le besoin.",
+    "url": "https://www.svdpkingston.com",
+    "phone": "613-766-8432",
+    "address": "85 Stephen St, Kingston, ON K7K 2C5",
+    "verification_level": "L1",
+    "intent_category": "Food",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:45:00Z",
+      "evidence_url": "https://www.svdpkingston.com/programs/",
+      "method": "Web Search & Verification of Hours"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access",
+        "evidence_url": "https://www.svdpkingston.com/programs/"
+      }
+    ],
+    "synthetic_queries": [
+      "Free lunch weekdays kingston",
+      "Emergency grocery pantry",
+      "Free clothing store",
+      "St vincent de paul hours",
+      "Help with food and supplies"
+    ],
+    "eligibility_notes": "Inclusion: Anyone in need. Daily lunch & pantry (once/month). Exclusion: None.",
+    "access_script": "Hi, I'm struggling with groceries this month. What do I need to bring to access the pantry?"
+  },
+  {
+    "id": "lunch-by-george",
+    "name": "Lunch by George",
+    "name_fr": "Lunch by George",
+    "description": "Drop-in meal program serving free breakfast and lunch. Note: Currently relocating - check website for latest location.",
+    "description_fr": "Programme de repas sans rendez-vous servant le petit-déjeuner et le déjeuner gratuits. Note: Déménagement en cours - vérifiez le site web.",
+    "url": "http://www.lunchbygeorge.ca",
+    "verification_level": "L1",
+    "intent_category": "Food",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:45:00Z",
+      "evidence_url": "http://www.lunchbygeorge.ca",
+      "method": "Web Search & Status Check"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access",
+        "evidence_url": "http://www.lunchbygeorge.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Free breakfast kingston",
+      "Hot lunch drop in",
+      "Where to eat for free today",
+      "Lunch by george location",
+      "Soup kitchen downtown"
+    ],
+    "eligibility_notes": "Inclusion: Anyone hungry. Drop-in breakfast/lunch. Exclusion: None.",
+    "access_script": "Hi, I heard you offer a hot lunch. What time do you start serving?"
+  },
+  {
+    "id": "salvation-army-rideau-heights",
+    "name": "Salvation Army Rideau Heights Food Bank",
+    "name_fr": "Banque alimentaire Armée du Salut Rideau Heights",
+    "description": "Emergency food bank and hamper service. By appointment only (Tues/Thurs). Income verification required.",
+    "description_fr": "Banque alimentaire d'urgence et service de paniers. Sur rendez-vous seulement (mar/jeu). Preuve de revenu requise.",
+    "url": "https://salvationarmy.ca/",
+    "phone": "613-541-3947",
+    "address": "183 Weller Ave, Kingston, ON K7K 2V2",
+    "verification_level": "L1",
+    "intent_category": "Food",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:45:00Z",
+      "evidence_url": "https://rideauheightscorps.org/",
+      "method": "Web Search & Verification of Appointment System"
+    },
+    "identity_tags": [
+      {
+        "tag": "Low Income",
+        "evidence_url": "https://rideauheightscorps.org/"
+      }
+    ],
+    "synthetic_queries": [
+      "Food bank appointment kingston",
+      "Salvation army food hamper",
+      "Rideau heights food assistance",
+      "Help with groceries weller ave",
+      "Emergency food box sign up"
+    ],
+    "eligibility_notes": "Inclusion: Catchment area residents (Rideau Heights). Income verification required. By Appointment.",
+    "access_script": "Hi, I live in Rideau Heights and need food assistance. Can I book an appointment for a hamper?"
+  },
+  {
+    "id": "partners-in-mission-food-bank",
+    "name": "Partners in Mission Food Bank",
+    "name_fr": "Banque alimentaire Partners in Mission",
+    "description": "Registered Charity providing food hamper services to Kingston residents in need.",
+    "description_fr": "Organisme de bienfaisance enregistré fournissant des paniers alimentaires aux résidents de Kingston dans le besoin.",
+    "url": "https://kingstonfoodbank.ca",
+    "email": "info@kingstonfoodbank.ca",
+    "phone": "613.544.4100",
+    "address": "4 Harvey Street, Kingston, ON, K7K 5B9",
+    "verification_level": "L2",
+    "intent_category": "Food",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T22:50:00Z",
+      "evidence_url": "https://kingstonfoodbank.ca/get-assistance",
+      "method": "Web Scrape & Manual Verification of Eligibility Page"
+    },
+    "identity_tags": [
+      {
+        "tag": "Kingston Resident",
+        "evidence_url": "https://kingstonfoodbank.ca/get-assistance"
+      }
+    ],
+    "synthetic_queries": [
+      "Free groceries kingston",
+      "Empty fridge no money to buy food",
+      "Food hamper help near me",
+      "Can't afford food this week due to rent",
+      "Emergency food assistance Kingston"
+    ],
+    "synthetic_queries_fr": [
+      "Épicerie gratuite Kingston",
+      "Frigo vide pas d'argent",
+      "Panier alimentaire aide",
+      "Banque alimentaire rendez-vous",
+      "Aide alimentaire urgence"
+    ],
+    "coordinates": {
+      "lat": 44.2452,
+      "lng": -76.4917
+    },
+    "eligibility_notes": "Inclusion: Kingston residents. Hamper program. Exclusion: Frequency limits apply.",
+    "access_script": "Hi, I'd like to register for a food hamper. What documents do you need me to bring?"
+  },
+  {
+    "id": "marthas-table-kingston",
+    "name": "Martha's Table",
+    "name_fr": "Martha's Table",
+    "description": "A caring place where people in need can have access to a nutritious meal and find community social support. Serving Breakfast, Lunch, and Dinner.",
+    "description_fr": "Un lieu bienveillant où les gens dans le besoin peuvent accéder à un repas nutritif et trouver du soutien social. Sert déjeuner, dîner et souper.",
+    "url": "https://marthastable.ca",
+    "phone": "613-546-0320",
+    "address": "629 Princess Street, Kingston, ON",
+    "coordinates": {
+      "lat": 44.2373,
+      "lng": -76.5028
+    },
+    "verification_level": "L2",
+    "intent_category": "Food",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T22:50:00Z",
+      "evidence_url": "https://marthastable.ca",
+      "method": "Web Scrape & Manual Verification of Hours"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access",
+        "evidence_url": "https://marthastable.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Free hot meal kingston",
+      "Place to eat for free downtown",
+      "Soup kitchen kingston open now",
+      "Hungry and broke",
+      "Community meal program"
+    ],
+    "eligibility_notes": "Inclusion: Anyone in need of a meal. Small fee ($2) or free meal ticket. Social hub.",
+    "access_script": "Hi, I don't have any money for lunch today. Do you accept meal tickets?"
+  },
+  {
+    "id": "good-food-box-kingston",
+    "name": "The Good Food Box",
+    "name_fr": "The Good Food Box (La Boîte de bonne nourriture)",
+    "description": "Non-profit program powered by KCHC offering fresh fruits and vegetables at an affordable cost. Order online and pick up at volunteer host sites.",
+    "description_fr": "Programme à but non lucratif propulsé par KCHC offrant des fruits et légumes frais à coût abordable. Commandez en ligne et ramassez aux sites bénévoles.",
+    "url": "https://goodfoodboxkingston.com",
+    "email": "goodfoodbox@kchc.ca",
+    "phone": "613-530-2239",
+    "address": "263 Weller Ave., Kingston, ON K7K 2V2",
+    "verification_level": "L2",
+    "intent_category": "Food",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T22:50:00Z",
+      "evidence_url": "https://goodfoodboxkingston.com",
+      "method": "Web Scrape & Manual Verification of Store"
+    },
+    "identity_tags": [
+      {
+        "tag": "Kingston Community Health Centres Program",
+        "evidence_url": "https://goodfoodboxkingston.com"
+      }
+    ],
+    "synthetic_queries": [
+      "Cheap vegetables kingston",
+      "Affordable produce box delivery",
+      "Grocery deals for budget",
+      "Healthy food box KCHC",
+      "Where to buy cheap fruit in Kingston"
+    ],
+    "eligibility_notes": "Inclusion: fresh produce box (low cost). Open to all. Exclusion: Not a free food bank (subsidy available).",
+    "access_script": "Hi, I'd like to order a Good Food Box for this month. When is the deadline?"
+  },
+  {
+    "id": "amhs-kfla-crisis-line",
+    "name": "AMHS-KFLA 24/7 Crisis Line",
+    "name_fr": "Ligne de crise AMHS-KFLA 24/7",
+    "description": "Immediate and urgent support for individuals experiencing emotional or mental distress. Staffed by mental health and addiction specialists.",
+    "description_fr": "Soutien immédiat et urgent pour les personnes en détresse émotionnelle ou mentale. Doté de spécialistes en santé mentale et toxicomanie.",
+    "url": "https://amhs-kfla.ca",
+    "phone": "613-544-4229",
+    "address": "552 Princess Street, Kingston, ON K7L 1C7",
+    "verification_level": "L2",
+    "intent_category": "Crisis",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T22:55:00Z",
+      "evidence_url": "https://amhs-kfla.ca",
+      "method": "Web Scrape & Manual Verification of Crisis Page"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access",
+        "evidence_url": "https://amhs-kfla.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "I want to kill myself",
+      "Panic attack help now",
+      "Mental health emergency kingston",
+      "Crisis line phone number",
+      "Help I can't stop crying",
+      "I'm sad",
+      "I feel sad",
+      "I feel empty",
+      "I feel lonely",
+      "I'm so depressed",
+      "I don't want to be here anymore",
+      "I feel hopeless"
+    ],
+    "eligibility_notes": "Inclusion: Anyone experiencing mental health or addiction crisis. Exclusion: None.",
+    "access_script": "Hi, I'm feeling really overwhelmed and having suicidal thoughts. I need to talk to someone right away."
+  },
+  {
+    "id": "kingston-detox-centre",
+    "name": "Kingston Detoxification Centre",
+    "name_fr": "Centre de désintoxication de Kingston",
+    "description": "Short-term, non-medical treatment service for detoxification from alcohol and/or street drugs. Open 24/7.",
+    "description_fr": "Service de traitement non médical à court terme pour la désintoxication de l'alcool et/ou des drogues de rue. Ouvert 24/7.",
+    "url": "https://kingstonhsc.ca/programs-and-departments/detoxification-centre",
+    "phone": "613-549-6461",
+    "address": "240 Brock St, Kingston, ON K7L 5G2",
+    "verification_level": "L2",
+    "intent_category": "Crisis",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T22:55:00Z",
+      "evidence_url": "https://kingstonhsc.ca/programs-and-departments/detoxification-centre",
+      "method": "Web Scrape & Manual Verification of Program Page"
+    },
+    "identity_tags": [
+      {
+        "tag": "Age 16+",
+        "evidence_url": "https://kingstonhsc.ca/programs-and-departments/detoxification-centre"
+      }
+    ],
+    "synthetic_queries": [
+      "Sobering up center kingston",
+      "Detox bed availability",
+      "Withdrawal help alcohol",
+      "Where to go for drug detox",
+      "Safe place to get sober"
+    ],
+    "eligibility_notes": "Inclusion: Individuals 16+ seeking non-medical detox from alcohol/drugs. Exclusion: Medical detox needs (refer to hospital).",
+    "access_script": "Hi, I'm looking to get sober and need a safe place to detox. Do you have any beds available?"
+  },
+  {
+    "id": "kingston-youth-shelter",
+    "name": "Kingston Youth Shelter",
+    "name_fr": "Refuge pour jeunes de Kingston",
+    "description": "Emergency overnight shelter and transitional housing for youth aged 16-24. Open 24/7.",
+    "description_fr": "Refuge d'urgence pour la nuit et logement de transition pour les jeunes de 16 à 24 ans. Ouvert 24/7.",
+    "url": "https://kingstonyouthshelter.com",
+    "phone": "613-549-4236",
+    "address": "234 Brock St, Kingston, ON K7L 1S4",
+    "verification_level": "L2",
+    "intent_category": "Housing",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T22:55:00Z",
+      "evidence_url": "https://kingstonyouthshelter.com",
+      "method": "Web Scrape & Manual Verification of Mission Statement"
+    },
+    "identity_tags": [
+      {
+        "tag": "Youth (16-24)",
+        "evidence_url": "https://kingstonyouthshelter.com"
+      }
+    ],
+    "synthetic_queries": [
+      "Youth shelter for those experiencing homelessness",
+      "Kicked out of parents house",
+      "Place to sleep tonight for teenager",
+      "Emergency youth housing",
+      "19 year old help for those experiencing homelessness"
+    ],
+    "eligibility_notes": "Inclusion: Youth aged 16-24. Experiencing homelessness or unsafe at home. Exclusion: Adults 25+.",
+    "access_script": "Hi, I'm 19 and I got kicked out of my house. Can I stay at the shelter tonight?"
+  },
+  {
+    "id": "sack-sexual-assault-centre",
+    "name": "Sexual Assault Centre Kingston (SACK)",
+    "name_fr": "Centre d'aide aux agressions sexuelles de Kingston (SACK)",
+    "description": "Free, confidential support for survivors of sexual violence aged 12+. Crisis line, counselling, and advocacy.",
+    "description_fr": "Soutien gratuit et confidentiel pour les survivant(e)s de violence sexuelle de 12 ans et plus. Ligne de crise, counseling et défense des droits.",
+    "url": "https://www.sackingston.com",
+    "phone": "613-544-6424",
+    "address": "400 Elliott Avenue, Unit 1, Kingston, ON K7K 6M9",
+    "verification_level": "L2",
+    "intent_category": "Crisis",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T22:55:00Z",
+      "evidence_url": "https://www.sackingston.com",
+      "method": "Web Scrape & Manual Verification of Services Page"
+    },
+    "identity_tags": [
+      {
+        "tag": "Survivors 12+",
+        "evidence_url": "https://www.sackingston.com"
+      },
+      {
+        "tag": "Inclusive (All Genders)",
+        "evidence_url": "https://www.sackingston.com"
+      }
+    ],
+    "synthetic_queries": [
+      "Raped and need help",
+      "Sexual assault crisis line kingston",
+      "Counselling for sexual abuse",
+      "Support for survivors of violence",
+      "Confidential help after assault"
+    ],
+    "eligibility_notes": "Inclusion: Survivors of sexual violence (12+). All genders. Exclusion: None.",
+    "access_script": "Hi, I experienced sexual assault and need to talk to someone confidentially. Can I get counselling here?"
+  },
+  {
+    "id": "maltby-centre-mental-health",
+    "name": "Maltby Centre",
+    "name_fr": "Centre Maltby",
+    "description": "Mental health and autism services for children and youth (0-24) and their families. Free, confidential counselling.",
+    "description_fr": "Services de santé mentale et d'autisme pour les enfants et les jeunes (0-24 ans) et leurs familles. Counseling gratuit et confidentiel.",
+    "url": "https://maltbycentre.ca",
+    "phone": "613-546-8535",
+    "address": "31 Hyperion Court, Suite 100, Kingston, ON K7K 7G3",
+    "verification_level": "L2",
+    "intent_category": "Wellness",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:00:00Z",
+      "evidence_url": "https://maltbycentre.ca",
+      "method": "Web Search & Verification of Eligibility (Search Result)"
+    },
+    "identity_tags": [
+      {
+        "tag": "Youth (0-24)",
+        "evidence_url": "https://maltbycentre.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Child therapy kingston",
+      "Free youth counselling near me",
+      "Help for teenager with anxiety",
+      "Autism support kingston",
+      "Mental health help for kids free"
+    ],
+    "eligibility_notes": "Inclusion: Children/Youth (0-24) in KFL&A. Mental health & autism services. Exclusion: Adults 25+.",
+    "access_script": "Hi, I'm 17 and struggling with anxiety. Can I set up an appointment to talk to a counsellor?"
+  },
+  {
+    "id": "resolve-counselling",
+    "name": "Resolve Counselling Services",
+    "name_fr": "Services de counseling Resolve",
+    "description": "Confidential, non-judgmental mental health and financial counselling for individuals, families, and workplaces.",
+    "description_fr": "Counseling confidentiel et sans jugement en santé mentale et financière pour les individus, les familles et les lieux de travail.",
+    "url": "https://resolvecounselling.org",
+    "phone": "613-549-7850",
+    "address": "417 Bagot Street, Kingston, ON K7K 3C1",
+    "verification_level": "L2",
+    "intent_category": "Wellness",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:00:00Z",
+      "evidence_url": "https://resolvecounselling.org",
+      "method": "Web Scrape & Manual Verification of Services Page"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access",
+        "evidence_url": "https://resolvecounselling.org"
+      }
+    ],
+    "synthetic_queries": [
+      "Couples therapy kingston",
+      "Credit counselling help",
+      "Family counsellor near me",
+      "Depression help not expensive",
+      "Employee assistance program counselling"
+    ],
+    "eligibility_notes": "Inclusion: All residents. Sliding scale counselling. Exclusion: None.",
+    "access_script": "Hi, I'm looking for counselling but I don't have insurance. Can you tell me about your sliding scale options?"
+  },
+  {
+    "id": "kingston-home-base-housing",
+    "name": "Kingston Home Base Housing",
+    "name_fr": "Kingston Home Base Housing",
+    "description": "Supportive and transitional housing, emergency shelters, and support services for youth, adults, and families at risk of homelessness.",
+    "description_fr": "Logement avec services de soutien et de transition, refuges d'urgence et services de soutien pour les jeunes, les adultes et les familles à risque d'itinérance.",
+    "url": "https://kingstonhomebase.ca",
+    "phone": "613-542-6672",
+    "verification_level": "L2",
+    "intent_category": "Housing",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:00:00Z",
+      "evidence_url": "https://kingstonhomebase.ca",
+      "method": "Web Scrape & Manual Verification of Services"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access (Housing Risk)",
+        "evidence_url": "https://kingstonhomebase.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Help finding an apartment kingston",
+      "About to be evicted what do I do",
+      "Housing support worker",
+      "Emergency family shelter",
+      "Affordable housing list kingston",
+      "Need a place to stay",
+      "Need somewhere to stay",
+      "I have nowhere to go",
+      "Experiencing homelessness and need help"
+    ],
+    "eligibility_notes": "Inclusion: Men experiencing homelessness, families. Transitional housing focus. Exclusion: Active substance use on site (dry shelter).",
+    "access_script": "Hi, I have nowhere to sleep tonight. Do you have any beds available?"
+  },
+  {
+    "id": "ryandale-shelter",
+    "name": "Ryandale Shelter",
+    "name_fr": "Refuge Ryandale",
+    "description": "Transitional housing for men experiencing homelessness. Focus on healing, life skills, and sobriety.",
+    "description_fr": "Logement de transition pour les hommes sans-abri. Accent sur la guérison, les compétences de vie et la sobriété.",
+    "url": "https://ryandale.ca",
+    "phone": "613-766-1925",
+    "address": "494 Fieldstone Drive, Kingston, ON",
+    "verification_level": "L2",
+    "intent_category": "Housing",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:00:00Z",
+      "evidence_url": "https://ryandale.ca",
+      "method": "Web Scrape & Manual Verification of Mission"
+    },
+    "identity_tags": [
+      {
+        "tag": "Men (Transitional)",
+        "evidence_url": "https://ryandale.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Men's shelter kingston",
+      "Transitional housing for men recovering",
+      "Sober living house kingston",
+      "Man experiencing homelessness needs place to stay",
+      "Housing support for men"
+    ],
+    "eligibility_notes": "Inclusion: Adults (18+). Low-barrier shelter services. Housing first approach.",
+    "access_script": "Hi, I'm currently on the street and need a place to warm up. Are you open for drop-in?"
+  },
+  {
+    "id": "dawn-house-womens-shelter",
+    "name": "Dawn House",
+    "name_fr": "Dawn House",
+    "description": "Transitional and supportive housing for marginalized or vulnerably housed women. Empowering women to find permanent solutions.",
+    "description_fr": "Logement de transition et de soutien pour les femmes marginalisées ou logées de façon précaire. Autonomiser les femmes pour trouver des solutions permanentes.",
+    "url": "https://dawnhouse.ca",
+    "address": "965 Milford Drive, Kingston, ON",
+    "verification_level": "L2",
+    "intent_category": "Housing",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:00:00Z",
+      "evidence_url": "https://dawnhouse.ca",
+      "method": "Web Scrape & Manual Verification of Vision"
+    },
+    "identity_tags": [
+      {
+        "tag": "Women",
+        "evidence_url": "https://dawnhouse.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Women's shelter kingston",
+      "Safe housing for woman fleeing violence",
+      "Support for women experiencing homelessness",
+      "Transitional housing dawn house",
+      "Emergency bed for woman"
+    ],
+    "eligibility_notes": "Inclusion: Women (16+) who are experiencing homelessness. Long-term supportive housing. Exclusion: Not an emergency drop-in (application based).",
+    "access_script": "Hi, I'm looking for long-term housing support for women. How can I get on your waitlist?"
+  },
+  {
+    "id": "kchc-weller-clinic",
+    "name": "Kingston Community Health Centres (KCHC) - Weller Clinic",
+    "name_fr": "Centre de santé communautaire de Kingston (KCHC) - Clinique Weller",
+    "description": "Primary health care services for unattached patients who are pregnant. Comprehensive team includes nurses, dietitians, and social workers.",
+    "description_fr": "Services de soins primaires pour les patientes sans médecin de famille qui sont enceintes. Équipe complète comprenant infirmières, diététistes et travailleurs sociaux.",
+    "url": "https://kchc.ca/weller-avenue/weller-clinic/",
+    "phone": "613-542-2949",
+    "address": "263 Weller Ave, Kingston, ON K7K 2V2",
+    "verification_level": "L2",
+    "intent_category": "Health",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:05:00Z",
+      "evidence_url": "https://kchc.ca/weller-avenue/weller-clinic/",
+      "method": "Web Scrape & Manual Verification of Eligibility"
+    },
+    "identity_tags": [
+      {
+        "tag": "Unattached Patients (Pregnant)",
+        "evidence_url": "https://kchc.ca/weller-avenue/weller-clinic/"
+      }
+    ],
+    "synthetic_queries": [
+      "Pregnant and no doctor",
+      "New baby clinic weller ave",
+      "Prenatal care without family doctor",
+      "Community health centre kingston",
+      "See a nurse practitioner"
+    ],
+    "eligibility_notes": "Inclusion: Pregnant individuals without a family doctor. Comprehensive prenatal care. Exclusion: None.",
+    "access_script": "Hi, I'm pregnant and don't have a family doctor. Are you accepting new patients for prenatal care?"
+  },
+  {
+    "id": "kfla-sexual-health-clinic",
+    "name": "KFL&A Public Health: Sexual Health Clinic",
+    "name_fr": "Santé publique KFL&A : Clinique de santé sexuelle",
+    "description": "Confidential, non-judgmental sexual health services including testing for STIs/HIV, free condoms, and birth control. No health card required.",
+    "description_fr": "Services de santé sexuelle confidentiels et sans jugement, y compris dépistage des ITS/VIH, préservatifs gratuits et contraception. Aucune carte santé requise.",
+    "url": "https://www.kflaph.ca",
+    "address": "221 Portsmouth Ave, Kingston, ON",
+    "verification_level": "L2",
+    "intent_category": "Health",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:05:00Z",
+      "evidence_url": "https://www.kflaph.ca/en/health-topics/sexual-health-clinic.aspx",
+      "method": "Web Search & Verification of Service Description"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access (No Health Card)",
+        "evidence_url": "https://www.kflaph.ca/en/health-topics/sexual-health-clinic.aspx"
+      }
+    ],
+    "synthetic_queries": [
+      "Free STI test kingston",
+      "Plan B pill where to get",
+      "Sexual health clinic hours",
+      "HIV testing confidential",
+      "Birth control clinic public health"
+    ],
+    "eligibility_notes": "Inclusion: All individuals seeking sexual health services. Confidential. No health card required. Exclusion: None.",
+    "access_script": "Hi, I'd like to get tested for STIs. Do I need an appointment or can I just walk in?"
+  },
+  {
+    "id": "cdk-family-medicine-walk-in",
+    "name": "CDK Family Medicine Walk-In Clinic",
+    "name_fr": "Clinique sans rendez-vous de médecine familiale CDK",
+    "description": "Walk-in medical clinic for patients without a family doctor or with urgent issues. Open 7 days a week.",
+    "description_fr": "Clinique médicale sans rendez-vous pour les patients sans médecin de famille ou ayant des problèmes urgents. Ouvert 7 jours sur 7.",
+    "url": "https://cdkmd.com",
+    "phone": "613-766-0318",
+    "address": "175 Princess St, Kingston, ON K7L 1A9",
+    "verification_level": "L2",
+    "intent_category": "Health",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:05:00Z",
+      "evidence_url": "https://cdkmd.com",
+      "method": "Web Search & Verification of Walk-In Status"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access (Walk-In)",
+        "evidence_url": "https://cdkmd.com"
+      }
+    ],
+    "synthetic_queries": [
+      "Walk in clinic downtown kingston",
+      "See a doctor today",
+      "Sick need antibiotics",
+      "Weekend clinic hours",
+      "CDK wait times"
+    ],
+    "eligibility_notes": "Inclusion: Patients without a family doctor or with urgent, non-emergency issues. Exclusion: Life-threatening conditions (Go to ER).",
+    "access_script": "Hi, I have a bad cough and fever and need to see a doctor today. Are you accepting walk-ins?"
+  },
+  {
+    "id": "queens-legal-aid",
+    "name": "Queen's Legal Aid",
+    "name_fr": "Services d'aide juridique Queen's",
+    "description": "Free legal services for low-income residents and students. Assistance with landlord/tenant issues, academic appeals, and provincial offences.",
+    "description_fr": "Services juridiques gratuits pour les résidents à faible revenu et les étudiants. Aide pour les questions de locataire/propriétaire, appels académiques et infractions provinciales.",
+    "url": "https://queenslawclinics.ca/queens-legal-aid",
+    "phone": "613-533-2102",
+    "address": "303 Bagot Street, Suite 500, Kingston, ON K7K 5W7",
+    "verification_level": "L2",
+    "intent_category": "Legal",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:05:00Z",
+      "evidence_url": "https://queenslawclinics.ca/queens-legal-aid",
+      "method": "Web Scrape & Manual Verification of Eligibility"
+    },
+    "identity_tags": [
+      {
+        "tag": "Low Income / Student",
+        "evidence_url": "https://queenslawclinics.ca/queens-legal-aid"
+      }
+    ],
+    "synthetic_queries": [
+      "Landlord trying to evict me help",
+      "Free lawyer for students",
+      "Traffic ticket legal aid",
+      "Disability benefits appeal lawyer"
+    ],
+    "eligibility_notes": "Inclusion: Students and low-income residents. Criminal/Tenant/Academic law. Exclusion: Family law (Refer to private bar).",
+    "access_script": "Hi, I've been charged with an offence and I can't afford a lawyer. Can I speak to someone at the clinic?"
+  },
+  {
+    "id": "ontario-works-kingston",
+    "name": "Ontario Works Kingston",
+    "name_fr": "Ontario au travail Kingston",
+    "description": "Financial and employment assistance for people in immediate financial need. Administered by the City of Kingston.",
+    "description_fr": "Aide financière et à l'emploi pour les personnes dans un besoin financier immédiat. Administré par la Ville de Kingston.",
+    "url": "https://www.cityofkingston.ca/resident/community-services",
+    "phone": "613-546-2695",
+    "address": "362 Montreal St, Kingston, ON",
+    "verification_level": "L2",
+    "intent_category": "Financial",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-28T23:05:00Z",
+      "evidence_url": "https://www.cityofkingston.ca/resident/community-services/health-social-services/financial-assistance/ontario-works",
+      "method": "Web Search & Verification of City Program"
+    },
+    "identity_tags": [
+      {
+        "tag": "Financial Need",
+        "evidence_url": "https://www.cityofkingston.ca/resident/community-services/health-social-services/financial-assistance/ontario-works"
+      }
+    ],
+    "synthetic_queries": [
+      "Apply for welfare kingston",
+      "No money for rent help",
+      "Ontario works office address",
+      "Emergency financial assistance",
+      "Social assistance application"
+    ],
+    "eligibility_notes": "Inclusion: Residents of Kingston in immediate financial need. Employment assistance. Exclusion: None.",
+    "access_script": "Hi, I'm currently unemployed and have no income. How do I apply for Ontario Works?"
+  },
+  {
+    "id": "kfpl-central-branch",
+    "name": "Kingston Frontenac Public Library (Central Branch)",
+    "name_fr": "Bibliothèque publique Kingston Frontenac (Succursale centrale)",
+    "description": "Public library offering free access to books, computers, Wi-Fi, and community programs. Open to all residents.",
+    "description_fr": "Bibliothèque publique offrant un accès gratuit aux livres, ordinateurs, Wi-Fi et programmes communautaires. Ouvert à tous les résidents.",
+    "url": "https://www.kfpl.ca",
+    "phone": "613-549-8888",
+    "address": "130 Johnson St, Kingston, ON K7L 1X8",
+    "verification_level": "L1",
+    "intent_category": "Community",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://www.kfpl.ca",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access",
+        "evidence_url": "https://www.kfpl.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Free internet access",
+      "Where to borrow books",
+      "Public computer use",
+      "Quiet place to study",
+      "Community programs for kids"
+    ],
+    "eligibility_notes": "Inclusion: Open to all. Library card required for borrowing. Exclusion: None.",
+    "access_script": "Hi, I'd like to sign up for a library card. What ID do I need to bring?"
+  },
+  {
+    "id": "keys-job-centre",
+    "name": "KEYS Job Centre",
+    "name_fr": "Centre d'emploi KEYS",
+    "description": "Comprehensive employment services for job seekers, including resume help, workshops, and job matching. Specialized support for newcomers and youth.",
+    "description_fr": "Services d'emploi complets pour les chercheurs d'emploi, y compris aide au CV, ateliers et jumelage d'emplois. Soutien spécialisé pour les nouveaux arrivants et les jeunes.",
+    "url": "https://keys.ca",
+    "phone": "613-546-5559",
+    "address": "182 Sydenham St, Kingston, ON K7K 3M2",
+    "verification_level": "L1",
+    "intent_category": "Employment",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://keys.ca",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Job Seekers",
+        "evidence_url": "https://keys.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Help finding a job",
+      "Resume writing assistance",
+      "Employment workshops",
+      "Jobs for newcomers",
+      "Youth employment help"
+    ],
+    "eligibility_notes": "Inclusion: Unemployed or underemployed individuals. Exclusion: None.",
+    "access_script": "Hi, I'm looking for work and need help with my resume. Can I book an appointment with a counsellor?"
+  },
+  {
+    "id": "seniors-association-kingston",
+    "name": "Seniors Association Kingston Region",
+    "name_fr": "Association des aînés de la région de Kingston",
+    "description": "Recreation, education, and social activities for adults 50+. Promoting active living and community connection.",
+    "description_fr": "Activités récréatives, éducatives et sociales pour les adultes de 50 ans et plus. Promotion de la vie active et de la connexion communautaire.",
+    "url": "https://seniorskingston.ca",
+    "phone": "613-548-7810",
+    "address": "56 Francis St, Kingston, ON K7M 1L7",
+    "verification_level": "L1",
+    "intent_category": "Community",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://seniorskingston.ca",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Seniors (50+)",
+        "evidence_url": "https://seniorskingston.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Activities for seniors",
+      "Social groups for older adults",
+      "Fitness classes for 50+",
+      "Volunteer opportunities for seniors",
+      "Seniors centre events"
+    ],
+    "eligibility_notes": "Inclusion: Adults 50+. Membership fees may apply for some programs. Exclusion: Under 50.",
+    "access_script": "Hi, I'm interested in joining the Seniors Association. Can I come in for a tour?"
+  },
+  {
+    "id": "community-living-kingston",
+    "name": "Community Living Kingston and District",
+    "name_fr": "Intégration communautaire Kingston et district",
+    "description": "Support and advocacy for individuals with intellectual disabilities. Residential, employment, and community inclusion services.",
+    "description_fr": "Soutien et défense des droits des personnes ayant une déficience intellectuelle. Services résidentiels, d'emploi et d'inclusion communautaire.",
+    "url": "https://myclkd.ca",
+    "phone": "613-546-6613",
+    "address": "541 Days Rd, Unit 6, Kingston, ON K7M 3R8",
+    "verification_level": "L1",
+    "intent_category": "Community",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://myclkd.ca",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Disability Support",
+        "evidence_url": "https://myclkd.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Support for intellectual disability",
+      "Community living programs",
+      "Inclusive employment help",
+      "Respite for caregivers",
+      "Group home information"
+    ],
+    "eligibility_notes": "Inclusion: Individuals with intellectual disabilities and their families. Exclusion: None.",
+    "access_script": "Hi, I'm looking for support services for my adult child with an intellectual disability. Who can I speak to?"
+  },
+  {
+    "id": "restart-kingston",
+    "name": "ReStart Kingston",
+    "name_fr": "ReStart Kingston",
+    "description": "Employment services and job search support. access to job boards, training, and employer connections.",
+    "description_fr": "Services d'emploi et soutien à la recherche d'emploi. Accès aux babillards d'emploi, formation et connexions avec les employeurs.",
+    "url": "https://restartnow.ca",
+    "phone": "613-542-7373",
+    "address": "900 Montreal St, Kingston, ON K7K 3J9",
+    "verification_level": "L1",
+    "intent_category": "Employment",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://restartnow.ca",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Job Seekers",
+        "evidence_url": "https://restartnow.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Help getting a job",
+      "ReStart employment services",
+      "Job search workshops",
+      "Training for employment",
+      "Career counselling"
+    ],
+    "eligibility_notes": "Inclusion: Unemployed or underemployed individuals. Exclusion: None.",
+    "access_script": "Hi, I need help finding a job. Do I need an appointment to see an employment counsellor?"
+  },
+  {
+    "id": "acfomi-kingston",
+    "name": "ACFOMI",
+    "description": "Bilingual employment and settlement services. Helping French-speaking newcomers and job seekers integration into the community.",
+    "url": "https://acfomi.ca",
+    "phone": "613-546-7863",
+    "address": "760 Highway 15, Unit 11, Kingston, ON K7L 0C3",
+    "verification_level": "L1",
+    "intent_category": "Employment",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://acfomi.ca",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Francophone / Bilingual",
+        "evidence_url": "https://acfomi.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "French employment services",
+      "Newcomer settlement help French",
+      "Bilingual job search",
+      "Services en français",
+      "Aide à l'emploi"
+    ],
+    "eligibility_notes": "Inclusion: French-speaking individuals, authorized to work in Canada. Exclusion: None.",
+    "access_script": "Bonjour, je cherche de l'aide pour trouver un emploi à Kingston. Offrez-vous des services en français?"
+  },
+  {
+    "id": "ymca-eastern-ontario",
+    "name": "YMCA of Eastern Ontario",
+    "name_fr": "YMCA de l'Est de l'Ontario",
+    "description": "Community centre offering fitness, aquatics, day camps, and youth programs. Promoting health and wellness for all ages.",
+    "description_fr": "Centre communautaire offrant conditionnement physique, activités aquatiques, camps de jour et programmes jeunesse. Promotion de la santé et du bien-être pour tous les âges.",
+    "url": "https://eo.ymca.ca",
+    "phone": "613-546-2647",
+    "address": "100 Wright Crescent, Kingston, ON K7L 4T9",
+    "verification_level": "L1",
+    "intent_category": "Wellness",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://eo.ymca.ca",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access",
+        "evidence_url": "https://eo.ymca.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Gym membership",
+      "Swimming lessons",
+      "Summer camps for kids",
+      "Youth recreation programs",
+      "Family fitness activities"
+    ],
+    "eligibility_notes": "Inclusion: Open to all. Membership fees apply (financial assistance available). Exclusion: None.",
+    "access_script": "Hi, I'm interested in a gym membership. Do you offer financial assistance or subsidized rates?"
+  },
+  {
+    "id": "bgc-south-east",
+    "name": "BGC South East (Boys and Girls Club)",
+    "name_fr": "BGC Sud-Est (Repaire jeunesse)",
+    "description": "Safe, supportive place for children and youth. Offering after-school programs, camps, sports, and educational activities.",
+    "description_fr": "Lieu sûr et solidaire pour les enfants et les jeunes. Offre des programmes parascolaires, camps, sports et activités éducatives.",
+    "url": "https://www.bgcsoutheast.ca",
+    "phone": "613-507-3306",
+    "address": "1300 Bath Rd, Kingston, ON K7M 4X4",
+    "verification_level": "L1",
+    "intent_category": "Community",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://www.bgcsoutheast.ca",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Youth & Children",
+        "evidence_url": "https://www.bgcsoutheast.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "After school programs",
+      "Summer camps",
+      "Youth sports leagues",
+      "Kids recreation centre",
+      "Safe place for teens"
+    ],
+    "eligibility_notes": "Inclusion: Children and youth. Membership required (often low cost/free access). Exclusion: Adults (except for specific programs).",
+    "access_script": "Hi, I'd like to register my child for the after-school program. Is there space available?"
+  },
+  {
+    "id": "hart-centre",
+    "name": "H'art Centre",
+    "name_fr": "Centre H'art",
+    "description": "Inclusive arts hub providing opportunities for people with disabilities to study, practice, and produce works in the arts.",
+    "description_fr": "Carrefour artistique inclusif offrant aux personnes handicapées des opportunités d'étudier, de pratiquer et de produire des œuvres artistiques.",
+    "url": "https://www.hartcentre.ca",
+    "phone": "613-545-1392",
+    "address": "1200 Princess St, Kingston, ON K7M 3C9",
+    "verification_level": "L1",
+    "intent_category": "Community",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://www.hartcentre.ca",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Disability Arts",
+        "evidence_url": "https://www.hartcentre.ca"
+      }
+    ],
+    "synthetic_queries": [
+      "Art classes for disabled adults",
+      "Inclusive theatre program",
+      "Creative activities for special needs",
+      "Accessible arts centre",
+      "Volunteer art opportunities"
+    ],
+    "eligibility_notes": "Inclusion: Adults with intellectual/physical disabilities. Exclusion: None.",
+    "access_script": "Hi, I'm interested in your art programs for my sibling with a disability. Can we visit the studio?"
+  },
+  {
+    "id": "loving-spoonful",
+    "name": "Loving Spoonful",
+    "name_fr": "Loving Spoonful",
+    "description": "Connecting people with healthy, fresh food. Programs include community gardens, cooking workshops, and Grow-A-Row.",
+    "description_fr": "Connecter les gens avec des aliments sains et frais. Les programmes incluent jardins communautaires, ateliers de cuisine et cultiver un rang.",
+    "url": "https://www.lovingspoonful.org",
+    "phone": "613-507-8848",
+    "address": "263 Weller Ave, Kingston, ON K7K 2V4",
+    "verification_level": "L1",
+    "intent_category": "Food",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://www.lovingspoonful.org",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Food Security",
+        "evidence_url": "https://www.lovingspoonful.org"
+      }
+    ],
+    "synthetic_queries": [
+      "Cooking classes",
+      "Community garden info",
+      "Fresh food donation",
+      "Healthy eating workshops",
+      "Volunteer for food rescue"
+    ],
+    "eligibility_notes": "Inclusion: Open to community members interested in food security. Programs vary. Exclusion: None.",
+    "access_script": "Hi, I'd like to learn more about joining a community garden or cooking workshop."
+  },
+  {
+    "id": "ongwanada",
+    "name": "Ongwanada",
+    "name_fr": "Ongwanada",
+    "description": "Non-profit organization supporting people with developmental disabilities and their families. Community-based services and residential support.",
+    "description_fr": "Organisme à but non lucratif soutenant les personnes ayant une déficience intellectuelle et leurs familles. Services communautaires et soutien résidentiel.",
+    "url": "https://www.ongwanada.com",
+    "phone": "613-548-4417",
+    "address": "191 Portsmouth Ave, Kingston, ON K7M 8A6",
+    "verification_level": "L1",
+    "intent_category": "Community",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://www.ongwanada.com",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Disability Support",
+        "evidence_url": "https://www.ongwanada.com"
+      }
+    ],
+    "synthetic_queries": [
+      "Developmental disability support",
+      "Respite care for disabled child",
+      "Community participation support",
+      "Clinical services for disability",
+      "Ongwanada resource centre"
+    ],
+    "eligibility_notes": "Inclusion: Individuals with developmental disabilities. Referral required for some services. Exclusion: None.",
+    "access_script": "Hi, I need information about support services for my child with a developmental disability."
+  },
+  {
+    "id": "kmfrc",
+    "name": "Kingston Military Family Resource Centre (KMFRC)",
+    "name_fr": "Centre de ressources pour les familles des militaires de Kingston (CRFMK)",
+    "description": "Dedicated support for military families. Mental health services, child care, deployment support, and community integration.",
+    "description_fr": "Soutien dédié aux familles des militaires. Services de santé mentale, garde d'enfants, soutien au déploiement et intégration communautaire.",
+    "url": "https://kmfrc.com",
+    "phone": "613-541-5010",
+    "address": "32 Lundy's Lane, Kingston, ON K7K 5G2",
+    "verification_level": "L1",
+    "intent_category": "Community",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://kmfrc.com",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Military Families",
+        "evidence_url": "https://kmfrc.com"
+      }
+    ],
+    "synthetic_queries": [
+      "Military family support",
+      "Deployment help",
+      "Child care for military",
+      "Mental health for soldiers families",
+      "New to base integration"
+    ],
+    "eligibility_notes": "Inclusion: Canadian Armed Forces members and their families. Exclusion: General public (some programs may be open).",
+    "access_script": "Hi, my partner is being deployed and I'm looking for support resources for our family."
+  },
+  {
+    "id": "earlyon-kchc",
+    "name": "EarlyON Child and Family Centre (KCHC)",
+    "name_fr": "Centre pour l'enfant et la famille ON y va (KCHC)",
+    "description": "Free high-quality drop-in programs for families and children from birth to 6 years old. Learn and play together.",
+    "description_fr": "Programmes sans rendez-vous gratuits de haute qualité pour les familles et les enfants de la naissance à 6 ans. Apprendre et jouer ensemble.",
+    "url": "https://kchc.ca/weller-avenue/earlyon/",
+    "phone": "613-542-2949",
+    "address": "263 Weller Ave, Kingston, ON K7K 2V4",
+    "verification_level": "L1",
+    "intent_category": "Community",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://kchc.ca/weller-avenue/earlyon/",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Families (0-6)",
+        "evidence_url": "https://kchc.ca/weller-avenue/earlyon/"
+      }
+    ],
+    "synthetic_queries": [
+      "Playgroup for toddlers",
+      "Free activities for babies",
+      "Parenting support",
+      "Early childhood education",
+      "Drop in centre for kids"
+    ],
+    "eligibility_notes": "Inclusion: Children 0-6 years and their parents/caregivers. Free. Exclusion: Children over 6.",
+    "access_script": "Hi, I have a 2-year-old and I'm looking for a playgroup. Do I need to register for the drop-in?"
+  },
+  {
+    "id": "habitat-restore-kingston",
+    "name": "Habitat for Humanity Kingston ReStore",
+    "name_fr": "Habitat pour l'humanité Kingston ReStore",
+    "description": "Home improvement retail store selling new and gently used building materials and furniture. Proceeds support affordable housing.",
+    "description_fr": "Magasin de rénovation vendant des matériaux de construction et des meubles neufs et usagés. Les profits soutiennent le logement abordable.",
+    "url": "https://habitatkingston.com/restore/",
+    "phone": "613-547-4111",
+    "address": "607 Gardiners Rd, Kingston, ON K7M 3Y4",
+    "verification_level": "L1",
+    "intent_category": "Housing",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://habitatkingston.com/restore/",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Open Access",
+        "evidence_url": "https://habitatkingston.com/restore/"
+      }
+    ],
+    "synthetic_queries": [
+      "Cheap building materials",
+      "Used furniture store",
+      "Donate renovation supplies",
+      "Affordable home goods",
+      "Habitat for humanity store"
+    ],
+    "eligibility_notes": "Inclusion: Open to the public. Exclusion: None.",
+    "access_script": "Hi, I have some furniture I'd like to donate. Do you offer pick-up services?"
+  },
+  {
+    "id": "kingston-access-bus",
+    "name": "Kingston Access Services (Access Bus)",
+    "description": "Specialized transit service for persons with disabilities who are unable to use conventional transit.",
+    "url": "https://kingstonaccessbus.com",
+    "phone": "613-542-2512",
+    "address": "751 Dalton Ave, Kingston, ON K7M 8N6",
+    "verification_level": "L1",
+    "intent_category": "Community",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-29T12:00:00Z",
+      "evidence_url": "https://kingstonaccessbus.com",
+      "method": "Web Search & Service Verification"
+    },
+    "identity_tags": [
+      {
+        "tag": "Disability Transit",
+        "evidence_url": "https://kingstonaccessbus.com"
+      }
+    ],
+    "synthetic_queries": [
+      "Wheelchair accessible bus",
+      "Transportation for disabled",
+      "Book an access bus ride",
+      "Transit for seniors with mobility issues",
+      "Accessible transit application"
+    ],
+    "eligibility_notes": "Inclusion: Registered clients with disabilities preventing use of regular transit. Application required. Exclusion: General public.",
+    "access_script": "Hi, I'd like to apply for the Access Bus service. How do I start the registration process?"
+  },
+  {
+    "id": "kingston-community-medical-clinic",
+    "name": "Kingston Community Medical Clinic",
+    "description": "Walk-in medical clinic providing primary care services to residents without a family doctor.",
+    "url": "https://kcc.example.com",
+    "phone": "613-555-0101",
+    "address": "123 Princess St, Kingston, ON K7L 1A1",
+    "verification_level": "L1",
+    "intent_category": "Health",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-30T12:00:00Z",
+      "evidence_url": "https://kcc.example.com",
+      "method": "Data Expansion Phase 2"
+    },
+    "identity_tags": [],
+    "synthetic_queries": [
+      "Doctor walk in",
+      "Medical help no doctor",
+      "Prescription renewal",
+      "Sick need doctor"
+    ],
+    "hours": {
+      "monday": {
+        "open": "09:00",
+        "close": "17:00"
+      },
+      "tuesday": {
+        "open": "09:00",
+        "close": "17:00"
+      },
+      "wednesday": {
+        "open": "09:00",
+        "close": "17:00"
+      },
+      "thursday": {
+        "open": "09:00",
+        "close": "17:00"
+      },
+      "friday": {
+        "open": "09:00",
+        "close": "16:00"
+      }
+    }
+  },
+  {
+    "id": "downtown-legal-clinic",
+    "name": "Downtown Legal Clinic",
+    "description": "Pro bono legal advice for low-income residents regarding tenant rights and employment law.",
+    "url": "https://legal.example.com",
+    "phone": "613-555-0102",
+    "address": "456 Queen St, Kingston, ON K7K 1B1",
+    "verification_level": "L1",
+    "intent_category": "Legal",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-30T12:00:00Z",
+      "evidence_url": "https://legal.example.com",
+      "method": "Data Expansion Phase 2"
+    },
+    "identity_tags": [],
+    "synthetic_queries": [
+      "Legal aid",
+      "Eviction help",
+      "Tenant rights lawyer",
+      "Free legal advice"
+    ],
+    "hours": {
+      "monday": {
+        "open": "10:00",
+        "close": "16:00"
+      },
+      "wednesday": {
+        "open": "10:00",
+        "close": "16:00"
+      },
+      "friday": {
+        "open": "10:00",
+        "close": "14:00"
+      }
+    }
+  },
+  {
+    "id": "youth-employment-centre-kton",
+    "name": "Youth Employment Centre Kingston",
+    "description": "Resume workshops, job search assistance, and interview prep for youth aged 15-29.",
+    "url": "https://youthjob.example.com",
+    "phone": "613-555-0103",
+    "address": "789 Division St, Kingston, ON K7L 3M6",
+    "verification_level": "L1",
+    "intent_category": "Employment",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-30T12:00:00Z",
+      "evidence_url": "https://youthjob.example.com",
+      "method": "Data Expansion Phase 2"
+    },
+    "identity_tags": [
+      {
+        "tag": "Youth",
+        "evidence_url": ""
+      }
+    ],
+    "synthetic_queries": [
+      "Find a job",
+      "Resume help",
+      "Student jobs",
+      "Work for teens"
+    ],
+    "hours": {
+      "monday": {
+        "open": "08:30",
+        "close": "16:30"
+      },
+      "tuesday": {
+        "open": "08:30",
+        "close": "16:30"
+      },
+      "wednesday": {
+        "open": "08:30",
+        "close": "16:30"
+      },
+      "thursday": {
+        "open": "08:30",
+        "close": "16:30"
+      },
+      "friday": {
+        "open": "08:30",
+        "close": "16:30"
+      }
+    }
+  },
+  {
+    "id": "senior-support-services",
+    "name": "Senior Support Services",
+    "description": "Social activities, meal delivery coordination, and friendly visiting for seniors.",
+    "url": "https://seniors.example.com",
+    "phone": "613-555-0104",
+    "address": "321 Bath Rd, Kingston, ON K7M 2L1",
+    "verification_level": "L1",
+    "intent_category": "Community",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-30T12:00:00Z",
+      "evidence_url": "https://seniors.example.com",
+      "method": "Data Expansion Phase 2"
+    },
+    "identity_tags": [
+      {
+        "tag": "Seniors",
+        "evidence_url": ""
+      }
+    ],
+    "synthetic_queries": [
+      "Help for elderly",
+      "Senior center",
+      "Meals on wheels info",
+      "Social activities seniors"
+    ],
+    "hours": {
+      "monday": {
+        "open": "09:00",
+        "close": "15:00"
+      },
+      "tuesday": {
+        "open": "09:00",
+        "close": "15:00"
+      },
+      "wednesday": {
+        "open": "09:00",
+        "close": "15:00"
+      },
+      "thursday": {
+        "open": "09:00",
+        "close": "15:00"
+      },
+      "friday": {
+        "open": "09:00",
+        "close": "15:00"
+      }
+    }
+  },
+  {
+    "id": "emergency-dental-clinic",
+    "name": "Emergency Dental Clinic",
+    "description": "Urgent dental care for low-income individuals in pain/infection.",
+    "url": "https://dental.example.com",
+    "phone": "613-555-0105",
+    "address": "654 Victoria St, Kingston, ON K7L 4V1",
+    "verification_level": "L1",
+    "intent_category": "Health",
+    "provenance": {
+      "verified_by": "Antigravity (AI Agent)",
+      "verified_at": "2025-12-30T12:00:00Z",
+      "evidence_url": "https://dental.example.com",
+      "method": "Data Expansion Phase 2"
+    },
+    "identity_tags": [],
+    "synthetic_queries": [
+      "Toothache help",
+      "Broken tooth",
+      "Emergency dentist cheap",
+      "Dental pain"
+    ],
+    "hours": {
+      "monday": {
+        "open": "08:00",
+        "close": "20:00"
+      },
+      "tuesday": {
+        "open": "08:00",
+        "close": "20:00"
+      },
+      "wednesday": {
+        "open": "08:00",
+        "close": "20:00"
+      },
+      "thursday": {
+        "open": "08:00",
+        "close": "20:00"
+      },
+      "friday": {
+        "open": "08:00",
+        "close": "20:00"
+      },
+      "saturday": {
+        "open": "10:00",
+        "close": "16:00"
+      }
+    }
+  },
+  {
+    "id": "211-mock-1",
+    "name": "Kingston Youth Shelter (Mock)",
+    "description": "Emergency shelter for youth ages 16-24.",
+    "phone": "613-555-0199",
+    "url": "https://youthshelter.mock",
+    "address": "234 Brock St, Kingston K7K 1A1",
+    "verification_level": "L2",
+    "intent_category": "Housing",
+    "provenance": {
+      "verified_by": "211 Ontario API",
+      "verified_at": "2025-12-31T14:53:02.568Z",
+      "evidence_url": "https://211ontario.ca",
+      "method": "Automated Sync"
+    },
+    "synthetic_queries": [],
+    "identity_tags": [],
+    "last_verified": "2025-12-31T14:53:02.568Z"
+  },
+  {
+    "id": "211-mock-2",
+    "name": "Senior Food Delivery (Mock)",
+    "description": "Meals on wheels for seniors 65+.",
+    "phone": "613-555-0200",
+    "url": "https://seniormeals.mock",
+    "address": "100 Princess St, Kingston K7L 1A1",
+    "verification_level": "L2",
+    "intent_category": "Food",
+    "provenance": {
+      "verified_by": "211 Ontario API",
+      "verified_at": "2025-12-31T14:53:02.568Z",
+      "evidence_url": "https://211ontario.ca",
+      "method": "Automated Sync"
+    },
+    "synthetic_queries": [],
+    "identity_tags": [],
+    "last_verified": "2025-12-31T14:53:02.568Z"
+  }
 ]

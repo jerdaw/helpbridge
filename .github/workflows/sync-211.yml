@@ -1,0 +1,27 @@
+name: Sync 211 Ontario Data
+
+on:
+  schedule:
+    - cron: "0 4 * * *" # 4 AM UTC daily
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - run: npx tsx scripts/sync-211.ts
+        env:
+          API_211_KEY: ${{ secrets.API_211_KEY }}
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(data): sync 211 Ontario services"
+          file_pattern: "data/services.json"

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "cross-env FORCE_COLOR=1 next dev --turbo",
     "build": "next build",
+    "postbuild": "npx tsx scripts/generate-embeddings.ts",
     "start": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint",
