@@ -159,8 +159,30 @@ import EditServiceForm from "@/components/EditServiceForm"
   onSubmit={async (data) => {
     /* save */
   }}
+  onSubmit={async (data) => {
+    /* save */
+  }}
 />
 ```
+
+### AnalyticsCard
+
+Visualizes a single metric with trend indicator.
+
+```tsx
+import AnalyticsCard from "@/components/AnalyticsCard"
+
+<AnalyticsCard 
+  title="Total Views" 
+  value={1200} 
+  change={5.2} 
+  loading={false} 
+/>
+```
+
+### VoiceSearchButton
+
+See `SearchBar` section.
 
 ---
 

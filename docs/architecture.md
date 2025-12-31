@@ -49,6 +49,17 @@ The search system uses a hybrid approach:
 - **Local Eligibility**: "Likely Qualify" checks run locally by parsing cached service data against the local profile.
 - **Identity Boosting**: Search ranking adjustments happen on the client-side `WebWorker`.
 
+### 9. Data Pipelines (Phase 6)
+- **Source of Truth**: 211 Ontario API (Raw Data) + Manual Verification (Golden Dataset).
+- **Ingestion**:
+  - `scripts/sync-211.ts`: Fetches, cleans, and maps external data to the `Service` schema.
+  - `generate-embeddings.ts`: Generates logical-semantic embeddings at build time.
+- **Versioning**: `generate-changelog.ts` tracks diffs between syncs.
+
+### 10. Partner Analytics (Phase 7)
+- **Privacy-First**: Tracks aggregate trends (e.g., "Top searched category") without logging User IDs or raw queries.
+- **Pipeline**: Client -> Next.js API function -> Supabase (Mocked for now).
+
 ### Data Flow
 
 - **Services**: Fetched via `/api/v1/services`. Cached using SWR-like strategies in hooks.
@@ -56,7 +67,10 @@ The search system uses a hybrid approach:
 
 ### Routing & Discovery
 
-- **Public Routes**: `/service/[id]` provides a rich detail page with contact info and eligibility.
+- **Public Routes**: 
+  - `/service/[id]`: Rich detail page.
+  - `/submit-service`: Public crowdsourcing form.
+  - `/dashboard`: Partner portal.
 - **Internal Links**: `ServiceCard` now links to internal detail pages instead of external URLs.
 
 ### Partner Claim Workflow
