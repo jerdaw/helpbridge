@@ -1,88 +1,106 @@
 {
-    "BetaBanner": {
-        "title": "This is a community-led project"
+  "BetaBanner": {
+    "title": "This is a community-led project"
+  },
+  "Footer": {
+    "disclaimer": "Supporting the Kingston community"
+  },
+  "Search": {
+    "placeholder": "Search for help...",
+    "label": "Search for services",
+    "loading": "Enhancing search capability...",
+    "active": "Private Neural Search Active",
+    "didYouMean": "Did you mean:",
+    "openNow": "Open Now",
+    "nearMe": "Near Me",
+    "useLocation": "Use Location",
+    "clearLocation": "Clear location filter",
+    "filterByLocation": "Filter by current location",
+    "all": "All",
+    "crisis": "🗣️ Crisis"
+  },
+  "Navigation": {
+    "home": "Home",
+    "admin": "Admin"
+  },
+  "Common": {
+    "openInNewTab": "(opens in a new tab)"
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "simplified": "Privacy Simplified",
+    "intro": "At Kingston Care Connect, your privacy is not an afterthought—it's our core architecture.",
+    "points": {
+      "noTracking": "No Tracking: We do not use Google Analytics, Facebook Pixels, or any third-party trackers.",
+      "noCookies": "No Cookies: We do not store personal data in cookies. We use a single essential cookie only to remember your language preference.",
+      "noLogging": "No Query Logging: Your search terms are processed anonymously and are not linked to your identity."
     },
-    "Footer": {
-        "disclaimer": "Supporting the Kingston community"
-    },
-    "Search": {
-        "placeholder": "Search for help...",
-        "label": "Search for services",
-        "loading": "Enhancing search capability...",
-        "active": "Private Neural Search Active",
-        "didYouMean": "Did you mean:",
-        "openNow": "Open Now",
-        "nearMe": "Near Me",
-        "useLocation": "Use Location",
-        "clearLocation": "Clear location filter",
-        "filterByLocation": "Filter by current location",
-        "all": "All",
-        "crisis": "🗣️ Crisis"
-    },
-    "Navigation": {
-        "home": "Home",
-        "admin": "Admin"
-    },
-    "Common": {
-        "openInNewTab": "(opens in a new tab)"
-    },
-    "Privacy": {
-        "title": "Privacy Policy",
-        "simplified": "Privacy Simplified",
-        "intro": "At Kingston Care Connect, your privacy is not an afterthought—it's our core architecture.",
-        "points": {
-            "noTracking": "No Tracking: We do not use Google Analytics, Facebook Pixels, or any third-party trackers.",
-            "noCookies": "No Cookies: We do not store personal data in cookies. We use a single essential cookie only to remember your language preference.",
-            "noLogging": "No Query Logging: Your search terms are processed anonymously and are not linked to your identity."
-        },
-        "contact": "Questions? Contact us at privacy@kingstoncare.ca"
-    },
-    "ServiceCard": {
-        "reportIssue": "Report Issue"
-    },
-    "Dashboard": {
-        "title": "Dashboard",
-        "welcome": "Welcome back, {email}",
-        "verificationStatus": "Verification Status",
-        "pending": "Pending",
-        "completeProfile": "Complete Profile",
-        "getStarted": "Get Started",
-        "noServices": "You haven't claimed any services yet. Find your organization or create a new listing.",
-        "hasServices": "Manage your existing services and keep your data up to date.",
-        "manageServices": "Manage Services"
-    },
-    "Analytics": {
-        "totalServices": "Total Services",
-        "totalViews": "Total Views (30d)",
-        "vsPeriod": "vs {period}",
-        "totalAllTime": "Total all time"
-    },
-    "ServiceDetail": {
-        "back": "Back",
-        "share": "Share",
-        "shareSuccess": "Copied!",
-        "officialProvider": "Official Provider",
-        "hours": "Hours",
-        "fees": "Fees",
-        "eligibility": "Eligibility & Requirements",
-        "access": "How to Access",
-        "focusedOn": "Focused On",
-        "contactInfo": "Contact Information",
-        "location": "Location",
-        "phone": "Phone",
-        "website": "Website",
-        "email": "Email",
-        "visitWebsite": "Visit Provider Website",
-        "incorrectInfo": "Is this information incorrect or outdated?",
-        "reportIssue": "Report an Issue",
-        "claimTitle": "Own this organization?",
-        "claimText": "Claim this listing to keep your information up to date and gain access to analytics.",
-        "confirmClaim": "Confirm Claim",
-        "claiming": "Claiming...",
-        "claimed": "Claimed!",
-        "claimListing": "Claim Listing",
-        "notFound": "Service Not Found",
-        "notFoundText": "The service you are looking for does not exist or has been removed.",
-        "backToSearch": "Back to Search"
-    }
+    "contact": "Questions? Contact us at privacy@kingstoncare.ca"
+  },
+  "ServiceCard": {
+    "reportIssue": "Report Issue"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back, {email}",
+    "verificationStatus": "Verification Status",
+    "pending": "Pending",
+    "completeProfile": "Complete Profile",
+    "getStarted": "Get Started",
+    "noServices": "You haven't claimed any services yet. Find your organization or create a new listing.",
+    "hasServices": "Manage your existing services and keep your data up to date.",
+    "manageServices": "Manage Services"
+  },
+  "Analytics": {
+    "totalServices": "Total Services",
+    "totalViews": "Total Views (30d)",
+    "vsPeriod": "vs {period}",
+    "totalAllTime": "Total all time"
+  },
+  "ServiceDetail": {
+    "back": "Back",
+    "share": "Share",
+    "shareSuccess": "Copied!",
+    "officialProvider": "Official Provider",
+    "hours": "Hours",
+    "fees": "Fees",
+    "eligibility": "Eligibility & Requirements",
+    "access": "How to Access",
+    "focusedOn": "Focused On",
+    "contactInfo": "Contact Information",
+    "location": "Location",
+    "phone": "Phone",
+    "website": "Website",
+    "email": "Email",
+    "visitWebsite": "Visit Provider Website",
+    "incorrectInfo": "Is this information incorrect or outdated?",
+    "reportIssue": "Report an Issue",
+    "claimTitle": "Own this organization?",
+    "claimText": "Claim this listing to keep your information up to date and gain access to analytics.",
+    "confirmClaim": "Confirm Claim",
+    "claiming": "Claiming...",
+    "claimed": "Claimed!",
+    "claimListing": "Claim Listing",
+    "notFound": "Service Not Found",
+    "notFoundText": "The service you are looking for does not exist or has been removed.",
+    "backToSearch": "Back to Search"
+  },
+  "AI": {
+    "title": "Care Assistant",
+    "initializing": "Initializing AI Brain...",
+    "privacyNote": "Privacy-First AI",
+    "privacyDesc": "This assistant runs 100% on your device. No data is sent to the cloud. It requires a ~2GB download once.",
+    "enable": "Enable Assistant",
+    "retry": "Retry",
+    "initFailed": "Initialization Failed",
+    "placeholderReady": "Type a message...",
+    "placeholderWaiting": "Waiting for AI...",
+    "welcome": "👋 Hi! I can help you find services.",
+    "suggestion": "Try asking: \"Where can I find food?\" or \"I need youth shelter.\"",
+    "errorThinking": "I'm having trouble thinking right now. Please try searching instead.",
+    "systemPrompt": "You are a helpful, kind assistant for Kingston Care Connect. You help people find social services in Kingston, Ontario. Keep answers concise, safe, and empathetic. If you don't know something, advise them to use the search bar.",
+    "contextIntro": "Here are some relevant local services I found:",
+    "noMatches": "No direct matches found in our database.",
+    "crisisPrompt": "If the user is in crisis, urge them to call 911."
+  }
 }
