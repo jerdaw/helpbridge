@@ -16,6 +16,7 @@
   - `README.md` → High-level overview and getting started.
   - `docs/architecture.md` → Detailed system architecture and data flow.
   - `docs/components.md` → Guide to reusable UI components.
+  - `docs/acknowledgments.md` → Advisory board and governance.
   - `docs/roadmaps/archive/tier-1-implementation.md` → Tier 1 detail.
   - `docs/roadmaps/archive/tier-2-implementation.md` → Tier 2 detail.
 

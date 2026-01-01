@@ -129,6 +129,7 @@ This project is community-led. Safety and accuracy take precedence over volume.
 - [Documentation Guidelines](docs/documentation-guidelines.md)
 - [Testing Standards](docs/development/testing.md)
 - [Bilingual Development Guide](bilingual-dev-guide.md)
+- [Acknowledgments & Governance](docs/acknowledgments.md)
 
 ### Adding a Service
 
