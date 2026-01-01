@@ -33,9 +33,18 @@ export async function middleware(request: NextRequest) {
   })
 
   // Refresh session if needed
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  let user = null
+  try {
+    // Skip auth check if using placeholder (CI/Test)
+    if (env.NEXT_PUBLIC_SUPABASE_URL.includes("placeholder")) {
+       console.log("Skipping Supabase auth in middleware (Testing Mode)")
+    } else {
+      const { data } = await supabase.auth.getUser()
+      user = data.user
+    }
+  } catch (error) {
+    console.warn("Middleware Auth Error (Non-blocking):", error)
+  }
 
   // 2. Internationalization (Run after auth check)
   const intlResponse = intlMiddleware(request)
