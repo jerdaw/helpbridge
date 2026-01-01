@@ -205,6 +205,25 @@
     "verifiedOn": "Dernière vérification",
     "neverVerified": "Ce service n'a pas été vérifié récemment"
   },
+  "Feedback": {
+    "title": "Signaler un problème",
+    "description": "Aidez-nous à améliorer la fiche de {service}. Votre avis est précieux.",
+    "issueType": "Quel est le problème ?",
+    "types": {
+      "wrong_phone": "Mauvais numéro de téléphone",
+      "wrong_address": "Mauvaise adresse",
+      "service_closed": "Service fermé / Déménagé",
+      "other": "Autre problème"
+    },
+    "messageLabel": "Détails supplémentaires (optionnel)",
+    "messagePlaceholder": "Veuillez fournir les informations correctes si vous les avez...",
+    "cancel": "Annuler",
+    "submit": "Envoyer le rapport",
+    "successTitle": "Merci !",
+    "successMessage": "Nous avons reçu votre avis et l'examinerons sous peu.",
+    "errorTitle": "Erreur",
+    "errorMessage": "Un problème est survenu. Veuillez réessayer plus tard."
+  },
   "Accessibility": {
     "title": "Accessibilité",
     "highContrast": "Mode contraste élevé"

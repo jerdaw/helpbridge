@@ -70,7 +70,6 @@ Includes integrated voice search capability.
 
 ```tsx
 import SearchBar from "@/components/home/SearchBar"
-
 ;<SearchBar query={query} setQuery={setQuery} placeholder="Search..." />
 ```
 
@@ -135,7 +134,6 @@ New bilingual-aware form for service editing. Located in `components/partner/Ser
 
 ```tsx
 import { ServiceEditForm } from "@/components/partner/ServiceEditForm"
-
 ;<ServiceEditForm
   service={serviceData}
   onSave={async (data) => {
@@ -150,7 +148,6 @@ Data table for displaying an organization's services on the dashboard.
 
 ```tsx
 import { PartnerServiceList } from "@/components/partner/PartnerServiceList"
-
 ;<PartnerServiceList partnerId={user.id} />
 ```
 
@@ -160,7 +157,6 @@ Visualizes a single metric with trend indicator. Supports glassmorphism styling.
 
 ```tsx
 import { AnalyticsCard } from "@/components/AnalyticsCard"
-
 ;<AnalyticsCard title="Total Views" value={1200} change={5.2} loading={false} />
 ```
 
@@ -246,9 +242,31 @@ import { ThemeToggle } from "@/components/layout/ThemeToggle"
 
 Accessible tooltip component.
 
-```tsx
+````tsx
 import { Tooltip } from "@/components/Tooltip"
 ;<Tooltip content="Helpful info">
   <button>Hover me</button>
 </Tooltip>
+
+### FreshnessBadge
+
+Visual indicator of when service data was last verified.
+
+```tsx
+import { FreshnessBadge } from "@/components/ui/FreshnessBadge"
+
+;<FreshnessBadge lastVerified="2024-01-01T00:00:00Z" />
+````
+
+### PrintButton
+
+Optimized button for printing search results. Automatically hidden during print.
+
+```tsx
+import { PrintButton } from "@/components/ui/PrintButton"
+;<PrintButton />
+```
+
+```
+
 ```

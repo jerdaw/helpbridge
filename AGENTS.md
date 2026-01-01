@@ -16,9 +16,8 @@
   - `README.md` → High-level overview and getting started.
   - `docs/architecture.md` → Detailed system architecture and data flow.
   - `docs/components.md` → Guide to reusable UI components.
-  - `bilingual-dev-guide.md` → English/French parallax rules ("English-First", no hardcoded strings).
-  - `docs/documentation-guidelines.md` → How to write docs.
-  - `docs/development/testing.md` → Testing standards.
+  - `docs/roadmaps/archive/tier-1-implementation.md` → Tier 1 detail.
+  - `docs/roadmaps/archive/tier-2-implementation.md` → Tier 2 detail.
 
 When in doubt about architecture or design design, **read `README.md` and `docs/**` first\*\*.
 
