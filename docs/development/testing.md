@@ -4,7 +4,7 @@
 
 - **Unit/Integration**: [Vitest](https://vitest.dev/)
   - Fast, headless testing for components, hooks, and utility logic.
-  - Config: `vitest.config.ts`
+  - Config: `vitest.config.mts`
 - **End-to-End (E2E)**: [Playwright](https://playwright.dev/)
   - Browser-based testing for critical user flows (Search, Navigation, Login).
   - Config: `playwright.config.ts`
@@ -19,7 +19,7 @@
 
 - **New Features**: Must have corresponding unit tests.
 - **Critical Paths**: Search, Partner Login, and Service Editing must be covered by E2E tests.
-- **Coverage**: Maintain minimum **80%** code coverage for business logic (verify with `npm run coverage`).
+- **Coverage**: Maintain minimum **80%** code coverage for critical modules (lib/search, lib/ai, hooks). General logic should target 65%+. Use `npm run test:coverage` to verify against per-path thresholds.
 
 ## 4. Running Tests
 
