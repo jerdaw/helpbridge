@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { useAuth } from "@/components/AuthProvider"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-// import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 // import LanguageSwitcher from './LanguageSwitcher';
 import { cn } from "@/lib/utils"
 import { Menu, X } from "lucide-react"
@@ -17,6 +17,8 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { user } = useAuth()
+  const t = useTranslations("Navigation")
+  const tPartners = useTranslations("Partners")
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -76,16 +78,16 @@ export function Header() {
               "text-neutral-600 dark:text-neutral-300"
             )}
           >
-            About
+            {t("about")}
           </Link>
           <Link
-            href="/partners"
+            href="/about/partners"
             className={cn(
               "hover:text-primary-500 text-sm font-medium transition-colors",
               "text-neutral-600 dark:text-neutral-300"
             )}
           >
-            For Partners
+            {tPartners("link")}
           </Link>
           <Link
             href="/submit-service"
@@ -94,7 +96,7 @@ export function Header() {
               "text-neutral-600 dark:text-neutral-300"
             )}
           >
-            Suggest Service
+            {t("suggest")}
           </Link>
 
           <a
@@ -144,10 +146,10 @@ export function Header() {
           >
             <div className="flex flex-col space-y-4 p-4">
               <Link href="/about" className="p-2 text-sm font-medium text-neutral-600 dark:text-neutral-300">
-                About
+                {t("about")}
               </Link>
-              <Link href="/partners" className="p-2 text-sm font-medium text-neutral-600 dark:text-neutral-300">
-                For Partners
+              <Link href="/about/partners" className="p-2 text-sm font-medium text-neutral-600 dark:text-neutral-300">
+                {tPartners("link")}
               </Link>
               {user ? (
                 <Button className="w-full" asChild>

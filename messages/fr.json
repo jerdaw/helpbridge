@@ -58,6 +58,8 @@
   },
   "Navigation": {
     "home": "Accueil",
+    "about": "À propos",
+    "suggest": "Suggérer un service",
     "admin": "Admin"
   },
   "Common": {
@@ -227,5 +229,75 @@
   "Accessibility": {
     "title": "Accessibilité",
     "highContrast": "Mode contraste élevé"
+  },
+  "About": {
+    "hero": {
+      "title": "Le projet Kingston 150",
+      "subtitle": "Un moteur de recherche à gouvernance sociale pour les services essentiels de Kingston. Vérifiés, accessibles et axés sur la vie privée."
+    },
+    "metrics": {
+      "verified": {
+        "title": "50+ Services vérifiés",
+        "description": "Sélectionnés manuellement pour leur impact élevé. Pas de bruit, juste de l'aide."
+      },
+      "offline": {
+        "title": "Fonctionne hors ligne",
+        "description": "Installable comme une application. Recherchez sans connexion internet."
+      },
+      "bilingual": {
+        "title": "Entièrement bilingue",
+        "description": "Parité complète entre l'anglais et le français pour tous les services."
+      },
+      "community": {
+        "title": "Géré par la communauté",
+        "description": "Données vérifiées par des partenaires locaux, pas par des robots."
+      }
+    },
+    "howItWorks": {
+      "title": "Comment ça fonctionne",
+      "subtitle": "Nous simplifions la recherche d'aide en supprimant les barrières.",
+      "step1": {
+        "title": "Recherche privée",
+        "description": "Utilisez des mots-clés ou parlez à notre assistant IA privé."
+      },
+      "step2": {
+        "title": "Résultats filtrés",
+        "description": "Trouvez instantanément ce qui est ouvert maintenant et près de chez vous."
+      },
+      "step3": {
+        "title": "Connectez-vous",
+        "description": "Appelez ou obtenez l'itinéraire en un seul clic."
+      }
+    },
+    "governance": {
+      "title": "Gouvernance des données",
+      "description": "Contrairement aux grands moteurs de recherche, nous ne vendons pas vos données. Kingston Care Connect est construit sur une architecture 'Privacy-First' qui garantit que vos recherches restent sur votre appareil."
+    },
+    "cta": {
+      "title": "Prêt à trouver de l'aide ?",
+      "search": "Explorer les services",
+      "partners": "Nos partenaires"
+    }
+  },
+  "PartnersPage": {
+    "hero": {
+      "title": "Construit sur des sources fiables",
+      "subtitle": "Kingston Care Connect s'appuie sur des données vérifiées provenant de partenaires communautaires établis. Nous ne grattons pas le web; nous collaborons."
+    },
+    "verification": {
+      "title": "Notre processus de vérification",
+      "step1": "Vérification de la source",
+      "step2": "Revue manuelle",
+      "step3": "Audits mensuels",
+      "description": "Chaque fiche de service subit un processus de vérification rigoureux en 3 étapes pour garantir l'exactitude et la sécurité."
+    },
+    "cta": {
+      "title": "Devenir partenaire",
+      "subtitle": "Êtes-vous un fournisseur de services ? Rejoignez notre réseau pour atteindre plus de personnes.",
+      "button": "Suggérer un service"
+    }
+  },
+  "Partners": {
+    "link": "Pour les partenaires"
   }
 }

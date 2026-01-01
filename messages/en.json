@@ -58,6 +58,8 @@
   },
   "Navigation": {
     "home": "Home",
+    "about": "About",
+    "suggest": "Suggest Service",
     "admin": "Admin"
   },
   "Common": {
@@ -224,5 +226,75 @@
   "Accessibility": {
     "title": "Accessibility",
     "highContrast": "High Contrast Mode"
+  },
+  "About": {
+    "hero": {
+      "title": "The Kingston 150",
+      "subtitle": "A governance-first search engine for Kingston's most essential social services. Verified, accessible, and privacy-focused."
+    },
+    "metrics": {
+      "verified": {
+        "title": "50+ Verified Services",
+        "description": "Hand-curated for high impact. No noise, just help."
+      },
+      "offline": {
+        "title": "Works Offline",
+        "description": "Installable as an app. Search without an internet connection."
+      },
+      "bilingual": {
+        "title": "Fully Bilingual",
+        "description": "Complete parity between English and French for all listings."
+      },
+      "community": {
+        "title": "Community Led",
+        "description": "Data verification by local partners, not web scrapers."
+      }
+    },
+    "howItWorks": {
+      "title": "How It Works",
+      "subtitle": "We make finding help simple by removing barriers and tracking.",
+      "step1": {
+        "title": "Private Search",
+        "description": "Use keywords or speak to our private AI assistant."
+      },
+      "step2": {
+        "title": "Filter Results",
+        "description": "Instantly see what is Open Now and Near Me."
+      },
+      "step3": {
+        "title": "Connect",
+        "description": "Call, get directions, or visit websites in one tap."
+      }
+    },
+    "governance": {
+      "title": "Data Governance",
+      "description": "Unlike massive search engines, we don't sell your data. Kingston Care Connect is built on a 'Privacy-First' architecture that ensures your search history never leaves your device."
+    },
+    "cta": {
+      "title": "Ready to find help?",
+      "search": "Browse Services",
+      "partners": "View Partners"
+    }
+  },
+  "Partners": {
+    "link": "For Partners"
+  },
+  "PartnersPage": {
+    "hero": {
+      "title": "Built on Trusted Sources",
+      "subtitle": "Kingston Care Connect relies on verified data from established community partners. We don't scrape; we collaborate."
+    },
+    "verification": {
+      "title": "Our Verification Process",
+      "step1": "Source Verification",
+      "step2": "Manual Review",
+      "step3": "Monthly Audits",
+      "description": "Every service listing undergoes a rigorous 3-step verification process to ensure accuracy and safety."
+    },
+    "cta": {
+      "title": "Become a Partner",
+      "subtitle": "Are you a service provider? Join our network to reach more people.",
+      "button": "Suggest a Service"
+    }
   }
 }
