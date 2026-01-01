@@ -40,6 +40,7 @@ We maintain a hand-verified dataset of the **150 highest-impact services** avail
 - **Service Detail Pages** — Rich metadata, contact information, and localized content for each listing.
 - **Partner Claiming Workflow** — Organizations can claim, verify, and maintain their own listings.
 - **Progressive Web App** — Installable, works offline.
+- **WCAG 2.1 AA Compliant** — High-contrast, skip-links, and keyboard navigation.
 - **Community Governance** — Residents can flag inaccurate data directly.
 - **Performance Optimized** — Loads instantly, even on slow connections.
 - **Bilingual Support** — Full English and French content switching.
@@ -48,15 +49,15 @@ We maintain a hand-verified dataset of the **150 highest-impact services** avail
 
 ## Tech Stack
 
-| Layer           | Technology                                                                 |
-| :-------------- | :------------------------------------------------------------------------- |
-| Framework       | [Next.js 15](https://nextjs.org/) (App Router)                             |
-| Language        | [TypeScript](https://www.typescriptlang.org/)                              |
-| Styling         | [Tailwind CSS v4](https://tailwindcss.com/)                                |
-| UI Components   | [Radix UI](https://www.radix-ui.com/)                                      |
-| AI / Embeddings | [@xenova/transformers](https://huggingface.co/docs/transformers.js/)       |
-| Testing         | [Vitest](https://vitest.dev/) · [Playwright](https://playwright.dev/)      |
-| Database        | [Supabase](https://supabase.com/) (PostgreSQL + pgvector)                  |
+| Layer           | Technology                                                            |
+| :-------------- | :-------------------------------------------------------------------- |
+| Framework       | [Next.js 15](https://nextjs.org/) (App Router)                        |
+| Language        | [TypeScript](https://www.typescriptlang.org/)                         |
+| Styling         | [Tailwind CSS v4](https://tailwindcss.com/)                           |
+| UI Components   | [Radix UI](https://www.radix-ui.com/)                                 |
+| AI / Embeddings | [@xenova/transformers](https://huggingface.co/docs/transformers.js/)  |
+| Testing         | [Vitest](https://vitest.dev/) · [Playwright](https://playwright.dev/) |
+| Database        | [Supabase](https://supabase.com/) (PostgreSQL + pgvector)             |
 
 ---
 
@@ -80,17 +81,17 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 ### Scripts
 
-| Command                  | Description                              |
-| :----------------------- | :--------------------------------------- |
-| `npm run dev`            | Start development server (Turbo)         |
-| `npm run build`          | Build for production                     |
-| `npm test`               | Run unit and integration tests (Vitest)  |
-| `npx playwright test`    | Run end-to-end tests                     |
-| `npm run type-check`     | TypeScript compiler check                |
-| `npm run lint`           | ESLint code quality check                |
-| `npm run health-check`   | Validate all service URLs                |
-| `npm run phone-validate` | Validate phone numbers (Twilio)          |
-| `npm run analyze`        | Analyze production bundle size           |
+| Command                  | Description                             |
+| :----------------------- | :-------------------------------------- |
+| `npm run dev`            | Start development server (Turbo)        |
+| `npm run build`          | Build for production                    |
+| `npm test`               | Run unit and integration tests (Vitest) |
+| `npx playwright test`    | Run end-to-end tests                    |
+| `npm run type-check`     | TypeScript compiler check               |
+| `npm run lint`           | ESLint code quality check               |
+| `npm run health-check`   | Validate all service URLs               |
+| `npm run phone-validate` | Validate phone numbers (Twilio)         |
+| `npm run analyze`        | Analyze production bundle size          |
 
 ### Environment Variables
 

@@ -12,12 +12,14 @@
 
 - **Current Mode:** Hybrid (English/French).
 - **Data Layer:** Schema successfully updated. `Service` objects now support `name_fr`, `description_fr`, and `address_fr` overrides.
-- **Search:** "Open Now" and "Crisis" filters are localized in `messages/*.json`.
-- **UI Components:** Major components (`ServiceCard`, `SearchControls`) use `next-intl` hooks.
+- **Search:** "Open Now", "Crisis", and "Did you mean?" suggestions are fully localized.
+- **UI Components:** Major components (`ServiceCard`, `SearchControls`, `FeedbackModal`) use `next-intl` hooks.
+- **Accessibility:** All ARIA labels and skip-links are properly localized in `en.json` and `fr.json`.
 - **Hours:** Timestamps are stored as data (`09:00`); formatting (AM/PM vs 24h) is handled by the UI based on locale.
 - **AI Assistant**: System prompts must be localized dynamically (e.g., passing a French prompt to the AI if locale is `fr`). Use `useTranslations('AI')` for all chat UI.
 - **Validation**: Use `npm run bilingual-check` to identify missing French content in `data/services.json`.
 - **RBAC & Edits**: Partners can manage bilingual fields via the Dashboard. Ensure `ServiceEditForm` includes `*_fr` fields for all text-heavy properties.
+- **Feedback Loop**: Community feedback modal supports full bilingual reporting.
 
 ## 3. Rules
 
@@ -26,3 +28,4 @@
 3. Dates/Currencies must be localized.
 4. **Content Fallbacks**: If `name_fr` is missing, the UI should default to `name` but flag it for review (Audit Script behavior).
 5. **Form Field Alignment**: Side-by-side or stacked EN/FR fields in CMS/Dashboard should be clearly labeled to prevent input errors.
+6. **Focus for Bilingual Interfaces**: Ensure skip-to-content links and focus indicators are consistent across all locales.

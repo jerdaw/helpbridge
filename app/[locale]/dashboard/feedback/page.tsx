@@ -2,6 +2,7 @@ import { createClient } from "@/utils/supabase/server"
 import { getTranslations } from "next-intl/server"
 import { Badge } from "@/components/ui/badge"
 import { redirect } from "next/navigation"
+import { logger } from "@/lib/logger"
 
 interface FeedbackItem {
   id: string
@@ -40,7 +41,7 @@ export default async function FeedbackPage() {
     .order("created_at", { ascending: false })
 
   if (error) {
-    console.error("Error fetching feedback:", error)
+    logger.error("Error fetching feedback", error, { component: "FeedbackDashboard" })
   }
 
   const typedFeedback = (feedback as unknown as FeedbackItem[]) || []

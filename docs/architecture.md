@@ -30,7 +30,8 @@
 The search system uses a hybrid approach:
 
 1.  **Instant Keyword Search**: Filters results locally/via basic db queries for immediate feedback.
-2.  **Lazy Semantic Search**: Loads a lightweight embedding model (TensorFlow.js) in the background. Once ready, it re-ranks results based on vector similarity.
+2.  **Fuzzy Search ("Did you mean?")**: If results are low, the Levenshtein algorithm suggests alternative queries based on service names and tags.
+3.  **Lazy Semantic Search**: Loads a lightweight embedding model (TensorFlow.js) in the background. Once ready, it re-ranks results based on vector similarity.
 
 ### AI Assistant Architecture
 
@@ -59,7 +60,11 @@ The search system uses a hybrid approach:
   - `generate-embeddings.ts`: Generates logical-semantic embeddings at build time.
 - **Versioning**: `generate-changelog.ts` tracks diffs between syncs.
 
-- **Pipeline**: Client -> Next.js API function -> Supabase.
+### User Feedback Loop
+
+- **Pipeline**: Client (`FeedbackModal`) -> Next.js API (`/api/feedback`) -> Supabase (`feedback` table).
+- **Security**: Supabase RLS ensures partners only see feedback for their own services.
+- **Validation**: Zod schema in API route enforces data integrity and prevents spam.
 
 ### Push Notifications
 
@@ -110,6 +115,12 @@ We use a modular hook system to separate concerns:
 
 - **Logger Utility**: Located in `lib/logger.ts`. Use instead of `console.log`.
 - **Error IDs**: The Error Boundary generates unique IDs (e.g., `ERR-K9X2J1`) for cross-referencing logs with user reports.
+
+### User Interface & Accessibility
+
+- **High Contrast Mode**: Global state managed via `useHighContrast` hook, applying `.high-contrast` class and CSS variable overrides.
+- **Print Optimization**: Specific `@media print` styles in `globals.css` and `PrintButton` component for physical delivery of information.
+- **Data Freshness**: `FreshnessBadge` provides visual cues on the reliability of data based on `last_verified` timestamps.
 
 ## Development
 

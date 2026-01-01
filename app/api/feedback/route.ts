@@ -1,6 +1,7 @@
 import { createClient } from "@/utils/supabase/server"
 import { NextResponse } from "next/server"
 import { z } from "zod"
+import { logger } from "@/lib/logger"
 
 const FeedbackSchema = z.object({
   serviceId: z.string().min(1),
@@ -25,6 +26,7 @@ export async function POST(request: Request) {
   })
 
   if (error) {
+    logger.error("Feedback submission failed", error, { component: "FeedbackAPI" })
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
