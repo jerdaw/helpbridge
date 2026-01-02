@@ -121,7 +121,11 @@ INSTRUCTIONS:
   }
 
   return (
-    <div className="pointer-events-none fixed right-6 bottom-6 z-50 flex flex-col items-end">
+    <aside
+      role="complementary"
+      aria-label="AI Chat Assistant"
+      className="fixed right-6 bottom-6 z-50 flex flex-col items-end"
+    >
       {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
@@ -303,6 +307,6 @@ INSTRUCTIONS:
       >
         {isOpen ? <ChevronDown className="h-6 w-6" /> : <MessageSquare className="h-6 w-6" />}
       </motion.button>
-    </div>
+    </aside>
   )
 }
