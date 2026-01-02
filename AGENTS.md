@@ -20,8 +20,9 @@
   - `docs/roadmaps/archive/2025-12-27-tier-1-implementation.md` → Tier 1 detail.
   - `docs/roadmaps/archive/2025-12-28-tier-2-implementation.md` → Tier 2 detail.
   - `docs/roadmaps/archive/2025-12-29-tier-3-implementation.md` → Tier 3 detail.
-  - `docs/roadmaps/archive/2025-12-30-tier-4-implementation.md` → Tier 4 detail.
-  - `docs/roadmaps/archive/2026-01-01-tier-5-implementation.md` → Tier 5 detail.
+  - `docs/roadmaps/archive/2025-12-30-tier-4-data-accessibility.md` → Tier 4 detail.
+  - `docs/roadmaps/archive/2026-01-01-tier-5-multi-lingual.md` → Tier 5 detail.
+  - **Roadmap Strategy**: We group roadmap archives by **Milestone/Tier** (e.g., "Tier 1", "v2") rather than splitting them into small feature files. This preserves the historical context of releases.
 
 When in doubt about architecture or design design, **read `README.md` and `docs/**` first\*\*.
 
