@@ -9,7 +9,7 @@ Keep documentation accurate, minimal, and easy to maintain.
 - **Localization**: `bilingual-dev-guide.md`
 - **Governance**: `docs/governance.md`
 - **Hooks & Utilities**: `docs/hooks.md`
-- **Roadmap Backlog**: `docs/roadmaps/future-roadmap.md` (Planned work)
+- **Roadmap**: `docs/roadmaps/roadmap.md` (Active Plan)
 - **Historical Records**: `docs/roadmaps/archive/` (Completed work)
 
 ## When adding or changing docs
@@ -25,11 +25,12 @@ Keep documentation accurate, minimal, and easy to maintain.
 
 This project separates **backlog** vs **implementation plans** vs **canonical docs** to reduce drift.
 
-- `docs/roadmaps/future-roadmap.md` is the single backlog of not-yet-implemented items.
+- `docs/roadmaps/roadmap.md` is the high-level strategic plan.
+- See detailed workflow in [`docs/development/roadmap-process.md`](docs/development/roadmap-process.md).
 - When you start work, create a focused implementation plan under `docs/roadmaps/` (e.g. `implementation-plan-feature-x.md`).
 - When the work is done:
   1. Update canonical docs (`docs/architecture.md`, etc.) so the result is maintainable.
-  2. Move the implementation plan into `docs/roadmaps/archive/` with a descriptive name.
+  2. Move the implementation plan into `docs/roadmaps/archive/` following the naming convention `YYYY-MM-DD-{kebab-case-description}.md`.
 
 ## Naming and organization
 
