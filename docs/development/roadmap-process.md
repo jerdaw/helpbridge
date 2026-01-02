@@ -42,6 +42,7 @@ This document outlines the workflow for managing the Kingston Care Connect roadm
   2.  **Rename** the file prepending the completion date: `YYYY-MM-DD-{original-name}.md`.
       - **Format**: `YYYY-MM-DD-kebab-cased-description.md`
       - **Example**: `2026-01-01-tier-5-implementation.md`
+      - **Note**: Keep archive files grouped by their original Roadmap Milestone/Tier. Do not split them into tiny per-feature files unless they are pure architectural references (which should go in `docs/architecture/`).
   3.  Update `docs/roadmaps/roadmap.md`:
       - Remove the detailed checklists for the completed item.
       - Add a brief summary line to "Current State" or a "Completed" section.
