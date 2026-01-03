@@ -167,6 +167,7 @@ export function Header() {
           <button
             className="p-2 text-neutral-600 dark:text-neutral-300"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {mobileMenuOpen ? <X /> : <Menu className="text-neutral-900 dark:text-white" />}
           </button>

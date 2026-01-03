@@ -38,6 +38,7 @@ export default function LanguageSwitcher() {
           aria-label="Select Language"
         >
           <Languages className="h-5 w-5" />
+          <span className="sr-only">Select Language</span>
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-48 p-2" align="end">

@@ -11,7 +11,7 @@ test.describe("About & Partners Pages", () => {
     await expect(page.getByRole("heading", { name: "The Kingston 150" })).toBeVisible()
 
     // Check Metrics
-    await expect(page.getByText("50+ Verified Services")).toBeVisible()
+    await expect(page.getByText("153 Verified Services")).toBeVisible()
     await expect(page.getByText("Works Offline")).toBeVisible()
 
     // Check Sections
@@ -34,18 +34,23 @@ test.describe("About & Partners Pages", () => {
     await expect(page.getByText("United Way KFL&A")).toBeVisible()
 
     // Check Verification Process
-    await expect(page.getByText("Source Verification")).toBeVisible()
+    await expect(page.getByRole("heading", { name: "Source Verification" })).toBeVisible()
     await expect(page.getByText("Monthly Audits")).toBeVisible()
   })
 
-  test("Navigation links work", async ({ page }) => {
+  test("Navigation links work", async ({ page, isMobile }) => {
     await page.goto("/")
     
     // Check About Link
-    await page.getByRole("navigation").getByRole("link", { name: "About" }).click()
+    if (isMobile) {
+      await page.getByRole("button", { name: "Open menu" }).click()
+    }
+    await page.getByRole("link", { name: "About" }).first().click()
     await expect(page).toHaveURL(/.*\/about/)
     
     // Check Partners Link from About Page
+    // On mobile, secondary navs might be different from desktop
+    // But page content links should be accessible
     await page.getByRole("link", { name: "View Partners" }).click()
     await expect(page).toHaveURL(/.*\/about\/partners/)
 
