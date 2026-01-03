@@ -289,12 +289,12 @@
   "About": {
     "hero": {
       "title": "Le projet Kingston 150",
-      "governanceText": "Cette plateforme adhère au schéma de gouvernance Kingston 150 (V7), garantissant que toutes les données de service sont vérifiées, classées et suivies.",
-      "landAcknowledgment": {
-        "title": "Reconnaissance du territoire",
-        "text": "Kingston, connue sous le nom de Katarokwi, est située sur les terres ancestrales et traditionnelles des Huron-Wendat, des Anishinaabe et de la Confédération Haudenosaunee. Nous reconnaissons notre responsabilité d'honorer la terre, l'eau et le ciel avec respect et préservation."
-      },
       "subtitle": "Un moteur de recherche à gouvernance sociale pour les services essentiels de Kingston. Vérifiés, accessibles et axés sur la vie privée."
+    },
+    "governanceText": "Cette plateforme adhère au schéma de gouvernance Kingston 150 (V7), garantissant que toutes les données de service sont vérifiées, classées et suivies.",
+    "landAcknowledgment": {
+      "title": "Reconnaissance du territoire",
+      "text": "Kingston, connue sous le nom de Katarokwi, est située sur les terres ancestrales et traditionnelles des Huron-Wendat, des Anishinaabe et de la Confédération Haudenosaunee. Nous reconnaissons notre responsabilité d'honorer la terre, l'eau et le ciel avec respect et préservation."
     },
     "metrics": {
       "verified": {

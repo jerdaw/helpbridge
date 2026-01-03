@@ -59,6 +59,7 @@ export function ProfileSettings({ variant = "ghost", size = "sm", showText = tru
         <Button
           variant={variant}
           size={size}
+          aria-label={context.hasOptedIn ? t("personalizePrompt") : t("enablePersonalization")}
           className={cn(
             "gap-2",
             variant === "ghost" && "text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800",

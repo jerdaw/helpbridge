@@ -105,7 +105,7 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-neutral-800 pt-8 text-sm text-neutral-400">
-          <p className="text-center text-neutral-500">
+          <p className="text-center text-neutral-400">
             {t("emergencyDisclaimer")}
           </p>
           
