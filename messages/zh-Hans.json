@@ -4,20 +4,20 @@
   },
   "Footer": {
     "disclaimer": "支持金斯顿社区",
-    "emergencyDisclaimer": "Kingston Care Connect is an information directory only. Always verify information with service providers. For emergencies, call 911.",
+    "emergencyDisclaimer": "Kingston Care Connect 仅供信息参考。请务必向服务提供商核实信息。如遇紧急情况，请拨打 911。",
     "quickLinks": {
-      "community": "Community",
-      "food": "Food Access",
-      "housing": "Housing Support",
-      "health": "Health Services",
-      "crisis": "Crisis Support",
-      "legal": "Legal",
-      "about": "About Us",
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service",
-      "contentPolicy": "Content Policy"
+      "community": "社区",
+      "food": "食品获取",
+      "housing": "住房支持",
+      "health": "健康服务",
+      "crisis": "危机支持",
+      "legal": "法律",
+      "about": "关于我们",
+      "privacy": "隐私政策",
+      "terms": "服务条款",
+      "contentPolicy": "内容政策"
     },
-    "aiTranslationNote": "Some translations are AI-assisted. Report errors to feedback@kingstoncare.ca"
+    "aiTranslationNote": "部分翻译由 AI 辅助。错误请报告至 feedback@kingstoncare.ca"
   },
   "Search": {
     "placeholder": "搜索帮助...",
@@ -44,17 +44,17 @@
     "community": "社区",
     "indigenous": "原住民",
     "scope": {
-      "all": "All",
-      "local": "Local",
-      "provincial": "Province-wide"
+      "all": "全部",
+      "local": "本地",
+      "provincial": "省级"
     },
     "filterBar": {
-      "showing": "Showing"
+      "showing": "显示"
     },
-    "noLocalResults": "No local services found for this search.",
-    "noResults": "No results found for \"{query}\".",
-    "noResultsInCategory": "No results found for \"{query}\" in {category}.",
-    "showAllResults": "Show {count} province-wide results"
+    "noLocalResults": "未找到此搜索的本地服务。",
+    "noResults": "未找到“{query}”的结果。",
+    "noResultsInCategory": "在 {category} 中未找到“{query}”的结果。",
+    "showAllResults": "显示 {count} 个省级结果"
   },
   "VoiceInput": {
     "start": "开始私人语音搜索",
@@ -102,7 +102,7 @@
   "Common": {
     "openInNewTab": "（在新标签页中打开）",
     "printResults": "打印结果",
-    "switchLanguage": "Switch Language"
+    "switchLanguage": "切换语言"
   },
   "Privacy": {
     "title": "隐私政策",
@@ -117,48 +117,48 @@
     "lastUpdated": "Last Updated: {date}",
     "sections": {
       "overview": {
-        "title": "Privacy Policy Overview",
-        "content": "Kingston Care Connect (\"KCC\", \"we\", \"us\") is committed to protecting your privacy. This policy explains how we collect, use, and protect information when you use our service."
+        "title": "概览",
+        "content": "Kingston Care Connect (“KCC”, “我们”) 致力于保护您的隐私。本政策解释了当您使用我们的服务时，我们如何收集、使用和保护信息。"
       },
       "dataCollection": {
-        "title": "Information We Collect",
-        "content": "**Information You Provide**\n- **Feedback Forms**: Information you verify or report.\n- **Partner Portal**: Organization details for partners.\n\n**Information Collected Automatically**\n- **Local Storage**: Preferences stored on your device.\n- **Technical Data**: Standard server logs for security (no tracking).\n\n**Information We Do NOT Collect**\n- No search query logging\n- No tracking cookies\n- No analytics services\n- We implement a Zero-Log Policy for your searches."
+        "title": "我们收集的信息",
+        "content": "**您提供的信息**\n- **反馈表**：您验证或报告的信息。\n- **合作伙伴门户**：合作伙伴的组织详情。\n\n**自动收集的信息**\n- **本地存储**：存储在您设备上的首选项。\n- **技术数据**：用于安全的标准服务器日志（无跟踪）。\n\n**我们不收集的信息**\n- 不记录搜索查询\n- 无跟踪 Cookie\n- 无分析服务\n- 我们的搜索实施零日志政策。"
       },
       "aiPrivacy": {
-        "title": "AI Assistant Privacy",
-        "content": "Our AI assistant runs entirely in your browser using client-side processing.\n- **Zero Data Egress**: Queries never leave your device.\n- **Zero-Knowledge**: We don't know what you discuss.\n- **No Storage**: Conversations deleted on close."
+        "title": "AI 助手隐私",
+        "content": "我们的 AI 助手完全在您的浏览器中使用客户端处理运行。\n- **零数据流出**：查询绝不会离开您的设备。\n- **零知识**：我们不知道您讨论的内容。\n- **无存储**：对话在关闭时删除。"
       },
       "useOfInfo": {
-        "title": "How We Use Information",
-        "content": "We use information for:\n- Service Improvement\n- Partner Management\n- Security\n\nWe do NOT use information for:\n- Advertising\n- Profiling\n- Sale to third parties"
+        "title": "我们如何使用信息",
+        "content": "我们使用信息用于：\n- 服务改进\n- 合作伙伴管理\n- 安全\n\n我们**不**使用信息用于：\n- 广告\n- 画像\n- 销售给第三方"
       },
       "sharing": {
-        "title": "Information Sharing",
-        "content": "We share information only with verified Partners (feedback) or Service Providers (hosting/database). We do NOT sell information."
+        "title": "信息共享",
+        "content": "我们仅与经过验证的合作伙伴（反馈）或服务提供商（托管/数据库）共享信息。我们**不**出售信息。"
       },
       "retention": {
-        "title": "Data Retention",
-        "content": "Feedback is deleted after resolution (90 days). Partner data retained while active. Local storage is controlled by you."
+        "title": "数据保留",
+        "content": "反馈在解决后（90 天）删除。合作伙伴数据在活跃期间保留。本地存储由您控制。"
       },
       "rights": {
-        "title": "Your Privacy Rights",
-        "content": "Under PIPEDA, you have rights to Access, Correction, Deletion, and Withdrawal of Consent. Contact privacy@kingstoncareconnect.ca."
+        "title": "您的隐私权",
+        "content": "根据 PIPEDA，您拥有访问、更正、删除和撤回同意的权利。联系 privacy@kingstoncareconnect.ca。"
       },
       "security": {
-        "title": "Data Security",
-        "content": "We implement Encryption, Access Control, and Minimal Collection principles."
+        "title": "数据安全",
+        "content": "我们实施加密、访问控制和最小化收集原则。"
       },
       "children": {
-        "title": "Children's Privacy",
-        "content": "KCC is not directed at children under 13. We do not knowingly collect information from children."
+        "title": "儿童隐私",
+        "content": "KCC 不针对 13 岁以下的儿童。我们不会故意收集儿童的信息。"
       },
       "cookies": {
-        "title": "Cookie Policy",
-        "content": "We use minimal cookies (NEXT_LOCALE for language). No tracking or advertising cookies."
+        "title": "Cookie 政策",
+        "content": "我们使用最少的 Cookie（用于语言的 NEXT_LOCALE）。无跟踪或广告 Cookie。"
       },
       "contact": {
-        "title": "Contact Us",
-        "content": "Email: privacy@kingstoncareconnect.ca"
+        "title": "联系我们",
+        "content": "电子邮件：privacy@kingstoncareconnect.ca"
       }
     }
   },
@@ -395,60 +395,60 @@
     "lastUpdated": "Last Updated: {date}",
     "sections": {
       "acceptance": {
-        "title": "Acceptance of Terms",
-        "content": "English version available in Terms of Service."
+        "title": "接受条款",
+        "content": "访问或使用 Kingston Care Connect (“KCC”, “本服务”)，即表示您同意受这些服务条款的约束。如果您不同意这些条款，请勿使用本服务。"
       },
       "serviceDescription": {
-        "title": "Description of Service",
-        "content": "KCC is an information directory that provides contact information for social services in Kingston, Ontario. KCC does NOT provide: \n- Emergency services (for emergencies, call 911)\n- Medical advice or healthcare services\n- Legal advice or representation\n- Financial advice or services\n- Counseling or mental health treatment\n\nKCC is a directory only. We do not operate, control, or endorse any services listed on this platform."
+        "title": "服务描述",
+        "content": "KCC 是一个提供安大略省金斯顿社会服务联系信息的指南。KCC 不提供：\n- 紧急服务（如遇紧急情况，请拨打 911）\n- 医疗建议或医疗保健服务\n- 法律建议或代理\n- 财务建议或服务\n- 咨询或心理健康治疗\n\nKCC 仅为指南。我们不运营、控制或认可此平台列出的任何服务。"
       },
       "disclaimer": {
-        "title": "Disclaimer of Warranties",
-        "content": "THE SERVICE IS PROVIDED \"AS IS\" AND \"AS AVAILABLE\" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. WE DO NOT WARRANT THAT: \n- Service information is accurate, current, or complete\n- Services listed are available, safe, or appropriate for your needs\n- The platform will be uninterrupted or error-free"
+        "title": "免责声明",
+        "content": "本服务“按原样”和“可用”提供，没有任何形式的明示或暗示保证。我们不保证：\n- 服务信息准确、最新或完整\n- 列出的服务可用、安全或适合您的需求\n- 平台不中断或无错误"
       },
       "liability": {
-        "title": "Limitation of Liability",
-        "content": "TO THE MAXIMUM EXTENT PERMITTED BY LAW, KINGSTON CARE CONNECT, ITS ORGANIZERS, CONTRIBUTORS, AND AFFILIATES SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR INDIRECTLY."
+        "title": "责任限制",
+        "content": "在法律允许的最大范围内，KINGSTON CARE CONNECT、其组织者、贡献者和关联公司不对任何间接、附带、特殊、后果性或惩罚性损害，或任何利润或收入损失承担责任，无论是直接还是间接产生。"
       },
       "emergency": {
-        "title": "Emergency Services Disclaimer",
-        "content": "THIS IS NOT AN EMERGENCY SERVICE. If you are experiencing a life-threatening emergency, CALL 911 IMMEDIATELY. For a mental health crisis, CALL 988. Do not rely on this directory for emergencies."
+        "title": "紧急服务免责声明",
+        "content": "这不是紧急服务。如果您遇到危及生命的紧急情况，请立即拨打 911。如遇心理健康危机，请拨打 988。请勿依赖此指南进行紧急求助。"
       },
       "advice": {
-        "title": "No Professional Advice",
-        "content": "Nothing on this platform constitutes professional advice of any kind, including but not limited to medical, legal, financial, or psychological advice. Always consult qualified professionals for specific concerns."
+        "title": "无专业建议",
+        "content": "此平台上的任何内容均不构成任何形式的专业建议，包括但不限于医疗、法律、财务或心理建议。如有具体问题，请务必咨询合格的专业人士。"
       },
       "responsibilities": {
-        "title": "User Responsibilities",
-        "content": "By using KCC, you agree to:\n- Verify all information directly with service providers\n- Not rely solely on KCC information for critical decisions\n- Report inaccurate information through our feedback system\n- Use the Service only for lawful purposes"
+        "title": "用户责任",
+        "content": "使用 KCC，即表示您同意：\n- 直接向服务提供商核实所有信息\n- 不仅依赖 KCC 信息做出关键决策\n- 通过我们的反馈系统报告不准确的信息\n- 仅出于合法目的使用本服务"
       },
       "indemnification": {
-        "title": "Indemnification",
-        "content": "You agree to indemnify and hold harmless Kingston Care Connect, its organizers, contributors, and affiliates from any claims, damages, losses, or expenses (including reasonable legal fees) arising from your use of the Service."
+        "title": "赔偿",
+        "content": "您同意赔偿并使 Kingston Care Connect、其组织者、贡献者和关联公司免受因您使用本服务而引起的任何索赔、损害、损失或费用（包括合理的法律费用）的损害。"
       },
       "thirdParty": {
-        "title": "Third-Party Services",
-        "content": "KCC lists third-party services over which we have no control. We are not responsible for the availability, quality, or safety of listed services. Inclusion in this directory does not constitute endorsement."
+        "title": "第三方服务",
+        "content": "KCC 列出了我们无法控制的第三方服务。我们不对列出服务的可用性、质量或安全性负责。包含在此指南中并不构成认可。"
       },
       "ai": {
-        "title": "AI Assistant Disclaimer",
-        "content": "Our AI assistant uses a language model that may provide inaccurate or hallucinated information. The AI assistant is for informational purposes only. Always verify critical information. The AI assistant cannot provide emergency assistance."
+        "title": "AI 助手免责声明",
+        "content": "我们的 AI 助手使用可能会提供不准确或幻觉信息的语言模型。AI 助手仅供参考。请务必核实关键信息。AI 助手无法提供紧急援助。"
       },
       "modifications": {
-        "title": "Modifications to Terms",
-        "content": "We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of the Service after changes constitutes acceptance of the modified Terms."
+        "title": "条款修改",
+        "content": "我们保留随时修改这些条款的权利。更改一经发布立即生效。您在更改后继续使用本服务即表示接受修改后的条款。"
       },
       "governing": {
-        "title": "Governing Law",
-        "content": "These Terms shall be governed by and construed in accordance with the laws of the Province of Ontario and the federal laws of Canada applicable therein."
+        "title": "适用法律",
+        "content": "这些条款应受安大略省法律及其适用的加拿大联邦法律的管辖并据其解释。"
       },
       "severability": {
-        "title": "Severability",
-        "content": "If any provision of these Terms is found to be unenforceable, the remaining provisions shall continue in full force and effect."
+        "title": "可分割性",
+        "content": "如果发现这些条款的任何规定不可执行，其余规定应继续完全有效。"
       },
       "contact": {
-        "title": "Contact Information",
-        "content": "For questions about these Terms: legal@kingstoncareconnect.ca"
+        "title": "联系信息",
+        "content": "有关这些条款的问题：legal@kingstoncareconnect.ca"
       }
     }
   },
@@ -473,30 +473,30 @@
   "AccessibilityPolicy": {
     "title": "无障碍政策",
     "lastUpdated": "Last Updated: {date}",
-    "commitment": "Kingston Care Connect is committed to ensuring equal access for people with disabilities.",
-    "standards": "We are committed to meeting the requirements of the Accessibility for Ontarians with Disabilities Act (AODA) and the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA.",
+    "commitment": "Kingston Care Connect 致力于确保残疾人的平等访问和参与。我们努力及时满足残疾人的无障碍需求。",
+    "standards": "我们致力于满足《安大略省残疾人无障碍法案》(AODA) 和《Web 内容无障碍指南》(WCAG) 2.1 AA 级的要求。",
     "headings": {
-      "features": "Accessibility Features",
-      "multiYearPlan": "Multi-Year Accessibility Plan",
-      "feedback": "Feedback Process"
+      "features": "无障碍功能",
+      "multiYearPlan": "多年无障碍计划",
+      "feedback": "反馈流程"
     },
     "features": {
-      "contrast": "High-contrast mode for improved readability",
-      "keyboard": "Keyboard navigation for all interactive elements",
-      "skip": "Skip-to-content links for screen reader users",
-      "alt": "Alt text for all images",
-      "semantic": "Semantic HTML structure",
-      "responsive": "Responsive design for all device sizes"
+      "contrast": "提高可读性的高对比度模式",
+      "keyboard": "所有交互元素的键盘导航",
+      "skip": "屏幕阅读器用户的跳过内容链接",
+      "alt": "所有图像的替代文本",
+      "semantic": "语义化 HTML 结构",
+      "responsive": "适用于所有设备尺寸的响应式设计"
     },
     "plan": {
-      "y2026": "Maintain WCAG 2.1 AA compliance & quarterly audits",
-      "y2027": "Upgrade to WCAG 2.2 Level AA & external audit",
-      "y2028": "Expand language support & community advisory"
+      "y2026": "保持 WCAG 2.1 AA 合规性和季度审计",
+      "y2027": "升级到 WCAG 2.2 AA 级和外部审计",
+      "y2028": "扩展语言支持和社区咨询"
     },
     "feedback": {
-      "intro": "We welcome feedback on the accessibility of Kingston Care Connect. Please let us know if you encounter accessibility barriers:",
-      "email": "Email: accessibility@kingstoncareconnect.ca",
-      "formats": "Information on this website is available in alternative formats upon request."
+      "intro": "我们欢迎对 Kingston Care Connect 无障碍性的反馈。如果您遇到无障碍障碍，请告诉我们：",
+      "email": "电子邮件：accessibility@kingstoncareconnect.ca",
+      "formats": "本网站上的信息可根据要求提供其他格式。"
     }
   },
   "PartnerTerms": {
@@ -504,47 +504,47 @@
     "lastUpdated": "Last Updated: {date}",
     "sections": {
       "eligibility": {
-        "title": "Partner Eligibility",
-        "content": "Authorized representatives only."
+        "title": "合作伙伴资格",
+        "content": "要申请列表，您必须是组织的授权代表，并在金斯顿运营真正的社会服务。"
       },
       "verification": {
-        "title": "Identity Verification",
-        "content": "We verify identity through email domain matching, phone verification, and public records. Fraudulent claims result in immediate termination."
+        "title": "身份验证",
+        "content": "我们通过电子邮件域名匹配、电话验证和公共记录验证身份。欺诈性索赔将导致立即终止。"
       },
       "accuracy": {
-        "title": "Accuracy Warranty",
-        "content": "You warrant that all information provided is accurate, current, and not misleading."
+        "title": "准确性保证",
+        "content": "您保证提供的所有信息准确、最新且无误导性。"
       },
       "license": {
-        "title": "License Grant",
-        "content": "You grant KCC a non-exclusive license to display and share your organization's information."
+        "title": "许可授予",
+        "content": "您授予 KCC 非独占许可，以显示和共享您组织的信息。"
       },
       "termination": {
-        "title": "Termination",
-        "content": "Either party may terminate this partnership. KCC may terminate for terms violation or inaccurate info."
+        "title": "终止",
+        "content": "任何一方均可终止此合作伙伴关系。KCC 可因违反条款或信息不准确而终止。"
       }
     }
   },
   "ContentPolicy": {
     "title": "内容政策",
-    "description": "Our guidelines for maintaining a safe community directory.",
-    "lastUpdated": "Last Updated",
+    "description": "我们维护安全、准确和值得信赖的社区指南的准则。",
+    "lastUpdated": "最后更新",
     "sections": {
       "prohibited": {
-        "title": "Prohibited Content",
-        "content": "Spam, hate speech, and fraudulent info are strictly prohibited."
+        "title": "禁止内容",
+        "content": "<p>为确保 Kingston Care Connect 仍然是一个安全可靠的资源，严禁以下内容：</p><ul><li><strong>垃圾邮件或广告</strong>：未经请求的商业内容或与社会服务无关的促销材料。</li><li><strong>诽谤内容</strong>：旨在损害组织或个人声誉的虚假信息。</li><li><strong>侵犯隐私</strong>：未经同意的个人信息（例如员工家庭住址）。</li><li><strong>仇恨言论</strong>：宣扬基于种族、宗教、残疾、性别或性取向的暴力或歧视的言论。</li><li><strong>欺诈信息</strong>：故意误导性的服务描述或资格标准。</li></ul>"
       },
       "submissions": {
-        "title": "User Submissions",
-        "content": "<p>When submitting services or feedback to KCC:</p><ul><li>All submissions are reviewed by our team before publication (except for immediate feedback which is internal).</li><li>We reserve the right to edit submissions for clarity, length, and formatting (while maintaining accuracy).</li><li>We reserve the right to reject submissions that do not meet our inclusion criteria or violate this policy.</li></ul>"
+        "title": "用户提交",
+        "content": "<p>向 KCC 提交服务或反馈时：</p><ul><li>所有提交在发布前均由我们的团队审核（内部即时反馈除外）。</li><li>我们保留编辑提交以确保清晰度、长度和格式（同时保持准确性）的权利。</li><li>我们保留拒绝不符合我们收录标准或违反本政策的提交的权利。</li></ul>"
       },
       "reporting": {
-        "title": "Reporting Process",
-        "content": "<p>If you encounter problematic content:</p><ul><li>Use the 'Report Issue' button found on every service listing page.</li><li>For privacy or safety concerns, email <strong>privacy@kingstoncareconnect.ca</strong>.</li><li>We aim to review and respond to reports within 5 business days.</li><li>You may report content anonymously, though providing contact info helps us verify the claim.</li></ul>"
+        "title": "报告流程",
+        "content": "<p>如果您遇到有问题的内容：</p><ul><li>使用每个服务列表页面上的“报告问题”按钮。</li><li>对于隐私或安全问题，请发送电子邮件至 <strong>privacy@kingstoncareconnect.ca</strong>。</li><li>我们的目标是在 5 个工作日内审核并回复报告。</li><li>您可以匿名报告内容，即提供联系信息有助于我们核实索赔。</li></ul>"
       },
       "appeals": {
-        "title": "Appeals Process",
-        "content": "<p>If your listing submission was rejected or your content removed:</p><ul><li>You may appeal the decision by contacting <strong>moderation@kingstoncareconnect.ca</strong>.</li><li>Please provide specific evidence supporting your appeal (e.g., official website links, registration documents).</li><li>Final decisions are made by the KCC Governance Committee.</li></ul>"
+        "title": "申诉流程",
+        "content": "<p>如果您的列表提交被拒绝或内容被删除：</p><ul><li>您可以通过联系 <strong>moderation@kingstoncareconnect.ca</strong> 申诉决定。</li><li>请提供支持您申诉的具体证据（例如，官方网站链接、注册文件）。</li><li>最终决定由 KCC 治理委员会做出。</li></ul>"
       }
     }
   },
@@ -559,31 +559,31 @@
     "success": "认领请求已提交。请查收电子邮件。"
   },
   "Badges": {
-    "ontarioWide": "Ontario-wide",
-    "canadaWide": "Canada-wide"
+    "ontarioWide": "安大略省范围",
+    "canadaWide": "加拿大范围"
   },
   "Distance": {
-    "ontarioWide": "Available across Ontario",
-    "canadaWide": "Available across Canada"
+    "ontarioWide": "安大略省范围内可用",
+    "canadaWide": "加拿大范围内可用"
   },
   "AiDisclaimer": {
-    "title": "About This AI Assistant",
-    "limitation1": "This AI may provide inaccurate information.",
-    "limitation2": "The AI cannot access real-time service availability.",
-    "limitation3": "Always verify information with service providers.",
-    "emergency": "For emergencies, call 911 immediately. This assistant cannot provide emergency help.",
-    "privacy": "Your conversation stays on your device and is never sent to our servers."
+    "title": "关于此 AI 助手",
+    "limitation1": "此 AI 可能会提供不准确的信息。",
+    "limitation2": "AI 无法访问实时服务可用性。",
+    "limitation3": "请务必向服务提供商核实信息。",
+    "emergency": "如遇紧急情况，请立即拨打 911。此助手无法提供紧急帮助。",
+    "privacy": "您的对话保留在您的设备上，绝不会发送到我们的服务器。"
   },
   "CrisisAlert": {
-    "title": "Are you in immediate danger?",
-    "message": "If you or someone else is at risk of harm, please call emergency services immediately.",
-    "disclaimer": "Kingston Care Connect is an information directory only. Always verify information with service providers.",
-    "callButton": "Emergency: 911",
-    "crisisLine": "Suicide Crisis Helpline: 988"
+    "title": "您是否处于紧迫危险中？",
+    "message": "如果您或他人面临伤害风险，请立即致电紧急服务。",
+    "disclaimer": "Kingston Care Connect 仅供信息参考。请务必向服务提供商核实信息。",
+    "callButton": "紧急电话：911",
+    "crisisLine": "自杀危机求助热线：988"
   },
   "TranslationBanner": {
-    "title": "Translation Notice",
-    "message": "This page uses AI-assisted translations. For critical information, please refer to the English version.",
+    "title": "翻译通知",
+    "message": "此页面使用 AI 辅助翻译。如需关键信息，请参阅英文版本。",
     "dismiss": "知道了"
   }
 }
