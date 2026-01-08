@@ -4,20 +4,20 @@
   },
   "Footer": {
     "disclaimer": "دعم مجتمع كينغستون",
-    "emergencyDisclaimer": "Kingston Care Connect is an information directory only. Always verify information with service providers. For emergencies, call 911.",
+    "emergencyDisclaimer": "كينغستون كير كونكت هو دليل معلومات فقط. تحقق دائمًا من المعلومات مع مقدمي الخدمة. للطوارئ، اتصل بـ 911.",
     "quickLinks": {
-      "community": "Community",
-      "food": "Food Access",
-      "housing": "Housing Support",
-      "health": "Health Services",
-      "crisis": "Crisis Support",
-      "legal": "Legal",
-      "about": "About Us",
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service",
-      "contentPolicy": "Content Policy"
+      "community": "المجتمع",
+      "food": "الوصول إلى الغذاء",
+      "housing": "دعم الإسكان",
+      "health": "خدمات صحية",
+      "crisis": "دعم الأزمات",
+      "legal": "قانوني",
+      "about": "معلومات عنا",
+      "privacy": "سياسة الخصوصية",
+      "terms": "شروط الخدمة",
+      "contentPolicy": "سياسة المحتوى"
     },
-    "aiTranslationNote": "Some translations are AI-assisted. Report errors to feedback@kingstoncare.ca"
+    "aiTranslationNote": "بعض الترجمات مدعومة بالذكاء الاصطناعي. أبلغ عن الأخطاء إلى feedback@kingstoncare.ca"
   },
   "Search": {
     "placeholder": "ابحث عن مساعدة...",
@@ -44,17 +44,17 @@
     "community": "مجتمع",
     "indigenous": "السكان الأصليون",
     "scope": {
-      "all": "All",
-      "local": "Local",
-      "provincial": "Province-wide"
+      "all": "الكل",
+      "local": "محلي",
+      "provincial": "على مستوى المقاطعة"
     },
     "filterBar": {
-      "showing": "Showing"
+      "showing": "عرض"
     },
-    "noLocalResults": "No local services found for this search.",
-    "noResults": "No results found for \"{query}\".",
-    "noResultsInCategory": "No results found for \"{query}\" in {category}.",
-    "showAllResults": "Show {count} province-wide results"
+    "noLocalResults": "لم يتم العثور على خدمات محلية لهذا البحث.",
+    "noResults": "لم يتم العثور على نتائج لـ \"{query}\".",
+    "noResultsInCategory": "لم يتم العثور على نتائج لـ \"{query}\" في {category}.",
+    "showAllResults": "عرض {count} نتيجة على مستوى المقاطعة"
   },
   "VoiceInput": {
     "start": "بدء البحث الصوتي الخاص",
@@ -102,7 +102,7 @@
   "Common": {
     "openInNewTab": "(يفتح في علامة تبويب جديدة)",
     "printResults": "طباعة النتائج",
-    "switchLanguage": "Switch Language"
+    "switchLanguage": "تغيير اللغة"
   },
   "Privacy": {
     "title": "سياسة الخصوصية",
@@ -117,48 +117,48 @@
     "lastUpdated": "Last Updated: {date}",
     "sections": {
       "overview": {
-        "title": "Privacy Policy Overview",
-        "content": "Kingston Care Connect (\"KCC\", \"we\", \"us\") is committed to protecting your privacy. This policy explains how we collect, use, and protect information when you use our service."
+        "title": "نظرة عامة على سياسة الخصوصية",
+        "content": "تلتزم كينغستون كير كونكت (\"KCC\"، \"نحن\") بحماية خصوصيتك. توضح هذه السياسة كيفية جمعنا واستخدامنا وحمايتنا للمعلومات عند استخدامك لخدمتنا."
       },
       "dataCollection": {
-        "title": "Information We Collect",
-        "content": "**Information You Provide**\n- **Feedback Forms**: Information you verify or report.\n- **Partner Portal**: Organization details for partners.\n\n**Information Collected Automatically**\n- **Local Storage**: Preferences stored on your device.\n- **Technical Data**: Standard server logs for security (no tracking).\n\n**Information We Do NOT Collect**\n- No search query logging\n- No tracking cookies\n- No analytics services\n- We implement a Zero-Log Policy for your searches."
+        "title": "المعلومات التي نجمعها",
+        "content": "**المعلومات التي تقدمها**\n- **نماذج التعليقات**: المعلومات التي تتحقق منها أو تبلغ عنها.\n- **بوابة الشركاء**: تفاصيل المنظمة للشركاء.\n\n**المعلومات التي يتم جمعها تلقائياً**\n- **التخزين المحلي**: التفضيلات المخزنة على جهازك.\n- **البيانات الفنية**: سجلات الخادم القياسية للأمان (بدون تتبع).\n\n**المعلومات التي لا نجمعها**\n- لا تسجيل لاستعلامات البحث\n- لا ملفات تعريف ارتباط للتتبع\n- لا خدمات تحليلات\n- نحن نطبق سياسة عدم التسجيل لعمليات البحث الخاصة بك."
       },
       "aiPrivacy": {
-        "title": "AI Assistant Privacy",
-        "content": "Our AI assistant runs entirely in your browser using client-side processing.\n- **Zero Data Egress**: Queries never leave your device.\n- **Zero-Knowledge**: We don't know what you discuss.\n- **No Storage**: Conversations deleted on close."
+        "title": "خصوصية مساعد الذكاء الاصطناعي",
+        "content": "يعمل مساعد الذكاء الاصطناعي الخاص بنا بالكامل في متصفحك باستخدام المعالجة من جانب العميل.\n- **صفر خروج للبيانات**: الاستعلامات لا تغادر جهازك أبداً.\n- **صفر معرفة**: لا نعرف ما الذي تناقشه.\n- **لا تخزين**: يتم حذف المحادثات عند الإغلاق."
       },
       "useOfInfo": {
-        "title": "How We Use Information",
-        "content": "We use information for:\n- Service Improvement\n- Partner Management\n- Security\n\nWe do NOT use information for:\n- Advertising\n- Profiling\n- Sale to third parties"
+        "title": "كيف نستخدم المعلومات",
+        "content": "نستخدم المعلومات من أجل:\n- تحسين الخدمة\n- إدارة الشركاء\n- الأمان\n\nنحن **لا** نستخدم المعلومات من أجل:\n- الإعلانات\n- التنميط\n- البيع لأطراف ثالثة"
       },
       "sharing": {
-        "title": "Information Sharing",
-        "content": "We share information only with verified Partners (feedback) or Service Providers (hosting/database). We do NOT sell information."
+        "title": "مشاركة المعلومات",
+        "content": "نحن نشارك المعلومات فقط مع الشركاء المعتمدين (التعليقات) أو مزودي الخدمة (الاستضافة/قاعدة البيانات). نحن **لا** نبيع المعلومات."
       },
       "retention": {
-        "title": "Data Retention",
-        "content": "Feedback is deleted after resolution (90 days). Partner data retained while active. Local storage is controlled by you."
+        "title": "الاحتفاظ بالبيانات",
+        "content": "يتم حذف التعليقات بعد الحل (90 يوماً). يتم الاحتفاظ ببيانات الشركاء طالما أنهم نشطون. التخزين المحلي تتحكم فيه أنت."
       },
       "rights": {
-        "title": "Your Privacy Rights",
-        "content": "Under PIPEDA, you have rights to Access, Correction, Deletion, and Withdrawal of Consent. Contact privacy@kingstoncareconnect.ca."
+        "title": "حقوق الخصوصية الخاصة بك",
+        "content": "بموجب PIPEDA، لديك الحق في الوصول والتصحيح والحذف وسحب الموافقة. اتصل بـ privacy@kingstoncareconnect.ca."
       },
       "security": {
-        "title": "Data Security",
-        "content": "We implement Encryption, Access Control, and Minimal Collection principles."
+        "title": "أمن البيانات",
+        "content": "نحن ننفذ مبادئ التشفير والتحكم في الوصول والجمع في الحد الأدنى."
       },
       "children": {
-        "title": "Children's Privacy",
-        "content": "KCC is not directed at children under 13. We do not knowingly collect information from children."
+        "title": "خصوصية الأطفال",
+        "content": "KCC ليس موجهاً للأطفال دون سن 13 عاماً. نحن لا نجمع معلومات من الأطفال عن عمد."
       },
       "cookies": {
-        "title": "Cookie Policy",
-        "content": "We use minimal cookies (NEXT_LOCALE for language). No tracking or advertising cookies."
+        "title": "سياسة ملفات تعريف الارتباط",
+        "content": "نستخدم الحد الأدنى من ملفات تعريف الارتباط (NEXT_LOCALE للغة). لا ملفات تعريف ارتباط للتتبع أو الإعلانات."
       },
       "contact": {
-        "title": "Contact Us",
-        "content": "Email: privacy@kingstoncareconnect.ca"
+        "title": "اتصل بنا",
+        "content": "البريد الإلكتروني: privacy@kingstoncareconnect.ca"
       }
     }
   },
@@ -395,60 +395,60 @@
     "lastUpdated": "Last Updated: {date}",
     "sections": {
       "acceptance": {
-        "title": "Acceptance of Terms",
-        "content": "English version available in Terms of Service."
+        "title": "قبول الشروط",
+        "content": "من خلال الوصول إلى أو استخدام Kingston Care Connect (\"KCC\"، \"الخدمة\")، فإنك توافق على الالتزام بشروط الخدمة هذه. إذا كنت لا توافق على هذه الشروط، فلا تستخدم الخدمة."
       },
       "serviceDescription": {
-        "title": "Description of Service",
-        "content": "KCC is an information directory that provides contact information for social services in Kingston, Ontario. KCC does NOT provide: \n- Emergency services (for emergencies, call 911)\n- Medical advice or healthcare services\n- Legal advice or representation\n- Financial advice or services\n- Counseling or mental health treatment\n\nKCC is a directory only. We do not operate, control, or endorse any services listed on this platform."
+        "title": "وصف الخدمة",
+        "content": "KCC هو دليل معلومات يوفر معلومات الاتصال بالخدمات الاجتماعية في كينغستون، أونتاريو. KCC لا يقدم: \n- خدمات الطوارئ (للطوارئ، اتصل بـ 911)\n- المشورة الطبية أو خدمات الرعاية الصحية\n- المشورة القانونية أو التمثيل\n- المشورة المالية أو الخدمات\n- الاستشارة أو علاج الصحة العقلية\n\nKCC هو دليل فقط. نحن لا نشغل أو نتحكم في أو نؤيد أي خدمات مدرجة في هذه المنصة."
       },
       "disclaimer": {
-        "title": "Disclaimer of Warranties",
-        "content": "THE SERVICE IS PROVIDED \"AS IS\" AND \"AS AVAILABLE\" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. WE DO NOT WARRANT THAT: \n- Service information is accurate, current, or complete\n- Services listed are available, safe, or appropriate for your needs\n- The platform will be uninterrupted or error-free"
+        "title": "إخلاء المسؤولية عن الضمانات",
+        "content": "يتم توفير الخدمة \"كما هي\" و \"حسب توفرها\" دون أي ضمانات من أي نوع، صريحة أو ضمنية. نحن لا نضمن أن: \n- معلومات الخدمة دقيقة أو حديثة أو كاملة\n- الخدمات المدرجة متاحة أو آمنة أو مناسبة لاحتياجاتك\n- المنصة ستكون غير منقطعة أو خالية من الأخطاء"
       },
       "liability": {
-        "title": "Limitation of Liability",
-        "content": "TO THE MAXIMUM EXTENT PERMITTED BY LAW, KINGSTON CARE CONNECT, ITS ORGANIZERS, CONTRIBUTORS, AND AFFILIATES SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR INDIRECTLY."
+        "title": "حدود المسؤولية",
+        "content": "إلى أقصى حد يسمح به القانون، لن تكون Kingston Care Connect أو منظموها أو المساهمون فيها أو الشركات التابعة لها مسؤولة عن أي أضرار غير مباشرة أو عرضية أو خاصة أو تبعية أو عقابية، أو أي خسارة في الأرباح أو الإيرادات، سواء تم تكبدها بشكل مباشر أو غير مباشر."
       },
       "emergency": {
-        "title": "Emergency Services Disclaimer",
-        "content": "THIS IS NOT AN EMERGENCY SERVICE. If you are experiencing a life-threatening emergency, CALL 911 IMMEDIATELY. For a mental health crisis, CALL 988. Do not rely on this directory for emergencies."
+        "title": "إخلاء المسؤولية عن خدمات الطوارئ",
+        "content": "هذه ليست خدمة طوارئ. إذا كنت تعاني من حالة طارئة تهدد الحياة، اتصل بـ 911 على الفور. لأزمة الصحة العقلية، اتصل بـ 988. لا تعتمد على هذا الدليل للطوارئ."
       },
       "advice": {
-        "title": "No Professional Advice",
-        "content": "Nothing on this platform constitutes professional advice of any kind, including but not limited to medical, legal, financial, or psychological advice. Always consult qualified professionals for specific concerns."
+        "title": "لا مشورة مهنية",
+        "content": "لا شيء في هذه المنصة يشكل مشورة مهنية من أي نوع، بما في ذلك ع سبيل المثال لا الحصر المشورة الطبية أو القانونية أو المالية أو النفسية. استشر دائمًا المهنيين المؤهلين بشأن مخاوف محددة."
       },
       "responsibilities": {
-        "title": "User Responsibilities",
-        "content": "By using KCC, you agree to:\n- Verify all information directly with service providers\n- Not rely solely on KCC information for critical decisions\n- Report inaccurate information through our feedback system\n- Use the Service only for lawful purposes"
+        "title": "مسؤوليات المستخدم",
+        "content": "باستخدام KCC، فإنك توافق على:\n- التحقق من جميع المعلومات مباشرة مع مقدمي الخدمة\n- عدم الاعتماد فقط على معلومات KCC لاتخاذ قرارات حاسمة\n- الإبلاغ عن المعلومات غير الدقيقة من خلال نظام التعليقات لدينا\n- استخدام الخدمة للأغراض المشروعة فقط"
       },
       "indemnification": {
-        "title": "Indemnification",
-        "content": "You agree to indemnify and hold harmless Kingston Care Connect, its organizers, contributors, and affiliates from any claims, damages, losses, or expenses (including reasonable legal fees) arising from your use of the Service."
+        "title": "التعويض",
+        "content": "أنت توافق على تعويض وإبراء ذمة Kingston Care Connect ومنظميها والمساهمين فيها والشركات التابعة لها من أي مطالبات أو أضرار أو خسائر أو نفقات (بما في ذلك الرسوم القانونية المعقولة) الناشئة عن استخدامك للخدمة."
       },
       "thirdParty": {
-        "title": "Third-Party Services",
-        "content": "KCC lists third-party services over which we have no control. We are not responsible for the availability, quality, or safety of listed services. Inclusion in this directory does not constitute endorsement."
+        "title": "خدمات الطرف الثالث",
+        "content": "تدرج KCC خدمات طرف ثالث ليس لدينا سيطرة عليها. نحن لسنا مسؤولين عن توفر أو جودة أو سلامة الخدمات المدرجة. الإدراج في هذا الدليل لا يشكل تأييدًا."
       },
       "ai": {
-        "title": "AI Assistant Disclaimer",
-        "content": "Our AI assistant uses a language model that may provide inaccurate or hallucinated information. The AI assistant is for informational purposes only. Always verify critical information. The AI assistant cannot provide emergency assistance."
+        "title": "إخلاء مسؤولية مساعد الذكاء الاصطناعي",
+        "content": "يستخدم مساعد الذكاء الاصطناعي لدينا نموذج لغة قد يوفر معلومات غير دقيقة أو مهلوسة. مساعد الذكاء الاصطناعي هو لأغراض إعلامية فقط. تحقق دائمًا من المعلومات المهمة. لا يمكن لمساعد الذكاء الاصطناعي تقديم مساعدة طارئة."
       },
       "modifications": {
-        "title": "Modifications to Terms",
-        "content": "We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of the Service after changes constitutes acceptance of the modified Terms."
+        "title": "تعديلات الشروط",
+        "content": "نحتفظ بالحق في تعديل هذه الشروط في أي وقت. ستكون التغييرات سارية فور نشرها. استمرارك في استخدام الخدمة بعد التغييرات يشكل قبولًا للشروط المعدلة."
       },
       "governing": {
-        "title": "Governing Law",
-        "content": "These Terms shall be governed by and construed in accordance with the laws of the Province of Ontario and the federal laws of Canada applicable therein."
+        "title": "القانون الحاكم",
+        "content": "تخضع هذه الشروط وتفسر وفقًا لقوانين مقاطعة أونتاريو والقوانين الفيدرالية الكندية المعمول بها فيها."
       },
       "severability": {
-        "title": "Severability",
-        "content": "If any provision of these Terms is found to be unenforceable, the remaining provisions shall continue in full force and effect."
+        "title": "قابلية الفصل",
+        "content": "إذا وجد أن أي حكم من أحكام هذه الشروط غير قابل للتنفيذ، فستستمر الأحكام المتبقية سارية المفعول والتأثير الكامل."
       },
       "contact": {
-        "title": "Contact Information",
-        "content": "For questions about these Terms: legal@kingstoncareconnect.ca"
+        "title": "معلومات الاتصال",
+        "content": "للأسئلة حول هذه الشروط: legal@kingstoncareconnect.ca"
       }
     }
   },
@@ -473,30 +473,30 @@
   "AccessibilityPolicy": {
     "title": "سياسة إمكانية الوصول",
     "lastUpdated": "Last Updated: {date}",
-    "commitment": "Kingston Care Connect is committed to ensuring equal access for people with disabilities.",
-    "standards": "We are committed to meeting the requirements of the Accessibility for Ontarians with Disabilities Act (AODA) and the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA.",
+    "commitment": "تلتزم كينغستون كير كونكت بضمان الوصول والمشاركة المتساوية للأشخاص ذوي الإعاقة. نحن نسعى جاهدين لتلبية احتياجات الوصول للأشخاص ذوي الإعاقة في الوقت المناسب.",
+    "standards": "نحن ملتزمون بتلبية متطلبات قانون إمكانية الوصول لسكان أونتاريو ذوي الإعاقة (AODA) وإرشادات إمكانية الوصول إلى محتوى الويب (WCAG) 2.1 المستوى AA.",
     "headings": {
-      "features": "Accessibility Features",
-      "multiYearPlan": "Multi-Year Accessibility Plan",
-      "feedback": "Feedback Process"
+      "features": "ميزات إمكانية الوصول",
+      "multiYearPlan": "خطة إمكانية الوصول متعددة السنوات",
+      "feedback": "عملية التعليقات"
     },
     "features": {
-      "contrast": "High-contrast mode for improved readability",
-      "keyboard": "Keyboard navigation for all interactive elements",
-      "skip": "Skip-to-content links for screen reader users",
-      "alt": "Alt text for all images",
-      "semantic": "Semantic HTML structure",
-      "responsive": "Responsive design for all device sizes"
+      "contrast": "وضع التباين العالي لتحسين القراءة",
+      "keyboard": "التنقل عبر لوحة المفاتيح لجميع العناصر التفاعلية",
+      "skip": "روابط تخطي المحتوى لمستخدمي قارئ الشاشة",
+      "alt": "نص بديل لجميع الصور",
+      "semantic": "هيكل HTML دلالي",
+      "responsive": "تصميم متجاوب لجميع أحجام الأجهزة"
     },
     "plan": {
-      "y2026": "Maintain WCAG 2.1 AA compliance & quarterly audits",
-      "y2027": "Upgrade to WCAG 2.2 Level AA & external audit",
-      "y2028": "Expand language support & community advisory"
+      "y2026": "الحفاظ على الامتثال لمعيار WCAG 2.1 AA والتدقيق ربع السنوي",
+      "y2027": "الترقية إلى WCAG 2.2 المستوى AA والتدقيق الخارجي",
+      "y2028": "توسيع دعم اللغة والمجلس الاستشاري المجتمعي"
     },
     "feedback": {
-      "intro": "We welcome feedback on the accessibility of Kingston Care Connect. Please let us know if you encounter accessibility barriers:",
-      "email": "Email: accessibility@kingstoncareconnect.ca",
-      "formats": "Information on this website is available in alternative formats upon request."
+      "intro": "نحن نرحب بالتعليقات حول إمكانية الوصول إلى Kingston Care Connect. يرجى إخبارنا إذا واجهت حواجز إمكانية الوصول:",
+      "email": "البريد الإلكتروني: accessibility@kingstoncareconnect.ca",
+      "formats": "المعلومات الموجودة على هذا الموقع متاحة بتنسيقات بديلة عند الطلب."
     }
   },
   "PartnerTerms": {
@@ -504,47 +504,47 @@
     "lastUpdated": "Last Updated: {date}",
     "sections": {
       "eligibility": {
-        "title": "Partner Eligibility",
-        "content": "Authorized representatives only."
+        "title": "أهلية الشريك",
+        "content": "للمطالبة بإدراج، يجب أن تكون ممثلًا معتمدًا للمنظمة وأن تدير خدمة اجتماعية حقيقية في كينغستون."
       },
       "verification": {
-        "title": "Identity Verification",
-        "content": "We verify identity through email domain matching, phone verification, and public records. Fraudulent claims result in immediate termination."
+        "title": "التحقق من الهوية",
+        "content": "نتحقق من الهوية من خلال مطابقة مجال البريد الإلكتروني والتحقق من الهاتف والسجلات العامة. تؤدي المطالبات الاحتيالية إلى الإنهاء الفوري."
       },
       "accuracy": {
-        "title": "Accuracy Warranty",
-        "content": "You warrant that all information provided is accurate, current, and not misleading."
+        "title": "ضمان الدقة",
+        "content": "أنت تضمن أن جميع المعلومات المقدمة دقيقة وحديثة وغير مضللة."
       },
       "license": {
-        "title": "License Grant",
-        "content": "You grant KCC a non-exclusive license to display and share your organization's information."
+        "title": "منح الترخيص",
+        "content": "تمنح KCC ترخيصًا غير حصري لعرض ومشاركة معلومات منظمتك."
       },
       "termination": {
-        "title": "Termination",
-        "content": "Either party may terminate this partnership. KCC may terminate for terms violation or inaccurate info."
+        "title": "الإنهاء",
+        "content": "يجوز لأي من الطرفين إنهاء هذه الشراكة. يجوز لـ KCC الإنهاء لانتهاك الشروط أو وجود معلومات غير دقيقة."
       }
     }
   },
   "ContentPolicy": {
     "title": "سياسة المحتوى",
-    "description": "Our guidelines for maintaining a safe community directory.",
-    "lastUpdated": "Last Updated",
+    "description": "إرشاداتنا للحفاظ على دليل مجتمع آمن ودقيق وجدير بالثقة.",
+    "lastUpdated": "آخر تحديث",
     "sections": {
       "prohibited": {
-        "title": "Prohibited Content",
-        "content": "Spam, hate speech, and fraudulent info are strictly prohibited."
+        "title": "المحتوى المحظور",
+        "content": "<p>لضمان بقاء Kingston Care Connect موردًا آمنًا وموثوقًا، يُحظر المحتوى التالي تمامًا:</p><ul><li><strong>البريد العشوائي أو الإعلانات</strong>: محتوى تجاري غير مرغوب فيه أو مواد ترويجية لا علاقة لها بالخدمات الاجتماعية.</li><li><strong>المحتوى التشهيري</strong>: معلومات كاذبة تهدف إلى الإضرار بسمعة منظمة أو فرد.</li><li><strong>انتهاكات الخصوصية</strong>: المعلومات الشخصية عن الأفراد (مثل عناوين منازل الموظفين) دون موافقتهم.</li><li><strong>المحتوى الذي يحض على الكراهية</strong>: الكلام الذي يروج للعنف أو التمييز على أساس العرق أو الدين أو الإعاقة أو الجنس أو الميل الجنسي.</li><li><strong>المعلومات الاحتيالية</strong>: أوصاف الخدمة أو معايير الأهلية المضللة عن عمد.</li></ul>"
       },
       "submissions": {
-        "title": "User Submissions",
-        "content": "<p>When submitting services or feedback to KCC:</p><ul><li>All submissions are reviewed by our team before publication (except for immediate feedback which is internal).</li><li>We reserve the right to edit submissions for clarity, length, and formatting (while maintaining accuracy).</li><li>We reserve the right to reject submissions that do not meet our inclusion criteria or violate this policy.</li></ul>"
+        "title": "مشاركات المستخدم",
+        "content": "<p>عند إرسال الخدمات أو التعليقات إلى KCC:</p><ul><li>تتم مراجعة جميع المشاركات من قبل فريقنا قبل النشر (باستثناء التعليقات الفورية الداخلية).</li><li>نحتفظ بالحق في تعديل المشاركات من أجل الوضوح والطول والتنسيق (مع الحفاظ على الدقة).</li><li>نحتفظ بالحق في رفض المشاركات التي لا تفي بمعايير التضمين الخاصة بنا أو تنتهك هذه السياسة.</li></ul>"
       },
       "reporting": {
-        "title": "Reporting Process",
-        "content": "<p>If you encounter problematic content:</p><ul><li>Use the 'Report Issue' button found on every service listing page.</li><li>For privacy or safety concerns, email <strong>privacy@kingstoncareconnect.ca</strong>.</li><li>We aim to review and respond to reports within 5 business days.</li><li>You may report content anonymously, though providing contact info helps us verify the claim.</li></ul>"
+        "title": "عملية الإبلاغ",
+        "content": "<p>إذا واجهت محتوى إشكاليًا:</p><ul><li>استخدم زر 'الإبلاغ عن مشكلة' الموجود في كل صفحة قائمة خدمات.</li><li>لمخاوف الخصوصية أو السلامة، أرسل بريدًا إلكترونيًا إلى <strong>privacy@kingstoncareconnect.ca</strong>.</li><li>نهدف إلى مراجعة التقارير والرد عليها في غضون 5 أيام عمل.</li><li>يمكنك الإبلاغ عن المحتوى دون الكشف عن هويتك.</li></ul>"
       },
       "appeals": {
-        "title": "Appeals Process",
-        "content": "<p>If your listing submission was rejected or your content removed:</p><ul><li>You may appeal the decision by contacting <strong>moderation@kingstoncareconnect.ca</strong>.</li><li>Please provide specific evidence supporting your appeal (e.g., official website links, registration documents).</li><li>Final decisions are made by the KCC Governance Committee.</li></ul>"
+        "title": "عملية الاستئناف",
+        "content": "<p>إذا تم رفض مشاركة قائمتك أو إزالة المحتوى الخاص بك:</p><ul><li>يمكنك استئناف القرار عن طريق الاتصال بـ <strong>moderation@kingstoncareconnect.ca</strong>.</li><li>يرجى تقديم أدلة محددة تدعم استئناف (مثل روابط الموقع الرسمي ووثائق التسجيل).</li><li>يتم اتخاذ القرارات النهائية من قبل لجنة حوكمة KCC.</li></ul>"
       }
     }
   },
@@ -559,31 +559,31 @@
     "success": "تم إرسال طلب المطالبة. تحقق من بريدك الإلكتروني."
   },
   "Badges": {
-    "ontarioWide": "Ontario-wide",
-    "canadaWide": "Canada-wide"
+    "ontarioWide": "على مستوى أونتاريو",
+    "canadaWide": "على مستوى كندا"
   },
   "Distance": {
-    "ontarioWide": "Available across Ontario",
-    "canadaWide": "Available across Canada"
+    "ontarioWide": "متاح في جميع أنحاء أونتاريو",
+    "canadaWide": "متاح في جميع أنحاء كندا"
   },
   "AiDisclaimer": {
-    "title": "About This AI Assistant",
-    "limitation1": "This AI may provide inaccurate information.",
-    "limitation2": "The AI cannot access real-time service availability.",
-    "limitation3": "Always verify information with service providers.",
-    "emergency": "For emergencies, call 911 immediately. This assistant cannot provide emergency help.",
-    "privacy": "Your conversation stays on your device and is never sent to our servers."
+    "title": "حول مساعد الذكاء الاصطناعي هذا",
+    "limitation1": "قد يقدم هذا الذكاء الاصطناعي معلومات غير دقيقة.",
+    "limitation2": "لا يمكن للذكاء الاصطناعي الوصول إلى توفر الخدمة في الوقت الفعلي.",
+    "limitation3": "تحقق دائمًا من المعلومات مع مقدمي الخدمة.",
+    "emergency": "للطوارئ، اتصل بـ 911 على الفور. لا يمكن لهذا المساعد تقديم مساعدة طارئة.",
+    "privacy": "تبقى محادثتك على جهازك ولا يتم إرسالها أبدًا إلى خوادمنا."
   },
   "CrisisAlert": {
-    "title": "Are you in immediate danger?",
-    "message": "If you or someone else is at risk of harm, please call emergency services immediately.",
-    "disclaimer": "Kingston Care Connect is an information directory only. Always verify information with service providers.",
-    "callButton": "Emergency: 911",
-    "crisisLine": "Suicide Crisis Helpline: 988"
+    "title": "هل أنت في خطر فوري؟",
+    "message": "إذا كنت أنت أو أي شخص آخر معرضًا لخطر الأذى، يرجى الاتصال بخدمات الطوارئ على الفور.",
+    "disclaimer": "كينغستون كير كونكت هو دليل معلومات فقط. تحقق دائمًا من المعلومات مع مقدمي الخدمة.",
+    "callButton": "الطوارئ: 911",
+    "crisisLine": "خط مساعدة أزمات الانتحار: 988"
   },
   "TranslationBanner": {
-    "title": "Translation Notice",
-    "message": "This page uses AI-assisted translations. For critical information, please refer to the English version.",
+    "title": "إشعار الترجمة",
+    "message": "تستخدم هذه الصفحة ترجمات بمساعدة الذكاء الاصطناعي. للحصول على معلومات دقيقة، يرجى الرجوع إلى النسخة الإنجليزية.",
     "dismiss": "فهمت"
   }
 }

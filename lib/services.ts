@@ -37,7 +37,9 @@ export async function claimService(serviceId: string, orgId: string) {
  */
 export async function getServiceById(id: string): Promise<Service | null> {
   try {
-    const { data, error } = await supabase.from("services").select("*").eq("id", id).single()
+    // Query the public view (accessible by anon users) instead of the protected services table
+    const { data, error } = await supabase.from("services_public").select("*").eq("id", id).single()
+
 
     if (error) {
       if (error.code !== "PGRST116") {

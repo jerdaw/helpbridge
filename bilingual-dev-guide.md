@@ -48,7 +48,7 @@
 | `npm run bilingual-check` | Checks EN/FR parity for service data                 | `data/services.json` |
 | `npm run validate-data`   | Validates service schema, warns if `name_fr` missing | `data/services.json` |
 
-### i18n Audit Details
+### Audit Details
 
 The `i18n-audit` script (`scripts/i18n-key-audit.ts`) performs these checks:
 
@@ -62,18 +62,18 @@ The `i18n-audit` script (`scripts/i18n-key-audit.ts`) performs these checks:
 ```
 📊 AUDIT RESULTS
 ═══════════════════════════════════════════════════════════════
-✅ EN - 360 keys
-✅ FR - 360 keys
-❌ AR - 256 keys (32 missing)
-❌ ZH-HANS - 256 keys (32 missing)
-❌ ES - 256 keys (32 missing)
+✅ EN - 377 keys
+✅ FR - 377 keys
+✅ AR - 383 keys
+✅ ZH-HANS - 383 keys
+✅ ES - 383 keys
 ```
 
 ### Ongoing Work
 
-- **EDIA Locales (ar, zh-Hans, es)**: Some legal content (Terms, Privacy sections) may only be available in EN/FR initially. The audit allows certain keys to be optional for EDIA locales.
 - **Accessibility**: ARIA labels must be descriptive in all languages.
 - **Human Review**: Periodic human review of static JSON files is required for `ar`, `zh-Hans`, and `es`.
+- **Maintenance**: Ensure any new keys added to `en.json` are immediately propagated to all other 4 languages.
 
 ---
 
