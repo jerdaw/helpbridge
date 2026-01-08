@@ -32,12 +32,12 @@ export function TranslationBanner() {
       className="fixed bottom-24 right-4 z-[40] max-w-[300px] animate-in fade-in slide-in-from-bottom-4 duration-500"
       role="status"
     >
-      <div className="relative overflow-hidden rounded-xl border border-white/20 bg-white/60 p-3.5 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-black/60">
+      <div className="relative overflow-hidden rounded-xl border border-white/30 bg-white/30 p-3.5 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-black/40">
         <div className="flex flex-col gap-3">
           <div className="flex gap-3">
             <div className="flex-shrink-0">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-50 dark:bg-indigo-900/30">
-                <Sparkles className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 dark:bg-indigo-500/20">
+                <Sparkles className="h-4 w-4 text-indigo-700 dark:text-indigo-300" />
               </div>
             </div>
             
@@ -54,7 +54,7 @@ export function TranslationBanner() {
           <div className="flex justify-end">
              <button
               onClick={handleDismiss}
-              className="rounded-lg bg-neutral-100 px-3 py-1.5 text-xs font-medium text-neutral-700 hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700 transition-colors"
+              className="rounded-lg border border-white/20 bg-white/40 px-3 py-1.5 text-xs font-semibold text-neutral-800 shadow-sm transition-colors hover:bg-white/60 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
             >
               {t("dismiss")}
             </button>
