@@ -101,12 +101,12 @@ export default function SearchResultsList({
       {/* Results Header Row - count, scope filter, and print button */}
       {hasSearched && filteredResults.length > 0 && (
         <div className="flex items-center justify-between gap-2 text-xs">
-          {/* Left: Results count - styled to match scope filter */}
-          <div className="flex items-center rounded-lg bg-neutral-100/60 px-2.5 py-1 text-neutral-600 dark:bg-neutral-800/60 dark:text-neutral-300">
-            <span className="font-medium">{filteredResults.length}</span>
-            <span className="ml-1 opacity-70">{filteredResults.length === 1 ? 'result' : 'results'}</span>
-            {userLocation && <span className="ml-1 opacity-50">• by distance</span>}
-          </div>
+          {/* Left: Results count */}
+          <span className="flex h-8 items-center text-sm text-neutral-500 dark:text-neutral-400">
+            <span className="font-medium text-neutral-700 dark:text-neutral-200">{filteredResults.length}</span>
+            <span className="ml-1">{filteredResults.length === 1 ? 'result' : 'results'}</span>
+            {userLocation && <span className="ml-1 opacity-60">• by distance</span>}
+          </span>
 
           {/* Center: Scope Filter */}
           <ScopeFilterBar
@@ -115,8 +115,8 @@ export default function SearchResultsList({
             onScopeChange={setActiveScope}
           />
 
-          {/* Right: Print button - styled to match */}
-          <PrintButton className="no-print rounded-lg bg-neutral-100/60 px-2.5 py-1 text-neutral-600 hover:text-neutral-900 dark:bg-neutral-800/60 dark:text-neutral-300 dark:hover:text-white" />
+          {/* Right: Print button */}
+          <PrintButton className="no-print h-8" />
         </div>
       )}
 
