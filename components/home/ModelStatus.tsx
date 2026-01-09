@@ -19,56 +19,45 @@ const HALF_CYCLE_DURATION = 5000 // 5 seconds
 
 export default function ModelStatus({ isReady }: ModelStatusProps) {
   const [messageIndex, setMessageIndex] = useState(0)
-  const [minDisplayTimeElapsed, setMinDisplayTimeElapsed] = useState(false)
-  const [shouldCycle, setShouldCycle] = useState(false)
   
-  const cycleStartTimeRef = useRef<number | null>(null)
-
-  // Initial wait before cycling can start (show Privacy First for at least 4s)
+  // Use a ref to access the latest isReady value in the interval callback
+  const isReadyRef = useRef(isReady)
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setMinDisplayTimeElapsed(true)
-    }, 4000)
-    return () => clearTimeout(timer)
-  }, [])
+    isReadyRef.current = isReady
+  }, [isReady])
+  
+  // Ref to store the interval for proper cleanup
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  // Enable cycling when ready
+  // Start the checkpoint timer immediately on mount
+  // At each 5-second checkpoint, check if we should switch
   useEffect(() => {
-    if (minDisplayTimeElapsed && isReady) {
-      setMessageIndex(1)
-      setShouldCycle(true)
-      cycleStartTimeRef.current = Date.now()
-    }
-  }, [minDisplayTimeElapsed, isReady])
-
-  // Cycling logic: switch every 5 seconds (half of the 10s spin), starting at the middle point
-  useEffect(() => {
-    if (!shouldCycle) return
-
-    // Calculate time until next middle point (every 5 seconds, offset by 2.5s from spin start)
-    const MIDDLE_OFFSET = 2500 // 2.5s offset to hit the "middle" of each half-cycle
-    const now = Date.now()
-    const cycleStart = cycleStartTimeRef.current ?? now
-    const elapsed = (now - cycleStart) % HALF_CYCLE_DURATION
-    const timeUntilNext = (HALF_CYCLE_DURATION + MIDDLE_OFFSET - elapsed) % HALF_CYCLE_DURATION || HALF_CYCLE_DURATION
-
-    const initialTimeout = setTimeout(() => {
-      setMessageIndex((prev) => (prev + 1) % messages.length)
+    // First checkpoint at 5 seconds (aligned with CSS animation)
+    const firstCheckpointTimeout = setTimeout(() => {
+      // First checkpoint: check if ready and start cycling
+      if (isReadyRef.current) {
+        setMessageIndex(1) // Switch to "Neural Search Active"
+      }
       
-      // Then continue at regular 5-second intervals
-      const interval = setInterval(() => {
+      // Continue checking at each subsequent checkpoint
+      intervalRef.current = setInterval(() => {
+        if (!isReadyRef.current) {
+          // Not ready yet, stay on message 0
+          return
+        }
+        
+        // Ready: cycle between messages
         setMessageIndex((prev) => (prev + 1) % messages.length)
       }, HALF_CYCLE_DURATION)
-
-      ;(window as unknown as Record<string, unknown>).__modelStatusInterval = interval
-    }, timeUntilNext)
-
+    }, HALF_CYCLE_DURATION)
+    
     return () => {
-      clearTimeout(initialTimeout)
-      const interval = (window as unknown as Record<string, unknown>).__modelStatusInterval as ReturnType<typeof setInterval> | undefined
-      if (interval) clearInterval(interval)
+      clearTimeout(firstCheckpointTimeout)
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
     }
-  }, [shouldCycle])
+  }, [])
 
   const currentMessage = messages[messageIndex % messages.length]
 
@@ -92,5 +81,6 @@ export default function ModelStatus({ isReady }: ModelStatusProps) {
     </div>
   )
 }
+
 
 
