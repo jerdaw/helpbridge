@@ -31,7 +31,7 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
         className={cn(
-          "relative overflow-hidden py-3 md:py-4",
+          "relative overflow-hidden py-2 md:py-2",
           variant === "alternate" && "bg-neutral-50 dark:bg-neutral-900/50",
           className
         )}
