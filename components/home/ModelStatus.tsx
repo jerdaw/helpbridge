@@ -32,10 +32,9 @@ export default function ModelStatus({ isReady }: ModelStatusProps) {
   // Start the checkpoint timer immediately on mount
   // At each checkpoint, check if we should switch
   useEffect(() => {
-    // Offset to sync with the visual "middle" of the animation (1 second earlier)
-    const SYNC_OFFSET = 1000
+    // Initial sync point at 4.25 seconds from mount
+    const FIRST_CHECKPOINT_DELAY = 4250
     
-    // First checkpoint at 4 seconds (5s - 1s offset)
     const firstCheckpointTimeout = setTimeout(() => {
       // First checkpoint: check if ready and start cycling
       if (isReadyRef.current) {
@@ -52,7 +51,7 @@ export default function ModelStatus({ isReady }: ModelStatusProps) {
         // Ready: cycle between messages
         setMessageIndex((prev) => (prev + 1) % messages.length)
       }, HALF_CYCLE_DURATION)
-    }, HALF_CYCLE_DURATION - SYNC_OFFSET)
+    }, FIRST_CHECKPOINT_DELAY)
     
     return () => {
       clearTimeout(firstCheckpointTimeout)
