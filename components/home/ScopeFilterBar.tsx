@@ -1,6 +1,7 @@
 "use client"
 
 import { useTranslations } from "next-intl"
+import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 export type ScopeFilter = 'all' | 'kingston' | 'provincial'
@@ -34,24 +35,31 @@ export default function ScopeFilterBar({
   ]
 
   return (
-    <div className="flex items-center gap-1">
-      {scopes.map((scope, index) => {
+    <div className="flex items-center gap-0.5 rounded-lg bg-neutral-100/60 p-0.5 dark:bg-neutral-800/60">
+      {scopes.map((scope) => {
         const isActive = activeScope === scope.id
         return (
-          <span key={scope.id} className="flex items-center">
-            {index > 0 && <span className="mx-1 text-neutral-300 dark:text-neutral-600">•</span>}
-            <button
-              onClick={() => onScopeChange(scope.id)}
-              className={cn(
-                "transition-colors rounded px-1.5 py-0.5",
-                isActive
-                  ? "text-primary-600 dark:text-primary-400 font-medium"
-                  : "text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
-              )}
-            >
-              {scope.label} <span className="text-xs opacity-70">{scope.count}</span>
-            </button>
-          </span>
+          <button
+            key={scope.id}
+            onClick={() => onScopeChange(scope.id)}
+            className={cn(
+              "relative flex items-center gap-1 rounded-md px-2 py-0.5 text-xs font-medium transition-all outline-none",
+              isActive
+                ? "text-primary-700 dark:text-primary-300"
+                : "text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+            )}
+          >
+            {isActive && (
+              <motion.div
+                layoutId="activeScope"
+                className="absolute inset-0 rounded-md bg-white shadow-sm ring-1 ring-black/5 dark:bg-neutral-700 dark:ring-white/10"
+                initial={false}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
+            )}
+            <span className="relative z-10">{scope.label}</span>
+            <span className="relative z-10 opacity-60">{scope.count}</span>
+          </button>
         )
       })}
     </div>
