@@ -32,8 +32,8 @@ export default function ModelStatus({ isReady }: ModelStatusProps) {
   // Start the checkpoint timer immediately on mount
   // At each checkpoint, check if we should switch
   useEffect(() => {
-    // Initial sync point at 4.35 seconds from mount
-    const FIRST_CHECKPOINT_DELAY = 4350
+    // Initial sync point at 4.15 seconds from mount
+    const FIRST_CHECKPOINT_DELAY = 4150
     
     const firstCheckpointTimeout = setTimeout(() => {
       // First checkpoint: check if ready and start cycling
