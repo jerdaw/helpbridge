@@ -69,8 +69,6 @@ For details on completed features, see the [Archived Roadmaps](archive/).
 - [x] **Goal**: Support 1000+ services without increasing initial page load size.
 - [x] **Method**: Paginated fetching and server-side filtering.
 
-- [x] **Method**: Paginated fetching and server-side filtering.
-
 ---
 
 ## v13.1: AI Compliance Audit Remediation (Completed)
