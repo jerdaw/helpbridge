@@ -71,7 +71,8 @@
     "eligibility_notes_fr": "Inclusion : All youth (5-29) in Canada. Hommestal health support. Exclusion : Aucune (24/7 anonymous).",
     "address": "1200 Ave McGill College, Suite 1680, Montréal, QC H3B 4G7 (Head Office)",
     "status": "Active",
-    "hours_text": "Phone: 24/7, 365 days/year. Text: 24/7. Live Chat: Daily 7:00 PM to Midnight ET."
+    "hours_text": "Phone: 24/7, 365 days/year. Text: 24/7. Live Chat: Daily 7:00 PM to Midnight ET.",
+    "plain_language_available": true
   },
   {
     "id": "trans-lifeline-canada",
@@ -148,7 +149,8 @@
     "application_process": "Call the toll-free number. No referral required.",
     "fees": "Free.",
     "documents_required": "None required.",
-    "hours_text": "Hotline: Monday to Friday, 2:00 PM – 10:00 PM ET."
+    "hours_text": "Hotline: Monday to Friday, 2:00 PM – 10:00 PM ET.",
+    "plain_language_available": true
   },
   {
     "id": "hope-for-wellness-helpline",
@@ -188,7 +190,8 @@
     "application_process": "Call 1-855-242-3310 or visit website for chat.",
     "fees": "Free.",
     "documents_required": "None required.",
-    "hours_text": "Phone & Chat: 24 hours a day, 7 days a week."
+    "hours_text": "Phone & Chat: 24 hours a day, 7 days a week.",
+    "plain_language_available": true
   },
   {
     "id": "assaulted-womens-helpline",
@@ -228,7 +231,8 @@
     "application_process": "Call or text. No referral required.",
     "fees": "Free.",
     "documents_required": "None required.",
-    "hours_text": "24 hours a day, 7 days a week."
+    "hours_text": "24 hours a day, 7 days a week.",
+    "plain_language_available": true
   },
   {
     "id": "iska-newcomer-support",
@@ -421,13 +425,14 @@
     ],
     "eligibility_notes": "Inclusion: Victims of crime/tragedy in Frontenac. Exclusion: Non-victims.",
     "access_script": "Hi, I was recently a victim of a crime and the police mentioned I could call you for support. What kind of help do you offer?",
-    "eligibility_notes_fr": "Inclusion : Victims of crime/tragedy in Frontenac. Exclusion : Non-victims.",
+    "eligibility_notes_fr": "Inclusion : Victims of crime/tragedy in Frontenac. Exclusion : Nonn-victims.",
     "address": "705 Division St, Kingston, ON K7K 4C2 (Inside Police HQ)",
     "status": "Active",
     "application_process": "Call or referral by police/emergency services.",
     "fees": "Free.",
     "documents_required": "Police report or incident number often required for VQRP+ funding.",
-    "hours_text": "Office: Mon-Fri 8:30 AM – 4:30 PM. Crisis: 24/7 via Emergency Services referral."
+    "hours_text": "Office: Mon-Fri 8:30 AM – 4:30 PM. Crisis: 24/7 via Emergency Services referral.",
+    "plain_language_available": true
   },
   {
     "id": "hotel-dieu-urgent-care",
@@ -466,7 +471,7 @@
     ],
     "eligibility_notes": "Inclusion: Non-life-threatening urgent issues (cuts, breaks). Exclusion: Critical trauma (Go to KGH). Note: Registration closes when capacity reached.",
     "access_script": "Hi, I think I have a minor bone break. Are you still accepting patients for today, or is capacity reached?",
-    "eligibility_notes_fr": "Inclusion : Non-life-threatening urgent issues (cuts, breaks). Exclusion : Critical trauma (Go to KGH). Note: Registration closes when capacity reached.",
+    "eligibility_notes_fr": "Inclusion : Nonn-life-threatening urgent issues (cuts, breaks). Exclusion : Critical trauma (Go to KGH). Nonte: Registration closes when capacity reached.",
     "status": "Active",
     "application_process": "Walk-in.",
     "fees": "apply for non-residents.",
@@ -549,7 +554,7 @@
     ],
     "eligibility_notes": "Inclusion: Low-income (HSO/OSDCP) or adults on OW/ODSP with emergency. Exclusion: General public without coverage.",
     "access_script": "Hi, I have a severe toothache and I am on Ontario Works. Can I book an emergency appointment?",
-    "eligibility_notes_fr": "Inclusion : Low-income (HSO/OSDCP) or adults on OW/ODSP with emergency. Exclusion : General public without coverage.",
+    "eligibility_notes_fr": "Inclusion : À faible revenu (HSO/OSDCP) or adults on OW/ODSP with emergency. Exclusion : General public without coverage.",
     "status": "Active",
     "application_process": "Call to book appointment.",
     "fees": "Free for eligible clients.",
@@ -588,7 +593,7 @@
     ],
     "eligibility_notes": "Inclusion: Low-income Kingston residents. Housing, OW/ODSP, Employment law. Exclusion: Criminal/Family law (Refer to Legal Aid).",
     "access_script": "Hi, my landlord is threatening to evict me and I'd like to speak to a lawyer about my rights.",
-    "eligibility_notes_fr": "Inclusion : Low-income Kingston residents. Housing, OW/ODSP, Employment law. Exclusion : Criminal/Family law (Refer to Legal Aid).",
+    "eligibility_notes_fr": "Inclusion : À faible revenu Kingston residents. Housing, OW/ODSP, Employment law. Exclusion : Criminal/Family law (Refer to Legal Aid).",
     "status": "Active",
     "application_process": "Call for intake.",
     "fees": "Free legal services (clients may pay disbursements).",
@@ -1106,7 +1111,7 @@
     ],
     "eligibility_notes": "Inclusion: fresh produce box (low cost). Open to all. Exclusion: Not a free food bank (subsidy available).",
     "access_script": "Hi, I'd like to order a Good Food Box for this month. When is the deadline?",
-    "eligibility_notes_fr": "Inclusion : fresh produce box (low cost). Ouvert à tous. Exclusion : Not a free food bank (subsidy available).",
+    "eligibility_notes_fr": "Inclusion : fresh produce box (low cost). Ouvert à tous. Exclusion : Nont a free food bank (subsidy available).",
     "status": "Active",
     "application_process": "Order online or at host sites by 2nd Thursday of month.",
     "fees": "~$6 to $17 depending on box size.",
@@ -1472,7 +1477,7 @@
     ],
     "eligibility_notes": "Inclusion: Women (16+) who are experiencing homelessness. Long-term supportive housing. Exclusion: Not an emergency drop-in (application based).",
     "access_script": "Hi, I'm looking for long-term housing support for women. How can I get on your waitlist?",
-    "eligibility_notes_fr": "Inclusion : Femmes (16+) who are experiencing homelessness. Long-term supportive housing. Exclusion : Not an emergency drop-in (application based).",
+    "eligibility_notes_fr": "Inclusion : Femmes (16+) who are experiencing homelessness. Long-term supportive housing. Exclusion : Nont an emergency drop-in (application based).",
     "status": "Active"
   },
   {
@@ -2180,7 +2185,7 @@
     ],
     "eligibility_notes": "Inclusion: Children 0-6 years and their parents/caregivers. Free. Exclusion: Children over 6.",
     "access_script": "Hi, I have a 2-year-old and I'm looking for a playgroup. Do I need to register for the drop-in?",
-    "eligibility_notes_fr": "Inclusion : Enfants 0-6 years and their parents/caregivers. Free. Exclusion : Children over 6.",
+    "eligibility_notes_fr": "Inclusion : Enfants 0-6 years and their parents/caregivers. Gratuit. Exclusion : Children over 6.",
     "email": "earlyon@kchc.ca",
     "status": "Active",
     "application_process": "Drop-in for most programs; registration required for some workshops",
@@ -5089,7 +5094,9 @@
       "evidence_url": "https://211ontario.ca",
       "method": "Schema migration - requires verification"
     },
-    "identity_tags": []
+    "identity_tags": [],
+    "description_fr": "[Traduction en cours] A helpline and online database of Ontario's community and social services. 211 helps people find the right community and social services.",
+    "eligibility_notes_fr": "Open to everyone."
   },
   {
     "id": "ontario-black-youth-helpline",
@@ -5141,7 +5148,10 @@
       "evidence_url": "https://blackyouth.ca",
       "method": "Schema migration - requires verification"
     },
-    "identity_tags": []
+    "identity_tags": [],
+    "name_fr": "Black Youth Helpline",
+    "description_fr": "[Traduction en cours] Serves all youth and specifically responds to the need for a Black youth specific service. Focuses on family, schools, and community.",
+    "eligibility_notes_fr": "Black youth and families."
   },
   {
     "id": "ontario-boots-on-the-ground",
@@ -5198,7 +5208,10 @@
       "verified_at": "2026-01-08T21:57:01.313Z",
       "evidence_url": "https://bootsontheground.ca",
       "method": "Schema migration - requires verification"
-    }
+    },
+    "name_fr": "Boots on the Ground",
+    "description_fr": "[Traduction en cours] Anonymous peer support for First Responders, by First Responders. Serving police, fire, EMS, and corrections personnel.",
+    "eligibility_notes_fr": "Serving and retired First Responders (Police, Fire, EMS, Corrections)."
   },
   {
     "id": "ontario-farmer-wellness",
@@ -5250,7 +5263,10 @@
       "evidence_url": "https://farmerwellnessinitiative.ca",
       "method": "Schema migration - requires verification"
     },
-    "identity_tags": []
+    "identity_tags": [],
+    "name_fr": "Farmer Wellness Initiative",
+    "description_fr": "[Traduction en cours] 24/7 confidential mental health support for Ontario farmers, farm families, and employees.",
+    "eligibility_notes_fr": "Ontario farmers and their families."
   },
   {
     "id": "ontario-femaide",
@@ -5305,7 +5321,8 @@
       "evidence_url": "https://femaide.ca",
       "method": "Schema migration - requires verification"
     },
-    "identity_tags": []
+    "identity_tags": [],
+    "eligibility_notes_fr": "Francophone women in Ontario dealing with violence."
   },
   {
     "id": "ontario-irs-crisis-line",
@@ -5363,7 +5380,9 @@
       "verified_at": "2026-01-08T21:57:01.313Z",
       "evidence_url": "https://www.sac-isc.gc.ca",
       "method": "Schema migration - requires verification"
-    }
+    },
+    "description_fr": "[Traduction en cours] A 24/7 crisis line for former residential school students and their families. Provides emotional support related to residential school trauma.",
+    "eligibility_notes_fr": "Residential school survivors and intergenerational family members."
   },
   {
     "id": "ontario-lgbt-youthline",
@@ -5420,7 +5439,10 @@
       "verified_at": "2026-01-08T21:57:01.313Z",
       "evidence_url": "https://youthline.ca",
       "method": "Schema migration - requires verification"
-    }
+    },
+    "name_fr": "LGBT YouthLine",
+    "description_fr": "[Traduction en cours] A Queer, Trans, Two-Spirit* youth-led organization that affirms and supports the experiences of youth (29 and under) across Ontario.",
+    "eligibility_notes_fr": "2SLGBTQ+ youth ages 29 and under in Ontario."
   },
   {
     "id": "ontario-male-survivors",
@@ -5472,7 +5494,10 @@
       "evidence_url": "https://cleoconnect.ca",
       "method": "Schema migration - requires verification"
     },
-    "identity_tags": []
+    "identity_tags": [],
+    "name_fr": "Support Services for Male Survivors of Sexual Abuse",
+    "description_fr": "[Traduction en cours] A 24/7 multilingual crisis and referral line for male survivors of sexual abuse or assault in Ontario.",
+    "eligibility_notes_fr": "Men and boys who have experienced sexual violence."
   },
   {
     "id": "ontario-metis-crisis-line",
@@ -5529,7 +5554,10 @@
       "verified_at": "2026-01-08T21:57:01.313Z",
       "evidence_url": "https://www.metisnation.org",
       "method": "Schema migration - requires verification"
-    }
+    },
+    "name_fr": "Métis Nation of Ontario Crisis Line",
+    "description_fr": "[Traduction en cours] Mental health and addictions support for Métis citizens in Ontario. Entry point to MNO healing and wellness programs.",
+    "eligibility_notes_fr": "Métis citizens in Ontario and their families."
   },
   {
     "id": "ontario-mmiwg-crisis-line",
@@ -5587,7 +5615,9 @@
       "verified_at": "2026-01-08T21:57:01.313Z",
       "evidence_url": "https://www.canada.ca",
       "method": "Schema migration - requires verification"
-    }
+    },
+    "description_fr": "[Traduction en cours] A national 24/7 support line for those impacted by missing and murdered Indigenous women, girls, and 2SLGBTQQIA+ people.",
+    "eligibility_notes_fr": "Families, survivors, anyone affected by MMIWG."
   },
   {
     "id": "ontario-naseeha",
@@ -5639,7 +5669,10 @@
       "evidence_url": "https://naseeha.org",
       "method": "Schema migration - requires verification"
     },
-    "identity_tags": []
+    "identity_tags": [],
+    "name_fr": "Naseeha Mental Health",
+    "description_fr": "[Traduction en cours] Provides a confidential helpline for young Muslims to receive immediate, anonymous, and confidential support.",
+    "eligibility_notes_fr": "Muslim youth and general public."
   },
   {
     "id": "ontario-nors",
@@ -5692,7 +5725,10 @@
       "evidence_url": "https://nors.ca",
       "method": "Schema migration - requires verification"
     },
-    "identity_tags": []
+    "identity_tags": [],
+    "name_fr": "National Overdose Response Service (NORS)",
+    "description_fr": "[Traduction en cours] A 24/7 virtual safe consumption hotline. An operator stays on the line while you use drugs to prevent fatal overdoses.",
+    "eligibility_notes_fr": "Anyone using drugs alone who wants safety monitoring."
   },
   {
     "id": "ontario-ontx-distress",
@@ -5745,7 +5781,10 @@
       "evidence_url": "https://dcontario.org",
       "method": "Schema migration - requires verification"
     },
-    "identity_tags": []
+    "identity_tags": [],
+    "name_fr": "ONTX - Ontario Online & Text Crisis Services",
+    "description_fr": "[Traduction en cours] A provincial text and chat service for individuals experiencing distress, providing confidential support from trained responders.",
+    "eligibility_notes_fr": "Anyone in Ontario experiencing distress."
   },
   {
     "id": "ontario-sadv-navigation",
@@ -5798,7 +5837,10 @@
       "evidence_url": "https://www.sadvtreatmentcentres.ca",
       "method": "Schema migration - requires verification"
     },
-    "identity_tags": []
+    "identity_tags": [],
+    "name_fr": "Sexual Assault/Domestic Violence Navigation Line",
+    "description_fr": "[Traduction en cours] Helps victims navigate the healthcare system after an assault. Staffed by nurses who connect survivors to SA/DV Treatment Centres for forensic evidence collection and medical care.",
+    "eligibility_notes_fr": "Survivors of sexual assault or domestic violence in Ontario."
   },
   {
     "id": "ontario-seniors-safety-line",
@@ -5855,7 +5897,10 @@
       "verified_at": "2026-01-08T21:57:01.313Z",
       "evidence_url": "https://eapon.ca",
       "method": "Schema migration - requires verification"
-    }
+    },
+    "name_fr": "Seniors Safety Line",
+    "description_fr": "[Traduction en cours] A 24/7 confidential line for seniors suffering from abuse (physical, mental, sexual, neglect, or financial).",
+    "eligibility_notes_fr": "Aînés in Ontario experiencing abuse or neglect."
   },
   {
     "id": "ontario-vac-assistance",
@@ -5913,7 +5958,9 @@
       "verified_at": "2026-01-08T21:57:01.313Z",
       "evidence_url": "https://www.veterans.gc.ca",
       "method": "Schema migration - requires verification"
-    }
+    },
+    "description_fr": "[Traduction en cours] A 24/7 confidential counseling line for Veterans, Canadian Armed Forces members, RCMP members, and their families.",
+    "eligibility_notes_fr": "Veterans, CAF members, RCMP, and their families."
   },
   {
     "id": "ontario-victim-support-line",
@@ -5965,7 +6012,10 @@
       "evidence_url": "https://victimsupportdirectory.ca",
       "method": "Schema migration - requires verification"
     },
-    "identity_tags": []
+    "identity_tags": [],
+    "name_fr": "Victim Support Line (VSL)",
+    "description_fr": "[Traduction en cours] A provincial 24/7 information and support line for victims of crime, including survivors of sexual assault and domestic violence.",
+    "eligibility_notes_fr": "Victims of crime in Ontario."
   },
   {
     "name": "BounceBack Ontario",
@@ -6011,7 +6061,8 @@
       "evidence_url": "https://bouncebackontario.ca",
       "method": "Schema migration - requires verification"
     },
-    "identity_tags": []
+    "identity_tags": [],
+    "description_fr": "[Traduction en cours] A guided self-help program for adults and youth (15+) with mild-to-moderate depression and anxiety. Includes telephone coaching and online workbooks."
   },
   {
     "name": "Cancer Information Helpline",
@@ -6056,7 +6107,9 @@
       "evidence_url": "https://cancer.ca",
       "method": "Schema migration - requires verification"
     },
-    "identity_tags": []
+    "identity_tags": [],
+    "name_fr": "Cancer Information Helpline",
+    "description_fr": "[Traduction en cours] A national toll-free service answering questions about cancer types, treatments, side effects, and prevention. Connects patients to local support services."
   },
   {
     "name": "Ontario Caregiver Helpline",

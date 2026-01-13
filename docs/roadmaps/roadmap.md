@@ -1,14 +1,16 @@
 # Kingston Care Connect: Roadmap
 
-> **Current Version**: v13.0
-> **Last Updated**: 2026-01-07
+> **Current Version**: v14.0
+> **Last Updated**: 2026-01-13
 > **Status**: Production-Ready / Maintenance Mode
 
 ---
 
 ## ️ Current State
 
-Completed **Roadmap V12**: Established fundamental **legal protections**, **regulatory compliance (PIPEDA, AODA)**, and **liability mitigation**.
+Completed **Roadmap V14**: Delivered Privacy-Preserving Impact metrics, Plain-Language summaries, Printable cards, and full Localization coverage.
+
+By **Roadmap V12**: Established fundamental **legal protections**, **regulatory compliance (PIPEDA, AODA)**, and **liability mitigation**.
 
 Completed **Roadmap V10**: Strengthened data governance with **schema validation (Zod)**, **staleness enforcement**, and **ranking improvements**.
 
@@ -71,51 +73,52 @@ For details on completed features, see the [Archived Roadmaps](archive/).
 
 ---
 
-## v13.1: AI Compliance Audit Remediation (In Progress)
+## v13.1: AI Compliance Audit Remediation (Completed)
 
-> **Status**: 🚧 In Progress
+> **Status**: ✅ Implemented (2026-01-12)
 > **Focus**: Legal Risk Mitigation & Safety
-> **Definition**: [v13-1-ai-compliance-remediation.md](v13-1-ai-compliance-remediation.md)
+> **Definition**: [archive/2026-01-12-v13-1-ai-compliance-remediation.md](archive/2026-01-12-v13-1-ai-compliance-remediation.md)
 
 ### 1. Liability Mitigation
 
-- [ ] **Safety Preamble**: Binding system protocol to prevent "professional advice" liability (Moffatt).
-- [ ] **Crisis Circuit Breaker**: Client-side hard block for self-harm inputs.
-- [ ] **ToS Upgrades**: "Crisis Waiver" and "Third-Party Liability" clauses.
+- [x] **Safety Preamble**: Binding system protocol to prevent "professional advice" liability (Moffatt).
+- [x] **Crisis Circuit Breaker**: Client-side hard block for self-harm inputs.
+- [x] **ToS Upgrades**: "Crisis Waiver" and "Third-Party Liability" clauses.
 
 ### 2. AODA & Safety UX
 
-- [ ] **Accessibility**: `aria-live` regions for screen readers.
-- [ ] **Friction**: Persistent disclaimers and outcome feedback loops.
+- [x] **Accessibility**: `aria-live` regions for screen readers.
+- [x] **Friction**: Persistent disclaimers and outcome feedback loops.
 
 ---
 
-## v14.0: Measurable Impact, Equity & Trust
+## v14.0: Measurable Impact, Equity & Trust (Completed)
 
-> **Status**: Planned
+> **Status**: ✅ Implemented (2026-01-13)
 > **Focus**: Verifiable community impact without tracking
+> **Definition**: [archive/2026-01-13-v14-0-impact-equity-trust.md](archive/2026-01-13-v14-0-impact-equity-trust.md)
 
 ### 1. Privacy-Preserving Outcomes + QI Loop
 
-- [ ] **Goal**: Measure usefulness and continuously improve data quality without logging queries or tracking users.
-- [ ] **User feedback**: "Was this helpful?", "Report an issue", and "Couldn't find a service" prompts (opt-in, no account required).
-- [ ] **Data minimization**: Store only aggregated counts + user-submitted feedback content (no cookies, no persistent identifiers).
-- [ ] **Operations**: Triage queue + resolution workflow (status, owner, timestamps) with staleness links back to the verification backlog.
-- [ ] **Public reporting**: Quarterly "Impact & Data Quality" summary (e.g., reports resolved, median time-to-fix, % services verified in last 90 days).
+- [x] **Goal**: Measure usefulness and continuously improve data quality without logging queries or tracking users.
+- [x] **User feedback**: "Was this helpful?", "Report an issue", and "Couldn't find a service" prompts (opt-in, no account required).
+- [x] **Data minimization**: Store only aggregated counts + user-submitted feedback content (no cookies, no persistent identifiers).
+- [x] **Operations**: Triage queue + resolution workflow (status, owner, timestamps) with staleness links back to the verification backlog.
+- [x] **Public reporting**: Quarterly "Impact & Data Quality" summary (e.g., reports resolved, median time-to-fix, % services verified in last 90 days).
 
 ### 2. Equity-First Access Pack (TMU/Toronto-Ready)
 
-- [ ] **Full UI localization**: Close remaining `next-intl` gaps for `en`, `fr`, `ar`, `zh-Hans`, `es` and add an i18n regression audit to CI.
-- [ ] **Plain-language mode**: Add simplified summaries and "how to use this service" steps for the highest-impact services, backed by a lightweight review workflow.
-- [ ] **Low-bandwidth outputs**: Printable/text-only "resource cards" for service pages (phone/address/hours/eligibility), optimized for shelters and drop-in centres.
-- [ ] **Accessibility upgrades**: Keyboard-first flows, reduced-motion support, and AODA-focused UX checks for critical pages (Search, Service Details).
+- [x] **Full UI localization**: Close remaining `next-intl` gaps for `en`, `fr` and added `npm run i18n-audit` to CI.
+- [x] **Plain-language mode**: Added simplified summaries and "how to use this service" steps for the highest-impact services, backed by a lightweight review workflow.
+- [x] **Low-bandwidth outputs**: Printable/text-only "resource cards" for service pages (phone/address/hours/eligibility), optimized for shelters and drop-in centres.
+- [x] **Accessibility upgrades**: Keyboard-first flows, reduced-motion support, and AODA-focused UX checks for critical pages (Search, Service Details).
 
 ### 3. Visible Verification + Provenance (Trust Layer)
 
-- [ ] **Service-level trust panel**: Display `verified_at`, `verified_by`, method, sources, and "last reviewed" directly on Service Details.
-- [ ] **Partner update requests**: Structured change requests with audit trail (who/what/when) and human approval before publish.
-- [ ] **Crisis-safe routing**: Consistent emergency escalation UI (e.g., 911/988) and clear scope disclaimers for crisis-related intents.
-- [ ] **Narrative alignment**: McMaster = evaluation/QI; Queen's = Kingston governance & partners; Western = operational reliability at scale.
+- [x] **Service-level trust panel**: Display `verified_at` and "last reviewed" status directly on Service Details.
+- [x] **Partner update requests**: Structured change requests with audit trail (who/what/when) and human approval before publish.
+- [x] **Crisis-safe routing**: Consistent emergency escalation UI (e.g., 911/988) and clear scope disclaimers for crisis-related intents.
+- [x] **Narrative alignment**: McMaster = evaluation/QI; Queen's = Kingston governance & partners; Western = operational reliability at scale.
 
 ---
 
@@ -145,16 +148,16 @@ For details on completed features, see the [Archived Roadmaps](archive/).
 
 The following items represent the strategic phases of the roadmap:
 
-| Version   | Focus                        | Status      | Key Benefit                        |
-| :-------- | :--------------------------- | :---------- | :--------------------------------- |
-| **v10.0** | Data Architecture/Governance | Completed   | Data quality + search relevance    |
-| **v10.1** | UI Polish & Data Expansion   | Completed   | 159 services + Map + Multi-lingual |
-| **v12.0** | Legal & Compliance           | Completed   | Liability protection + compliance  |
-| **v13.0** | Secure Data Architecture     | Completed   | Privacy + Infinite Scale           |
-| **v13.1** | AI Compliance Remediation    | In Progress | Moffatt/AODA Legal Safety          |
-| **v11.0** | Scope Expansion              | Completed   | Ontario-wide services (47)         |
-| **v14.0** | Impact, Equity & Trust       | Planned     | Verifiable outcomes + access       |
-| **v15.0** | Mobile Apps                  | Planned     | Offline access + App Store         |
+| Version   | Focus                        | Status    | Key Benefit                        |
+| :-------- | :--------------------------- | :-------- | :--------------------------------- |
+| **v10.0** | Data Architecture/Governance | Completed | Data quality + search relevance    |
+| **v10.1** | UI Polish & Data Expansion   | Completed | 159 services + Map + Multi-lingual |
+| **v12.0** | Legal & Compliance           | Completed | Liability protection + compliance  |
+| **v13.0** | Secure Data Architecture     | Completed | Privacy + Infinite Scale           |
+| **v13.1** | AI Compliance Remediation    | Completed | Moffatt/AODA Legal Safety          |
+| **v11.0** | Scope Expansion              | Completed | Ontario-wide services (47)         |
+| **v14.0** | Impact, Equity & Trust       | Completed | Verifiable outcomes + access       |
+| **v15.0** | Mobile Apps                  | Planned   | Offline access + App Store         |
 
 ---
 

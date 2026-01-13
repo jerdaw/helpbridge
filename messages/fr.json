@@ -8,6 +8,12 @@
     "title": "Ceci est un projet dirigé par la communauté",
     "shareFeedback": "Partager vos commentaires"
   },
+  "VerificationLevels": {
+    "L0": "Non vérifié",
+    "L1": "Vérification de base",
+    "L2": "Service vérifié",
+    "L3": "Partenaire officiel"
+  },
   "Footer": {
     "disclaimer": "Trouvez des services locaux vérifiés et des ressources communautaires.",
     "mission": "Relier les résidents de Kingston aux services de soutien dont ils ont besoin. Construit avec soin pour notre communauté.",
@@ -128,10 +134,70 @@
       "noCookies": "Pas de cookies : Nous ne stockons pas de données personnelles dans les cookies. Nous utilisons un seul cookie essentiel pour mémoriser votre choix de langue.",
       "noLogging": "Pas d'enregistrement de requêtes : Vos termes de recherche sont traités de manière anonyme et ne sont pas liés à votre identité."
     },
-    "contact": "Des questions ? Contactez-nous à privacy@careconnect.ca"
+    "contact": "Des questions ? Contactez-nous à privacy@careconnect.ca",
+    "lastUpdated": "Dernière mise à jour : {date}",
+    "sections": {
+      "overview": {
+        "title": "Aperçu de la politique",
+        "content": "Kingston Care Connect (\"KCC\", \"nous\") s'engage à protéger votre vie privée. Cette politique explique comment nous recueillons, utilisons et protégeons les informations."
+      },
+      "dataCollection": {
+        "title": "Informations collectées",
+        "content": "**Informations fournies**\n- **Commentaires**: Informations rapportées.\n- **Portail partenaire**: Détails de l'organisation.\n\n**Collectées automatiquement**\n- **Stockage local**: Préférences sur votre appareil.\n- **Données techniques**: Journaux serveur standard (sans suivi).\n\n**Ce que nous NE collectons PAS**\n- Pas de journalisation des recherches\n- Pas de cookies de suivi\n- Politique Zéro-Log pour vos recherches."
+      },
+      "aiPrivacy": {
+        "title": "Confidentialité de l'IA",
+        "content": "Notre assistant IA fonctionne entièrement dans votre navigateur.\n- **Zéro sortie de données**: Les requêtes ne quittent jamais votre appareil.\n- **Zéro connaissance**: Nous ne savons pas ce dont vous discutez.\n- **Pas de stockage**: Conversations supprimées à la fermeture."
+      },
+      "useOfInfo": {
+        "title": "Utilisation des informations",
+        "content": "Nous utilisons les infos pour : Amélioration du service, Gestion des partenaires, Sécurité. Nous n'utilisons PAS pour : Publicité, Profilage, Vente à des tiers."
+      },
+      "sharing": {
+        "title": "Partage d'informations",
+        "content": "Nous partageons uniquement avec les Partenaires vérifiés (feedback) ou les Fournisseurs de services. Nous ne vendons PAS d'informations."
+      },
+      "retention": {
+        "title": "Conservation des données",
+        "content": "Commentaires supprimés après résolution (90 jours). Données partenaires conservées tant qu'actifs. Stockage local contrôlé par vous."
+      },
+      "rights": {
+        "title": "Vos droits",
+        "content": "En vertu de la LPRPDE, vous avez des droits d'accès, de correction, de suppression et de retrait du consentement. Contactez privacy@careconnect.ca."
+      },
+      "security": {
+        "title": "Sécurité des données",
+        "content": "Nous mettons en œuvre le chiffrement, le contrôle d'accès et la collecte minimale."
+      },
+      "children": {
+        "title": "Confidentialité des enfants",
+        "content": "KCC ne s'adresse pas aux enfants de moins de 13 ans."
+      },
+      "cookies": {
+        "title": "Politique de cookies",
+        "content": "Nous utilisons des cookies minimaux (NEXT_LOCALE pour la langue). Pas de cookies de suivi ou publicitaires."
+      },
+      "contact": {
+        "title": "Contactez-nous",
+        "content": "Email : privacy@careconnect.ca"
+      }
+    }
   },
   "ServiceCard": {
     "reportIssue": "Signaler un problème"
+  },
+  "Freshness": {
+    "verified": "Vérifié",
+    "unknown": "Non vérifié",
+    "verifiedOn": "Dernière vérification",
+    "neverVerified": "Ce service n'a pas été vérifié récemment",
+    "outdatedTooltip": "Cette information a plus de 3 mois et peut être inexacte.",
+    "verifiedTooltip": "Information confirmée par un partenaire le {date}",
+    "levels": {
+      "fresh": "Vérifié récemment",
+      "recent": "Vérifié au cours des 3 derniers mois",
+      "stale": "Vérification obsolète"
+    }
   },
   "Badges": {
     "ontarioWide": "À l'échelle de l'Ontario",
@@ -142,9 +208,19 @@
     "canadaWide": "Disponible partout au Canada"
   },
   "Dashboard": {
+    "partner": "Tableau de bord partenaire",
+    "logout": "Se déconnecter",
     "title": "Tableau de bord",
     "welcome": "Bon retour, {email}",
     "verificationStatus": "Statut de vérification",
+    "recentFeedback": "Commentaires récents",
+    "viewAll": "Tout voir",
+    "stats": {
+      "total": "Total des commentaires",
+      "pending": "En attente",
+      "resolved": "Résolu",
+      "sentiment": "Sentiment global"
+    },
     "pending": "En attente",
     "completeProfile": "Compléter le profil",
     "getStarted": "Commencer",
@@ -198,7 +274,40 @@
     "incorrectInfo": "Ces informations sont-elles incorrectes ou obsolètes ?",
     "reportIssue": "Signaler un problème",
     "claimTitle": "Vous possédez cette organisation ?",
-    "claimText": "Réclamez cette fiche pour maintenir vos informations à jour et accéder aux analyses.",
+    "claimText": "Gérez-vous ce service ?",
+    "claimButton": "Revendiquer ce service",
+    "plainLanguage": "Langage simple",
+    "standardView": "Vue standard",
+    "whatIsIt": "Qu'est-ce que c'est ?",
+    "howToGetHelp": "Comment obtenir de l'aide ?",
+    "callUs": "Appelez-nous",
+    "visitUs": "Visitez-nous",
+    "openHours": "Heures d'ouverture",
+    "summaryComingSoon": "Résumé en langage simple à venir.",
+    "verifiedService": "Service vérifié",
+    "officialPartner": "Partenaire Officiel",
+    "serviceMerged": "Service fusionné",
+    "permanentlyClosed": "Définitivement fermé",
+    "mergedDescription": "Ce service a été fusionné avec une autre organisation. Veuillez vérifier la description pour les nouvelles coordonnées.",
+    "closedDescription": "Ce service n'est plus opérationnel. Veuillez ne pas vous rendre à cet endroit.",
+    "note": "Note :",
+    "mapTitle": "Emplacement sur la carte pour {name}",
+    "aboutService": "À propos de ce service",
+    "documents": "Documents",
+    "accessProcess": "Processus de demande",
+    "accessibility": "Accessibilité",
+    "getDirections": "Obtenir l'itinéraire",
+    "lastVerified": "Dernière vérification :",
+    "unknown": "Inconnu",
+    "print": "Imprimer",
+    "printHint": "Ouvre une fiche de ressource imprimable",
+    "free": "Gratuit",
+    "verified": "Vérifié",
+    "merged": "Fusionné",
+    "closed": "Fermé",
+    "report": "Signaler",
+    "details": "Détails",
+    "kingston": "Kingston",
     "confirmClaim": "Confirmer la réclamation",
     "claiming": "Réclamation en cours...",
     "claimed": "Réclamé !",
@@ -268,30 +377,86 @@
   "Eligibility": {
     "likelyQualify": "✓ Vous êtes probablement admissible"
   },
-  "Freshness": {
-    "verified": "Vérifié",
-    "unknown": "Non vérifié",
-    "verifiedOn": "Dernière vérification",
-    "neverVerified": "Ce service n'a pas été vérifié récemment"
-  },
   "Feedback": {
-    "title": "Signaler un problème",
-    "description": "Aidez-nous à améliorer la fiche de {service}. Votre avis est précieux.",
-    "issueType": "Quel est le problème ?",
-    "types": {
-      "wrong_phone": "Mauvais numéro de téléphone",
-      "wrong_address": "Mauvaise adresse",
+    "title": "Commentaires et problèmes",
+    "widgetTitle": "Cette page a-t-elle été utile ?",
+    "widgetSubtitle": "Vos commentaires nous aident à améliorer notre répertoire.",
+    "yes": "Oui",
+    "no": "Non",
+    "voteSuccessTitle": "Merci",
+    "voteSuccessMessage": "Vos commentaires aident à améliorer cette liste de services.",
+    "alreadyVotedMessage": "Merci pour vos commentaires !",
+    "reportIssue": "Signaler un problème",
+    "reportIssueTitle": "Signaler un problème",
+    "reportIssueDescription": "Aidez-nous à améliorer la fiche de {service}. Votre avis est précieux.",
+    "issueTypeLabel": "Quel est le problème ?",
+    "issueTypes": {
+      "wrong_contact_info": "Coordonnées incorrectes",
       "service_closed": "Service fermé / Déménagé",
+      "eligibility_incorrect": "Admissibilité incorrecte",
       "other": "Autre problème"
     },
-    "messageLabel": "Détails supplémentaires (optionnel)",
-    "messagePlaceholder": "Veuillez fournir les informations correctes si vous les avez...",
+    "detailsLabel": "Détails (Optionnel)",
+    "detailsPlaceholder": "Veuillez fournir les informations correctes si vous les avez...",
     "cancel": "Annuler",
-    "submit": "Envoyer le rapport",
-    "successTitle": "Merci !",
-    "successMessage": "Nous avons reçu votre avis et l'examinerons sous peu.",
+    "submitReport": "Envoyer le rapport",
+    "submitRequest": "Soumettre la demande de mise à jour",
+    "issueReportedTitle": "Problème signalé",
+    "issueReportedMessage": "Merci de nous aider à garder nos données exactes.",
     "errorTitle": "Erreur",
-    "errorMessage": "Un problème est survenu. Veuillez réessayer plus tard."
+    "errorMessage": "Une erreur est survenue. Veuillez réessayer.",
+    "issueType": "Type de problème",
+    "service": "Service",
+    "details": "Détails",
+    "status": "État",
+    "date": "Date",
+    "general": "Général",
+    "unknown": "Inconnu",
+    "noFeedback": "Aucun commentaire reçu pour le moment.",
+    "feedbackDetail": "Détails du commentaire",
+    "receivedOn": "Reçu le {date}",
+    "message": "Message",
+    "noMessage": "Aucun message fourni",
+    "statusPending": "En attente",
+    "statusReviewed": "Examiné",
+    "statusResolved": "Résolu",
+    "statusDismissed": "Rejeté",
+    "markResolved": "Marquer comme résolu",
+    "close": "Fermer",
+    "statusUpdated": "État mis à jour",
+    "statusUpdatedMessage": "Commentaire marqué comme {status}",
+    "notFoundTitle": "Vous n'avez pas trouvé ce dont vous aviez besoin ?",
+    "notFoundSubtitle": "Dites-nous ce que vous cherchiez. Nous essaierons de l'ajouter.",
+    "notFoundPlaceholder": "ex. : Une banque alimentaire spécifique ouverte le dimanche...",
+    "notFoundSubmittedTitle": "Demande reçue",
+    "notFoundSubmittedMessage": "Nous avons noté ce manque dans nos services.",
+    "notFoundSuccessTitle": "Merci de nous avoir prévenus",
+    "notFoundSuccessMessage": "Nous examinons ces demandes chaque semaine pour trouver de nouveaux services à ajouter.",
+    "submitAnother": "Envoyer une autre demande",
+    "categoryLabel": "Quelle catégorie convient le mieux ?",
+    "selectCategory": "Sélectionnez une catégorie...",
+    "categories": {
+      "Food": "Alimentation",
+      "Crisis": "Crise",
+      "Housing": "Logement",
+      "Health": "Santé",
+      "Legal": "Juridique",
+      "Financial": "Finances",
+      "Employment": "Emploi",
+      "Education": "Éducation",
+      "Transport": "Transport",
+      "Community": "Communauté",
+      "Indigenous": "Autochtones",
+      "Wellness": "Bien-être"
+    },
+    "requestUpdateTitle": "Demander une mise à jour des données",
+    "requestUpdateDesc": "Suggérer des modifications pour {service}. Celles-ci seront examinées par un administrateur.",
+    "fieldUpdatesLabel": "Détails de la mise à jour",
+    "fieldUpdatesPlaceholder": "Précisez quels champs doivent être mis à jour...",
+    "justificationLabel": "Source / Justification",
+    "justificationPlaceholder": "ex. : Mise à jour officielle de notre direction...",
+    "requestSuccessTitle": "Demande soumise",
+    "requestSuccessMessage": "Votre demande de mise à jour a été reçue et est en attente d'examen."
   },
   "AiDisclaimer": {
     "title": "À propos de cet assistant IA",
@@ -465,56 +630,6 @@
       }
     }
   },
-  "Privacy": {
-    "title": "Politique de confidentialité",
-    "lastUpdated": "Dernière mise à jour : {date}",
-    "sections": {
-      "overview": {
-        "title": "Aperçu de la politique",
-        "content": "Kingston Care Connect (\"KCC\", \"nous\") s'engage à protéger votre vie privée. Cette politique explique comment nous recueillons, utilisons et protégeons les informations."
-      },
-      "dataCollection": {
-        "title": "Informations collectées",
-        "content": "**Informations fournies**\n- **Commentaires**: Informations rapportées.\n- **Portail partenaire**: Détails de l'organisation.\n\n**Collectées automatiquement**\n- **Stockage local**: Préférences sur votre appareil.\n- **Données techniques**: Journaux serveur standard (sans suivi).\n\n**Ce que nous NE collectons PAS**\n- Pas de journalisation des recherches\n- Pas de cookies de suivi\n- Politique Zéro-Log pour vos recherches."
-      },
-      "aiPrivacy": {
-        "title": "Confidentialité de l'IA",
-        "content": "Notre assistant IA fonctionne entièrement dans votre navigateur.\n- **Zéro sortie de données**: Les requêtes ne quittent jamais votre appareil.\n- **Zéro connaissance**: Nous ne savons pas ce dont vous discutez.\n- **Pas de stockage**: Conversations supprimées à la fermeture."
-      },
-      "useOfInfo": {
-        "title": "Utilisation des informations",
-        "content": "Nous utilisons les infos pour : Amélioration du service, Gestion des partenaires, Sécurité. Nous n'utilisons PAS pour : Publicité, Profilage, Vente à des tiers."
-      },
-      "sharing": {
-        "title": "Partage d'informations",
-        "content": "Nous partageons uniquement avec les Partenaires vérifiés (feedback) ou les Fournisseurs de services. Nous ne vendons PAS d'informations."
-      },
-      "retention": {
-        "title": "Conservation des données",
-        "content": "Commentaires supprimés après résolution (90 jours). Données partenaires conservées tant qu'actifs. Stockage local contrôlé par vous."
-      },
-      "rights": {
-        "title": "Vos droits",
-        "content": "En vertu de la LPRPDE, vous avez des droits d'accès, de correction, de suppression et de retrait du consentement. Contactez privacy@careconnect.ca."
-      },
-      "security": {
-        "title": "Sécurité des données",
-        "content": "Nous mettons en œuvre le chiffrement, le contrôle d'accès et la collecte minimale."
-      },
-      "children": {
-        "title": "Confidentialité des enfants",
-        "content": "KCC ne s'adresse pas aux enfants de moins de 13 ans."
-      },
-      "cookies": {
-        "title": "Politique de cookies",
-        "content": "Nous utilisons des cookies minimaux (NEXT_LOCALE pour la langue). Pas de cookies de suivi ou publicitaires."
-      },
-      "contact": {
-        "title": "Contactez-nous",
-        "content": "Email : privacy@careconnect.ca"
-      }
-    }
-  },
   "Emergency": {
     "compact": "Pour les urgences, composez le 911",
     "title": "Pas un service d'urgence",
@@ -615,5 +730,44 @@
     "newToKCC": "Nouveau sur Care Connect ?",
     "applyPartner": "Demander un compte partenaire",
     "successMessage": "Lien magique envoyé ! Vérifiez votre courriel pour vous connecter."
+  },
+  "Impact": {
+    "title": "Impact communautaire",
+    "subtitle": "Découvrez comment Kingston Care Connect aide notre communauté — sans suivre personne.",
+    "metricsTitle": "Les 90 derniers jours",
+    "satisfactionTitle": "Satisfaction des utilisateurs",
+    "satisfactionDesc": "Basé sur {count} réponses",
+    "issuesResolvedTitle": "Problèmes résolus",
+    "issuesResolvedDesc": "Sur {total} signalés",
+    "servicesVerifiedTitle": "Services vérifiés",
+    "servicesVerifiedDesc": "Sur {total} au total",
+    "feedbackTitle": "Commentaires reçus",
+    "feedbackDesc": "Ce trimestre",
+    "privacyTitle": "Comment nous mesurons sans suivi",
+    "privacyText": "Toutes les métriques proviennent de commentaires anonymes et volontaires. Nous n'utilisons jamais de cookies, de pixels de suivi ou d'identifiants de session.",
+    "noTracking": "Pas de journalisation IP",
+    "noCookies": "Pas de cookies analytiques",
+    "voluntaryFeedback": "Tous les commentaires sont facultatifs",
+    "commitmentTitle": "Notre engagement",
+    "commitmentText": "Nous publions ces rapports chaque trimestre pour rester responsables envers la communauté que nous servons. Votre vie privée n'est pas négociable."
+  },
+  "Trust": {
+    "title": "Gouvernance des données et confiance",
+    "verifiedBy": "Vérifié par",
+    "method": "Méthode de vérification",
+    "evidence": "Preuve",
+    "viewEvidence": "Voir la preuve",
+    "lastVerified": "Dernière vérification",
+    "status": "Statut de vérification",
+    "requestUpdate": "Demander une mise à jour",
+    "updateHint": "Êtes-vous un fournisseur ? Cliquez pour soumettre une demande de correction.",
+    "unknown": "Inconnu",
+    "methods": {
+      "phone": "Confirmation par téléphone",
+      "email": "Courriel officiel",
+      "site": "Audit du site web",
+      "admin": "Vérifié par l'administrateur",
+      "partner": "Confirmé par le partenaire"
+    }
   }
 }

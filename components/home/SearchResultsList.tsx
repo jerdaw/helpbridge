@@ -8,6 +8,7 @@ import ServiceCardSkeleton from "../ServiceCardSkeleton"
 import { SearchResult } from "@/lib/search"
 import { PrintButton } from "@/components/ui/PrintButton"
 import ScopeFilterBar, { ScopeFilter } from "./ScopeFilterBar"
+import { NotFoundFeedback } from "../feedback/NotFoundFeedback"
 
 interface SearchResultsListProps {
   isLoading: boolean
@@ -68,12 +69,15 @@ export default function SearchResultsList({
   // Case 1: No results AT ALL (Local or Provincial)
   if (hasSearched && results.length === 0) {
     return (
-      <div className="rounded-lg bg-neutral-100 p-6 text-center dark:bg-neutral-900">
-        <p className="text-neutral-600 dark:text-neutral-400">
-          {category
-            ? t('noResultsInCategory', { query, category })
-            : t('noResults', { query })}
-        </p>
+      <div className="space-y-6">
+        <div className="rounded-lg bg-neutral-100 p-6 text-center dark:bg-neutral-900">
+          <p className="text-neutral-600 dark:text-neutral-400">
+            {category
+              ? t('noResultsInCategory', { query, category })
+              : t('noResults', { query })}
+          </p>
+        </div>
+        <NotFoundFeedback />
       </div>
     )
   }

@@ -325,7 +325,19 @@
     "successTitle": "谢谢您！",
     "successMessage": "我们已收到您的反馈，将很快审核。",
     "errorTitle": "错误",
-    "errorMessage": "出了点问题。请稍后重试。"
+    "errorMessage": "出错了。请稍后再试。",
+    "requestUpdateTitle": "请求数据更新",
+    "requestUpdateDesc": "建议修改 {service}。这些内容将由管理员审核。",
+    "fieldUpdatesLabel": "更新详情",
+    "fieldUpdatesPlaceholder": "指定哪些字段需要更新...",
+    "justificationLabel": "来源/理由",
+    "justificationPlaceholder": "例如来自我们执行董事的官方更新...",
+    "submitRequest": "提交更新请求",
+    "requestSuccessTitle": "请求已提交",
+    "requestSuccessMessage": "您的更新请求已收到，等待审核。",
+    "voteSuccessTitle": "谢谢",
+    "voteSuccessMessage": "您的反馈有助于改进此服务列表。",
+    "alreadyVotedMessage": "感谢您的反馈！"
   },
   "Accessibility": {
     "title": "无障碍",
@@ -612,5 +624,44 @@
     "title": "翻译通知",
     "message": "此页面使用 AI 辅助翻译。如需关键信息，请参阅英文版本。",
     "dismiss": "知道了"
+  },
+  "Impact": {
+    "title": "社区影响",
+    "subtitle": "了解 Kingston Care Connect 如何在不跟踪任何人的情况下帮助我们的社区。",
+    "metricsTitle": "过去 90 天",
+    "satisfactionTitle": "用户满意度",
+    "satisfactionDesc": "基于 {count} 条反馈",
+    "issuesResolvedTitle": "已解决的问题",
+    "issuesResolvedDesc": "在报告的 {total} 个中",
+    "servicesVerifiedTitle": "已验证的服务",
+    "servicesVerifiedDesc": "共 {total} 个",
+    "feedbackTitle": "收到的反馈",
+    "feedbackDesc": "本季度",
+    "privacyTitle": "我们如何在不跟踪的情况下进行衡量",
+    "privacyText": "所有指标均来自自愿、匿名的反馈。我们从不使用 cookie、跟踪像素或会话标识符。",
+    "noTracking": "无 IP 日志",
+    "noCookies": "无分析 cookie",
+    "voluntaryFeedback": "所有反馈均为自愿",
+    "commitmentTitle": "我们的承诺",
+    "commitmentText": "我们每季度发布这些报告，以对我们服务的社区负责。您的隐私是不容谈判的。"
+  },
+  "Trust": {
+    "title": "数据治理与信任",
+    "verifiedBy": "验证人",
+    "method": "验证方法",
+    "evidence": "证据",
+    "viewEvidence": "查看证据",
+    "lastVerified": "最后验证",
+    "status": "验证状态",
+    "requestUpdate": "更正请求",
+    "updateHint": "您是提供商吗？点击提交更正请求。",
+    "unknown": "未知",
+    "methods": {
+      "phone": "电话确认",
+      "email": "官方电子邮件",
+      "site": "网站审核",
+      "admin": "管理员验证",
+      "partner": "合作伙伴确认"
+    }
   }
 }

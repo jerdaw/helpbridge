@@ -43,6 +43,7 @@ We maintain a hand-verified dataset of the **169 highest-impact services** avail
 - **Deterministic Results**: The UI renders verified service links from the local directory (no free-form “chatbot answers” shown to users).
 - **Zero-Knowledge Architecture**: Queries never leave the device.
 - **Offline-Friendly**: The service directory and embeddings can be cached for offline search.
+- **Measurable Impact (v14.0)**: Public dashboard showing aggregate outcomes and data quality metrics without tracking users.
 
 ### Librarian Model (v13.0)
 
@@ -65,6 +66,8 @@ We maintain a hand-verified dataset of the **169 highest-impact services** avail
 - **Indigenous Health Services** — Dedicated filters and culturally safe tags.
 - **Land Acknowledgment** — Respecting the traditional lands of Kingston (Katarokwi).
 - **Provincial Crisis Lines** — 16 Ontario-wide crisis services (988, ConnexOntario, Kids Help Phone, etc.).
+- **Printable Resource Cards** — High-contrast, one-page summaries for any service, designed for offline distribution.
+- **Trust Signals** — Visible "Verified At" badges and provenance data for every listing.
 
 ---
 
@@ -115,6 +118,8 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 | `npm run validate-data`   | Validate data schema (Zod)              |
 | `npm run check-staleness` | Check for stale/unverified data         |
 | `npm run analyze`         | Analyze production bundle size          |
+| `npm run i18n-audit`      | Audit translation key coverage          |
+| `npm run audit:qa`        | Audit data quality and integrity        |
 
 ### Environment Variables
 

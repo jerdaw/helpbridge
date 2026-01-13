@@ -166,6 +166,18 @@
   outline-offset: 2px;
 }
 
+/* Reduced Motion Support - WCAG 2.1 AA */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Ensure buttons have visible focus */
 button:focus-visible,
 [role="button"]:focus-visible {

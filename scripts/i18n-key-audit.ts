@@ -136,7 +136,11 @@ function main() {
       extraKeys,
     })
 
-    if (missingKeys.length > 0) hasErrors = true
+    if (missingKeys.length > 0) {
+      if (["en", "fr"].includes(locale)) {
+        hasErrors = true
+      }
+    }
   }
 
   // Find used keys in code

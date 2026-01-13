@@ -325,7 +325,19 @@
     "successTitle": "¡Gracias!",
     "successMessage": "Hemos recibido tu retroalimentación y la revisaremos pronto.",
     "errorTitle": "Error",
-    "errorMessage": "Algo salió mal. Por favor, inténtalo de nuevo más tarde."
+    "errorMessage": "Algo salió mal. Por favor, inténtelo de nuevo.",
+    "requestUpdateTitle": "Solicitar Actualización de Datos",
+    "requestUpdateDesc": "Sugerir cambios para {service}. Estos serán revisados por un administrador.",
+    "fieldUpdatesLabel": "Detalles de la Actualización",
+    "fieldUpdatesPlaceholder": "Especifique qué campos necesitan actualización...",
+    "justificationLabel": "Fuente / Justificación",
+    "justificationPlaceholder": "ej. Actualización oficial de nuestro director ejecutivo...",
+    "submitRequest": "Enviar Solicitud de Actualización",
+    "requestSuccessTitle": "Solicitud Enviada",
+    "requestSuccessMessage": "Su solicitud de actualización ha sido recibida y está pendiente de revisión.",
+    "voteSuccessTitle": "Gracias",
+    "voteSuccessMessage": "Sus comentarios ayudan a mejorar este listado de servicios.",
+    "alreadyVotedMessage": "¡Gracias por sus comentarios!"
   },
   "Accessibility": {
     "title": "Accesibilidad",
@@ -612,5 +624,44 @@
     "title": "Aviso de Traducción",
     "message": "Esta página utiliza traducciones asistidas por IA. Para información crítica, consulte la versión en inglés.",
     "dismiss": "Entendido"
+  },
+  "Impact": {
+    "title": "Impacto Comunitario",
+    "subtitle": "Vea cómo Kingston Care Connect está ayudando a nuestra comunidad, sin rastrear a nadie.",
+    "metricsTitle": "Últimos 90 días",
+    "satisfactionTitle": "Satisfacción del Usuario",
+    "satisfactionDesc": "Basado en {count} respuestas",
+    "issuesResolvedTitle": "Problemas Resueltos",
+    "issuesResolvedDesc": "De {total} reportados",
+    "servicesVerifiedTitle": "Servicios Verificados",
+    "servicesVerifiedDesc": "De un total de {total}",
+    "feedbackTitle": "Comentarios Recibidos",
+    "feedbackDesc": "Este trimestre",
+    "privacyTitle": "Cómo Medimos sin Rastrear",
+    "privacyText": "Todas las métricas provienen de comentarios voluntarios y anónimos. Nunca usamos cookies, píxeles de seguimiento o identificadores de sesión.",
+    "noTracking": "Sin registro de IP",
+    "noCookies": "Sin cookies de análisis",
+    "voluntaryFeedback": "Todos los comentarios son opcionales",
+    "commitmentTitle": "Nuestro Compromiso",
+    "commitmentText": "Publicamos estos informes trimestralmente para ser responsables ante la comunidad a la que servimos. Su privacidad no es negociable."
+  },
+  "Trust": {
+    "title": "Gobernanza de Datos y Confianza",
+    "verifiedBy": "Verificado por",
+    "method": "Método de Verificación",
+    "evidence": "Evidencia",
+    "viewEvidence": "Ver Evidencia",
+    "lastVerified": "Última Verificación",
+    "status": "Estado de Verificación",
+    "requestUpdate": "Solicitud de Corrección",
+    "updateHint": "¿Es usted un proveedor? Haga clic para enviar una solicitud de corrección.",
+    "unknown": "Desconocido",
+    "methods": {
+      "phone": "Confirmación Telefónica",
+      "email": "Correo Oficial",
+      "site": "Auditoría del Sitio Web",
+      "admin": "Verificado por Admin",
+      "partner": "Confirmado por Socio"
+    }
   }
 }
