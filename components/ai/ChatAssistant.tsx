@@ -29,6 +29,7 @@ import { detectCrisis } from "@/lib/search/crisis"
 interface Message {
   role: "user" | "assistant"
   content: string
+  feedback?: "up" | "down"
 }
 
 const IDLE_TIMEOUT_MS = 5 * 60 * 1000 // 5 Minutes
@@ -91,6 +92,17 @@ export default function ChatAssistant() {
       console.warn("[ChatAssistant] Failed to stop generation:", err)
     }
   }, [isThinking, stop])
+
+  const handleFeedback = (index: number, type: "up" | "down") => {
+    setMessages((prev) =>
+      prev.map((msg, i) => {
+        if (i !== index) return msg
+        // Toggle off if clicking same type, else switch to new type
+        const newFeedback = msg.feedback === type ? undefined : type
+        return { ...msg, feedback: newFeedback }
+      })
+    )
+  }
 
   const handleSend = async () => {
     if (!input.trim() || isThinking) return
@@ -330,10 +342,22 @@ export default function ChatAssistant() {
                         {/* Outcome Feedback Loop (Visual Only) */}
                         {m.role === "assistant" && (
                           <div className="flex gap-1 mt-1 opacity-40 hover:opacity-100 transition-opacity px-2">
-                             <Button variant="ghost" size="icon" className="h-6 w-6 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="Helpful">
+                             <Button 
+                               variant="ghost" 
+                               size="icon" 
+                               className={cn("h-6 w-6 hover:bg-neutral-100 dark:hover:bg-neutral-800", m.feedback === "up" && "text-green-600 bg-green-50 dark:bg-green-900/20")} 
+                               title="Helpful"
+                               onClick={() => handleFeedback(i, "up")}
+                             >
                                <ThumbsUp className="h-3 w-3" />
                              </Button>
-                             <Button variant="ghost" size="icon" className="h-6 w-6 hover:bg-neutral-100 dark:hover:bg-neutral-800" title="Not Helpful">
+                             <Button 
+                               variant="ghost" 
+                               size="icon" 
+                               className={cn("h-6 w-6 hover:bg-neutral-100 dark:hover:bg-neutral-800", m.feedback === "down" && "text-red-600 bg-red-50 dark:bg-red-900/20")}
+                               title="Not Helpful"
+                               onClick={() => handleFeedback(i, "down")}
+                             >
                                <ThumbsDown className="h-3 w-3" />
                              </Button>
                           </div>
@@ -364,6 +388,7 @@ export default function ChatAssistant() {
                     type="text"
                     ref={inputRef}
                     autoFocus
+                    autoComplete="off"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder={isReady ? t("placeholderReady") : t("placeholderWaiting")}

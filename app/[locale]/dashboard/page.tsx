@@ -1,10 +1,25 @@
 import DashboardSidebar from "@/components/DashboardSidebar"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ShieldCheck, Eye, MousePointerClick, TrendingUp } from "lucide-react"
+import { ShieldCheck, Eye, MousePointerClick, TrendingUp, FileText } from "lucide-react"
 import { Link } from "@/i18n/routing"
+import { createClient } from "@/utils/supabase/server"
+import { redirect } from "next/navigation"
 
 export default async function DashboardPage() {
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  if (!user) {
+    redirect("/login")
+  }
+
+  // Fetch pending update requests for this user
+  const { count: pendingUpdates } = await supabase.from("service_update_requests")
+    .select("*", { count: "exact", head: true })
+    .eq("requested_by", user.email || "")
+    .eq("status", "pending")
+
   return (
     <div className="flex min-h-screen bg-stone-50 dark:bg-neutral-950">
       <DashboardSidebar />
@@ -59,6 +74,17 @@ export default async function DashboardPage() {
               <CardContent>
                 <div className="text-2xl font-bold">3</div>
                 <p className="mt-1 text-xs text-neutral-500">All services up to date</p>
+              </CardContent>
+            </Card>
+
+            <Card variant="interactive">
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium text-neutral-500">Update Requests</CardTitle>
+                <FileText className="h-4 w-4 text-neutral-400" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{pendingUpdates || 0}</div>
+                <p className="mt-1 text-xs text-neutral-500">Pending review by admin</p>
               </CardContent>
             </Card>
           </div>

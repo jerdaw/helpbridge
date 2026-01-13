@@ -17,8 +17,11 @@ import {
   AlertTriangle,
   FileText,
   Wallet,
+  BookOpen,
 } from "lucide-react"
+import { SimplifiedServiceView } from "@/components/services/SimplifiedServiceView"
 import { getTranslations } from "next-intl/server"
+import Link from "next/link"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { Section } from "@/components/ui/section"
@@ -28,9 +31,12 @@ import { Card } from "@/components/ui/card"
 import { VerificationLevel, IntentCategory } from "@/types/service"
 import { EmergencyDisclaimer } from "@/components/ui/EmergencyDisclaimer"
 import { ClaimFlow } from "@/components/partner/ClaimFlow"
+import { FeedbackWidget } from "@/components/feedback/FeedbackWidget"
+import { TrustPanel } from "@/components/services/TrustPanel"
 
 interface Props {
   params: Promise<{ id: string; locale: string }>
+  searchParams: Promise<{ view?: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -47,13 +53,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ServicePage({ params }: Props) {
+export default async function ServicePage({ params, searchParams }: Props) {
   const { id, locale } = await params
+  const { view } = await searchParams
   const service = await getServiceById(id)
   const t = await getTranslations("ServiceDetail")
+  const tBadge = await getTranslations("VerificationLevels")
 
   if (!service) {
     notFound()
+  }
+
+  if (view === "simple") {
+    return (
+        <SimplifiedServiceView
+            service={service}
+            locale={locale}
+            translations={{
+                standardView: t("standardView"),
+                whatIsIt: t("whatIsIt"),
+                howToGetHelp: t("howToGetHelp"),
+                callUs: t("callUs"),
+                visitUs: t("visitUs"),
+                openHours: t("openHours"),
+                summaryComingSoon: t("summaryComingSoon")
+            }}
+        />
+    )
   }
 
   const name = locale === "fr" && service.name_fr ? service.name_fr : service.name
@@ -64,16 +90,6 @@ export default async function ServicePage({ params }: Props) {
 
   const isVerified =
     service.verification_level === VerificationLevel.L2 || service.verification_level === VerificationLevel.L3
-
-  // Helper to format date
-  const formatDate = (dateStr?: string) => {
-    if (!dateStr) return null
-    return new Date(dateStr).toLocaleDateString(locale, {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
-  }
 
   return (
     <main className="flex min-h-screen flex-col bg-stone-50 dark:bg-neutral-950">
@@ -94,11 +110,15 @@ export default async function ServicePage({ params }: Props) {
                 <Badge variant="outline" className="py-1 text-sm">
                   {service.intent_category}
                 </Badge>
-                {isVerified && (
-                  <Badge variant="primary" className="gap-1.5 py-1 text-sm">
-                    <ShieldCheck className="h-4 w-4" /> Verified Service
+                {service.verification_level === VerificationLevel.L3 ? (
+                  <Badge variant="primary" className="gap-1.5 py-1 text-sm bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800">
+                    <ShieldCheck className="h-4 w-4" /> {tBadge("L3")}
                   </Badge>
-                )}
+                ) : isVerified ? (
+                  <Badge variant="primary" className="gap-1.5 py-1 text-sm">
+                    <CheckCircle2 className="h-4 w-4" /> {tBadge("L2")}
+                  </Badge>
+                ) : null}
               </div>
 
               {(service.status === "Permanently Closed" || service.status === "Merged") && (
@@ -107,12 +127,12 @@ export default async function ServicePage({ params }: Props) {
                     <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />
                     <div>
                       <h3 className="font-semibold px-2">
-                        {service.status === "Merged" ? "Service Merged" : "Permanently Closed"}
+                        {service.status === "Merged" ? t("serviceMerged") : t("permanentlyClosed")}
                       </h3>
                       <p className="mt-1 text-sm px-2">
                         {service.status === "Merged" 
-                          ? "This service has been merged with another organization. Please check the description for the new contact details." 
-                          : "This service is no longer operational. Please do not visit this location."}
+                          ? t("mergedDescription") 
+                          : t("closedDescription")}
                       </p>
                     </div>
                   </div>
@@ -133,7 +153,7 @@ export default async function ServicePage({ params }: Props) {
                   {/* Map Integration */}
                   <div className="overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800">
                     <iframe
-                      title={`Map location for ${name}`}
+                      title={t("mapTitle", { name })}
                       width="100%"
                       height="200"
                       style={{ border: 0, filter: "grayscale(100%) invert(0.92) opacity(0.8)" }}
@@ -149,11 +169,17 @@ export default async function ServicePage({ params }: Props) {
             </div>
 
             <div className="flex flex-wrap gap-3">
+              <Link href="?view=simple" className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-neutral-200 bg-white px-4 text-sm font-semibold shadow-sm transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-800 dark:hover:bg-neutral-700">
+                <BookOpen className="h-4 w-4" />
+                {t("plainLanguage")}
+              </Link>
               <Button variant="outline" className="gap-2">
-                <Share2 className="h-4 w-4" /> Share
+                <Share2 className="h-4 w-4" /> {t("share")}
               </Button>
-              <Button variant="outline" className="gap-2">
-                <Printer className="h-4 w-4" /> Print
+              <Button variant="outline" className="gap-2" asChild>
+                <a href={`/api/v1/services/${service.id}/printable`} target="_blank" rel="noopener noreferrer">
+                  <Printer className="h-4 w-4" /> {t("print")}
+                </a>
               </Button>
             </div>
           </div>
@@ -166,7 +192,7 @@ export default async function ServicePage({ params }: Props) {
           <div className="space-y-8 lg:col-span-2">
             {/* About */}
             <Card className="p-8">
-              <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">About this Service</h2>
+              <h2 className="mb-4 flex items-center gap-2 text-2xl font-bold">{t("aboutService")}</h2>
               <div className="prose prose-neutral dark:prose-invert max-w-none leading-relaxed text-neutral-600 dark:text-neutral-300">
                 {description.map((paragraph, idx) => (
                   <p key={idx} className="mb-4">
@@ -183,7 +209,7 @@ export default async function ServicePage({ params }: Props) {
                   <Card className="p-8">
                     <h2 className="mb-3 flex items-center gap-2 text-xl font-bold">
                       <Wallet className="text-primary-600 h-6 w-6" />
-                      Fees
+                      {t("fees")}
                     </h2>
                     <p className="text-neutral-600 dark:text-neutral-300">{service.fees}</p>
                   </Card>
@@ -192,7 +218,7 @@ export default async function ServicePage({ params }: Props) {
                   <Card className="p-8">
                     <h2 className="mb-3 flex items-center gap-2 text-xl font-bold">
                       <FileText className="text-primary-600 h-6 w-6" />
-                      Documents
+                      {t("documents")}
                     </h2>
                     <p className="text-neutral-600 dark:text-neutral-300">{service.documents_required}</p>
                   </Card>
@@ -205,7 +231,7 @@ export default async function ServicePage({ params }: Props) {
               <Card className="p-8">
                 <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
                   <CheckCircle2 className="text-primary-600 h-6 w-6" />
-                  Eligibility
+                  {t("eligibility")}
                 </h2>
                 <div className="bg-primary-50 dark:bg-primary-900/10 border-primary-100 dark:border-primary-800/50 rounded-xl border p-6">
                   <p className="text-neutral-700 dark:text-neutral-300">
@@ -218,7 +244,7 @@ export default async function ServicePage({ params }: Props) {
             {/* Application Process */}
             {service.application_process && (
               <Card className="p-8">
-                <h2 className="mb-4 text-2xl font-bold">Application Process</h2>
+                <h2 className="mb-4 text-2xl font-bold">{t("accessProcess")}</h2>
                 <p className="text-neutral-600 dark:text-neutral-300">{service.application_process}</p>
               </Card>
             )}
@@ -226,7 +252,7 @@ export default async function ServicePage({ params }: Props) {
             {/* Accessibility */}
             {service.accessibility && Object.keys(service.accessibility).length > 0 && (
               <Card className="p-8">
-                <h2 className="mb-4 text-2xl font-bold">Accessibility</h2>
+                <h2 className="mb-4 text-2xl font-bold">{t("accessibility")}</h2>
                 <div className="flex flex-wrap gap-2">
                   {Object.entries(service.accessibility).map(
                     ([key, value]) =>
@@ -245,7 +271,7 @@ export default async function ServicePage({ params }: Props) {
           <div className="space-y-6">
             {/* Contact Card */}
             <Card className="sticky top-24 p-6">
-              <h3 className="mb-4 text-lg font-semibold">Contact Information</h3>
+              <h3 className="mb-4 text-lg font-semibold">{t("contactInfo")}</h3>
               <div className="space-y-4">
                 {service.phone && (
                   <div className="flex items-start gap-3">
@@ -253,7 +279,7 @@ export default async function ServicePage({ params }: Props) {
                       <Phone className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-neutral-500">Phone</p>
+                      <p className="text-sm font-medium text-neutral-500">{t("phone")}</p>
                       <a href={`tel:${service.phone}`} className="text-primary-600 font-medium hover:underline">
                         {service.phone}
                       </a>
@@ -267,14 +293,14 @@ export default async function ServicePage({ params }: Props) {
                       <Globe className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-neutral-500">Website</p>
+                      <p className="text-sm font-medium text-neutral-500">{t("website")}</p>
                       <a
                         href={service.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary-600 font-medium break-all hover:underline"
                       >
-                        Visit Website
+                        {t("visitWebsite")}
                       </a>
                     </div>
                   </div>
@@ -286,7 +312,7 @@ export default async function ServicePage({ params }: Props) {
                       <Mail className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-neutral-500">Email</p>
+                      <p className="text-sm font-medium text-neutral-500">{t("email")}</p>
                       <a
                         href={`mailto:${service.email}`}
                         className="text-primary-600 font-medium break-all hover:underline"
@@ -303,7 +329,7 @@ export default async function ServicePage({ params }: Props) {
                       <Navigation className="h-5 w-5" />
                     </div>
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-neutral-500">Address</p>
+                      <p className="text-sm font-medium text-neutral-500">{t("location")}</p>
                       <p className="text-neutral-900 dark:text-neutral-200">{address}</p>
                       <Button variant="link" className="mt-1 h-auto p-0 text-xs" asChild>
                         <a
@@ -311,12 +337,12 @@ export default async function ServicePage({ params }: Props) {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          Get Directions
+                          {t("getDirections")}
                         </a>
                       </Button>
                       <div className="mt-3 overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-700">
                         <iframe
-                          title={`Map location for ${name}`}
+                          title={t("mapTitle", { name })}
                           width="100%"
                           height="180"
                           frameBorder="0"
@@ -335,7 +361,7 @@ export default async function ServicePage({ params }: Props) {
                       <Clock className="h-5 w-5" />
                     </div>
                     <div className="flex-1">
-                      <p className="mb-2 text-sm font-medium text-neutral-500">Hours</p>
+                      <p className="mb-2 text-sm font-medium text-neutral-500">{t("hours")}</p>
                       <div className="text-sm">
                         {service.hours_text && (
                           <div className="mb-3 whitespace-pre-line text-neutral-900 font-medium dark:text-neutral-200">
@@ -360,7 +386,7 @@ export default async function ServicePage({ params }: Props) {
                         })}
                         {service.hours?.notes && (
                           <p className="mt-2 rounded bg-neutral-50 p-2 text-xs text-neutral-400 italic dark:bg-neutral-800/50">
-                            Note: {service.hours.notes}
+                            {t("note")} {service.hours.notes}
                           </p>
                         )}
                       </div>
@@ -369,11 +395,9 @@ export default async function ServicePage({ params }: Props) {
                 )}
               </div>
 
+              <TrustPanel service={service} locale={locale} />
+
               <div className="mt-6 border-t border-neutral-100 pt-6 dark:border-neutral-800">
-                <div className="flex items-center justify-between text-xs text-neutral-500">
-                  <span>Last Verified:</span>
-                  <span>{formatDate(service.last_verified) || "Unknown"}</span>
-                </div>
                 <div className="mt-4">
                   <a
                     href={generateFeedbackLink(service)}
@@ -394,6 +418,10 @@ export default async function ServicePage({ params }: Props) {
             </Card>
           </div>
         </div>
+      </Section>
+
+      <Section className="py-6">
+        <FeedbackWidget serviceId={service.id} serviceName={name} />
       </Section>
 
       <Footer />

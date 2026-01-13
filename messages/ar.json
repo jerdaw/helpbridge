@@ -325,7 +325,19 @@
     "successTitle": "شكراً لك!",
     "successMessage": "لقد تلقينا ملاحظاتك وسنراجعها قريباً.",
     "errorTitle": "خطأ",
-    "errorMessage": "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقاً."
+    "errorMessage": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "requestUpdateTitle": "طلب تحديث البيانات",
+    "requestUpdateDesc": "اقتراح تغييرات لـ {service}. ستتم مراجعة هذه التغييرات من قبل المسؤول.",
+    "fieldUpdatesLabel": "تفاصيل التحديث",
+    "fieldUpdatesPlaceholder": "حدد الحقول التي تحتاج إلى تحديث...",
+    "justificationLabel": "المصدر / التبرير",
+    "justificationPlaceholder": "مثلاً تحديث رسمي من مديرنا التنفيذي...",
+    "submitRequest": "إرسال طلب التحديث",
+    "requestSuccessTitle": "تم إرسال الطلب",
+    "requestSuccessMessage": "تم استلام طلب التحديث الخاص بك وهو قيد المراجعة.",
+    "voteSuccessTitle": "شكراً لك",
+    "voteSuccessMessage": "تساعد ملاحظاتك في تحسين قائمة الخدمات هذه.",
+    "alreadyVotedMessage": "شكرا لتعليقاتك!"
   },
   "Accessibility": {
     "title": "إمكانية الوصول",
@@ -612,5 +624,44 @@
     "title": "إشعار الترجمة",
     "message": "تستخدم هذه الصفحة ترجمات بمساعدة الذكاء الاصطناعي. للحصول على معلومات دقيقة، يرجى الرجوع إلى النسخة الإنجليزية.",
     "dismiss": "فهمت"
+  },
+  "Impact": {
+    "title": "تأثير المجتمع",
+    "subtitle": "تعرف على كيفية مساعدة Kingston Care Connect لمجتمعنا - دون تتبع أي شخص.",
+    "metricsTitle": "آخر 90 يومًا",
+    "satisfactionTitle": "رضا المستخدم",
+    "satisfactionDesc": "بناءً على {count} من الردود",
+    "issuesResolvedTitle": "المشكلات التي تم حلها",
+    "issuesResolvedDesc": "من بين {total} تم الإبلاغ عنها",
+    "servicesVerifiedTitle": "الخدمات التي تم التحقق منها",
+    "servicesVerifiedDesc": "من أصل {total} إجماليًا",
+    "feedbackTitle": "الملاحظات المستلمة",
+    "feedbackDesc": "هذا الربع",
+    "privacyTitle": "كيف نقيس دون تتبع",
+    "privacyText": "تأتي جميع المقاييس من تعليقات طوعية ومجهولة المصدر. نحن لا نستخدم ملفات تعريف الارتباط أو بكسلات التتبع أو معرفات الجلسة.",
+    "noTracking": "لا تسجيل IP",
+    "noCookies": "لا ملفات تعريف ارتباط تحليلية",
+    "voluntaryFeedback": "جميع التعليقات اختيارية",
+    "commitmentTitle": "التزامنا",
+    "commitmentText": "ننشر هذه التقارير بشكل ربع سنوي لنظل مسؤولين أمام المجتمع الذي نخدمه. خصوصيتك غير قابلة للتفاوض."
+  },
+  "Trust": {
+    "title": "حكم البيانات والثقة",
+    "verifiedBy": "تم التحقق بواسطة",
+    "method": "طريقة التحقق",
+    "evidence": "دليل",
+    "viewEvidence": "عرض الدليل",
+    "lastVerified": "آخر تحقق",
+    "status": "حالة التحقق",
+    "requestUpdate": "طلب تصحيح",
+    "updateHint": "هل أنت مزود؟ انقر لتقديم طلب تصحيح.",
+    "unknown": "غير معروف",
+    "methods": {
+      "phone": "تأكيد هاتفي",
+      "email": "بريد إلكتروني رسمي",
+      "site": "تدقيق الموقع",
+      "admin": "تم التحقق بواسطة المسؤول",
+      "partner": "تم التأكيد من قبل الشريك"
+    }
   }
 }

@@ -99,7 +99,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, highlightTokens = []
                 {/* Status Badge */}
                 {(service.status === "Permanently Closed" || service.status === "Merged") && (
                    <Badge variant="destructive" size="sm" className="px-1.5 py-0 text-xs uppercase tracking-wider font-bold">
-                     {service.status === "Merged" ? "Merged" : "Closed"}
+                     {service.status === "Merged" ? t("ServiceDetail.merged") : t("ServiceDetail.closed")}
                    </Badge>
                 )}
                 {service.scope === 'ontario' && (
@@ -131,7 +131,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, highlightTokens = []
                 {/* Fees Badge - Only if explicitly Free */}
                 {(service.fees?.toLowerCase() === "free") && (
                   <Badge variant="secondary" size="sm" className="bg-green-50 text-green-700 border-green-200 dark:bg-green-900/20 dark:text-green-300 dark:border-green-800 px-1.5 py-0 text-xs">
-                    Free
+                    {t("ServiceDetail.free")}
                   </Badge>
                 )}
                 {checkEligibility(service, useUserContext().context) === "eligible" && (
@@ -145,7 +145,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, highlightTokens = []
                 )}
                 {isVerified && (
                   <Badge variant="primary" size="sm" className="gap-0.5 px-1.5 py-0 text-xs">
-                    <ShieldCheck className="h-3 w-3" /> Verified
+                    <ShieldCheck className="h-3 w-3" /> {t("ServiceDetail.verified")}
                   </Badge>
                 )}
                 {service.last_verified && (
@@ -164,7 +164,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, highlightTokens = []
                   ) : serviceWithDistance.distance ? (
                     `${serviceWithDistance.distance.toFixed(1)} km`
                   ) : (
-                    "Kingston"
+                    t("ServiceDetail.kingston")
                   )}
                 </span>
               </div>
@@ -223,7 +223,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, highlightTokens = []
                 className="ml-2 inline-flex items-center gap-1 text-xs font-medium text-neutral-400 transition-colors hover:text-neutral-600 dark:hover:text-neutral-300"
               >
                 <Flag className="h-3 w-3" />
-                Report
+                {t("ServiceDetail.report")}
               </button>
             </div>
             <FeedbackModal
@@ -239,12 +239,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, highlightTokens = []
               asChild
             >
               <Link href={`/service/${service.id}`} onClick={() => handleTrack("click_website")}>
-                Details <ArrowRight className="h-3 w-3" />
+                {t("ServiceDetail.details")} <ArrowRight className="h-3 w-3" />
               </Link>
             </Button>
             <Button size="sm" variant="ghost" className="h-7 gap-1 px-2 text-xs opacity-100 sm:hidden" asChild>
               <Link href={`/service/${service.id}`} onClick={() => handleTrack("click_website")}>
-                Details <ArrowRight className="h-3 w-3" />
+                {t("ServiceDetail.details")} <ArrowRight className="h-3 w-3" />
               </Link>
             </Button>
           </div>
