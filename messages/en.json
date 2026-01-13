@@ -8,6 +8,12 @@
     "title": "This is a community-led project",
     "shareFeedback": "Share Feedback"
   },
+  "VerificationLevels": {
+    "L0": "Unverified",
+    "L1": "Basic Verification",
+    "L2": "Verified Service",
+    "L3": "Official Partner"
+  },
   "Footer": {
     "disclaimer": "Find verified local services and community resources.",
     "mission": "Connecting Kingston residents with the support services they need. Built with care for our community.",
@@ -114,33 +120,6 @@
     "openMenu": "Open menu",
     "skipToMain": "Skip to main content"
   },
-  "Common": {
-    "openInNewTab": "(opens in a new tab)",
-    "printResults": "Print Results",
-    "switchLanguage": "Switch Language"
-  },
-  "Privacy": {
-    "title": "Privacy Policy",
-    "simplified": "Privacy Simplified",
-    "intro": "At Kingston Care Connect, your privacy is not an afterthought—it's our core architecture.",
-    "points": {
-      "noTracking": "No Tracking: We do not use Google Analytics, Facebook Pixels, or any third-party trackers.",
-      "noCookies": "No Cookies: We do not store personal data in cookies. We use a single essential cookie only to remember your language preference.",
-      "noLogging": "No Query Logging: Your search terms are processed anonymously and are not linked to your identity."
-    },
-    "contact": "Questions? Contact us at privacy@careconnect.ca"
-  },
-  "ServiceCard": {
-    "reportIssue": "Report Issue"
-  },
-  "Badges": {
-    "ontarioWide": "Ontario-wide",
-    "canadaWide": "Canada-wide"
-  },
-  "Distance": {
-    "ontarioWide": "Available across Ontario",
-    "canadaWide": "Available across Canada"
-  },
   "Dashboard": {
     "title": "Dashboard",
     "welcome": "Welcome back, {email}",
@@ -177,7 +156,104 @@
       "view": "View",
       "lastUpdated": "Last Updated",
       "noServices": "No services claimed"
+    },
+    "logout": "Log out",
+    "partner": "Partner Dashboard",
+    "recentFeedback": "Recent Feedback",
+    "viewAll": "View All",
+    "stats": {
+      "pending": "Pending",
+      "resolved": "Resolved",
+      "sentiment": "Global Sentiment",
+      "total": "Total Feedback"
     }
+  },
+  "Freshness": {
+    "verified": "Verified",
+    "unknown": "Not verified",
+    "verifiedOn": "Last verified",
+    "neverVerified": "This service has not been verified recently",
+    "outdatedTooltip": "This information is more than 3 months old and may be inaccurate.",
+    "verifiedTooltip": "Information confirmed by a partner on {date}",
+    "levels": {
+      "fresh": "Verified recently",
+      "recent": "Verified within 3 months",
+      "stale": "Verification outdated"
+    }
+  },
+  "Common": {
+    "openInNewTab": "(opens in a new tab)",
+    "printResults": "Print Results",
+    "switchLanguage": "Switch Language"
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "simplified": "Privacy Simplified",
+    "intro": "At Kingston Care Connect, your privacy is not an afterthought—it's our core architecture.",
+    "points": {
+      "noTracking": "No Tracking: We do not use Google Analytics, Facebook Pixels, or any third-party trackers.",
+      "noCookies": "No Cookies: We do not store personal data in cookies. We use a single essential cookie only to remember your language preference.",
+      "noLogging": "No Query Logging: Your search terms are processed anonymously and are not linked to your identity."
+    },
+    "contact": "Questions? Contact us at privacy@careconnect.ca",
+    "lastUpdated": "Last Updated: {date}",
+    "sections": {
+      "overview": {
+        "title": "Privacy Policy Overview",
+        "content": "Kingston Care Connect (\"KCC\", \"we\", \"us\") is committed to protecting your privacy. This policy explains how we collect, use, and protect information when you use our service."
+      },
+      "dataCollection": {
+        "title": "Information We Collect",
+        "content": "**Information You Provide**\n- **Feedback Forms**: Information you verify or report.\n- **Partner Portal**: Organization details for partners.\n\n**Information Collected Automatically**\n- **Local Storage**: Preferences stored on your device.\n- **Technical Data**: Standard server logs for security (no tracking).\n\n**Information We Do NOT Collect**\n- No search query logging\n- No tracking cookies\n- No analytics services\n- We implement a Zero-Log Policy for your searches."
+      },
+      "aiPrivacy": {
+        "title": "AI Assistant Privacy",
+        "content": "Our AI assistant runs entirely in your browser using client-side processing.\n- **Zero Data Egress**: Queries never leave your device.\n- **Zero-Knowledge**: We don't know what you discuss.\n- **No Storage**: Conversations deleted on close."
+      },
+      "useOfInfo": {
+        "title": "How We Use Information",
+        "content": "We use information for:\n- Service Improvement\n- Partner Management\n- Security\n\nWe do NOT use information for:\n- Advertising\n- Profiling\n- Sale to third parties"
+      },
+      "sharing": {
+        "title": "Information Sharing",
+        "content": "We share information only with verified Partners (feedback) or Service Providers (hosting/database). We do NOT sell information."
+      },
+      "retention": {
+        "title": "Data Retention",
+        "content": "Feedback is deleted after resolution (90 days). Partner data retained while active. Local storage is controlled by you."
+      },
+      "rights": {
+        "title": "Your Privacy Rights",
+        "content": "Under PIPEDA, you have rights to Access, Correction, Deletion, and Withdrawal of Consent. Contact privacy@careconnect.ca."
+      },
+      "security": {
+        "title": "Data Security",
+        "content": "We implement Encryption, Access Control, and Minimal Collection principles."
+      },
+      "children": {
+        "title": "Children's Privacy",
+        "content": "KCC is not directed at children under 13. We do not knowingly collect information from children."
+      },
+      "cookies": {
+        "title": "Cookie Policy",
+        "content": "We use minimal cookies (NEXT_LOCALE for language). No tracking or advertising cookies."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "Email: privacy@careconnect.ca"
+      }
+    }
+  },
+  "ServiceCard": {
+    "reportIssue": "Report Issue"
+  },
+  "Badges": {
+    "ontarioWide": "Ontario-wide",
+    "canadaWide": "Canada-wide"
+  },
+  "Distance": {
+    "ontarioWide": "Available across Ontario",
+    "canadaWide": "Available across Canada"
   },
   "ServiceDetail": {
     "back": "Back",
@@ -198,7 +274,40 @@
     "incorrectInfo": "Is this information incorrect or outdated?",
     "reportIssue": "Report an Issue",
     "claimTitle": "Own this organization?",
-    "claimText": "Claim this listing to keep your information up to date and gain access to analytics.",
+    "claimText": "Do you manage this service?",
+    "claimButton": "Claim this Service",
+    "plainLanguage": "Plain Language",
+    "standardView": "Standard View",
+    "whatIsIt": "What is it?",
+    "howToGetHelp": "How do I get help?",
+    "callUs": "Call Us",
+    "visitUs": "Visit Us",
+    "openHours": "Open Hours",
+    "summaryComingSoon": "Plain language summary coming soon.",
+    "verifiedService": "Verified Service",
+    "officialPartner": "Official Partner",
+    "serviceMerged": "Service Merged",
+    "permanentlyClosed": "Permanently Closed",
+    "mergedDescription": "This service has been merged with another organization. Please check the description for the new contact details.",
+    "closedDescription": "This service is no longer operational. Please do not visit this location.",
+    "note": "Note:",
+    "mapTitle": "Map location for {name}",
+    "aboutService": "About this Service",
+    "documents": "Documents",
+    "accessProcess": "Application Process",
+    "accessibility": "Accessibility",
+    "getDirections": "Get Directions",
+    "lastVerified": "Last Verified:",
+    "unknown": "Unknown",
+    "print": "Print",
+    "printHint": "Opens a printer-friendly resource card",
+    "free": "Free",
+    "verified": "Verified",
+    "merged": "Merged",
+    "closed": "Closed",
+    "report": "Report",
+    "details": "Details",
+    "kingston": "Kingston",
     "confirmClaim": "Confirm Claim",
     "claiming": "Claiming...",
     "claimed": "Claimed!",
@@ -268,30 +377,86 @@
   "Eligibility": {
     "likelyQualify": "✓ You likely qualify"
   },
-  "Freshness": {
-    "verified": "Verified",
-    "unknown": "Not verified",
-    "verifiedOn": "Last verified",
-    "neverVerified": "This service has not been verified recently"
-  },
   "Feedback": {
-    "title": "Report an Issue",
-    "description": "Help us improve the listing for {service}. Your feedback helps the community.",
-    "issueType": "What is the issue?",
-    "types": {
-      "wrong_phone": "Wrong Phone Number",
-      "wrong_address": "Wrong Address",
+    "title": "Feedback & Issues",
+    "widgetTitle": "Was this page helpful?",
+    "widgetSubtitle": "Your feedback helps us improve our directory.",
+    "yes": "Yes",
+    "no": "No",
+    "voteSuccessTitle": "Thank You",
+    "voteSuccessMessage": "Your feedback helps improve this service listing.",
+    "alreadyVotedMessage": "Thank you for your feedback!",
+    "reportIssue": "Report an Issue",
+    "reportIssueTitle": "Report an Issue",
+    "reportIssueDescription": "Help us improve the listing for {service}. Your feedback helps the community.",
+    "issueTypeLabel": "What is the issue?",
+    "issueTypes": {
+      "wrong_contact_info": "Incorrect Contact Info",
       "service_closed": "Service Closed / Moved",
+      "eligibility_incorrect": "Eligibility is Incorrect",
       "other": "Other Issue"
     },
-    "messageLabel": "Additional Details (Optional)",
-    "messagePlaceholder": "Please provide the correct information if you have it...",
+    "detailsLabel": "Details (Optional)",
+    "detailsPlaceholder": "Please provide the correct information if you have it...",
     "cancel": "Cancel",
-    "submit": "Submit Report",
-    "successTitle": "Thank you!",
-    "successMessage": "We've received your feedback and will review it shortly.",
+    "submitReport": "Submit Report",
+    "submitRequest": "Submit Update Request",
+    "issueReportedTitle": "Issue Reported",
+    "issueReportedMessage": "Thank you for helping keep our data accurate.",
     "errorTitle": "Error",
-    "errorMessage": "Something went wrong. Please try again later."
+    "errorMessage": "Something went wrong. Please try again.",
+    "issueType": "Issue Type",
+    "service": "Service",
+    "details": "Details",
+    "status": "Status",
+    "date": "Date",
+    "general": "General",
+    "unknown": "Unknown",
+    "noFeedback": "No feedback received yet.",
+    "feedbackDetail": "Feedback Details",
+    "receivedOn": "Received on {date}",
+    "message": "Message",
+    "noMessage": "No message provided",
+    "statusPending": "Pending",
+    "statusReviewed": "Reviewed",
+    "statusResolved": "Resolved",
+    "statusDismissed": "Dismissed",
+    "markResolved": "Mark Resolved",
+    "close": "Close",
+    "statusUpdated": "Status updated",
+    "statusUpdatedMessage": "Feedback marked as {status}",
+    "notFoundTitle": "Couldn't find what you need?",
+    "notFoundSubtitle": "Tell us what you were looking for. We'll try to add it.",
+    "notFoundPlaceholder": "e.g., A specific food bank open on Sundays...",
+    "notFoundSubmittedTitle": "Request Received",
+    "notFoundSubmittedMessage": "We've noted this gap in our services.",
+    "notFoundSuccessTitle": "Thanks for letting us know",
+    "notFoundSuccessMessage": "We review these requests weekly to find new services to add.",
+    "submitAnother": "Submit another request",
+    "categoryLabel": "What category fits best?",
+    "selectCategory": "Select a category...",
+    "categories": {
+      "Food": "Food",
+      "Crisis": "Crisis",
+      "Housing": "Housing",
+      "Health": "Health",
+      "Legal": "Legal",
+      "Financial": "Financial",
+      "Employment": "Employment",
+      "Education": "Education",
+      "Transport": "Transport",
+      "Community": "Community",
+      "Indigenous": "Indigenous",
+      "Wellness": "Wellness"
+    },
+    "requestUpdateTitle": "Request Data Update",
+    "requestUpdateDesc": "Suggest changes for {service}. These will be reviewed by an administrator.",
+    "fieldUpdatesLabel": "Update Details",
+    "fieldUpdatesPlaceholder": "Specify which fields need updating (e.g. New phone number, updated hours)...",
+    "justificationLabel": "Source / Justification",
+    "justificationPlaceholder": "e.g. Official update from our executive director...",
+    "requestSuccessTitle": "Request Submitted",
+    "requestSuccessMessage": "Your update request has been received and is pending review."
   },
   "AiDisclaimer": {
     "title": "About This AI Assistant",
@@ -465,56 +630,6 @@
       }
     }
   },
-  "Privacy": {
-    "title": "Privacy Policy",
-    "lastUpdated": "Last Updated: {date}",
-    "sections": {
-      "overview": {
-        "title": "Privacy Policy Overview",
-        "content": "Kingston Care Connect (\"KCC\", \"we\", \"us\") is committed to protecting your privacy. This policy explains how we collect, use, and protect information when you use our service."
-      },
-      "dataCollection": {
-        "title": "Information We Collect",
-        "content": "**Information You Provide**\n- **Feedback Forms**: Information you verify or report.\n- **Partner Portal**: Organization details for partners.\n\n**Information Collected Automatically**\n- **Local Storage**: Preferences stored on your device.\n- **Technical Data**: Standard server logs for security (no tracking).\n\n**Information We Do NOT Collect**\n- No search query logging\n- No tracking cookies\n- No analytics services\n- We implement a Zero-Log Policy for your searches."
-      },
-      "aiPrivacy": {
-        "title": "AI Assistant Privacy",
-        "content": "Our AI assistant runs entirely in your browser using client-side processing.\n- **Zero Data Egress**: Queries never leave your device.\n- **Zero-Knowledge**: We don't know what you discuss.\n- **No Storage**: Conversations deleted on close."
-      },
-      "useOfInfo": {
-        "title": "How We Use Information",
-        "content": "We use information for:\n- Service Improvement\n- Partner Management\n- Security\n\nWe do NOT use information for:\n- Advertising\n- Profiling\n- Sale to third parties"
-      },
-      "sharing": {
-        "title": "Information Sharing",
-        "content": "We share information only with verified Partners (feedback) or Service Providers (hosting/database). We do NOT sell information."
-      },
-      "retention": {
-        "title": "Data Retention",
-        "content": "Feedback is deleted after resolution (90 days). Partner data retained while active. Local storage is controlled by you."
-      },
-      "rights": {
-        "title": "Your Privacy Rights",
-        "content": "Under PIPEDA, you have rights to Access, Correction, Deletion, and Withdrawal of Consent. Contact privacy@careconnect.ca."
-      },
-      "security": {
-        "title": "Data Security",
-        "content": "We implement Encryption, Access Control, and Minimal Collection principles."
-      },
-      "children": {
-        "title": "Children's Privacy",
-        "content": "KCC is not directed at children under 13. We do not knowingly collect information from children."
-      },
-      "cookies": {
-        "title": "Cookie Policy",
-        "content": "We use minimal cookies (NEXT_LOCALE for language). No tracking or advertising cookies."
-      },
-      "contact": {
-        "title": "Contact Us",
-        "content": "Email: privacy@careconnect.ca"
-      }
-    }
-  },
   "Emergency": {
     "compact": "For emergencies, call 911",
     "title": "Not an Emergency Service",
@@ -615,5 +730,44 @@
     "newToKCC": "New to Care Connect?",
     "applyPartner": "Apply for a Partner Account",
     "successMessage": "Magic link sent! Check your email to sign in."
+  },
+  "Impact": {
+    "title": "Community Impact",
+    "subtitle": "See how Kingston Care Connect is helping our community—without tracking anyone.",
+    "metricsTitle": "Last 90 Days",
+    "satisfactionTitle": "User Satisfaction",
+    "satisfactionDesc": "Based on {count} responses",
+    "issuesResolvedTitle": "Issues Resolved",
+    "issuesResolvedDesc": "Out of {total} reported",
+    "servicesVerifiedTitle": "Services Verified",
+    "servicesVerifiedDesc": "Out of {total} total",
+    "feedbackTitle": "Feedback Received",
+    "feedbackDesc": "This quarter",
+    "privacyTitle": "How We Measure Without Tracking",
+    "privacyText": "All metrics come from voluntary, anonymous feedback. We never use cookies, tracking pixels, or session identifiers.",
+    "noTracking": "No IP logging",
+    "noCookies": "No analytics cookies",
+    "voluntaryFeedback": "All feedback is optional",
+    "commitmentTitle": "Our Commitment",
+    "commitmentText": "We publish these reports quarterly to stay accountable to the community we serve. Your privacy is not negotiable."
+  },
+  "Trust": {
+    "title": "Data Governance & Trust",
+    "verifiedBy": "Verified By",
+    "method": "Verification Method",
+    "evidence": "Evidence",
+    "viewEvidence": "View Evidence",
+    "lastVerified": "Last Verified",
+    "status": "Verification Status",
+    "requestUpdate": "Correction Request",
+    "updateHint": "Are you a provider? Click to submit a correction request.",
+    "unknown": "Unknown",
+    "methods": {
+      "phone": "Phone Confirmation",
+      "email": "Official Email",
+      "site": "Website Audit",
+      "admin": "Admin Verified",
+      "partner": "Partner Confirmed"
+    }
   }
 }

@@ -1,0 +1,288 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Overview
+
+Kingston Care Connect is a verified, governance-first search engine for social services in Kingston, Ontario. The platform uses a **manual curation over automated extraction** approach, maintaining 169 hand-verified services with strict data quality standards.
+
+## Key Commands
+
+### Development
+
+```bash
+npm run dev              # Start dev server with Turbo (port 3000)
+npm run build            # Production build (runs postbuild to generate embeddings)
+npm run type-check       # TypeScript type checking
+npm run lint             # ESLint
+npm run lint:fix         # ESLint with auto-fix
+```
+
+### Testing
+
+```bash
+npm test                 # Run all Vitest unit tests
+npm run test:watch       # Vitest in watch mode
+npm run test:coverage    # Generate coverage report (thresholds: lib/search 65%, lib/ai 85%, hooks 85%)
+npm run test:e2e:local   # Playwright E2E tests (Chromium only, prefer CI)
+npx playwright test tests/e2e/search.spec.ts  # Run specific E2E test
+```
+
+### Data Validation & Health Checks
+
+```bash
+npm run validate-data    # Validate service schema with Zod
+npm run health-check     # Validate all service URLs
+npm run phone-validate   # Validate phone numbers via Twilio
+npm run check-staleness  # Check for stale/unverified data
+```
+
+### Utility Scripts
+
+```bash
+npx tsx scripts/search-cli.ts        # CLI search tool for testing
+npx tsx scripts/bilingual-audit.ts   # Check bilingual content coverage
+npx tsx scripts/i18n-key-audit.ts    # Audit i18n translation keys
+npx tsx scripts/migrate-data.ts      # Migrate local JSON to Supabase
+```
+
+## Architecture
+
+### Search Modes
+
+The platform supports two search modes controlled by `NEXT_PUBLIC_SEARCH_MODE` env var:
+
+1. **Local Mode** (default): Client-side hybrid search
+
+   - Fast keyword search in `lib/search/index.ts`
+   - Optional semantic search via WebLLM + WebGPU (browser-based)
+   - Zero-knowledge architecture (queries never leave device)
+   - Data loaded from `data/services.json` + `data/embeddings.json`
+
+2. **Server Mode**: Privacy-focused API search
+   - POST endpoint at `/api/v1/search/services/route.ts`
+   - Queries Supabase `services_public` view
+   - Zero-logging (no-store cache headers)
+   - Rate-limited (60 req/min per IP)
+
+### Search Flow (Local Mode)
+
+```
+User Query
+    ↓
+lib/search/index.ts::searchServices()
+    ↓
+1. Tokenize + Synonym Expansion (lib/search/synonyms.ts)
+2. Optional AI Expansion (lib/ai/query-expander.ts)
+3. Category/OpenNow Filters
+4. Keyword Scoring (lib/search/scoring.ts)
+5. Vector Search if client provides embedding (lib/search/vector.ts)
+6. Crisis Detection + Boosting (lib/search/crisis.ts)
+7. Geo-Distance Sorting (lib/search/geo.ts)
+```
+
+**Key Files:**
+
+- `lib/search/index.ts` - Main search orchestrator
+- `lib/search/scoring.ts` - Keyword scoring with weights (WEIGHTS const)
+- `lib/search/vector.ts` - Cosine similarity for semantic search
+- `lib/search/data.ts` - Data loader (Supabase fallback to JSON)
+- `lib/search/search-mode.ts` - Mode detection + server search client
+
+### AI System (WebLLM)
+
+The platform uses **on-device AI** via WebLLM for privacy-preserving smart search:
+
+- **Engine**: `lib/ai/engine.ts` (singleton pattern, manages WebLLM lifecycle)
+- **Model**: Llama-3.2-1B-Instruct-q4f16_1-MLC (1B params, quantized)
+- **Worker**: `lib/ai/webllm.worker.ts` (runs in Web Worker for UI responsiveness)
+- **Query Refinement**: `aiEngine.refineSearchQuery()` rewrites queries to JSON with extra search terms
+- **Chat**: `components/ai/ChatAssistant.tsx` - Chatbot with streaming, idle unloading (5min timeout)
+- **Hook**: `hooks/useAI.ts` - React hook for AI state management
+
+**Important AI Constraints:**
+
+- Requires WebGPU support (check `navigator.gpu`)
+- Model downloads ~500MB on first use (cached in browser)
+- VRAM-intensive: auto-unloads after 5min idle
+- Streaming APIs use KV cache for multi-turn chats
+- Crisis queries bypass AI and surface emergency services directly
+
+### Data Layer
+
+**Source of Truth:**
+
+- Development: `data/services.json` (169 services)
+- Production: Supabase `services` table OR fallback to JSON
+
+**Data Loading Strategy** (`lib/search/data.ts::loadServices()`):
+
+1. Try Supabase if credentials present
+2. Overlay AI metadata from `services.json` (synthetic_queries)
+3. Fallback to local JSON if DB unavailable
+4. In-memory cache on server
+
+**Key Types:**
+
+- `types/service.ts::Service` - Full internal schema (with AI metadata)
+- `types/service-public.ts::ServicePublic` - Public API view (no synthetic_queries)
+- `lib/schemas/service.ts` - Zod validation schemas
+
+**Embeddings:**
+
+- Generated via `scripts/generate-embeddings.ts` (postbuild hook)
+- Stored in `data/embeddings.json`
+- 384-dimensional vectors via @xenova/transformers (all-MiniLM-L6-v2)
+- Also stored in Supabase `services.embedding` column (pgvector)
+
+### Multi-Language Support
+
+The app uses **next-intl** for i18n with 7 locales: `en, fr, zh-Hans, ar, pt, es, pa`
+
+**Routing:**
+
+- All pages under `app/[locale]/` (dynamic locale segment)
+- Middleware in `middleware.ts` handles locale detection + auth
+- Routing config: `i18n/routing.ts`
+
+**Translation Files:**
+
+- `messages/{locale}.json` (e.g., `messages/en.json`)
+- Service data has `_fr` suffixed fields (e.g., `name_fr`, `description_fr`)
+
+**Search Behavior:**
+
+- Local services (Kingston): EN/FR translations only
+- Provincial services: All 7 languages for name/description
+
+### Authentication & Authorization
+
+- **Auth Provider**: Supabase Auth (optional, works without DB)
+- **Middleware**: `middleware.ts` refreshes session, guards `/dashboard` and `/admin` routes
+- **Protected Routes**: Redirect to `/[locale]/login?next={intended_path}` if unauthenticated
+- **Client**: `lib/supabase.ts` (universal client, session persistence browser-only)
+
+### Partner Portal (Dashboard)
+
+Located at `app/[locale]/dashboard/`:
+
+- `page.tsx` - Dashboard home
+- `services/` - Service CRUD (create, edit, delete own listings)
+- `analytics/` - View search analytics (partner-specific)
+- `feedback/` - View user feedback on services
+- `notifications/` - Push notification management
+
+**Server Actions:**
+
+- `lib/actions/services.ts` - Service mutations (create, update, delete)
+
+### Progressive Web App (PWA)
+
+- **Config**: `next.config.ts` (via `@ducanh2912/next-pwa`)
+- **Service Worker**: Auto-generated + custom logic in `public/custom-sw.js`
+- **Offline Fallback**: `/offline/page.tsx`
+- **Cache Strategy**:
+  - Services API: StaleWhileRevalidate (24h)
+  - JSON files: CacheFirst (7d)
+
+### Testing Strategy
+
+**Unit/Integration** (Vitest):
+
+- `tests/unit/**/*` and `tests/api/**/*`
+- Run: `npm test`
+- Coverage thresholds enforced per path (see `vitest.config.mts`)
+
+**E2E** (Playwright):
+
+- `tests/e2e/**/*`
+- Run: `npm run test:e2e:local` (Chromium only, prefer CI)
+- Critical paths: Search, Partner Login, Service Editing
+
+**Coverage Requirements:**
+
+- `lib/search/**`: 65% statements/branches
+- `lib/ai/**`: 85% statements
+- `lib/eligibility/**`: 95% statements
+- `hooks/**`: 85% statements
+
+## Important Patterns & Conventions
+
+### Path Aliases
+
+- `@/*` maps to project root (configured in `tsconfig.json`)
+- Example: `import { Service } from "@/types/service"`
+
+### Environment Variables
+
+- Defined in `.env.local` (copy from `.env.example`)
+- Schema validation via `@t3-oss/env-nextjs` in `lib/env.ts`
+- Search mode: `NEXT_PUBLIC_SEARCH_MODE=local|server`
+- Supabase: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`
+
+### Data Verification Levels
+
+Services have governance tiers (see `types/service.ts::VerificationLevel`):
+
+- **L0**: Unverified (filtered out of search)
+- **L1**: Basic verification (existence confirmed)
+- **L2**: Vetted (contact made)
+- **L3**: Provider confirmed (official partnership)
+
+Search scoring applies multipliers: L3 = 1.5x, L2 = 1.2x, L1 = 1.0x
+
+### Crisis Detection
+
+- `lib/search/crisis.ts::detectCrisis()` - Pattern matching for urgent queries
+- Crisis services automatically boosted to top of results
+- Emergency modal shown in UI when crisis detected (`components/ui/EmergencyModal.tsx`)
+
+### Accessibility
+
+- WCAG 2.1 AA compliant
+- High-contrast mode: `hooks/useHighContrast.ts`
+- Skip links, keyboard navigation, ARIA labels throughout
+- Voice input: `hooks/useVoiceInput.ts`
+
+## Critical Files to Understand
+
+1. **Search Engine**: `lib/search/index.ts`, `lib/search/scoring.ts`
+2. **AI System**: `lib/ai/engine.ts`, `components/ai/ChatAssistant.tsx`
+3. **Data Loading**: `lib/search/data.ts`
+4. **API Routes**: `app/api/v1/search/services/route.ts`
+5. **Main Search UI**: `components/search/SearchInterface.tsx` (likely)
+6. **Service Schema**: `types/service.ts`
+7. **Middleware**: `middleware.ts`
+
+## Development Notes
+
+- **Node Version**: 20+ required
+- **Bundle Analyzer**: `npm run analyze` to check production bundle
+- **Turbo Mode**: Dev server uses `--turbo` flag for fast refresh
+- **Commit Hooks**: Husky runs lint + related tests on pre-commit
+- **Commit Convention**: Conventional commits enforced (see `commitlint.config.js`)
+
+## Deployment
+
+- Platform: Vercel (inferred from Next.js config)
+- Build command: `npm run build`
+- Postbuild: Automatically generates embeddings
+- Edge cases: WebLLM requires COOP/COEP headers for SharedArrayBuffer (see deployment docs)
+
+## Common Pitfalls
+
+1. **WebLLM Breaking**: Ensure WebGPU is available. Model fails gracefully if unavailable.
+2. **Embeddings Out of Sync**: Run `npm run build` after editing `data/services.json` to regenerate embeddings.
+3. **Search Returns Nothing**: Check verification_level (L0 services are filtered out).
+4. **Supabase Errors**: App works without Supabase. Check fallback to local JSON is working.
+5. **i18n Missing Keys**: Run `npm run i18n-audit` to find untranslated strings.
+6. **Stale Data**: Run `npm run check-staleness` to find services needing re-verification.
+
+## Code Style
+
+- **TypeScript**: Strict mode enabled (`noUncheckedIndexedAccess: true`)
+- **Linting**: ESLint with Next.js + Prettier configs
+- **Formatting**: Prettier with Tailwind plugin
+- **Import Style**: Prefer named imports, use `@/` alias
+- **Components**: Functional components with TypeScript, hooks over classes
+- **Styling**: Tailwind CSS v4, use `cn()` helper from `lib/utils.ts` for conditional classes

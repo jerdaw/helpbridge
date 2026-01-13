@@ -1,0 +1,69 @@
+import { useState, useEffect } from "react"
+import { supabase } from "@/lib/supabase"
+
+interface ServiceFeedbackStats {
+  helpful_yes_count: number
+  helpful_no_count: number
+  open_issues_count: number
+  last_feedback_at: string | null
+}
+
+export function useServiceFeedback(serviceId: string) {
+  const [stats, setStats] = useState<ServiceFeedbackStats | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<Error | null>(null)
+
+  useEffect(() => {
+    async function fetchStats() {
+      if (!serviceId) return
+
+      try {
+        setLoading(true)
+        // Query the materialized view
+         
+        const { data, error } = await supabase
+          .from("feedback_aggregations")
+          .select("*")
+          .eq("service_id", serviceId)
+          .single()
+
+        if (error) {
+          // If no aggregations yet, return zeros instead of error 406/404
+          if (error.code === 'PGRST116' || error.code === '406') {
+             setStats({
+               helpful_yes_count: 0,
+               helpful_no_count: 0,
+               open_issues_count: 0,
+               last_feedback_at: null
+             })
+          } else {
+            console.error("Error fetching feedback stats:", error)
+            setError(error as unknown as Error)
+          }
+        } else {
+          setStats(data)
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err : new Error("Unknown error"))
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchStats()
+  }, [serviceId])
+
+  const helpfulPercentage = stats 
+    ? (stats.helpful_yes_count + stats.helpful_no_count > 0 
+        ? Math.round((stats.helpful_yes_count / (stats.helpful_yes_count + stats.helpful_no_count)) * 100) 
+        : null)
+    : null
+
+  return { 
+    stats, 
+    loading, 
+    error, 
+    helpfulPercentage,
+    totalVotes: stats ? stats.helpful_yes_count + stats.helpful_no_count : 0
+  }
+}
