@@ -48,6 +48,11 @@ ALLOWED_FILES=(
   ".env.local"
   ".pre-commit-config.yaml"
   ".all-contributorsrc"
+  ".npmrc"
+  
+  # Auto-generated (in .gitignore, but exist locally)
+  "next-env.d.ts"
+  "tsconfig.tsbuildinfo"
 )
 
 # Allowed directories
