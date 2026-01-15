@@ -27,6 +27,8 @@ jobs:
         run: npm run type-check
       - name: Run i18n Audit
         run: npm run i18n-audit
+      - name: Check Root Directory Hygiene
+        run: npm run check:root
 
   test-unit:
     runs-on: ubuntu-latest
