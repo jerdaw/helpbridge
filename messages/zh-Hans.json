@@ -211,6 +211,16 @@
       "view": "查看",
       "lastUpdated": "最后更新",
       "noServices": "尚未认领任何服务"
+    },
+    "logout": "退出登录",
+    "partner": "合作伙伴仪表板",
+    "recentFeedback": "近期反馈",
+    "viewAll": "查看全部",
+    "stats": {
+      "pending": "待处理",
+      "resolved": "已解决",
+      "sentiment": "整体情绪",
+      "total": "反馈总数"
     }
   },
   "ServiceDetail": {
@@ -239,7 +249,40 @@
     "claimListing": "认领列表",
     "notFound": "未找到服务",
     "notFoundText": "您要查找的服务不存在或已被删除。",
-    "backToSearch": "返回搜索"
+    "backToSearch": "返回搜索",
+    "claimButton": "认领此服务",
+    "plainLanguage": "简单语言",
+    "standardView": "标准视图",
+    "whatIsIt": "这是什么？",
+    "howToGetHelp": "如何获得帮助？",
+    "callUs": "致电我们",
+    "visitUs": "访问我们",
+    "openHours": "营业时间",
+    "summaryComingSoon": "简单语言摘要即将推出。",
+    "verifiedService": "已验证服务",
+    "officialPartner": "官方合作伙伴",
+    "serviceMerged": "服务已合并",
+    "permanentlyClosed": "永久关闭",
+    "mergedDescription": "此服务已与另一个组织合并。请查看描述以获取新的联系详情。",
+    "closedDescription": "此服务已停止运营。请勿前往此地点。",
+    "note": "注意：",
+    "mapTitle": "{name} 的地图位置",
+    "aboutService": "关于此服务",
+    "documents": "文档",
+    "accessProcess": "申请流程",
+    "accessibility": "无障碍",
+    "getDirections": "获取路线",
+    "lastVerified": "最后验证：",
+    "unknown": "未知",
+    "print": "打印",
+    "printHint": "打开打印预览资源卡",
+    "free": "免费",
+    "verified": "已验证",
+    "merged": "已合并",
+    "closed": "已关闭",
+    "report": "报告",
+    "details": "详情",
+    "kingston": "金斯顿"
   },
   "AI": {
     "title": "护理助手",
@@ -268,6 +311,11 @@
   },
   "Settings": {
     "personalizePrompt": "个性化您的结果",
+    "title": "设置",
+    "description": "管理您的应用程序首选项和设备设置。",
+    "connectionStatus": "连接状态",
+    "onlineMessage": "您当前在线。更新将自动接收。",
+    "offlineMessage": "您当前离线。正在使用缓存数据。",
     "personalizeDescription": "可选择分享您的情况以查看您可能符合条件的服务。此数据永远不会离开您的设备。",
     "enablePersonalization": "启用个性化",
     "ageGroup": "年龄组",
@@ -287,7 +335,14 @@
     "clearProfile": "清除我的个人资料",
     "Notifications": {
       "title": "通知",
-      "enable": "启用推送通知",
+      "keepMeUpdated": "保持更新",
+      "keepMeUpdatedDesc": "接收有关庇护所容量和服务变化的警报。",
+      "notSupportedTitle": "不支持",
+      "notSupportedDesc": "此设备或浏览器不支持推送通知。",
+      "blockedTitle": "通知已被阻止",
+      "blockedDesc": "您已阻止此网站的通知。要启用它们，请更新浏览器站点设置。",
+      "enable": "启用",
+      "disable": "禁用",
       "permissions": "需要权限",
       "permissionsDesc": "我们需要您的许可才能发送警报。",
       "categories": {
@@ -306,16 +361,78 @@
     "verified": "已验证",
     "unknown": "未验证",
     "verifiedOn": "最后验证",
-    "neverVerified": "此服务最近未经验证"
+    "neverVerified": "此服务最近未经验证",
+    "outdatedTooltip": "此信息已超过3个月，可能不准确。",
+    "verifiedTooltip": "信息已由合作伙伴在 {date} 确认",
+    "levels": {
+      "fresh": "最近已验证",
+      "recent": "3个月内已验证",
+      "stale": "验证已过期"
+    }
   },
   "Feedback": {
     "title": "报告问题",
-    "description": "帮助我们改进 {service} 的列表。您的反馈有助于社区。",
+    "widgetTitle": "此页面有帮助吗？",
+    "widgetSubtitle": "您的反馈有助于我们改进目录。",
+    "yes": "是",
+    "no": "否",
+    "reportIssue": "报告问题",
+    "reportIssueTitle": "报告问题",
+    "reportIssueDescription": "帮助我们改进 {service} 的列表。您的反馈有助于社区。",
+    "issueTypeLabel": "问题是什么？",
+    "detailsLabel": "其他详情（可选）",
+    "detailsPlaceholder": "如果您有正确的信息，请提供...",
+    "submitReport": "提交报告",
+    "issueReportedTitle": "已报告问题",
+    "issueReportedMessage": "感谢您帮助我们保持数据的准确性。",
     "issueType": "问题是什么？",
-    "types": {
-      "wrong_phone": "电话号码错误",
-      "wrong_address": "地址错误",
+    "service": "服务",
+    "details": "详情",
+    "status": "状态",
+    "date": "日期",
+    "general": "一般",
+    "unknown": "未知",
+    "noFeedback": "尚未收到反馈。",
+    "feedbackDetail": "反馈详情",
+    "receivedOn": "收到的时间：{date}",
+    "message": "信息",
+    "noMessage": "未提供信息",
+    "statusPending": "待处理",
+    "statusReviewed": "已审核",
+    "statusResolved": "已解决",
+    "statusDismissed": "已驳回",
+    "markResolved": "标记为已解决",
+    "close": "关闭",
+    "statusUpdated": "状态已更新",
+    "statusUpdatedMessage": "反馈已标记为 {status}",
+    "notFoundTitle": "没有找到您需要的？",
+    "notFoundSubtitle": "告诉我们您在找什么。我们会尝试添加。",
+    "notFoundPlaceholder": "例如：周日开放的特定食品银行...",
+    "notFoundSubmittedTitle": "请求已收到",
+    "notFoundSubmittedMessage": "我们已注意到我们的服务中的这一缺失。",
+    "notFoundSuccessTitle": "感谢告知",
+    "notFoundSuccessMessage": "我们每周都会审核这些请求，寻找可以添加的新服务。",
+    "submitAnother": "提交另一个请求",
+    "categoryLabel": "哪个类别最合适？",
+    "selectCategory": "选择一个类别...",
+    "categories": {
+      "Food": "食品",
+      "Crisis": "危机",
+      "Housing": "住房",
+      "Health": "健康",
+      "Legal": "法律",
+      "Financial": "财务",
+      "Employment": "就业",
+      "Education": "教育",
+      "Transport": "交通",
+      "Community": "社区",
+      "Indigenous": "原住民",
+      "Wellness": "身心健康"
+    },
+    "issueTypes": {
+      "wrong_contact_info": "联系信息错误",
       "service_closed": "服务已关闭/搬迁",
+      "eligibility_incorrect": "资格标准不正确",
       "other": "其他问题"
     },
     "messageLabel": "其他详情（可选）",
@@ -416,7 +533,8 @@
       "title": "成为合作伙伴",
       "subtitle": "您是服务提供者吗？加入我们的网络以接触更多人。",
       "button": "建议服务"
-    }
+    },
+    "logoAlt": "{name} 徽标"
   },
   "Terms": {
     "title": "服务条款",
@@ -601,6 +719,12 @@
     "ontarioWide": "安大略省范围",
     "canadaWide": "加拿大范围"
   },
+  "VerificationLevels": {
+    "L0": "未验证",
+    "L1": "基础验证",
+    "L2": "已验证服务",
+    "L3": "官方合作伙伴"
+  },
   "Distance": {
     "ontarioWide": "安大略省范围内可用",
     "canadaWide": "加拿大范围内可用"
@@ -661,7 +785,25 @@
       "email": "官方电子邮件",
       "site": "网站审核",
       "admin": "管理员验证",
-      "partner": "合作伙伴确认"
+      "partner": "合作伙伴确认",
+      "manual": "人工验证"
     }
+  },
+  "Offline": {
+    "bannerMessage": "正在使用离线模式。信息可能已过时。",
+    "checkConnection": "检查连接",
+    "savedForLater": "已保存以供稍后使用",
+    "savedMessage": "您的反馈将在重新联网后发送。",
+    "title": "您已离线",
+    "description": "请重新连接到互联网以搜索服务。",
+    "retryButton": "重试连接",
+    "recentlyViewed": "最近查看的服务",
+    "cachedData": "缓存数据如下",
+    "emergencyContacts": "紧急联系方式始终可用",
+    "crisisLine": "危机热线",
+    "crisisLineDesc": "24/7 心理健康",
+    "emergency": "紧急情况",
+    "emergencyDesc": "警察 / 消防 / 急救",
+    "callButton": "拨打"
   }
 }

@@ -211,6 +211,16 @@
       "view": "Ver",
       "lastUpdated": "Última actualización",
       "noServices": "No se han reclamado servicios"
+    },
+    "logout": "Cerrar sesión",
+    "partner": "Panel de socios",
+    "recentFeedback": "Comentarios recientes",
+    "viewAll": "Ver todo",
+    "stats": {
+      "pending": "Pendiente",
+      "resolved": "Resuelto",
+      "sentiment": "Sentimiento Global",
+      "total": "Total de Comentarios"
     }
   },
   "ServiceDetail": {
@@ -239,7 +249,40 @@
     "claimListing": "Reclamar Listado",
     "notFound": "Servicio No Encontrado",
     "notFoundText": "El servicio que buscas no existe o ha sido eliminado.",
-    "backToSearch": "Volver a Buscar"
+    "backToSearch": "Volver a Buscar",
+    "claimButton": "Reclamar este servicio",
+    "plainLanguage": "Lenguaje sencillo",
+    "standardView": "Vista estándar",
+    "whatIsIt": "¿Qué es esto?",
+    "howToGetHelp": "¿Cómo obtengo ayuda?",
+    "callUs": "Llámanos",
+    "visitUs": "Visítanos",
+    "openHours": "Horario de atención",
+    "summaryComingSoon": "Resumen en lenguaje sencillo próximamente.",
+    "verifiedService": "Servicio verificado",
+    "officialPartner": "Socio oficial",
+    "serviceMerged": "Servicio fusionado",
+    "permanentlyClosed": "Cerrado permanentemente",
+    "mergedDescription": "Este servicio se ha fusionado con otra organización. Consulte la descripción para obtener los nuevos datos de contacto.",
+    "closedDescription": "Este servicio ya no está operativo. Por favor, no visite este lugar.",
+    "note": "Nota:",
+    "mapTitle": "Ubicación en el mapa de {name}",
+    "aboutService": "Acerca de este servicio",
+    "documents": "Documentos",
+    "accessProcess": "Proceso de solicitud",
+    "accessibility": "Accesibilidad",
+    "getDirections": "Cómo llegar",
+    "lastVerified": "Última verificación:",
+    "unknown": "Desconocido",
+    "print": "Imprimir",
+    "printHint": "Abre una tarjeta de recurso apta para imprimir",
+    "free": "Gratis",
+    "verified": "Verificado",
+    "merged": "Fusionado",
+    "closed": "Cerrado",
+    "report": "Reportar",
+    "details": "Detalles",
+    "kingston": "Kingston"
   },
   "AI": {
     "title": "Asistente de Cuidado",
@@ -269,6 +312,11 @@
   "Settings": {
     "personalizePrompt": "Personaliza tus resultados",
     "personalizeDescription": "Opcionalmente comparte tu situación para ver servicios para los que podrías calificar. Estos datos nunca salen de tu dispositivo.",
+    "title": "Configuración",
+    "description": "Administre sus preferencias de la aplicación y la configuración del dispositivo.",
+    "connectionStatus": "Estado de la conexión",
+    "onlineMessage": "Actualmente está en línea. Las actualizaciones se recibirán automáticamente.",
+    "offlineMessage": "Actualmente está desconectado. Usando datos en caché.",
     "enablePersonalization": "Habilitar Personalización",
     "ageGroup": "Grupo de Edad",
     "ageGroups": {
@@ -287,7 +335,14 @@
     "clearProfile": "Limpiar Mi Perfil",
     "Notifications": {
       "title": "Notificaciones",
-      "enable": "Habilitar Notificaciones Push",
+      "keepMeUpdated": "Mantenme actualizado",
+      "keepMeUpdatedDesc": "Reciba alertas sobre la capacidad de los refugios y cambios en los servicios.",
+      "notSupportedTitle": "No compatible",
+      "notSupportedDesc": "Las notificaciones push no son compatibles con este dispositivo o navegador.",
+      "blockedTitle": "Notificaciones bloqueadas",
+      "blockedDesc": "Has bloqueado las notificaciones para este sitio. Para habilitarlas, actualiza la configuración del sitio en tu navegador.",
+      "enable": "Activar",
+      "disable": "Desactivar",
       "permissions": "Permisos Requeridos",
       "permissionsDesc": "Necesitamos tu permiso para enviar alertas.",
       "categories": {
@@ -306,17 +361,79 @@
     "verified": "Verificado",
     "unknown": "No verificado",
     "verifiedOn": "Última verificación",
-    "neverVerified": "Este servicio no ha sido verificado recientemente"
+    "neverVerified": "Este servicio no ha sido verificado recientemente",
+    "outdatedTooltip": "Esta información tiene más de 3 meses y puede ser inexacta.",
+    "verifiedTooltip": "Información confirmada por un socio el {date}",
+    "levels": {
+      "fresh": "Verificado recientemente",
+      "recent": "Verificado en los últimos 3 meses",
+      "stale": "Verificación obsoleta"
+    }
   },
   "Feedback": {
     "title": "Reportar un Problema",
-    "description": "Ayúdanos a mejorar el listado para {service}. Tu retroalimentación ayuda a la comunidad.",
+    "widgetTitle": "¿Fue útil esta página?",
+    "widgetSubtitle": "Tus comentarios nos ayudan a mejorar nuestro directorio.",
+    "yes": "Sí",
+    "no": "No",
+    "reportIssue": "Informar un problema",
+    "reportIssueTitle": "Informar un problema",
+    "reportIssueDescription": "Ayúdanos a mejorar la lista de {service}. Tus comentarios ayudan a la comunidad.",
+    "issueTypeLabel": "¿Cuál es el problema?",
+    "detailsLabel": "Detalles adicionales (opcional)",
+    "detailsPlaceholder": "Por favor, proporciona la información correcta si la tienes...",
+    "submitReport": "Enviar informe",
+    "issueReportedTitle": "Problema informado",
+    "issueReportedMessage": "Gracias por ayudarnos a mantener la exactidade de nuestros datos.",
     "issueType": "¿Cuál es el problema?",
-    "types": {
-      "wrong_phone": "Número de Teléfono Incorrecto",
-      "wrong_address": "Dirección Incorrecta",
-      "service_closed": "Servicio Cerrado / Mudado",
-      "other": "Otro Problema"
+    "service": "Servicio",
+    "details": "Detalles",
+    "status": "Estado",
+    "date": "Fecha",
+    "general": "General",
+    "unknown": "Desconocido",
+    "noFeedback": "Aún no se han recibido comentarios.",
+    "feedbackDetail": "Detalles del comentario",
+    "receivedOn": "Recibido el {date}",
+    "message": "Mensaje",
+    "noMessage": "No se proporcionó ningún mensaje",
+    "statusPending": "Pendiente",
+    "statusReviewed": "Revisado",
+    "statusResolved": "Resuelto",
+    "statusDismissed": "Desestimado",
+    "markResolved": "Mark Resolved",
+    "close": "Cerrar",
+    "statusUpdated": "Estado actualizado",
+    "statusUpdatedMessage": "Comentario marcado como {status}",
+    "notFoundTitle": "¿No pudiste encontrar lo que necesitabas?",
+    "notFoundSubtitle": "Dinos qué estabas buscando. Intentaremos añadirlo.",
+    "notFoundPlaceholder": "ej. Un banco de alimentos específico que abra los domingos...",
+    "notFoundSubmittedTitle": "Solicitud recibida",
+    "notFoundSubmittedMessage": "Hemos tomado nota de esta falta en nuestros servicios.",
+    "notFoundSuccessTitle": "Gracias por hacérnoslo saber",
+    "notFoundSuccessMessage": "Revisamos estas solicitudes semanalmente para encontrar nuevos servicios que añadir.",
+    "submitAnother": "Enviar otra solicitud",
+    "categoryLabel": "¿Qué categoría encaja mejor?",
+    "selectCategory": "Selecciona una categoría...",
+    "categories": {
+      "Food": "Alimentación",
+      "Crisis": "Crisis",
+      "Housing": "Vivienda",
+      "Health": "Salud",
+      "Legal": "Legal",
+      "Financial": "Finanzas",
+      "Employment": "Empleo",
+      "Education": "Educación",
+      "Transport": "Transporte",
+      "Community": "Comunidad",
+      "Indigenous": "Indígenas",
+      "Wellness": "Bienestar"
+    },
+    "issueTypes": {
+      "wrong_contact_info": "Información de contacto incorrecta",
+      "service_closed": "Servicio cerrado / Mudado",
+      "eligibility_incorrect": "Elegibilidad incorrecta",
+      "other": "Otro problema"
     },
     "messageLabel": "Detalles Adicionales (Opcional)",
     "messagePlaceholder": "Por favor proporciona la información correcta si la tienes...",
@@ -416,7 +533,8 @@
       "title": "Conviértete en Socio",
       "subtitle": "¿Eres un proveedor de servicios? Únete a nuestra red para llegar a más personas.",
       "button": "Sugerir un Servicio"
-    }
+    },
+    "logoAlt": "Logotipo de {name}"
   },
   "Terms": {
     "title": "Términos de Servicio",
@@ -601,6 +719,12 @@
     "ontarioWide": "En todo Ontario",
     "canadaWide": "En todo Canadá"
   },
+  "VerificationLevels": {
+    "L0": "No verificado",
+    "L1": "Verificación Básica",
+    "L2": "Servicio Verificado",
+    "L3": "Socio Oficial"
+  },
   "Distance": {
     "ontarioWide": "Disponible en todo Ontario",
     "canadaWide": "Disponible en todo Canadá"
@@ -661,7 +785,25 @@
       "email": "Correo Oficial",
       "site": "Auditoría del Sitio Web",
       "admin": "Verificado por Admin",
-      "partner": "Confirmado por Socio"
+      "partner": "Confirmado por Socio",
+      "manual": "Verificación manual"
     }
+  },
+  "Offline": {
+    "bannerMessage": "Modo sin conexión. La información puede estar desactualizada.",
+    "checkConnection": "Verificar conexión",
+    "savedForLater": "Guardado para más tarde",
+    "savedMessage": "Su comentario se enviará cuando vuelva a estar en línea.",
+    "title": "Estás desconectado",
+    "description": "Por favor, conéctese a Internet para buscar servicios.",
+    "retryButton": "Reintentar conexión",
+    "recentlyViewed": "Servicios vistos recientemente",
+    "cachedData": "Datos en caché disponibles a continuación",
+    "emergencyContacts": "Contactos de emergencia siempre disponibles",
+    "crisisLine": "Línea de Crisis",
+    "crisisLineDesc": "Salud Mental 24/7",
+    "emergency": "Emergencia",
+    "emergencyDesc": "Policía / Bomberos / Ambulancia",
+    "callButton": "Llamar"
   }
 }
