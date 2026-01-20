@@ -76,41 +76,30 @@ See [archive/2026-01-19-v17-1-test-coverage.md](archive/2026-01-19-v17-1-test-co
 
 ## v17.2: Internationalization Completion
 
-**Status**: Planned
+**Status**: Completed (2026-01-20)
 **Priority**: HIGH
 
-### Scope
+### Summary
 
-#### Translation Gaps (126 missing keys per EDIA locale)
+Completed all translation gaps for 5 EDIA locales (ZH-HANS, AR, PT, ES, PA) using AI-powered translation. All locales now have full parity with the English source.
 
-- [ ] **Complete ZH-HANS** (Simplified Chinese): 126 missing keys
-- [ ] **Complete AR** (Arabic): 126 missing keys
-- [ ] **Complete PT** (Portuguese): 126 missing keys
-- [ ] **Complete ES** (Spanish): 126 missing keys
-- [ ] **Complete PA** (Punjabi): 126 missing keys
+Key achievements:
 
-Missing key categories:
+- **Translation Gaps Resolved**: 126 missing keys per locale translated across all EDIA languages
+- **Offline Page Localization**: Moved `/app/offline/` to `/app/[locale]/offline/` with full i18n support
+- **RTL Support**: Arabic offline page properly displays right-to-left
+- **AI Translation Workflow**: Established AI-powered translation as the standard approach (no external API costs)
 
-- VerificationLevels (L0, L1, L2, L3)
-- Dashboard operations (logout, pending, profile)
-- Freshness badges (verified, unknown, verifiedOn)
-- Feedback form UI
+> [!NOTE]
+> **External Translation APIs (Future)**: Infrastructure for DeepL/Google Translate is documented in the detailed roadmap. Do not pursue without explicit user approval.
 
-#### RTL & Offline Localization
-
-- [ ] **Offline Page RTL**: Fix hardcoded `lang="en"` in `/app/offline/layout.tsx`
-- [ ] **Offline Page i18n**: Add translations for offline page content
-- [ ] **Dynamic Offline Locale**: Make offline layout locale-aware
-
-#### Cleanup
-
-- [ ] **Remove Extra Keys**: 10 extra keys in EDIA locales (Feedback.\* duplicates)
+See [2026-01-17-v17-2-internationalization.md](2026-01-17-v17-2-internationalization.md) for implementation details.
 
 ### Success Criteria
 
-- `npm run i18n-audit` passes with zero missing keys
-- Offline page displays correctly in all 7 locales
-- RTL layout works for Arabic in offline mode
+- ✅ `npm run i18n-audit` passes with zero missing keys
+- ✅ Offline page displays correctly in all 7 locales
+- ✅ RTL layout works for Arabic in offline mode
 
 ---
 
@@ -372,24 +361,24 @@ Items removed from roadmap due to feasibility/scope concerns:
 
 ## Production Readiness Summary
 
-Based on comprehensive audit (2026-01-19), here is the overall status:
+Based on comprehensive audit (2026-01-20), here is the overall status:
 
-| Area                    | Status              | Blocking? | Est. Effort |
-| :---------------------- | :------------------ | :-------- | :---------- |
-| **v17.0 Security**      | ✅ Completed        | No        | 1-2 weeks   |
-| **v17.1 Test Coverage** | ✅ Completed        | No        | 2-3 weeks   |
-| **v17.2 i18n**          | ❌ 126 keys missing | No        | 1 week      |
-| **v17.3 Accessibility** | ⚠️ ~70% complete    | No        | 1-2 weeks   |
-| **v17.4 Dashboard**     | ⚠️ Incomplete       | No        | 1-2 weeks   |
-| **v17.5 Data Quality**  | ⚠️ Gaps             | No        | 3-4 weeks   |
-| **v17.6 PWA**           | ⚠️ Basic            | No        | 1 week      |
-| **Mobile App**          | ⏸️ Paused           | N/A       | 4-6 weeks   |
+| Area                    | Status           | Blocking? | Est. Effort |
+| :---------------------- | :--------------- | :-------- | :---------- |
+| **v17.0 Security**      | ✅ Completed     | No        | 1-2 weeks   |
+| **v17.1 Test Coverage** | ✅ Completed     | No        | 2-3 weeks   |
+| **v17.2 i18n**          | ✅ Completed     | No        | 1 week      |
+| **v17.3 Accessibility** | ⚠️ ~70% complete | No        | 1-2 weeks   |
+| **v17.4 Dashboard**     | ⚠️ Incomplete    | No        | 1-2 weeks   |
+| **v17.5 Data Quality**  | ⚠️ Gaps          | No        | 3-4 weeks   |
+| **v17.6 PWA**           | ⚠️ Basic         | No        | 1 week      |
+| **Mobile App**          | ⏸️ Paused        | N/A       | 4-6 weeks   |
 
-**Estimated Total to Production**: 8-12 weeks of focused development
+**Estimated Total to Production**: 6-10 weeks of focused development
 
 ### Critical Path (Must Complete Before Public Launch)
 
 1. **v17.0** - Fix API authorization vulnerability (✅ DONE)
 2. **v17.1** - Raise test coverage to 75%+ (✅ DONE)
-3. **v17.2** - Complete i18n for all 7 locales
+3. **v17.2** - Complete i18n for all 7 locales (✅ DONE)
 4. **v17.3** - AODA/WCAG 2.1 AA compliance

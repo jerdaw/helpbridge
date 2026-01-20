@@ -2,13 +2,14 @@
 
 import { WifiOff, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
+import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 import { getCachedServices } from "@/lib/offline/cache"
-import ServiceCard from "@/components/ServiceCard" // Default import
+import ServiceCard from "@/components/ServiceCard"
 import { SearchResult } from "@/lib/search/types"
 
 export default function OfflinePage() {
+  const t = useTranslations("Offline")
   const [cachedServices, setCached] = useState<SearchResult[]>([])
 
   useEffect(() => {
@@ -21,14 +22,12 @@ export default function OfflinePage() {
       <div className="rounded-full bg-neutral-200 p-6 dark:bg-neutral-800">
         <WifiOff className="h-12 w-12 text-neutral-500 dark:text-neutral-400" />
       </div>
-      <h1 className="mt-6 text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">You are offline</h1>
-      <p className="mt-2 max-w-sm text-neutral-600 dark:text-neutral-400">
-        It looks like you lost your internet connection. We can&apos;t search for new services right now.
-      </p>
+      <h1 className="mt-6 text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">{t("title")}</h1>
+      <p className="mt-2 max-w-sm text-neutral-600 dark:text-neutral-400">{t("description")}</p>
 
       {cachedServices.length > 0 && (
         <section className="mt-8 w-full max-w-md text-left">
-          <h2 className="mb-2 text-sm font-semibold text-neutral-500">Recently Viewed</h2>
+          <h2 className="mb-2 text-sm font-semibold text-neutral-500">{t("recentlyViewed")}</h2>
           <div className="space-y-4">
             {cachedServices.slice(0, 3).map((r) => (
               <ServiceCard key={r.service.id} service={r.service} />
@@ -39,27 +38,26 @@ export default function OfflinePage() {
 
       <div className="mt-8 w-full max-w-md space-y-4">
         <div className="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
-          <h3 className="font-semibold text-neutral-900 dark:text-white">Emergency Contacts</h3>
-          <p className="mb-4 text-sm text-neutral-500 dark:text-neutral-400">You can still call these numbers:</p>
+          <h3 className="font-semibold text-neutral-900 dark:text-white">{t("emergencyContacts")}</h3>
 
-          <ul className="space-y-4">
+          <ul className="mt-4 space-y-4">
             <li className="flex items-center justify-between">
               <div className="text-left">
-                <p className="font-medium text-neutral-900 dark:text-white">AMHS-KFLA Crisis Line</p>
-                <p className="text-xs text-neutral-500">24/7 Mental Health</p>
+                <p className="font-medium text-neutral-900 dark:text-white">{t("crisisLine")}</p>
+                <p className="text-xs text-neutral-500">{t("crisisLineDesc")}</p>
               </div>
               <a
                 href="tel:6135444229"
                 className="flex items-center gap-2 rounded-md bg-green-50 px-3 py-1.5 text-sm font-medium text-green-700 hover:bg-green-100 dark:bg-green-900/20 dark:text-green-300"
               >
                 <Phone className="h-4 w-4" />
-                Call
+                {t("callButton")}
               </a>
             </li>
             <li className="flex items-center justify-between">
               <div className="text-left">
-                <p className="font-medium text-neutral-900 dark:text-white">Emergency</p>
-                <p className="text-xs text-neutral-500">Police / Fire / Ambulance</p>
+                <p className="font-medium text-neutral-900 dark:text-white">{t("emergency")}</p>
+                <p className="text-xs text-neutral-500">{t("emergencyDesc")}</p>
               </div>
               <a
                 href="tel:911"
@@ -74,7 +72,7 @@ export default function OfflinePage() {
 
         <div className="flex justify-center">
           <Button variant="link" onClick={() => window.location.reload()}>
-            Try connecting again
+            {t("retryButton")}
           </Button>
         </div>
       </div>

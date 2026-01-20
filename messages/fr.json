@@ -788,6 +788,17 @@
     "bannerMessage": "Mode hors ligne actif. Les données peuvent être obsolètes.",
     "checkConnection": "Vérifier la connexion",
     "savedForLater": "Enregistré pour plus tard",
-    "savedMessage": "Votre commentaire sera envoyé une fois en ligne."
+    "savedMessage": "Votre commentaire sera envoyé une fois en ligne.",
+    "title": "Vous êtes hors ligne",
+    "description": "Veuillez vous reconnecter à Internet pour rechercher des services.",
+    "retryButton": "Réessayer la connexion",
+    "recentlyViewed": "Services récemment consultés",
+    "cachedData": "Données en cache disponibles ci-dessous",
+    "emergencyContacts": "Contacts d'urgence toujours disponibles",
+    "crisisLine": "Ligne de crise",
+    "crisisLineDesc": "Santé mentale 24/7",
+    "emergency": "Urgence",
+    "emergencyDesc": "Police / Pompiers / Ambulance",
+    "callButton": "Appeler"
   }
 }

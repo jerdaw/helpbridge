@@ -211,6 +211,16 @@
       "view": "عرض",
       "lastUpdated": "آخر تحديث",
       "noServices": "لم يتم المطالبة بأي خدمات"
+    },
+    "logout": "تسجيل الخروج",
+    "partner": "لوحة الشركاء",
+    "recentFeedback": "التعليقات الأخيرة",
+    "viewAll": "عرض الكل",
+    "stats": {
+      "pending": "قيد الانتظار",
+      "resolved": "تم الحل",
+      "sentiment": "مشاعر عامة",
+      "total": "إجمالي التعليقات"
     }
   },
   "ServiceDetail": {
@@ -239,7 +249,40 @@
     "claimListing": "المطالبة بالإدراج",
     "notFound": "الخدمة غير موجودة",
     "notFoundText": "الخدمة التي تبحث عنها غير موجودة أو تمت إزالتها.",
-    "backToSearch": "العودة للبحث"
+    "backToSearch": "العودة للبحث",
+    "claimButton": "المطالبة بهذه الخدمة",
+    "plainLanguage": "لغة مبسطة",
+    "standardView": "العرض القياسي",
+    "whatIsIt": "ما هذه الخدمة؟",
+    "howToGetHelp": "كيف أحصل على المساعدة؟",
+    "callUs": "اتصل بنا",
+    "visitUs": "تفضل بزيارتنا",
+    "openHours": "ساعات العمل",
+    "summaryComingSoon": "ملخص اللغة المبسطة سيأتي قريباً.",
+    "verifiedService": "خدمة موثقة",
+    "officialPartner": "شريك رسمي",
+    "serviceMerged": "خدمة مدمجة",
+    "permanentlyClosed": "مغلق نهائياً",
+    "mergedDescription": "تم دمج هذه الخدمة مع منظمة أخرى. يرجى التحقق من الوصف للحصول على تفاصيل الاتصال الجديدة.",
+    "closedDescription": "هذه الخدمة لم تعد تعمل. يرجى عدم زيارة هذا الموقع.",
+    "note": "ملاحظة:",
+    "mapTitle": "موقع {name} على الخريطة",
+    "aboutService": "حول هذه الخدمة",
+    "documents": "المستندات",
+    "accessProcess": "عملية التقديم",
+    "accessibility": "إمكانية الوصول",
+    "getDirections": "الحصول على الاتجاهات",
+    "lastVerified": "آخر تحقق:",
+    "unknown": "غير معروف",
+    "print": "طباعة",
+    "printHint": "يفتح بطاقة موارد جاهزة للطباعة",
+    "free": "مجاني",
+    "verified": "موثق",
+    "merged": "مدمج",
+    "closed": "مغلق",
+    "report": "إبلاغ",
+    "details": "تفاصيل",
+    "kingston": "كينغستون"
   },
   "AI": {
     "title": "مساعد الرعاية",
@@ -269,6 +312,11 @@
   "Settings": {
     "personalizePrompt": "تخصيص نتائجك",
     "personalizeDescription": "شارك وضعك اختيارياً لرؤية الخدمات التي قد تكون مؤهلاً لها. هذه البيانات لا تغادر جهازك أبداً.",
+    "title": "الإعدادات",
+    "description": "إدارة تفضيلات التطبيق وإعدادات الجهاز.",
+    "connectionStatus": "حالة الاتصال",
+    "onlineMessage": "أنت الآن متصل بالإنترنت. سيتم استلام التحديثات تلقائياً.",
+    "offlineMessage": "أنت الآن غير متصل. يتم استخدام البيانات المخزنة مؤقتاً.",
     "enablePersonalization": "تفعيل التخصيص",
     "ageGroup": "الفئة العمرية",
     "ageGroups": {
@@ -287,7 +335,14 @@
     "clearProfile": "مسح ملفي الشخصي",
     "Notifications": {
       "title": "الإشعارات",
-      "enable": "تفعيل إشعارات الدفع",
+      "keepMeUpdated": "أبقني على اطلاع",
+      "keepMeUpdatedDesc": "تلقي تنبيهات حول سعة الملاجئ وتغييرات الخدمة.",
+      "notSupportedTitle": "غير مدعوم",
+      "notSupportedDesc": "إشعارات الدفع غير مدعومة على هذا الجهاز أو المتصفح.",
+      "blockedTitle": "تم حظر الإشعارات",
+      "blockedDesc": "لقد قمت بحظر الإشعارات لهذا الموقع. لتفعيلها، يرجى تحديث إعدادات المتصفح للموقع.",
+      "enable": "تفعيل",
+      "disable": "تعطيل",
       "permissions": "الأذونات المطلوبة",
       "permissionsDesc": "نحتاج إذنك لإرسال التنبيهات.",
       "categories": {
@@ -306,16 +361,78 @@
     "verified": "تم التحقق",
     "unknown": "لم يتم التحقق",
     "verifiedOn": "آخر تحقق",
-    "neverVerified": "لم يتم التحقق من هذه الخدمة مؤخراً"
+    "neverVerified": "لم يتم التحقق من هذه الخدمة مؤخراً",
+    "outdatedTooltip": "هذه المعلومات قديمة منذ أكثر من 3 أشهر وقد تكون غير دقيقة.",
+    "verifiedTooltip": "تم تأكيد المعلومات من قبل شريك في {date}",
+    "levels": {
+      "fresh": "تم التحقق مؤخرًا",
+      "recent": "تم التحقق خلال 3 أشهر",
+      "stale": "التحقق قديم"
+    }
   },
   "Feedback": {
     "title": "الإبلاغ عن مشكلة",
-    "description": "ساعدنا في تحسين الإدراج لـ {service}. ملاحظاتك تساعد المجتمع.",
+    "widgetTitle": "هل كانت هذه الصفحة مفيدة؟",
+    "widgetSubtitle": "تساعدنا تعليقاتك في تحسين دليلنا.",
+    "yes": "نعم",
+    "no": "لا",
+    "reportIssue": "الإبلاغ عن مشكلة",
+    "reportIssueTitle": "الإبلاغ عن مشكلة",
+    "reportIssueDescription": "ساعدنا في تحسين قائمة {service}. تعليقاتك تساعد المجتمع.",
+    "issueTypeLabel": "ما هي المشكلة؟",
+    "detailsLabel": "تفاصيل إضافية (اختياري)",
+    "detailsPlaceholder": "يرجى تقديم المعلومات الصحيحة إذا كانت لديك...",
+    "submitReport": "إرسال التقرير",
+    "issueReportedTitle": "تم الإبلاغ عن المشكلة",
+    "issueReportedMessage": "شكراً لك على مساعدتنا في الحفاظ على دقة البيانات.",
     "issueType": "ما هي المشكلة؟",
-    "types": {
-      "wrong_phone": "رقم هاتف خاطئ",
-      "wrong_address": "عنوان خاطئ",
+    "service": "الخدمة",
+    "details": "التفاصيل",
+    "status": "الحالة",
+    "date": "التاريخ",
+    "general": "عام",
+    "unknown": "غير معروف",
+    "noFeedback": "لم يتم استلام أي تعليقات بعد.",
+    "feedbackDetail": "تفاصيل التعليقات",
+    "receivedOn": "تم الاستلام في {date}",
+    "message": "الرسالة",
+    "noMessage": "لم يتم تقديم أي رسالة",
+    "statusPending": "قيد الانتظار",
+    "statusReviewed": "تمت المراجعة",
+    "statusResolved": "تم الحل",
+    "statusDismissed": "تم الرفض",
+    "markResolved": "تحديد كمحلولة",
+    "close": "إغلاق",
+    "statusUpdated": "تم تحديث الحالة",
+    "statusUpdatedMessage": "تم تمييز التعليق كـ {status}",
+    "notFoundTitle": "لم تجد ما تحتاجه؟",
+    "notFoundSubtitle": "أخبرنا عما كنت تبحث عنه. سنحاول إضافته.",
+    "notFoundPlaceholder": "مثلاً: بنك طعام معين يفتح يوم الأحد...",
+    "notFoundSubmittedTitle": "تم استلام الطلب",
+    "notFoundSubmittedMessage": "لقد لاحظنا هذه الفجوة في خدماتنا.",
+    "notFoundSuccessTitle": "شكراً لإعلامنا",
+    "notFoundSuccessMessage": "نراجع هذه الطلبات أسبوعياً للعثور على خدمات جديدة لإضافتها.",
+    "submitAnother": "إرسال طلب آخر",
+    "categoryLabel": "أي فئة تناسب أكثر؟",
+    "selectCategory": "اختر فئة...",
+    "categories": {
+      "Food": "طعام",
+      "Crisis": "أزمة",
+      "Housing": "سكن",
+      "Health": "صحة",
+      "Legal": "قانوني",
+      "Financial": "مالي",
+      "Employment": "عمل",
+      "Education": "تعليم",
+      "Transport": "مواصلات",
+      "Community": "مجتمع",
+      "Indigenous": "سكان أصليين",
+      "Wellness": "عافية"
+    },
+    "issueTypes": {
+      "wrong_contact_info": "معلومات الاتصال غير صحيحة",
       "service_closed": "الخدمة مغلقة / انتقلت",
+      "eligibility_incorrect": "الأهلية غير صحيحة",
       "other": "مشكلة أخرى"
     },
     "messageLabel": "تفاصيل إضافية (اختياري)",
@@ -416,7 +533,8 @@
       "title": "كن شريكاً",
       "subtitle": "هل أنت مزود خدمة؟ انضم إلى شبكتنا للوصول إلى المزيد من الأشخاص.",
       "button": "اقتراح خدمة"
-    }
+    },
+    "logoAlt": "شعار {name}"
   },
   "Terms": {
     "title": "شروط الخدمة",
@@ -601,6 +719,12 @@
     "ontarioWide": "على مستوى أونتاريو",
     "canadaWide": "على مستوى كندا"
   },
+  "VerificationLevels": {
+    "L0": "لم يتم التحقق",
+    "L1": "تحقق أساسي",
+    "L2": "خدمة موثقة",
+    "L3": "شريك رسمي"
+  },
   "Distance": {
     "ontarioWide": "متاح في جميع أنحاء أونتاريو",
     "canadaWide": "متاح في جميع أنحاء كندا"
@@ -661,7 +785,25 @@
       "email": "بريد إلكتروني رسمي",
       "site": "تدقيق الموقع",
       "admin": "تم التحقق بواسطة المسؤول",
-      "partner": "تم التأكيد من قبل الشريك"
+      "partner": "تم التأكيد من قبل الشريك",
+      "manual": "تحقق يدوي"
     }
+  },
+  "Offline": {
+    "bannerMessage": "وضع عدم الاتصال نشط. قد تكون المعلومات قديمة.",
+    "checkConnection": "تحقق من الاتصال",
+    "savedForLater": "تم الحفظ لوقت لاحق",
+    "savedMessage": "سيتم إرسال تعليقك عندما تعود للاتصال بالإنترنت.",
+    "title": "أنت غير متصل",
+    "description": "يرجى إعادة الاتصال بالإنترنت للبحث عن الخدمات.",
+    "retryButton": "إعادة محاولة الاتصال",
+    "recentlyViewed": "خدمات تمت مشاهدتها مؤخرًا",
+    "cachedData": "البيانات المخبأة متاحة أدناه",
+    "emergencyContacts": "جهات اتصال الطوارئ متاحة دائمًا",
+    "crisisLine": "خط الأزمات",
+    "crisisLineDesc": "الصحة النفسية 24/7",
+    "emergency": "طوارئ",
+    "emergencyDesc": "الشرطة / الإطفاء / الإسعاف",
+    "callButton": "اتصل"
   }
 }
