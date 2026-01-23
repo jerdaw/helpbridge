@@ -221,6 +221,22 @@ Deep Research ingestion record: `docs/roadmaps/archive/2026-01-23-v17-5-ai-outpu
 
 - [x] **Plain Language Flag**: 0 missing `plain_language_available` field (done; type/schema wiring complete)
 - [ ] **Structured Hours**: 11/196 missing structured `hours` object (10 active); track via `npm run audit:hours`
+  - Next steps (Phase 5):
+    - Run `npm run audit:hours` and triage `docs/roadmaps/v17-5-hours/outputs/hours-gaps.json`
+    - Resolve remaining missing structured `hours` + `hours_text` for these 10 active services:
+      - `alzheimer-society-kfla`
+      - `autism-ontario-east`
+      - `cnib-kingston`
+      - `kfla-children-services`
+      - `kingston-east-community-centre`
+      - `st-john-ambulance-kingston`
+      - `red-cross-kingston`
+      - `habitat-for-humanity-kingston`
+      - `service-ontario-kingston`
+      - `geneva-centre-autism`
+    - Use strict evidence (official site / government directory) and avoid adding structured hours where seasonality would create false “Open Now” results
+    - Validate + re-audit: `npm run validate-data`, `npm run audit:data`, `npm run audit:hours`
+  - Workspace: `docs/roadmaps/v17-5-hours/README.md`
 
 #### Verification Level Upgrade
 
