@@ -1,7 +1,7 @@
 # Kingston Care Connect: Roadmap
 
 > **Current Version**: v17.4 (Dashboard & Partner Portal Complete)
-> **Last Updated**: 2026-01-21
+> **Last Updated**: 2026-01-23
 
 ---
 
@@ -204,7 +204,17 @@ Deep Research ingestion record: `docs/roadmaps/archive/2026-01-23-v17-5-ai-outpu
 #### Critical Data Gaps (Snapshot: 196 services)
 
 - [x] **Geographic Scope**: 0 missing `scope` field (done)
-- [ ] **Coordinates**: 58/196 missing `coordinates`
+- [ ] **Coordinates**:
+  - 58/196 missing `coordinates` (any reason; includes virtual/confidential/multi-location)
+  - 18/196 missing `coordinates` (required for Kingston physical distance search)
+  - 17/196 missing physical `address` (primary blocker before geocoding can run)
+  - Next steps (Phase 3):
+    - Run `npm run audit:coords` and triage `docs/roadmaps/v17-5-coordinates/outputs/coordinate-gaps.json`
+    - Verify and add physical `address` for all `missing_address` items (do not invent addresses; set `virtual_delivery: true` when appropriate)
+    - Keep confidentiality/pop-up services non-geocoded (`non_geocodable_address`)
+    - Run geocoding with OpenCage: `OPENCAGE_API_KEY=... npm run geocode`
+    - Validate + re-audit: `npm run validate-data`, `npm run audit:data`, `npm run audit:coords`
+  - Workspace: `docs/roadmaps/v17-5-coordinates/README.md`
 - [x] **Access Scripts**: 0/196 missing `access_script` (content present; UI surface still needed)
 
 #### Accessibility Data
