@@ -228,8 +228,12 @@ Deep Research ingestion record: `docs/roadmaps/2026-01-22-v17-5-ai-output-ingest
 
 - 90%+ services have coordinates
 - 70%+ services have structured hours
-- 50%+ services have access scripts and they are visible on service detail pages
+- 100% services have access scripts and they are visible on service detail pages
 - At least 10 services at L3 verification
+
+### Active Follow-Up Flags (Don’t Lose These)
+
+- `community-harvest-market`: evidence spot-check indicates the referenced page returns `404` and likely needs a service `url` update + verification. Track + resolve before treating it as verified.
 
 ---
 
