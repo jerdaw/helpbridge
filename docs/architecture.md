@@ -149,7 +149,7 @@ sequenceDiagram
 - **Hardened Policies**: All INSERT policies validate foreign keys (e.g., `service_id IN (SELECT id FROM services_public)`) to prevent spam and invalid data.
 - **Performance Optimizations**: Auth function calls wrapped in scalar subqueries `(SELECT auth.uid())` to avoid per-row re-evaluation.
 - **Policy Consolidation**: Separate policies for SELECT/INSERT/UPDATE/DELETE to avoid "Multiple Permissive Policies" performance warnings.
-- **Public Transparency**: Materialized views (`feedback_aggregations`, `unmet_needs_summary`) intentionally exposed for Impact page metrics (aggregated, anonymized data only).
+- **Public Transparency**: Aggregated metrics are exposed via **Standard Views** (`feedback_aggregations`, `unmet_needs_summary`) that wrap underlying Materialized Views (`mat_*`). These wrappers enforce `security_invoker = true` to ensure the query runs with the user's permissions, satisfying security audits while maintaining API compatibility.
 - **Documentation**: See [Database Security Guide](security/database-security.md) for complete RLS policy documentation.
 - **Testing**: RLS policies verified via `tests/integration/rls-policies.test.ts`.
 
