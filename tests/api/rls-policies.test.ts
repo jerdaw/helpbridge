@@ -68,6 +68,29 @@ describe.skipIf(!hasCredentials)("RLS Policies (Integration)", () => {
       expect(data).toHaveLength(0)
     })
   })
+
+  describe("analytics views", () => {
+    it("allows reading feedback aggregations", async () => {
+      // The view 'feedback_aggregations' replaced the MV
+      const { data, error } = await supabase.from("feedback_aggregations").select("*").limit(1)
+
+      expect(error).toBeNull()
+      // Data might be empty but shouldn't error
+      if (data && data.length > 0) {
+        expect(data[0]).toHaveProperty("service_id")
+        expect(data[0]).toHaveProperty("helpful_yes_count")
+      }
+    })
+
+    it("allows reading unmet needs summary", async () => {
+      const { data, error } = await supabase.from("unmet_needs_summary").select("*").limit(1)
+
+      expect(error).toBeNull()
+      if (data && data.length > 0) {
+        expect(data[0]).toHaveProperty("category_searched")
+      }
+    })
+  })
 })
 
 describe("RLS Policies (Logic Patterns)", () => {
