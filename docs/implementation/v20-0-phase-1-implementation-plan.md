@@ -12,6 +12,9 @@ phase_1b_commit: 75285bf
 phase_1c_status: complete
 phase_1c_completed: 2026-02-12
 phase_1c_commit: 6816797
+phase_1d_status: complete
+phase_1d_completed: 2026-02-12
+phase_1d_commit: pending
 ---
 
 # v20.0 Phase 1: Code Quality, Core Test Coverage & Search Enrichment
@@ -284,11 +287,14 @@ interpreter: ["translation", "language help", "interprète"],
 
 ---
 
-### Phase 1D: Core Test Coverage (8-12h)
+### Phase 1D: Core Test Coverage ✅ COMPLETE (2026-02-12)
 
 **Goal**: Write unit tests for the 3 critical untested search utility modules and the `useRBAC` hook.
 
-**Deliverables**: 4 new test files, ~80-100 new test cases, meaningful coverage increase for `lib/search/**` and `hooks/**` thresholds.
+**Deliverables**: 4 new test files, 93 new test cases, coverage increase for `lib/search/**` and `hooks/**` modules.
+
+**Actual Effort**: 2h (under estimate - tests written efficiently following existing patterns)
+**Commit**: pending
 
 ---
 
