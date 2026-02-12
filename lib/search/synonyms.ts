@@ -9,11 +9,13 @@ export const SYNONYMS: Record<string, string[]> = {
   groceries: ["food", "pantry", "supermarket", "market", "épicerie"],
   meal: ["dinner", "lunch", "breakfast", "supper", "repas"],
 
-  // Basic Needs - Housing
+  // Basic Needs - Housing (expanded)
   housing: ["shelter", "homeless", "apartment", "rent", "eviction", "logement", "abri", "itinerance"],
   shelter: ["bed", "sleep", "homeless", "emergency", "refuge"],
   homeless: ["shelter", "street", "encampment", "couch surfing", "sans-abri"],
+  unhoused: ["homeless", "shelter", "street", "rough sleeping", "sans-abri"],
   rent: ["housing", "landlord", "tenant", "lease", "eviction", "loyer"],
+  eviction: ["evicted", "landlord", "tenant rights", "housing tribunal", "expulsion"],
 
   // Health
   health: ["doctor", "nurse", "hospital", "clinic", "medical", "santé", "médecin"],
@@ -52,6 +54,15 @@ export const SYNONYMS: Record<string, string[]> = {
   odsp: ["ontario disability", "disability support", "disabled"],
   disability: ["odsp", "disabled", "accessibility", "handicap", "invalidité"],
   income: ["money", "cash", "financial", "low income", "revenu", "argent"],
+  cerb: ["ei", "employment insurance", "income support"],
+  ei: ["employment insurance", "cerb", "benefits", "assurance-emploi"],
+  tax: ["income tax", "tax clinic", "free tax", "impôts"],
+
+  // Practical Needs
+  id: ["identification", "birth certificate", "ohip", "health card", "sin card"],
+  transportation: ["bus", "transit", "ride", "accessible transit", "transport"],
+  childcare: ["daycare", "babysitting", "child care", "garderie"],
+  clothing: ["clothes", "winter coat", "donation", "vêtements"],
 
   // Identities (enhanced)
   indigenous: ["aboriginal", "first nations", "metis", "inuit", "native", "autochtone", "premières nations"],
@@ -59,6 +70,15 @@ export const SYNONYMS: Record<string, string[]> = {
   newcomer: ["immigrant", "refugee", "new to canada", "immigrant", "réfugié", "nouvel arrivant"],
   senior: ["elderly", "old", "aged", "retirement", "65+", "aîné", "personne âgée"],
   veteran: ["military", "forces", "army", "vétéran", "militaire"],
+
+  // Seniors (expanded)
+  "home care": ["caregiver", "personal support worker", "psw", "soins à domicile"],
+  "assisted living": ["nursing home", "long-term care", "retirement home", "résidence"],
+
+  // Common terms
+  free: ["no cost", "no charge", "gratuit", "charitable"],
+  appointment: ["book", "schedule", "walk-in", "rendez-vous"],
+  interpreter: ["translation", "language help", "interprète"],
 
   // Common misspellings / abbreviations
   er: ["emergency", "hospital", "urgence"],

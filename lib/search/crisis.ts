@@ -4,7 +4,7 @@ const CRISIS_SAFETY_BOOST_POINTS = 1000
 
 // Keywords that indicate a potential crisis or safety risk
 export const CRISIS_KEYWORDS = [
-  // Suicide & self-harm
+  // Suicide & self-harm (expanded)
   "suicide",
   "suicidal",
   "kill myself",
@@ -16,7 +16,17 @@ export const CRISIS_KEYWORDS = [
   "cutting myself",
   "hurt myself",
   "self harm",
+  "self-harm",
   "overdose",
+  "suicidal ideation",
+  "suicidal thoughts",
+  "self-injury",
+  "self injury",
+  "hurting myself",
+  "don't want to live",
+  "dont want to live",
+  "no reason to live",
+  "thinking about death",
   // Violence & abuse
   "abuse",
   "violence",
@@ -28,6 +38,23 @@ export const CRISIS_KEYWORDS = [
   "hits me",
   "hitting me",
   "scared at home",
+  "sexual assault",
+  "sexual abuse",
+  "human trafficking",
+  "kidnapped",
+  "not safe",
+  "danger",
+  "threatened",
+  "stalking",
+  "stalker",
+  // French crisis terms
+  "je veux mourir",
+  "me tuer",
+  "me suicider",
+  "aide urgente",
+  "en danger",
+  "violence conjugale",
+  "agression sexuelle",
   // General crisis
   "crisis",
   "emergency",
