@@ -510,12 +510,12 @@ npm run check-staleness      # Find services needing re-verification
 
 ### v20.0: Technical Excellence & Testing (HIGH PRIORITY - Before Production)
 
-**Status**: IN PROGRESS (Phase 1A-1C Complete ✅)
+**Status**: IN PROGRESS (Phase 1A-1D Complete ✅)
 **Priority**: HIGH (Pre-Production Requirement)
 **Total Effort**: ~100-120 hours (AI-autonomous work)
 **Timeline**: 2-4 weeks
 **Dependencies**: None (can start immediately)
-**Completion**: 6/38 items done (A1, A3, A6, C1, C3, C4)
+**Completion**: 8/38 items done (A1, A3, A6, B1 partial [75%], B3, C1, C3, C4)
 
 Comprehensive technical improvements to reach production-quality standards: achieve 75% test coverage, eliminate code quality gaps, complete i18n translations, and improve documentation completeness.
 
@@ -566,14 +566,15 @@ Comprehensive technical improvements to reach production-quality standards: achi
 
 #### Category B: Test Coverage (~60h) — LARGEST GAP
 
-**B1. Write unit tests for untested search utilities** (6-8h)
+**B1. Write unit tests for untested search utilities** 🔄 75% COMPLETE (2026-02-12)
 
-- `lib/search/geo.ts` - Haversine distance, proximity multipliers
-- `lib/search/fuzzy.ts` - Levenshtein-based matching
-- `lib/search/synonyms.ts` - Synonym expansion, bilingual terms
-- `lib/ai/query-expander.ts` - Query reformulation
+- ✅ `lib/search/geo.ts` - Haversine distance, proximity multipliers (20 tests)
+- ✅ `lib/search/fuzzy.ts` - Levenshtein-based matching (24 tests)
+- ✅ `lib/search/synonyms.ts` - Synonym expansion, bilingual terms (24 tests)
+- ⏸️ `lib/ai/query-expander.ts` - Query reformulation (pending)
 - Impact: Core search logic tested, prevents regressions
-- Effort: M
+- Commit: pending (geo, fuzzy, synonyms complete)
+- Effort: 1.5h actual (geo, fuzzy, synonyms), 2h remaining (query-expander)
 
 **B2. Write tests for 4 untested API routes** (4-6h)
 
@@ -584,11 +585,13 @@ Comprehensive technical improvements to reach production-quality standards: achi
 - Impact: API contract coverage
 - Effort: M
 
-**B3. Write unit test for `useRBAC` hook** (1-2h)
+**B3. Write unit test for `useRBAC` hook** ✅ COMPLETE (2026-02-12)
 
-- Only untested hook (13/14 tested)
-- Impact: Permission logic coverage
-- Effort: S
+- All untested hook now tested (14/14 hooks tested)
+- 20 comprehensive tests covering all 4 roles, permissions, hierarchy, self-modification restrictions, memoization
+- Impact: Permission logic coverage complete
+- Commit: pending
+- Effort: 30min (actual)
 
 **B4. Write component tests for critical untested components** (8-12h)
 
