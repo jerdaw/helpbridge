@@ -573,7 +573,7 @@ Comprehensive technical improvements to reach production-quality standards: achi
 - ✅ `lib/search/synonyms.ts` - Synonym expansion, bilingual terms (24 tests)
 - ✅ `lib/ai/query-expander.ts` - Query reformulation with AI engine mocking (23 tests)
 - Impact: Core search logic tested, prevents regressions
-- Commits: c272018 (geo, fuzzy, synonyms), pending (query-expander)
+- Commits: c272018 (geo, fuzzy, synonyms), 8215ebc (query-expander)
 - Effort: 2.5h actual (6-8h estimated)
 
 **B2. Write tests for 4 untested API routes** (4-6h)
