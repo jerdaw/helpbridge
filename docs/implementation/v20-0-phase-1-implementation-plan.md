@@ -300,7 +300,7 @@ interpreter: ["translation", "language help", "interprète"],
 **Deliverables**: 5 new test files, 116 new test cases, coverage increase for `lib/search/**`, `lib/ai/**`, and `hooks/**` modules.
 
 **Actual Effort**: 2.5h (under estimate - tests written efficiently following existing patterns)
-**Commits**: c272018 (geo, fuzzy, synonyms, useRBAC), pending (query-expander)
+**Commits**: c272018 (geo, fuzzy, synonyms, useRBAC), 8215ebc (query-expander)
 
 ---
 
