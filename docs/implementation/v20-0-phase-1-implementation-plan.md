@@ -14,7 +14,7 @@ phase_1c_completed: 2026-02-12
 phase_1c_commit: 6816797
 phase_1d_status: complete
 phase_1d_completed: 2026-02-12
-phase_1d_commit: pending
+phase_1d_commit: c272018
 ---
 
 # v20.0 Phase 1: Code Quality, Core Test Coverage & Search Enrichment
