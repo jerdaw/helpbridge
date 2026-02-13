@@ -58,7 +58,8 @@
     "qa:prelaunch": "node --import tsx scripts/run-prelaunch-qa.ts",
     "release:notes": "node scripts/generate-release-notes.js",
     "vercel:verify": "bash scripts/verify-vercel-optimization.sh",
-    "vercel:optimize": "bash scripts/apply-vercel-optimization.sh"
+    "vercel:optimize": "bash scripts/apply-vercel-optimization.sh",
+    "validate:security-headers": "node --import tsx scripts/validate-security-headers.ts"
   },
   "overrides": {
     "react": "$react",
