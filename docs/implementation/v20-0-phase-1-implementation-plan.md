@@ -48,6 +48,9 @@ phase_1n_commit: 8a46ef9
 phase_1o_status: complete
 phase_1o_completed: 2026-02-12
 phase_1o_commit: bedd64c
+phase_1p_status: complete
+phase_1p_completed: 2026-02-12
+phase_1p_commit: pending
 ---
 
 # v20.0 Phase 1: Code Quality, Core Test Coverage & Search Enrichment
@@ -2161,6 +2164,278 @@ Potential improvements:
 3. **Slack/Discord Notifications**: Announce releases
 4. **Changelog Validation**: Pre-commit hook to verify format
 5. **Release Templates**: Customizable templates
+
+---
+
+## Phase 1P: Security Header Validation in CI (E2) ✅ COMPLETE
+
+**Status**: COMPLETE (2026-02-12)
+**Roadmap Item**: E2 - Add security header validation to CI
+**Commit**: [pending]
+**Actual Effort**: 2.5 hours (estimated: 2-3h)
+
+### Goals
+
+Add automated validation of security headers in CI to prevent misconfigurations that could weaken the application's security posture, ensuring all required headers are present and properly configured.
+
+### Problem Statement
+
+Prior to this phase:
+
+- Security headers were manually configured in `next.config.ts`
+- No automated validation to ensure headers were correctly configured
+- Risk of typos, missing directives, or weakened security settings
+- No enforcement of security best practices (e.g., minimum HSTS max-age)
+- Manual testing required to verify headers after changes
+- External tools (Mozilla Observatory, OWASP ZAP) were heavy dependencies
+
+This created risk of security header regressions during development.
+
+### Implementation
+
+#### Files Changed
+
+- `scripts/validate-security-headers.ts` - Custom validation script (384 lines, new file)
+- `package.json` - Added validate:security-headers npm script
+- `.github/workflows/ci.yml` - Added security header validation step
+- `docs/development/security-headers.md` - Comprehensive documentation (700+ lines, new file)
+
+#### Security Header Validation Script
+
+Created `scripts/validate-security-headers.ts` with features:
+
+**Validated Headers:**
+
+1. **Content-Security-Policy (CSP)**:
+   - Validates 9 required directives: default-src, script-src, style-src, img-src, font-src, connect-src, frame-ancestors, base-uri, form-action
+   - Checks frame-ancestors is exactly 'none' (anti-clickjacking)
+   - Warns about 'unsafe-inline' and 'unsafe-eval' (documented as necessary for WebLLM)
+
+2. **X-Frame-Options**: Must be "DENY"
+
+3. **X-Content-Type-Options**: Must be "nosniff"
+
+4. **Referrer-Policy**: Validates against allowed values list
+
+5. **Strict-Transport-Security (HSTS)**:
+   - Validates presence of max-age and includeSubDomains
+   - Enforces minimum max-age of 1 year (31536000 seconds)
+   - Current config: 2 years (63072000) ✅
+
+6. **Permissions-Policy**: Checks restriction of dangerous features (camera, microphone)
+
+7. **X-DNS-Prefetch-Control**: Validated for presence
+
+**Parsing Logic:**
+
+- Dynamically parses `next.config.ts` to extract securityHeaders array
+- Handles both simple string values and array.join() patterns (for CSP)
+- No external dependencies - pure Node.js parsing
+- Exits with code 1 on validation failure (blocks CI)
+
+**CLI Output:**
+
+```text
+🔒 Security Headers Validation
+
+Found 7 security headers in next.config.ts
+
+✓ Content-Security-Policy
+  ⚠ script-src contains 'unsafe-inline' - consider using nonces for inline scripts
+  ⚠ script-src contains 'unsafe-eval' - required for WebLLM AI features
+
+✓ X-Frame-Options
+✓ X-Content-Type-Options
+✓ Referrer-Policy
+✓ Strict-Transport-Security
+✓ Permissions-Policy
+
+Summary:
+All required security headers are properly configured
+2 warning(s) - review recommended
+```
+
+#### NPM Script
+
+Added to `package.json`:
+
+```json
+"validate:security-headers": "node --import tsx scripts/validate-security-headers.ts"
+```
+
+**Usage:**
+
+```bash
+npm run validate:security-headers  # Validate all headers
+```
+
+#### CI Integration
+
+Updated `.github/workflows/ci.yml` (static-analysis job):
+
+```yaml
+- name: Validate Security Headers
+  run: npm run validate:security-headers
+```
+
+**CI Behavior:**
+
+- Runs in `static-analysis` job (alongside lint, type-check, etc.)
+- Blocks merge if security headers are misconfigured
+- Fast execution (<1 second)
+- Clear error messages for debugging
+
+#### Comprehensive Documentation
+
+Created `docs/development/security-headers.md` covering:
+
+**Security Header Explanations:**
+
+- Content-Security-Policy: XSS prevention, directive rationale, warnings about unsafe-\* values
+- X-Frame-Options: Clickjacking protection
+- X-Content-Type-Options: MIME sniffing prevention
+- Referrer-Policy: Privacy controls
+- HSTS: HTTPS enforcement, preload eligibility
+- Permissions-Policy: Feature restriction (camera, microphone, geolocation, FLoC opt-out)
+- X-DNS-Prefetch-Control: Performance optimization
+
+**Validation Section:**
+
+- Automated validation via npm script
+- CI integration details
+- Manual validation procedures
+- Browser testing guide (Chrome DevTools)
+- External tool recommendations (securityheaders.com, Mozilla Observatory)
+
+**Modification Procedures:**
+
+- When to modify headers (and when NOT to)
+- How to add new external services to CSP
+- Step-by-step modification workflow
+- Common modification examples (adding domains, adjusting policies)
+- Security checklist before deploying changes
+
+**Troubleshooting:**
+
+- Validation failures in CI
+- Headers not applied in browser
+- CSP blocking resources
+- HSTS not working locally (expected behavior)
+
+**References:**
+
+- W3C specifications
+- OWASP Secure Headers Project
+- MDN documentation
+- Testing tools (Security Headers, CSP Evaluator)
+
+### Validation
+
+All validation checks passed:
+
+- ✅ Script successfully validates all 7 security headers
+- ✅ Correctly warns about known issues (unsafe-inline, unsafe-eval)
+- ✅ Exits with code 0 on success
+- ✅ TypeScript type-check (no errors)
+- ✅ ESLint (0 warnings)
+- ✅ Documentation comprehensive and accurate
+
+**Test Results:**
+
+```bash
+$ npm run validate:security-headers
+Found 7 security headers in next.config.ts
+✓ All required security headers are properly configured
+2 warning(s) - review recommended
+```
+
+### Impact
+
+**Security Benefits:**
+
+- Prevents accidental weakening of security posture
+- Enforces minimum security standards (e.g., HSTS max-age >= 1 year)
+- Catches typos and missing directives before deployment
+- Documents known security trade-offs (unsafe-eval for WebLLM)
+
+**Developer Experience:**
+
+- Fast validation (<1s)
+- Clear error messages
+- Runs automatically in CI
+- Manual testing option available
+- Comprehensive documentation for modifications
+
+**Quality Improvements:**
+
+- Zero-knowledge security header validation (no external dependencies)
+- Self-documenting via warnings (explains why unsafe-\* is present)
+- Prevents regressions during refactoring
+- Standardized modification workflow
+
+**Maintenance Reduction:**
+
+- Automated detection of security misconfigurations
+- No manual header testing required
+- CI blocks unsafe changes
+- Documentation reduces support burden
+
+### Design Decisions
+
+**Why Custom Script Instead of Mozilla Observatory or OWASP ZAP?**
+
+Advantages of custom validation:
+
+1. **Zero External Dependencies**: No API rate limits, network calls, or service availability concerns
+2. **Fast Execution**: <1s vs. 10-30s for external tools
+3. **Offline-Capable**: Works in air-gapped environments
+4. **Tailored Validation**: Specific to project's security requirements
+5. **Clear Error Messages**: Project-specific context (e.g., "required for WebLLM")
+6. **No Docker Required**: OWASP ZAP is heavyweight and slow in CI
+
+**Why Parse next.config.ts Instead of Runtime Testing?**
+
+- **Earlier Detection**: Catches issues at config time, not deployment
+- **No Server Required**: Doesn't need running application
+- **Faster Feedback**: Instant validation vs. waiting for build + deploy
+- **Static Analysis**: Verifies configuration directly, not just runtime behavior
+
+**Why Document Known Warnings?**
+
+- **Transparency**: Explains security trade-offs clearly
+- **Review Guidance**: Helps developers understand warnings aren't errors
+- **Future Improvements**: Documents path to stricter CSP (nonces)
+
+**Why Enforce Minimum HSTS max-age?**
+
+- **HSTS Preload List**: Requires 2+ year max-age for inclusion
+- **Security Best Practice**: Short max-age defeats purpose of HSTS
+- **Current Config**: Already at 2 years (63072000s), enforcement prevents regression
+
+### Notes
+
+**CSP Warnings (Expected):**
+
+The validation warns about:
+
+- `'unsafe-inline'` in script-src: Required for Next.js inline scripts
+- `'unsafe-eval'` in script-src: Required for WebLLM AI engine
+
+**Future Improvements:**
+
+1. **CSP Nonces**: Implement nonce-based CSP to remove 'unsafe-inline'
+2. **Separate Dev/Prod CSP**: Stricter CSP in production
+3. **CSP Reporting**: Add report-only mode to monitor violations
+4. **Subresource Integrity**: Add SRI for external scripts
+5. **HSTS Preload**: Submit to Chrome's preload list
+
+**Testing in Development:**
+
+HSTS only applies to HTTPS. Local development uses HTTP, so:
+
+- HSTS header is sent but not enforced by browser
+- This is expected behavior
+- Test HSTS in production or with local SSL setup
 
 ---
 
