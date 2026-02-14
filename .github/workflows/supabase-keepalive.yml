@@ -21,15 +21,15 @@ jobs:
             exit 1
           fi
 
-      - name: Send keepalive query to Supabase
+      - name: Send keepalive request to Supabase Auth API
         env:
           SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
         run: |
           set -euo pipefail
 
-          endpoint="${SUPABASE_URL%/}/rest/v1/services?select=id&limit=1"
-          echo "Pinging Supabase REST endpoint: ${endpoint}"
+          endpoint="${SUPABASE_URL%/}/auth/v1/settings"
+          echo "Pinging Supabase Auth endpoint: ${endpoint}"
 
           http_code="$(curl -sS -o /tmp/supabase-keepalive-response.json -w "%{http_code}" \
             -H "apikey: ${SUPABASE_ANON_KEY}" \
