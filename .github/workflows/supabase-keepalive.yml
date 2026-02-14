@@ -1,0 +1,46 @@
+name: Supabase Keepalive
+
+on:
+  schedule:
+    - cron: "17 */12 * * *" # Every 12 hours
+  workflow_dispatch:
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Validate required secrets
+        env:
+          SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          if [ -z "$SUPABASE_URL" ] || [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "::error::Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY repository secrets."
+            exit 1
+          fi
+
+      - name: Send keepalive query to Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          set -euo pipefail
+
+          endpoint="${SUPABASE_URL%/}/rest/v1/services?select=id&limit=1"
+          echo "Pinging Supabase REST endpoint: ${endpoint}"
+
+          http_code="$(curl -sS -o /tmp/supabase-keepalive-response.json -w "%{http_code}" \
+            -H "apikey: ${SUPABASE_ANON_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_ANON_KEY}" \
+            -H "Accept: application/json" \
+            "${endpoint}")"
+
+          if [ "${http_code}" -ne 200 ]; then
+            echo "::error::Supabase keepalive failed with HTTP ${http_code}"
+            cat /tmp/supabase-keepalive-response.json || true
+            exit 1
+          fi
+
+          echo "Supabase keepalive succeeded."
