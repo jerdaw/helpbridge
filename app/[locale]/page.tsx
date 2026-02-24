@@ -20,6 +20,11 @@ import SearchControls from "../../components/home/SearchControls"
 import SearchChips from "../../components/home/SearchChips"
 import SearchResultsList from "../../components/home/SearchResultsList"
 import SafetyAlert from "../../components/home/SafetyAlert"
+import HomeStats from "../../components/home/HomeStats"
+import TrustStrip from "../../components/home/TrustStrip"
+import CategoryBrowseGrid from "../../components/home/CategoryBrowseGrid"
+import HowItWorks from "../../components/home/HowItWorks"
+import PartnerCTA from "../../components/home/PartnerCTA"
 
 export default function Home() {
   const t = useTranslations()
@@ -66,7 +71,7 @@ export default function Home() {
   }, [searchParams, setQuery, setCategory, setOpenNow])
 
   // Progressive Search Hook
-  const { isReady, progress, generateEmbedding } = useSemanticSearch()
+  const { isReady, generateEmbedding } = useSemanticSearch()
 
   // Perform Search Logic
   useServices({
@@ -92,6 +97,11 @@ export default function Home() {
       searchBarRef.current.scrollIntoView({ behavior: "smooth", block: "start" })
     }
   }, [hasSearched])
+
+  const handleCategorySelect = (cat: string) => {
+    setCategory(cat)
+    searchBarRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
 
   const isActive = isFocused || query.length > 0
 
@@ -127,10 +137,10 @@ export default function Home() {
               </h1>
 
               <p className="mx-auto max-w-2xl text-lg leading-relaxed text-neutral-600 md:text-xl dark:text-neutral-300">
-                {t("Footer.disclaimer")}
+                {t("Home.hero.subtitle")}
               </p>
 
-              <ModelStatus isReady={isReady} progress={progress} />
+              <ModelStatus isReady={isReady} />
             </motion.div>
 
             <motion.div
@@ -204,6 +214,21 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+
+        {/* Discovery Layer — hidden when results are shown */}
+        <div
+          className={cn(
+            "transition-all duration-500",
+            hasSearched ? "pointer-events-none h-0 overflow-hidden opacity-0" : "opacity-100"
+          )}
+          aria-hidden={hasSearched || undefined}
+        >
+          <HomeStats />
+          <TrustStrip />
+          <CategoryBrowseGrid onCategorySelect={handleCategorySelect} />
+          <HowItWorks />
+          <PartnerCTA />
+        </div>
 
         {/* Results Section */}
         <Section className={hasSearched ? "pt-0" : "h-0 overflow-hidden py-0 opacity-0"}>

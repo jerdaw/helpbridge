@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl"
 import { ShieldCheck, Users, Globe, Smartphone, Heart, Search, Filter, Phone } from "lucide-react"
+import { cn } from "@/lib/utils"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { Section } from "@/components/ui/section"
@@ -84,7 +85,13 @@ export default function AboutPage() {
                 className="h-full border-neutral-200/60 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-neutral-800"
               >
                 <div
-                  className={`mb-4 inline-flex rounded-xl p-3 bg-${metric.color}-50 text-${metric.color}-600 dark:bg-${metric.color}-900/20 dark:text-${metric.color}-400`}
+                  className={cn(
+                    "mb-4 inline-flex rounded-xl p-3",
+                    metric.color === "blue" && "bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400",
+                    metric.color === "purple" && "bg-purple-50 text-purple-600 dark:bg-purple-900/20 dark:text-purple-400",
+                    metric.color === "emerald" && "bg-emerald-50 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400",
+                    metric.color === "rose" && "bg-rose-50 text-rose-600 dark:bg-rose-900/20 dark:text-rose-400"
+                  )}
                 >
                   <metric.icon className="h-6 w-6" />
                 </div>
@@ -98,7 +105,7 @@ export default function AboutPage() {
         {/* How It Works */}
         <Section className="py-24">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-neutral-900 dark:text-white">{t("howItWorks.title")}</h2>
+            <h2 className="heading-display mb-4 text-3xl font-bold text-neutral-900 dark:text-white">{t("howItWorks.title")}</h2>
             <p className="mx-auto max-w-2xl text-lg text-neutral-600 dark:text-neutral-400">
               {t("howItWorks.subtitle")}
             </p>
@@ -120,7 +127,7 @@ export default function AboutPage() {
         {/* Values / Governance */}
         <Section className="py-24" variant="alternate">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="mb-8 text-3xl font-bold text-neutral-900 dark:text-white">{t("governance.title")}</h2>
+            <h2 className="heading-display mb-8 text-3xl font-bold text-neutral-900 dark:text-white">{t("governance.title")}</h2>
             <div className="prose prose-lg mx-auto mb-12 text-neutral-600 dark:text-neutral-400">
               <p>{t("governanceText")}</p>
             </div>

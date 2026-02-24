@@ -1,5 +1,8 @@
+"use client"
+
 import { Search, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useTranslations } from "next-intl"
 
 interface SearchBarProps {
   query: string
@@ -20,6 +23,7 @@ export default function SearchBar({
   onFocus,
   onBlur,
 }: SearchBarProps) {
+  const t = useTranslations("Search")
   return (
     <div className="group relative">
       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5">
@@ -40,9 +44,9 @@ export default function SearchBar({
           variant="ghost"
           size="icon"
           onClick={handleSaveSearch}
-          className="absolute inset-y-0 right-12 my-auto h-10 w-10 text-neutral-400 hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-900/20"
-          title="Save this search"
-          aria-label="Save this search"
+          className="absolute inset-y-0 right-12 my-auto h-11 w-11 text-neutral-400 hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-900/20"
+          title={t("saveThisSearch")}
+          aria-label={t("saveThisSearch")}
         >
           <Heart className="h-5 w-5" />
         </Button>
@@ -54,7 +58,6 @@ export default function SearchBar({
 
 import { Mic, Loader2 } from "lucide-react"
 import { useVoiceInput } from "@/hooks/useVoiceInput"
-import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
 
 function VoiceSearchButton({ onResult }: { onResult: (text: string) => void }) {
@@ -78,7 +81,7 @@ function VoiceSearchButton({ onResult }: { onResult: (text: string) => void }) {
       size="icon"
       onClick={isActive ? stopListening : startListening}
       className={cn(
-        "absolute inset-y-0 right-2 my-auto h-10 w-10 transition-colors",
+        "absolute inset-y-0 right-2 my-auto h-11 w-11 transition-colors",
         isActive
           ? "animate-pulse bg-red-50 text-red-600 dark:bg-red-900/20"
           : "hover:text-primary-500 text-neutral-400",
@@ -87,13 +90,7 @@ function VoiceSearchButton({ onResult }: { onResult: (text: string) => void }) {
       title={getTooltip()}
       aria-label={getTooltip()}
     >
-      {isProcessing ? (
-        <Loader2 className="h-5 w-5" />
-      ) : isActive ? (
-        <Mic className="h-5 w-5" />
-      ) : (
-        <Mic className="h-5 w-5" />
-      )}
+      {isProcessing ? <Loader2 className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
     </Button>
   )
 }
