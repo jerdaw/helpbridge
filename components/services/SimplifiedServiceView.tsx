@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Service } from "@/types/service"
 import { Scroll, Phone, MapPin, Clock, ArrowRight } from "lucide-react"
 import { useRouter, usePathname, useSearchParams } from "next/navigation"
+import { logger } from "@/lib/logger"
 
 interface PlainLanguageSummary {
   summary_en: string
@@ -56,7 +57,7 @@ export function SimplifiedServiceView({ service, locale, translations }: Simplif
           setSummary(json.data)
         }
       } catch (err) {
-        console.error("Failed to fetch summary", err)
+        logger.error("Failed to fetch summary", { error: err })
       } finally {
         setLoading(false)
       }
@@ -89,7 +90,7 @@ export function SimplifiedServiceView({ service, locale, translations }: Simplif
             className="flex shrink-0 items-center gap-2 rounded-full border-2 border-black bg-white px-4 py-2 font-bold transition-colors hover:bg-neutral-100"
           >
             {translations.standardView}
-            <ArrowRight className="h-5 w-5" />
+            <ArrowRight className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>
 
@@ -116,7 +117,7 @@ export function SimplifiedServiceView({ service, locale, translations }: Simplif
             {/* What is it? */}
             <section className="space-y-4">
               <div className="flex inline-block items-center gap-3 border-b-4 border-blue-600 pb-2 text-2xl font-bold">
-                <Scroll className="h-8 w-8 text-blue-600" />
+                <Scroll className="h-8 w-8 text-blue-600" aria-hidden="true" />
                 <h2>{translations.whatIsIt}</h2>
               </div>
               <p className="text-xl leading-relaxed font-bold md:text-3xl">{description}</p>
@@ -125,7 +126,7 @@ export function SimplifiedServiceView({ service, locale, translations }: Simplif
             {/* How do I get help? */}
             <section className="space-y-4">
               <div className="flex inline-block items-center gap-3 border-b-4 border-green-600 pb-2 text-2xl font-bold">
-                <ArrowRight className="h-8 w-8 text-green-600" />
+                <ArrowRight className="h-8 w-8 text-green-600" aria-hidden="true" />
                 <h2>{translations.howToGetHelp}</h2>
               </div>
               <div className="rounded-2xl border-4 border-green-200 bg-white p-8 text-xl leading-relaxed font-bold whitespace-pre-wrap shadow-sm md:text-2xl">
@@ -138,7 +139,7 @@ export function SimplifiedServiceView({ service, locale, translations }: Simplif
               {service.phone && (
                 <div className="space-y-4 rounded-2xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                   <h3 className="flex items-center gap-2 text-xl font-bold">
-                    <Phone className="h-6 w-6" />
+                    <Phone className="h-6 w-6" aria-hidden="true" />
                     {translations.callUs}
                   </h3>
                   <a href={`tel:${service.phone}`} className="block text-3xl font-black text-blue-700 underline">
@@ -150,7 +151,7 @@ export function SimplifiedServiceView({ service, locale, translations }: Simplif
               {service.address && (
                 <div className="space-y-4 rounded-2xl border-2 border-black bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                   <h3 className="flex items-center gap-2 text-xl font-bold">
-                    <MapPin className="h-6 w-6" />
+                    <MapPin className="h-6 w-6" aria-hidden="true" />
                     {translations.visitUs}
                   </h3>
                   <p className="text-2xl font-bold">{service.address}</p>
@@ -160,7 +161,7 @@ export function SimplifiedServiceView({ service, locale, translations }: Simplif
               {service.hours_text && (
                 <div className="space-y-4 rounded-2xl border-2 border-black bg-white p-6 md:col-span-2">
                   <h3 className="flex items-center gap-2 text-xl font-bold">
-                    <Clock className="h-6 w-6" />
+                    <Clock className="h-6 w-6" aria-hidden="true" />
                     {translations.openHours}
                   </h3>
                   <p className="text-xl font-medium whitespace-pre-line">{service.hours_text}</p>

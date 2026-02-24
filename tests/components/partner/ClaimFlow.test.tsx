@@ -28,18 +28,18 @@ describe("ClaimFlow Component", () => {
   })
 
   it("renders the claim button", () => {
-    render(<ClaimFlow serviceId="1" serviceName="Test Service" />)
+    render(<ClaimFlow serviceName="Test Service" />)
     expect(screen.getByText("button")).toBeInTheDocument()
   })
 
   it("opens dialog on click", () => {
-    render(<ClaimFlow serviceId="1" serviceName="Test Service" />)
+    render(<ClaimFlow serviceName="Test Service" />)
     fireEvent.click(screen.getByText("button"))
     expect(screen.getByText("title")).toBeInTheDocument()
   })
 
   it("requires agreement before proceeding to step 2", () => {
-    render(<ClaimFlow serviceId="1" serviceName="Test Service" />)
+    render(<ClaimFlow serviceName="Test Service" />)
     fireEvent.click(screen.getByText("button"))
 
     const nextButton = screen.getByText("submit")
@@ -51,11 +51,11 @@ describe("ClaimFlow Component", () => {
     expect(nextButton).not.toBeDisabled()
     fireEvent.click(nextButton)
 
-    expect(screen.getByLabelText("Work Email")).toBeInTheDocument()
+    expect(screen.getByLabelText("emailLabel")).toBeInTheDocument()
   })
 
   it("submits the claim on step 2", async () => {
-    render(<ClaimFlow serviceId="1" serviceName="Test Service" />)
+    render(<ClaimFlow serviceName="Test Service" />)
     fireEvent.click(screen.getByText("button"))
 
     // Step 1
@@ -63,7 +63,7 @@ describe("ClaimFlow Component", () => {
     fireEvent.click(screen.getByText("submit"))
 
     // Step 2
-    const emailInput = screen.getByLabelText("Work Email")
+    const emailInput = screen.getByLabelText("emailLabel")
     fireEvent.change(emailInput, { target: { value: "test@org.com" } })
 
     const submitButton = screen.getByText("submit")
