@@ -14,6 +14,7 @@ import { Separator } from "@/components/ui/separator"
 import { Loader2, Save, Shield, Bell, Users } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { MemberManagement } from "@/components/dashboard/MemberManagement"
+import { DashboardPageHeader } from "@/components/dashboard/DashboardPageHeader"
 
 interface OrgData {
   id: string
@@ -161,10 +162,7 @@ export default function SettingsPage() {
 
   return (
     <div className="mx-auto max-w-4xl space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">{t("title")}</h1>
-        <p className="mt-2 text-neutral-600 dark:text-neutral-400">{t("description")}</p>
-      </div>
+      <DashboardPageHeader title={t("title")} subtitle={t("description")} />
 
       <div className="grid gap-8">
         {/* Organization Information */}

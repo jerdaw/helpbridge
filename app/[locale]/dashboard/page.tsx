@@ -1,12 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ShieldCheck, Eye, MousePointerClick, TrendingUp, FileText } from "lucide-react"
+import { ShieldCheck, FileText, BarChart3 } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { createClient } from "@/utils/supabase/server"
 import { redirect } from "next/navigation"
+import { getTranslations } from "next-intl/server"
+import { DashboardPageHeader } from "@/components/dashboard/DashboardPageHeader"
+import { EmptyState } from "@/components/ui/empty-state"
 
 export default async function DashboardPage() {
   const supabase = await createClient()
+  const t = await getTranslations("Dashboard.overview")
   const {
     data: { user },
   } = await supabase.auth.getUser()
@@ -24,65 +28,43 @@ export default async function DashboardPage() {
 
   return (
     <div className="mx-auto max-w-6xl space-y-8">
-      {/* Header */}
-      <div className="flex flex-col gap-2">
-        <h1 className="heading-display text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">
-          Welcome back, Partner
-        </h1>
-        <p className="text-neutral-500 dark:text-neutral-400">
-          Here&apos;s an overview of your organization&apos;s performance on Care Connect.
-        </p>
-      </div>
+      <DashboardPageHeader title={t("welcomeTitle")} subtitle={t("welcomeSubtitle")} />
 
       {/* Stats Grid */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <Card variant="interactive">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-neutral-500">Total Views</CardTitle>
-            <Eye className="h-4 w-4 text-neutral-400" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">1,234</div>
-            <p className="mt-1 flex items-center gap-1 text-xs text-neutral-500">
-              <TrendingUp className="h-3 w-3 text-emerald-500" />
-              <span className="font-medium text-emerald-600">+12%</span> from last month
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card variant="interactive">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-neutral-500">Referrals</CardTitle>
-            <MousePointerClick className="h-4 w-4 text-neutral-400" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">85</div>
-            <p className="mt-1 flex items-center gap-1 text-xs text-neutral-500">
-              <TrendingUp className="h-3 w-3 text-emerald-500" />
-              <span className="font-medium text-emerald-600">+5%</span> from last month
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card variant="interactive">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-neutral-500">Verified Services</CardTitle>
+            <CardTitle className="text-sm font-medium text-neutral-500">{t("verifiedServices")}</CardTitle>
             <ShieldCheck className="h-4 w-4 text-neutral-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">3</div>
-            <p className="mt-1 text-xs text-neutral-500">All services up to date</p>
+            <p className="mt-1 text-xs text-neutral-500">{t("allServicesUpToDate")}</p>
           </CardContent>
         </Card>
 
         <Card variant="interactive">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-neutral-500">Update Requests</CardTitle>
+            <CardTitle className="text-sm font-medium text-neutral-500">{t("updateRequests")}</CardTitle>
             <FileText className="h-4 w-4 text-neutral-400" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{pendingUpdates || 0}</div>
-            <p className="mt-1 text-xs text-neutral-500">Pending review by admin</p>
+            <p className="mt-1 text-xs text-neutral-500">{t("pendingReview")}</p>
+          </CardContent>
+        </Card>
+
+        <Card variant="interactive">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium text-neutral-500">{t("totalViews")}</CardTitle>
+            <BarChart3 className="h-4 w-4 text-neutral-400" />
+          </CardHeader>
+          <CardContent>
+            <EmptyState
+              icon={BarChart3}
+              title={t("comingSoon")}
+              description={t("analyticsComingSoonDesc")}
+            />
           </CardContent>
         </Card>
       </div>
@@ -91,8 +73,8 @@ export default async function DashboardPage() {
       <div className="grid gap-6 md:grid-cols-2">
         <Card className="col-span-1">
           <CardHeader>
-            <CardTitle>Data Quality Score</CardTitle>
-            <CardDescription>Your organization&apos;s data completeness rating.</CardDescription>
+            <CardTitle>{t("dataQualityScore")}</CardTitle>
+            <CardDescription>{t("dataQualityDesc")}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-4">
@@ -100,10 +82,8 @@ export default async function DashboardPage() {
                 <span className="text-3xl font-bold text-emerald-600">A</span>
               </div>
               <div className="space-y-1">
-                <p className="font-medium">Excellent!</p>
-                <p className="text-sm text-neutral-500">
-                  Your services have complete descriptions, hours, and contact info.
-                </p>
+                <p className="font-medium">{t("excellent")}</p>
+                <p className="text-sm text-neutral-500">{t("dataQualityText")}</p>
               </div>
             </div>
           </CardContent>
@@ -111,14 +91,12 @@ export default async function DashboardPage() {
 
         <Card className="from-primary-900 to-primary-800 col-span-1 border-none bg-gradient-to-br text-white">
           <CardHeader>
-            <CardTitle className="text-white">Verify your listings</CardTitle>
-            <CardDescription className="text-primary-100">
-              It&apos;s been 30 days since your last verification. Confirm your service details are still accurate.
-            </CardDescription>
+            <CardTitle className="text-white">{t("verifyListingsTitle")}</CardTitle>
+            <CardDescription className="text-primary-100">{t("verifyListingsDesc")}</CardDescription>
           </CardHeader>
           <CardContent>
             <Button variant="secondary" className="w-full sm:w-auto">
-              Start Verification
+              {t("startVerification")}
             </Button>
           </CardContent>
         </Card>
@@ -127,7 +105,7 @@ export default async function DashboardPage() {
       {/* Quick Link - Manage Services */}
       <div className="flex justify-end">
         <Button asChild className="gap-2">
-          <Link href="/dashboard/services">Manage Services &rarr;</Link>
+          <Link href="/dashboard/services">{t("manageServices")} &rarr;</Link>
         </Button>
       </div>
     </div>

@@ -7,10 +7,11 @@ import { Service } from "@/types/service"
 import EditServiceForm from "@/components/EditServiceForm"
 import { ServiceFormData } from "@/lib/schemas"
 import { useAuth } from "@/components/AuthProvider"
-import { ArrowLeft, Eye } from "lucide-react"
+import { ArrowLeft, Eye, Loader2 } from "lucide-react"
 import Link from "next/link"
 import { useServiceFeedback } from "@/hooks/useServiceFeedback"
 import { ThumbsUp, AlertTriangle } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 function FeedbackStats({ serviceId }: { serviceId: string }) {
   const { stats, helpfulPercentage, totalVotes, loading } = useServiceFeedback(serviceId)
@@ -36,6 +37,7 @@ function FeedbackStats({ serviceId }: { serviceId: string }) {
 }
 
 export default function EditServicePage({ params }: { params: Promise<{ id: string }> }) {
+  const t = useTranslations("Dashboard.services.viewPage")
   const [service, setService] = useState<Service | null>(null)
   const [loading, setLoading] = useState(true)
   const [id, setId] = useState<string>("")
@@ -105,7 +107,7 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
   if (loading) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"></div>
+        <Loader2 className="h-8 w-8 animate-spin text-primary-500" />
       </div>
     )
   }
@@ -113,9 +115,9 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
   if (!service) {
     return (
       <div className="py-12 text-center">
-        <h2 className="text-xl font-semibold text-neutral-900 dark:text-white">Service not found</h2>
+        <h2 className="text-xl font-semibold text-neutral-900 dark:text-white">{t("serviceNotFound")}</h2>
         <Link href="/dashboard/services" className="mt-4 inline-block text-blue-600 hover:underline">
-          &larr; Back to Services
+          &larr; {t("backToServices")}
         </Link>
       </div>
     )
@@ -132,7 +134,7 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
             <ArrowLeft className="h-4 w-4 text-neutral-600 dark:text-neutral-400" />
           </Link>
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">Edit Service</h1>
+            <h1 className="heading-display text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">{t("editService")}</h1>
             <div className="mt-1 flex items-center gap-3">
               <p className="text-sm text-neutral-600 dark:text-neutral-400">{service.name}</p>
               <FeedbackStats serviceId={id} />
@@ -146,7 +148,7 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
           className="inline-flex items-center gap-2 rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm font-semibold text-neutral-700 shadow-sm hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
         >
           <Eye className="h-4 w-4" />
-          Preview
+          {t("preview")}
         </a>
       </div>
 

@@ -1,11 +1,14 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Check, Info, AlertTriangle, CheckCircle, Loader2 } from "lucide-react"
+import { Check, Info, AlertTriangle, CheckCircle, Loader2, BellOff } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { createClient } from "@/utils/supabase/client"
 import { useAuth } from "@/components/AuthProvider"
 import { useToast } from "@/components/ui/use-toast"
+import { useTranslations } from "next-intl"
+import { DashboardPageHeader } from "@/components/dashboard/DashboardPageHeader"
+import { EmptyState } from "@/components/ui/empty-state"
 
 interface Notification {
   id: string
@@ -17,6 +20,7 @@ interface Notification {
 }
 
 export default function NotificationsPage() {
+  const t = useTranslations("Dashboard.notifications")
   const [notifications, setNotifications] = useState<Notification[]>([])
   const [loading, setLoading] = useState(true)
   const { user } = useAuth()
@@ -50,8 +54,8 @@ export default function NotificationsPage() {
       setNotifications((prev: Notification[]) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)))
     } else {
       toast({
-        title: "Error",
-        description: "Failed to update notification",
+        title: t("toast.error"),
+        description: t("toast.updateFailed"),
         variant: "destructive",
       })
     }
@@ -69,13 +73,13 @@ export default function NotificationsPage() {
     if (!error) {
       setNotifications((prev: Notification[]) => prev.map((n) => ({ ...n, read: true })))
       toast({
-        title: "Success",
-        description: "All notifications marked as read",
+        title: t("toast.success"),
+        description: t("toast.allMarkedAsRead"),
       })
     } else {
       toast({
-        title: "Error",
-        description: "Failed to update notifications",
+        title: t("toast.error"),
+        description: t("toast.updateAllFailed"),
         variant: "destructive",
       })
     }
@@ -97,29 +101,27 @@ export default function NotificationsPage() {
   if (loading) {
     return (
       <div className="flex justify-center p-12">
-        <Loader2 className="h-8 w-8 animate-spin text-neutral-400" />
+        <Loader2 className="h-8 w-8 animate-spin text-primary-500" />
       </div>
     )
   }
 
   return (
     <div className="space-y-6">
-      <header className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">Notifications</h1>
-          <p className="mt-2 text-lg text-neutral-600 dark:text-neutral-400">
-            Stay updated on your services and account status.
-          </p>
-        </div>
-        {notifications.some((n: Notification) => !n.read) && (
-          <Button variant="link" onClick={markAllAsRead}>
-            Mark all as read
-          </Button>
-        )}
-      </header>
+      <DashboardPageHeader
+        title={t("pageTitle")}
+        subtitle={t("pageSubtitle")}
+        actions={
+          notifications.some((n: Notification) => !n.read) ? (
+            <Button variant="link" onClick={markAllAsRead}>
+              {t("markAllAsRead")}
+            </Button>
+          ) : undefined
+        }
+      />
 
       {notifications.length === 0 ? (
-        <div className="rounded-xl border border-dashed p-12 text-center text-neutral-500">No notifications yet.</div>
+        <EmptyState icon={BellOff} title={t("noNotifications")} description={t("pageSubtitle")} />
       ) : (
         <div className="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
           <ul className="divide-y divide-neutral-200 dark:divide-neutral-800">
@@ -144,7 +146,7 @@ export default function NotificationsPage() {
                     size="icon"
                     onClick={() => markAsRead(notification.id)}
                     className="h-8 w-8 flex-shrink-0 rounded-full"
-                    title="Mark as read"
+                    title={t("markAsRead")}
                   >
                     <Check className="h-4 w-4" />
                   </Button>
