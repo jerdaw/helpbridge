@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server"
 import { redirect } from "next/navigation"
 import { logger } from "@/lib/logger"
 import { FeedbackList } from "@/components/dashboard/FeedbackList"
+import { DashboardPageHeader } from "@/components/dashboard/DashboardPageHeader"
 
 interface FeedbackItem {
   id: string
@@ -60,11 +61,7 @@ export default async function FeedbackPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
-        <p className="text-neutral-500">{t("description")}</p>
-      </div>
-
+      <DashboardPageHeader title={t("title")} subtitle={t("description")} />
       <FeedbackList feedback={typedFeedback} />
     </div>
   )

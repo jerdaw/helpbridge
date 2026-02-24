@@ -2,6 +2,7 @@
 
 import { WifiOff, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 import { useTranslations } from "next-intl"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
@@ -30,7 +31,9 @@ export default function OfflinePage() {
         <div className="rounded-full bg-neutral-200 p-6 dark:bg-neutral-800">
           <WifiOff className="h-12 w-12 text-neutral-500 dark:text-neutral-400" />
         </div>
-        <h1 className="mt-6 text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">{t("title")}</h1>
+        <h1 className="heading-display mt-6 text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">
+          {t("title")}
+        </h1>
         <p className="mt-2 max-w-sm text-neutral-600 dark:text-neutral-400">{t("description")}</p>
 
         {cachedServices.length > 0 && (
@@ -45,7 +48,7 @@ export default function OfflinePage() {
         )}
 
         <div className="mt-8 w-full max-w-md space-y-4">
-          <div className="rounded-lg border border-neutral-200 bg-white p-4 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+          <Card className="p-4">
             <h3 className="font-semibold text-neutral-900 dark:text-white">{t("emergencyContacts")}</h3>
 
             <ul className="mt-4 space-y-4">
@@ -76,7 +79,7 @@ export default function OfflinePage() {
                 </a>
               </li>
             </ul>
-          </div>
+          </Card>
 
           <div className="flex justify-center">
             <Button variant="link" onClick={() => window.location.reload()}>
