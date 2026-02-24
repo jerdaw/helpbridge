@@ -1,27 +1,27 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useMemo } from "react"
 import { Zap, ShieldCheck } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
-
-const messages = [
-  {
-    iconComponent: ShieldCheck,
-    text: "Privacy First • No Tracking • Open Source",
-    color: "text-green-700 dark:text-green-500",
-  },
-  { iconComponent: Zap, text: "Private Neural Search Active", color: "text-green-700 dark:text-green-500" },
-]
+import { useTranslations } from "next-intl"
 
 // Synced to half of the 10-second spin cycle
 const HALF_CYCLE_DURATION = 5000 // 5 seconds
+const MESSAGES_COUNT = 2
 
 interface ModelStatusProps {
   isReady: boolean
-  progress: number | null
 }
 
 export default function ModelStatus({ isReady }: ModelStatusProps) {
+  const t = useTranslations("Home.modelStatus")
+  const messages = useMemo(
+    () => [
+      { iconComponent: ShieldCheck, text: t("privacyFirst"), color: "text-green-700 dark:text-green-500" },
+      { iconComponent: Zap, text: t("neuralSearchActive"), color: "text-green-700 dark:text-green-500" },
+    ],
+    [t]
+  )
   const [messageIndex, setMessageIndex] = useState(0)
 
   // Use a ref to access the latest isReady value in the interval callback
@@ -53,7 +53,7 @@ export default function ModelStatus({ isReady }: ModelStatusProps) {
         }
 
         // Ready: cycle between messages
-        setMessageIndex((prev) => (prev + 1) % messages.length)
+        setMessageIndex((prev) => (prev + 1) % MESSAGES_COUNT)
       }, HALF_CYCLE_DURATION)
     }, FIRST_CHECKPOINT_DELAY)
 
@@ -65,7 +65,7 @@ export default function ModelStatus({ isReady }: ModelStatusProps) {
     }
   }, [])
 
-  const currentMessage = messages[messageIndex % messages.length]
+  const currentMessage = messages[messageIndex % MESSAGES_COUNT]
 
   if (!currentMessage) return null
 

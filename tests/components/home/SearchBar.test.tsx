@@ -27,6 +27,7 @@ describe("SearchBar", () => {
     const translations: Record<string, string> = {
       start: "Start voice input",
       stop: "Stop listening",
+      saveThisSearch: "Save this search",
     }
     return translations[key] || key
   })

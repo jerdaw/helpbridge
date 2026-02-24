@@ -8,10 +8,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { AccessibleFormField } from "@/components/forms/AccessibleFormField"
 import { useToast } from "@/components/ui/use-toast"
+import { useTranslations } from "next-intl"
 import { BellRing, Send } from "lucide-react"
 
 export default function AdminNotificationsPage() {
   const { toast } = useToast()
+  const t = useTranslations("Admin.notifications")
 
   const [title, setTitle] = useState("")
   const [message, setMessage] = useState("")
@@ -34,8 +36,8 @@ export default function AdminNotificationsPage() {
 
       if (response.ok) {
         toast({
-          title: "Success",
-          description: "Notification broadcast sent successfully.",
+          title: t("toast.success"),
+          description: t("toast.sent"),
           duration: 5000,
         })
         setTitle("")
@@ -46,8 +48,8 @@ export default function AdminNotificationsPage() {
       }
     } catch (err) {
       toast({
-        title: "Error",
-        description: err instanceof Error ? err.message : "Failed to send notification.",
+        title: t("toast.error"),
+        description: err instanceof Error ? err.message : t("toast.sendFailed"),
         variant: "destructive",
       })
     } finally {
@@ -58,39 +60,39 @@ export default function AdminNotificationsPage() {
   return (
     <main id="main-content" tabIndex={-1} className="container max-w-2xl py-10 focus:outline-none">
       <div className="mb-8 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight">Notification Console</h1>
-        <p className="text-muted-foreground">Send push notifications to all subscribed users.</p>
+        <h1 className="heading-display text-3xl font-bold tracking-tight">{t("pageTitle")}</h1>
+        <p className="text-muted-foreground">{t("pageSubtitle")}</p>
       </div>
 
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <BellRing className="h-5 w-5" />
-            Compose Message
+            {t("composeTitle")}
           </CardTitle>
-          <CardDescription>This will be sent to all users who have opted in.</CardDescription>
+          <CardDescription>{t("composeDesc")}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <AccessibleFormField label="Notification Type" id="notif-type">
+          <AccessibleFormField label={t("notificationType")} id="notif-type">
             <Select value={type} onValueChange={setType}>
               <SelectTrigger id="notif-type">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="service_update">Service Update</SelectItem>
-                <SelectItem value="emergency">Critical Alert</SelectItem>
-                <SelectItem value="general">General Announcement</SelectItem>
+                <SelectItem value="service_update">{t("types.serviceUpdate")}</SelectItem>
+                <SelectItem value="emergency">{t("types.emergency")}</SelectItem>
+                <SelectItem value="general">{t("types.general")}</SelectItem>
               </SelectContent>
             </Select>
           </AccessibleFormField>
 
-          <AccessibleFormField label="Title" id="notif-title" required>
-            <Input placeholder="e.g. Shelter Capacity Alert" value={title} onChange={(e) => setTitle(e.target.value)} />
+          <AccessibleFormField label={t("titleLabel")} id="notif-title" required>
+            <Input placeholder={t("titlePlaceholder")} value={title} onChange={(e) => setTitle(e.target.value)} />
           </AccessibleFormField>
 
-          <AccessibleFormField label="Message Body" id="notif-body" required>
+          <AccessibleFormField label={t("messageLabel")} id="notif-body" required>
             <Textarea
-              placeholder="Details about the update..."
+              placeholder={t("messagePlaceholder")}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={4}
@@ -100,15 +102,14 @@ export default function AdminNotificationsPage() {
           <div className="flex justify-end pt-4">
             <Button onClick={handleSend} disabled={!title || !message || isSubmitting}>
               <Send className="mr-2 h-4 w-4" />
-              Send Broadcast
+              {t("sendBroadcast")}
             </Button>
           </div>
         </CardContent>
       </Card>
 
       <div className="mt-8 rounded bg-amber-50 p-4 text-sm text-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
-        <strong>Note:</strong> To make this functional, you need to implement a Next.js API route (`/api/admin/push`)
-        that uses the **OneSignal REST API Key** to trigger the actual send.
+        <strong>Note:</strong> {t("implementationNote")}
       </div>
     </main>
   )

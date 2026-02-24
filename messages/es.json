@@ -68,7 +68,8 @@
     "noResultsHelpBrowse": "Explora las categorías a continuación",
     "noResultsHelpDifferentWords": "Intenta palabras diferentes (ej.: \"asistencia alimentaria\" en lugar de \"comestibles\")",
     "noResultsHelpCheckSpelling": "Verifica tu ortografía",
-    "noResultsHelpBroaderSearch": "Busca un tema más amplio (ej.: \"salud\" en lugar de \"clínica de diabetes\")"
+    "noResultsHelpBroaderSearch": "Busca un tema más amplio (ej.: \"salud\" en lugar de \"clínica de diabetes\")",
+    "saveThisSearch": "Guardar esta búsqueda"
   },
   "VoiceInput": {
     "start": "Iniciar Búsqueda por Voz Privada",
@@ -373,6 +374,46 @@
           "creating": "Creating...",
           "createService": "Create Service"
         }
+      },
+      "import": {
+        "breadcrumbServices": "My Services",
+        "breadcrumbImport": "Import",
+        "title": "Bulk Import Services",
+        "subtitle": "Upload a CSV file to add multiple services at once.",
+        "dragAndDrop": "Drag and drop your CSV file here, or",
+        "browse": "browse",
+        "fileSupport": "Supports: .csv (Max 5MB)",
+        "removeFile": "Remove File",
+        "uploadFailed": "Upload Failed",
+        "uploadFailedDesc": "The file could not be processed. Please ensure it's a valid CSV file with required headers (name, description, category).",
+        "tryAgain": "Try Again",
+        "importComplete": "Import Complete",
+        "servicesImported": "{count} service(s) imported successfully",
+        "servicesFailed": "{count} service(s) failed to import",
+        "importAnother": "Import Another",
+        "downloadTemplate": "Download CSV Template",
+        "validationResults": "Validation Results",
+        "validRows": "Valid Rows",
+        "invalidRows": "Invalid Rows",
+        "validationErrors": "Validation Errors",
+        "rowNumber": "Row {number}:",
+        "moreErrors": "... and {count} more errors",
+        "dataPreview": "Data Preview",
+        "showingFirst10": "Showing first 10 rows",
+        "status": "Status",
+        "empty": "empty",
+        "validRowsReady": "{count} valid rows ready to import",
+        "processing": "Processing...",
+        "importServices": "Import {count} Services"
+      },
+      "viewPage": {
+        "editService": "Edit Service",
+        "preview": "Preview",
+        "openIssues": "open issues",
+        "backToServices": "Back to Services",
+        "serviceNotFound": "Service not found",
+        "votes": "votes",
+        "loading": "Loading..."
       }
     },
     "logout": "Cerrar sesión",
@@ -518,6 +559,41 @@
         "saving": "Saving...",
         "saveChanges": "Save Changes",
         "savePreferences": "Save Preferences"
+      }
+    },
+    "overview": {
+      "welcomeTitle": "Welcome back, Partner",
+      "welcomeSubtitle": "Here's an overview of your organization's performance on Care Connect.",
+      "totalViews": "Total Views",
+      "referrals": "Referrals",
+      "verifiedServices": "Verified Services",
+      "allServicesUpToDate": "All services up to date",
+      "updateRequests": "Update Requests",
+      "pendingReview": "Pending review by admin",
+      "comingSoon": "Coming Soon",
+      "analyticsComingSoonDesc": "Detailed analytics will be available once we have enough data.",
+      "dataQualityScore": "Data Quality Score",
+      "dataQualityDesc": "Your organization's data completeness rating.",
+      "excellent": "Excellent!",
+      "dataQualityText": "Your services have complete descriptions, hours, and contact info.",
+      "verifyListingsTitle": "Verify your listings",
+      "verifyListingsDesc": "It's been 30 days since your last verification. Confirm your service details are still accurate.",
+      "startVerification": "Start Verification",
+      "manageServices": "Manage Services",
+      "fromLastMonth": "del mes pasado"
+    },
+    "notifications": {
+      "pageTitle": "Notifications",
+      "pageSubtitle": "Stay updated on your services and account status.",
+      "markAllAsRead": "Mark all as read",
+      "noNotifications": "No notifications yet.",
+      "markAsRead": "Mark as read",
+      "toast": {
+        "success": "Success",
+        "allMarkedAsRead": "All notifications marked as read",
+        "error": "Error",
+        "updateFailed": "Failed to update notification",
+        "updateAllFailed": "Failed to update notifications"
       }
     }
   },
@@ -1004,7 +1080,10 @@
     "step2": "Verificar Correo",
     "agreeLabel": "Acepto los Términos de Servicio para Socios",
     "submit": "Continue to Verification",
-    "success": "Claim request submitted. Check your email."
+    "success": "Claim request submitted. Check your email.",
+    "termsTitle": "Acuerdo de Términos de Asociación",
+    "emailLabel": "Correo Laboral",
+    "emailHint": "Use su correo electrónico oficial de la organización para una verificación más rápida."
   },
   "Login": {
     "title": "Acceso para Socios",
@@ -1199,6 +1278,30 @@
       "history": {
         "empty": "No reindex operations found"
       }
+    },
+    "notifications": {
+      "pageTitle": "Notification Console",
+      "pageSubtitle": "Send push notifications to all subscribed users.",
+      "composeTitle": "Compose Message",
+      "composeDesc": "This will be sent to all users who have opted in.",
+      "notificationType": "Notification Type",
+      "types": {
+        "serviceUpdate": "Service Update",
+        "emergency": "Critical Alert",
+        "general": "General Announcement"
+      },
+      "titleLabel": "Title",
+      "titlePlaceholder": "e.g. Shelter Capacity Alert",
+      "messageLabel": "Message Body",
+      "messagePlaceholder": "Details about the update...",
+      "sendBroadcast": "Send Broadcast",
+      "toast": {
+        "success": "Success",
+        "sent": "Notification broadcast sent successfully.",
+        "error": "Error",
+        "sendFailed": "Failed to send notification."
+      },
+      "implementationNote": "Note: To make this functional, you need to implement a Next.js API route (/api/admin/push) that uses the OneSignal REST API Key to trigger the actual send."
     }
   },
   "NotFound": {
@@ -1222,5 +1325,60 @@
   "FAQ": {
     "title": "Preguntas Frecuentes - Kingston Care Connect",
     "description": "Preguntas frecuentes sobre Kingston Care Connect, verificación de datos y privacidad."
+  },
+  "Home": {
+    "modelStatus": {
+      "privacyFirst": "Privacidad Primero • Sin Rastreo • Código Abierto",
+      "neuralSearchActive": "Búsqueda Neural Privada Activa"
+    },
+    "searchChips": {
+      "savedLabel": "Guardado",
+      "removeSavedSearch": "Eliminar búsqueda guardada: {term}",
+      "quickSearchesLabel": "Popular searches",
+      "quickSearch": {
+        "foodBank": "food bank",
+        "housing": "housing help",
+        "crisis": "crisis support",
+        "mentalHealth": "mental health",
+        "legalAid": "legal aid"
+      }
+    },
+    "stats": {
+      "services": "Servicios Verificados",
+      "categories": "Categorías de Servicios",
+      "languages": "Idiomas Disponibles",
+      "servicesValue": "196",
+      "categoriesValue": "12",
+      "languagesValue": "7"
+    },
+    "trustStrip": {
+      "privacy": {
+        "title": "Tus búsquedas permanecen privadas",
+        "description": "Nunca registramos lo que buscas. No se requiere cuenta para encontrar ayuda."
+      },
+      "offline": {
+        "title": "Funciona sin internet",
+        "description": "Instala como aplicación para acceder al directorio completo sin conexión."
+      },
+      "bilingual": {
+        "title": "Disponible en 7 idiomas",
+        "description": "Busca y navega en inglés, francés, árabe, mandarín, español, portugués y punjabi."
+      }
+    },
+    "categoryGrid": {
+      "title": "Navegar por Categoría",
+      "subtitle": "Encuentra servicios según el tipo de apoyo que necesitas.",
+      "servicesCount": "{count} servicios",
+      "ariaLabel": "Navegar por servicios de {category}, {count} disponibles"
+    },
+    "partnerCta": {
+      "title": "¿Está tu organización listada?",
+      "description": "Si provees servicios sociales en Kingston y quieres asegurarte de que tu información sea precisa, puedes sugerir una actualización o conocer más sobre las alianzas.",
+      "suggestButton": "Sugerir un Servicio",
+      "learnMoreButton": "Conocer las alianzas"
+    },
+    "hero": {
+      "subtitle": "Encuentra alimentos, vivienda, apoyo en crisis y más de 190 servicios verificados en Kingston — de forma privada, en 7 idiomas."
+    }
   }
 }

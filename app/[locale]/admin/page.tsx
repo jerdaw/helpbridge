@@ -93,7 +93,7 @@ export default function AdminPage() {
       className="min-h-screen bg-neutral-100 p-8 focus:outline-none dark:bg-neutral-900"
     >
       <header className="mb-8 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-neutral-900 dark:text-white">{t("title")}</h1>
+        <h1 className="heading-display text-2xl font-bold text-neutral-900 dark:text-white">{t("title")}</h1>
         <div className="flex gap-4">
           <span className="font-mono text-sm text-red-500">{status}</span>
           <Button variant="secondary" onClick={handleReindex} disabled={showReindexProgress}>

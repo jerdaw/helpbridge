@@ -4,7 +4,7 @@ import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { Section } from "@/components/ui/section"
 import { Card } from "@/components/ui/card"
-import { ThumbsUp, CheckCircle2, ShieldCheck, MessageSquare, TrendingUp, AlertCircle } from "lucide-react"
+import { ThumbsUp, CheckCircle2, ShieldCheck, MessageSquare, TrendingUp } from "lucide-react"
 
 export const revalidate = 3600 // Revalidate every hour
 
@@ -81,7 +81,7 @@ export default async function ImpactPage() {
 
       <Section className="py-12">
         <div className="mx-auto max-w-6xl">
-          <h2 className="mb-6 text-2xl font-bold">{t("metricsTitle")}</h2>
+          <h2 className="heading-display mb-6 text-2xl font-bold">{t("metricsTitle")}</h2>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
             <MetricCard
@@ -117,22 +117,22 @@ export default async function ImpactPage() {
 
       <Section className="bg-white py-12 dark:bg-neutral-900">
         <div className="mx-auto max-w-4xl">
-          <h2 className="mb-6 text-2xl font-bold">{t("privacyTitle")}</h2>
+          <h2 className="heading-display mb-6 text-2xl font-bold">{t("privacyTitle")}</h2>
 
           <div className="prose dark:prose-invert max-w-none">
             <p className="text-neutral-600 dark:text-neutral-300">{t("privacyText")}</p>
 
             <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
               <div className="flex items-center gap-3 rounded-lg border border-neutral-200 p-4 dark:border-neutral-800">
-                <AlertCircle className="h-5 w-5 text-neutral-500" />
+                <ShieldCheck className="h-5 w-5 text-green-600 dark:text-green-400" />
                 <span className="text-sm">{t("noTracking")}</span>
               </div>
               <div className="flex items-center gap-3 rounded-lg border border-neutral-200 p-4 dark:border-neutral-800">
-                <AlertCircle className="h-5 w-5 text-neutral-500" />
+                <ShieldCheck className="h-5 w-5 text-green-600 dark:text-green-400" />
                 <span className="text-sm">{t("noCookies")}</span>
               </div>
               <div className="flex items-center gap-3 rounded-lg border border-neutral-200 p-4 dark:border-neutral-800">
-                <AlertCircle className="h-5 w-5 text-neutral-500" />
+                <ShieldCheck className="h-5 w-5 text-green-600 dark:text-green-400" />
                 <span className="text-sm">{t("voluntaryFeedback")}</span>
               </div>
             </div>
@@ -143,7 +143,7 @@ export default async function ImpactPage() {
       <Section className="py-12">
         <div className="mx-auto max-w-4xl text-center">
           <TrendingUp className="text-primary-500 mx-auto mb-4 h-12 w-12" />
-          <h2 className="mb-4 text-2xl font-bold">{t("commitmentTitle")}</h2>
+          <h2 className="heading-display mb-4 text-2xl font-bold">{t("commitmentTitle")}</h2>
           <p className="text-neutral-600 dark:text-neutral-300">{t("commitmentText")}</p>
         </div>
       </Section>

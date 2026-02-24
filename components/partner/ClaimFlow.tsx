@@ -20,7 +20,6 @@ import { Loader2, ShieldCheck } from "lucide-react"
 import { AccessibleFormField } from "@/components/forms/AccessibleFormField"
 
 interface ClaimFlowProps {
-  serviceId: string
   serviceName: string
 }
 
@@ -83,7 +82,7 @@ export function ClaimFlow({ serviceName }: ClaimFlowProps) {
           {step === 1 ? (
             <div className="space-y-4">
               <div className="h-40 overflow-y-auto rounded-md border bg-neutral-50 p-4 text-sm text-neutral-600">
-                <p className="mb-2 font-bold">Partner Terms Agreement</p>
+                <p className="mb-2 font-bold">{t("termsTitle")}</p>
                 <p>
                   By claiming this listing for <strong>{serviceName}</strong>, you verify that you are an authorized
                   representative...
@@ -99,11 +98,7 @@ export function ClaimFlow({ serviceName }: ClaimFlowProps) {
             </div>
           ) : (
             <div className="space-y-4">
-              <AccessibleFormField
-                id="email"
-                label="Work Email"
-                hint="Use your official organization email for faster verification."
-              >
+              <AccessibleFormField id="email" label={t("emailLabel")} hint={t("emailHint")}>
                 <Input
                   id="email"
                   type="email"

@@ -4,6 +4,10 @@ import { createClient } from "@/utils/supabase/server"
 import { PartnerServiceList } from "@/components/partner/PartnerServiceList"
 import { Skeleton } from "@/components/ui/skeleton"
 import { redirect } from "next/navigation"
+import { DashboardPageHeader } from "@/components/dashboard/DashboardPageHeader"
+import { Button } from "@/components/ui/button"
+import { Link } from "@/i18n/routing"
+import { Plus } from "lucide-react"
 
 export async function generateMetadata() {
   const t = await getTranslations("Dashboard")
@@ -25,9 +29,17 @@ export default async function PartnerServicesPage({ params }: { params: Promise<
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">{t("services.title")}</h1>
-      </div>
+      <DashboardPageHeader
+        title={t("services.title")}
+        actions={
+          <Button asChild>
+            <Link href="/dashboard/services/create">
+              <Plus className="mr-2 h-4 w-4" />
+              {t("services.createService")}
+            </Link>
+          </Button>
+        }
+      />
       <Suspense fallback={<Skeleton className="h-64 w-full" />}>
         <PartnerServiceList partnerId={user.id} locale={locale} />
       </Suspense>

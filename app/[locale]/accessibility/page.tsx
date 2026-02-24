@@ -21,7 +21,7 @@ export default function AccessibilityPage() {
                 <Accessibility className="text-primary-600 dark:text-primary-400 h-8 w-8" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-white">
+                <h1 className="heading-display text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-white">
                   {t("title")}
                 </h1>
                 <p className="mt-2 text-neutral-500 dark:text-neutral-400">

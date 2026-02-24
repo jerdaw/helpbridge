@@ -4,10 +4,14 @@ import { useState, useRef } from "react"
 import { Upload, FileText, Check, X, Download, AlertCircle, CheckCircle } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { useTranslations } from "next-intl"
 import { logger } from "@/lib/logger"
 import { validateCSVBatch, normalizeCSVHeaders, type CSVRowValidationResult } from "@/lib/schemas/service-csv-import"
+import { cn } from "@/lib/utils"
 
 export default function BulkImportPage() {
+  const t = useTranslations("Dashboard.services.import")
   const [dragActive, setDragActive] = useState(false)
   const [file, setFile] = useState<File | null>(null)
   const [parsedData, setParsedData] = useState<Record<string, string>[]>([])
@@ -50,7 +54,6 @@ export default function BulkImportPage() {
       return
     }
 
-    // Check file size (max 5MB)
     const maxSize = 5 * 1024 * 1024
     if (file.size > maxSize) {
       logger.warn("File too large", { fileSize: file.size, maxSize, fileName: file.name })
@@ -63,7 +66,6 @@ export default function BulkImportPage() {
     parseCSV(file)
   }
 
-  // CSV Parser with header normalization and validation
   const parseCSV = (file: File) => {
     const reader = new FileReader()
     reader.onload = function (e) {
@@ -76,30 +78,19 @@ export default function BulkImportPage() {
       try {
         const lines = text.split("\n")
         const rawHeaders = lines[0]?.split(",") || []
-
-        // Normalize headers to canonical field names
         const headers = normalizeCSVHeaders(rawHeaders)
 
-        // Check for required headers
         const hasName = headers.includes("name")
         const hasDescription = headers.includes("description")
         const hasCategory = headers.includes("intent_category")
 
         if (!hasName || !hasDescription || !hasCategory) {
-          logger.error("CSV missing required headers", {
-            headers,
-            hasName,
-            hasDescription,
-            hasCategory,
-          })
+          logger.error("CSV missing required headers", { headers, hasName, hasDescription, hasCategory })
           setUploadStatus("error")
           return
         }
 
         const data: Record<string, string>[] = []
-
-        // Parse all rows (not just preview) for validation
-        // Limit to 100 rows for safety
         for (let i = 1; i < Math.min(lines.length, 101); i++) {
           const line = lines[i]
           if (!line || !line.trim()) continue
@@ -118,8 +109,6 @@ export default function BulkImportPage() {
         }
 
         setParsedData(data)
-
-        // Validate all rows
         const results = validateCSVBatch(data)
         setValidationResults(results)
 
@@ -145,7 +134,6 @@ export default function BulkImportPage() {
     let successCount = 0
     let errorCount = 0
 
-    // Only import valid rows
     const validRows = validationResults.filter((r) => r.isValid && r.data)
 
     logger.info("Starting CSV import", {
@@ -154,7 +142,6 @@ export default function BulkImportPage() {
       invalidRows: validationResults.length - validRows.length,
     })
 
-    // Process sequentially to avoid rate limits
     for (const validationResult of validRows) {
       try {
         const payload = validationResult.data!
@@ -196,34 +183,38 @@ export default function BulkImportPage() {
     logger.info("CSV import completed", { successCount, errorCount })
   }
 
+  const validCount = validationResults.filter((r) => r.isValid).length
+  const invalidCount = validationResults.filter((r) => !r.isValid).length
+
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <nav className="mb-2 flex items-center text-sm text-neutral-500">
             <Link href="/dashboard/services" className="transition-colors hover:text-neutral-900">
-              My Services
+              {t("breadcrumbServices")}
             </Link>
             <span className="mx-2">/</span>
-            <span className="font-medium text-neutral-900">Import</span>
+            <span className="font-medium text-neutral-900 dark:text-white">{t("breadcrumbImport")}</span>
           </nav>
-          <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">Bulk Import Services</h1>
-          <p className="mt-2 text-lg text-neutral-600 dark:text-neutral-400">
-            Upload a CSV file to add multiple services at once.
-          </p>
+          <h1 className="heading-display text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">
+            {t("title")}
+          </h1>
+          <p className="mt-2 text-lg text-neutral-600 dark:text-neutral-400">{t("subtitle")}</p>
         </div>
       </div>
 
       {/* Upload Area */}
       {uploadStatus === "idle" && (
-        <div
-          role="region"
-          aria-label="File upload area"
-          className={`relative flex h-64 w-full flex-col items-center justify-center rounded-xl border-2 border-dashed transition-all ${
+        <Card
+          className={cn(
+            "relative flex h-64 w-full flex-col items-center justify-center border-2 border-dashed transition-all",
             dragActive
               ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
               : "border-neutral-300 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900"
-          }`}
+          )}
+          role="region"
+          aria-label="File upload area"
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
           onDragOver={handleDrag}
@@ -233,12 +224,12 @@ export default function BulkImportPage() {
             <>
               <Upload className="mb-4 h-12 w-12 text-neutral-400" />
               <p className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
-                Drag and drop your CSV file here, or{" "}
+                {t("dragAndDrop")}{" "}
                 <Button variant="link" className="h-auto p-0" onClick={() => inputRef.current?.click()}>
-                  browse
+                  {t("browse")}
                 </Button>
               </p>
-              <p className="mt-2 text-xs text-neutral-500">Supports: .csv (Max 5MB)</p>
+              <p className="mt-2 text-xs text-neutral-500">{t("fileSupport")}</p>
             </>
           ) : (
             <div className="flex flex-col items-center">
@@ -255,7 +246,7 @@ export default function BulkImportPage() {
                   setValidationResults([])
                 }}
               >
-                <X className="h-3 w-3" /> Remove File
+                <X className="h-3 w-3" /> {t("removeFile")}
               </Button>
             </div>
           )}
@@ -267,20 +258,17 @@ export default function BulkImportPage() {
             onChange={handleChange}
             aria-label="Upload CSV file"
           />
-        </div>
+        </Card>
       )}
 
       {/* Error Message */}
       {uploadStatus === "error" && (
-        <div className="rounded-xl border border-red-200 bg-red-50 p-8 text-center dark:border-red-800 dark:bg-red-900/20">
+        <Card className="border-red-200 bg-red-50 p-8 text-center dark:border-red-800 dark:bg-red-900/20">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100 dark:bg-red-900">
             <X className="h-6 w-6 text-red-600 dark:text-red-400" />
           </div>
-          <h3 className="mt-4 text-lg font-semibold text-red-800 dark:text-red-300">Upload Failed</h3>
-          <p className="mt-2 text-red-700 dark:text-red-400">
-            The file could not be processed. Please ensure it&apos;s a valid CSV file with required headers (name,
-            description, category).
-          </p>
+          <h3 className="mt-4 text-lg font-semibold text-red-800 dark:text-red-300">{t("uploadFailed")}</h3>
+          <p className="mt-2 text-red-700 dark:text-red-400">{t("uploadFailedDesc")}</p>
           <Button
             variant="outline"
             className="mt-6"
@@ -291,29 +279,25 @@ export default function BulkImportPage() {
               setValidationResults([])
             }}
           >
-            Try Again
+            {t("tryAgain")}
           </Button>
-        </div>
+        </Card>
       )}
 
       {/* Success Message */}
       {uploadStatus === "success" && (
-        <div className="rounded-xl border border-green-200 bg-green-50 p-8 text-center dark:border-green-800 dark:bg-green-900/20">
+        <Card className="border-green-200 bg-green-50 p-8 text-center dark:border-green-800 dark:bg-green-900/20">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100 dark:bg-green-900">
             <Check className="h-6 w-6 text-green-600 dark:text-green-400" />
           </div>
-          <h3 className="mt-4 text-lg font-semibold text-green-800 dark:text-green-300">Import Complete</h3>
+          <h3 className="mt-4 text-lg font-semibold text-green-800 dark:text-green-300">{t("importComplete")}</h3>
           {importSummary && (
             <div className="mt-4 space-y-1">
               <p className="text-green-700 dark:text-green-400">
-                <strong>{importSummary.success}</strong> service{importSummary.success !== 1 ? "s" : ""} imported
-                successfully
+                {t("servicesImported", { count: importSummary.success })}
               </p>
               {importSummary.failed > 0 && (
-                <p className="text-red-600 dark:text-red-400">
-                  <strong>{importSummary.failed}</strong> service{importSummary.failed !== 1 ? "s" : ""} failed to
-                  import
-                </p>
+                <p className="text-red-600 dark:text-red-400">{t("servicesFailed", { count: importSummary.failed })}</p>
               )}
             </div>
           )}
@@ -325,51 +309,47 @@ export default function BulkImportPage() {
               setImportSummary(null)
             }}
           >
-            Import Another
+            {t("importAnother")}
           </Button>
-        </div>
+        </Card>
       )}
 
       {/* Template Download */}
       <div className="flex justify-start">
         <a href="#" className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-500">
-          <Download className="h-4 w-4" /> Download CSV Template
+          <Download className="h-4 w-4" /> {t("downloadTemplate")}
         </a>
       </div>
 
       {/* Validation Summary */}
       {file && validationResults.length > 0 && uploadStatus === "idle" && (
-        <div className="rounded-xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900">
-          <h3 className="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Validation Results</h3>
+        <Card className="p-6">
+          <h3 className="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">{t("validationResults")}</h3>
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center gap-3 rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-900/20">
               <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
               <div>
-                <p className="text-sm text-green-600 dark:text-green-400">Valid Rows</p>
-                <p className="text-2xl font-bold text-green-900 dark:text-green-300">
-                  {validationResults.filter((r) => r.isValid).length}
-                </p>
+                <p className="text-sm text-green-600 dark:text-green-400">{t("validRows")}</p>
+                <p className="text-2xl font-bold text-green-900 dark:text-green-300">{validCount}</p>
               </div>
             </div>
             <div className="flex items-center gap-3 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-900/20">
               <AlertCircle className="h-6 w-6 text-red-600 dark:text-red-400" />
               <div>
-                <p className="text-sm text-red-600 dark:text-red-400">Invalid Rows</p>
-                <p className="text-2xl font-bold text-red-900 dark:text-red-300">
-                  {validationResults.filter((r) => !r.isValid).length}
-                </p>
+                <p className="text-sm text-red-600 dark:text-red-400">{t("invalidRows")}</p>
+                <p className="text-2xl font-bold text-red-900 dark:text-red-300">{invalidCount}</p>
               </div>
             </div>
           </div>
-        </div>
+        </Card>
       )}
 
       {/* Validation Errors List */}
       {file && validationResults.length > 0 && validationResults.some((r) => !r.isValid) && uploadStatus === "idle" && (
-        <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 dark:border-amber-800 dark:bg-amber-900/20">
+        <Card className="border-amber-200 bg-amber-50 p-6 dark:border-amber-800 dark:bg-amber-900/20">
           <div className="mb-4 flex items-center gap-2">
             <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400" />
-            <h3 className="font-semibold text-amber-900 dark:text-amber-300">Validation Errors</h3>
+            <h3 className="font-semibold text-amber-900 dark:text-amber-300">{t("validationErrors")}</h3>
           </div>
           <div className="max-h-96 space-y-3 overflow-y-auto">
             {validationResults
@@ -380,11 +360,13 @@ export default function BulkImportPage() {
                   key={result.rowIndex}
                   className="rounded-lg border border-amber-300 bg-white p-3 dark:border-amber-700 dark:bg-neutral-800"
                 >
-                  <p className="mb-2 text-sm font-medium text-amber-900 dark:text-amber-300">Row {result.rowIndex}:</p>
+                  <p className="mb-2 text-sm font-medium text-amber-900 dark:text-amber-300">
+                    {t("rowNumber", { number: result.rowIndex })}
+                  </p>
                   <ul className="space-y-1 text-sm text-amber-800 dark:text-amber-400">
                     {result.errors?.map((error, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <span className="mt-0.5 text-amber-600">•</span>
+                        <span className="mt-0.5 text-amber-600">&bull;</span>
                         <span>
                           <strong>{error.field}:</strong> {error.message}
                         </span>
@@ -393,28 +375,28 @@ export default function BulkImportPage() {
                   </ul>
                 </div>
               ))}
-            {validationResults.filter((r) => !r.isValid).length > 10 && (
+            {invalidCount > 10 && (
               <p className="text-sm text-amber-600 dark:text-amber-400">
-                ... and {validationResults.filter((r) => !r.isValid).length - 10} more errors
+                {t("moreErrors", { count: invalidCount - 10 })}
               </p>
             )}
           </div>
-        </div>
+        </Card>
       )}
 
       {/* Data Preview */}
       {file && parsedData.length > 0 && uploadStatus === "idle" && (
-        <div className="overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+        <Card className="overflow-hidden">
           <div className="flex items-center justify-between border-b border-neutral-200 px-6 py-4 dark:border-neutral-800">
-            <h3 className="font-semibold text-neutral-900 dark:text-white">Data Preview</h3>
-            <span className="text-xs text-neutral-500">Showing first 10 rows</span>
+            <h3 className="font-semibold text-neutral-900 dark:text-white">{t("dataPreview")}</h3>
+            <span className="text-xs text-neutral-500">{t("showingFirst10")}</span>
           </div>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-neutral-200 dark:divide-neutral-800">
               <thead className="bg-neutral-50 dark:bg-neutral-800/50">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium tracking-wider text-neutral-500 uppercase">
-                    Status
+                    {t("status")}
                   </th>
                   {parsedData[0] &&
                     Object.keys(parsedData[0]).map((h) => (
@@ -444,7 +426,7 @@ export default function BulkImportPage() {
                           key={j}
                           className="px-6 py-4 text-sm whitespace-nowrap text-neutral-600 dark:text-neutral-400"
                         >
-                          {val || <span className="text-neutral-400 italic">empty</span>}
+                          {val || <span className="text-neutral-400 italic">{t("empty")}</span>}
                         </td>
                       ))}
                     </tr>
@@ -455,16 +437,13 @@ export default function BulkImportPage() {
           </div>
           <div className="flex items-center justify-between bg-neutral-50 px-6 py-4 dark:bg-neutral-800/50">
             <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              {validationResults.filter((r) => r.isValid).length} valid rows ready to import
+              {t("validRowsReady", { count: validCount })}
             </p>
-            <Button
-              onClick={handleStartImport}
-              disabled={isProcessing || validationResults.filter((r) => r.isValid).length === 0}
-            >
-              {isProcessing ? "Processing..." : `Import ${validationResults.filter((r) => r.isValid).length} Services`}
+            <Button onClick={handleStartImport} disabled={isProcessing || validCount === 0}>
+              {isProcessing ? t("processing") : t("importServices", { count: validCount })}
             </Button>
           </div>
-        </div>
+        </Card>
       )}
     </div>
   )

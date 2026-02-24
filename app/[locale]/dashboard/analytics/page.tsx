@@ -1,6 +1,8 @@
 import { createClient } from "@/utils/supabase/server"
 import { AnalyticsCard } from "@/components/AnalyticsCard"
 import { getTranslations } from "next-intl/server"
+import { DashboardPageHeader } from "@/components/dashboard/DashboardPageHeader"
+import { Card } from "@/components/ui/card"
 
 interface PartnerServiceAnalytics {
   service_id: string
@@ -67,10 +69,7 @@ export default async function PartnerAnalyticsPage() {
 
   return (
     <div className="space-y-6 p-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
-        <p className="text-muted-foreground">{t("dashboard.description")}</p>
-      </div>
+      <DashboardPageHeader title={t("title")} subtitle={t("dashboard.description")} />
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
         <AnalyticsCard
@@ -97,7 +96,7 @@ export default async function PartnerAnalyticsPage() {
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Service Performance Table */}
-        <div className="rounded-md border bg-white p-4 dark:bg-neutral-900">
+        <Card className="p-4">
           <div className="mb-4">
             <h3 className="font-semibold">{t("dashboard.tables.performance.title")}</h3>
             <p className="text-sm text-neutral-500">{t("dashboard.tables.performance.description")}</p>
@@ -142,10 +141,10 @@ export default async function PartnerAnalyticsPage() {
               </tbody>
             </table>
           </div>
-        </div>
+        </Card>
 
         {/* Services Needing Attention */}
-        <div className="rounded-md border bg-white p-4 dark:bg-neutral-900">
+        <Card className="p-4">
           <div className="mb-4">
             <h3 className="font-semibold">{t("dashboard.tables.issues.title")}</h3>
             <p className="text-sm text-neutral-500">{t("dashboard.tables.issues.description")}</p>
@@ -184,7 +183,7 @@ export default async function PartnerAnalyticsPage() {
               </tbody>
             </table>
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   )
