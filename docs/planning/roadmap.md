@@ -2,7 +2,7 @@
 
 > **Current Version**: v18.0 (Production Observability Complete)
 > **Next Milestone**: v22.0 (Non-Duplicate Value Decision Plan)
-> **Last Updated**: 2026-02-27
+> **Last Updated**: 2026-03-08
 > **Platform Status**: Strategic Repositioning — v22.0 Decision-Gated Planning
 
 ## 📊 Current State
@@ -35,16 +35,19 @@
 
 ### v22.0: Non-Duplicate Value Decision Plan 🔄 ACTIVE
 
-**Status**: DRAFT COMPLETE — User Approval Gate Pending (no implementation started)
+**Status**: PHASE 0 IN PROGRESS — instrumentation + migration complete; governance sign-off still required
 **Priority**: CRITICAL (Strategic Non-Duplication with 211)
 **Total Effort**: 90-day decision cycle (~13 weeks)
 **Timeline**: Phase 0 (2 weeks) + Phase 1 (8 weeks) + Phase 2 decision cycle
 **Dependencies**: v22 objective evaluation artifacts + integration feasibility decision
 **Created**: 2026-02-27
+**Current State**: Pilot DB schema, RLS policies, hardened admin function, internal pilot APIs, and pilot test suite are implemented and validated; Gate 0 governance artifacts and decision locks are still pending
 
 Reposition KCC from potential directory duplication to measurable last-mile outcome value (connection success, reliability, referral completion), with explicit kill criteria if value is not demonstrated.
 
 **👉 Detailed Plan: [v22.0 Non-Duplicate Value Decision Plan](v22-0-non-duplicate-value-decision-plan.md)**
+**👉 Approval Checklist: [v22.0 Step 1 Approval Checklist](v22-0-approval-checklist.md)**
+**👉 Phase 0 Execution Spec: [v22.0 Phase 0 Implementation Plan](../implementation/v22-0-phase-0-implementation-plan.md)**
 
 #### Gate-Oriented Objectives
 
@@ -54,11 +57,18 @@ Reposition KCC from potential directory duplication to measurable last-mile outc
 
 #### Immediate Next Steps (Phase 0)
 
-1. Confirm v22 objective function and hard constraints.
-2. Lock pilot scope (default: housing intake) and pilot partners.
-3. Complete baseline instrumentation (failed contact, time-to-connection, referral completion).
+1. Complete Step 1 sign-off in `v22-0-approval-checklist.md` (all 7 decisions locked).
+2. Lock pilot scope (default: housing intake) and named pilot partners.
+3. Execute baseline data capture cycle and publish first scorecard snapshot set (M1-M4 minimum).
 4. Record integration feasibility decision (`go`, `conditional`, `blocked`) against privacy redlines.
-5. Complete offline/local data threat model and evidence re-validation log.
+5. Complete offline/local data threat model and external-claim re-validation log with owners and dates.
+
+#### Completed in This Cycle
+
+1. Pilot tables created with full CRUD RLS policies (`pilot_contact_attempt_events`, `pilot_referral_events`, `pilot_metric_snapshots`, `pilot_integration_feasibility_decisions`).
+2. Legacy `user_metadata` admin gate removed from `bulk_update_service_status`; replaced with `is_admin()` check.
+3. Internal pilot endpoints implemented and documented in OpenAPI/architecture docs.
+4. Pilot API/schema/metrics tests added and passing.
 
 #### Gate 1 Thresholds (Pilot Cycle 1)
 

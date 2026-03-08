@@ -509,6 +509,8 @@ Full details: `docs/development/testing-guidelines.md`
 
 - Never commit secrets, `.env` files, or machine-specific artifacts
 - Update `.gitignore` if you introduce new generated files
+- Keep commit author metadata human-owned (`user.name`/`user.email` must be a real contributor)
+- Do not add AI tool attribution in commits, docs, or code comments (no `Co-authored-by` AI identities, no generated-by-agent signatures)
 
 **Commit Message Format** (via HEREDOC):
 

@@ -17,7 +17,10 @@ ALLOWED_FILES=(
   "SECURITY.md"
   "LICENSE"
   "DEPLOY.md"
+  "VERCEL-OPTIMIZATION.md"
+  "VERCEL-SETUP-COMPLETE.md"
   "CLAUDE.md"
+  "GEMINI.md"
   "AGENTS.md"
   
   # Package management

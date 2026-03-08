@@ -10,6 +10,7 @@ info:
     ## Authentication
     - Public endpoints (services) require no authentication.
     - Analytics endpoints require a valid session cookie (Magic Link login).
+    - Internal pilot endpoints require authentication and organization/admin authorization.
   version: 1.0.0
   contact:
     email: support@careconnect.ca
@@ -391,6 +392,199 @@ paths:
         "500":
           $ref: "#/components/responses/InternalError"
 
+  /pilot/events/contact-attempt:
+    post:
+      summary: Record Pilot Contact Attempt (Internal)
+      description: |
+        Internal v22 Phase 0 endpoint for pilot instrumentation.
+        Authenticated + organization-authorized.
+      operationId: recordPilotContactAttempt
+      tags:
+        - Pilot
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PilotContactAttemptCreate"
+      responses:
+        "201":
+          description: Contact attempt recorded
+        "400":
+          description: Validation error
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "429":
+          description: Rate limited
+        "501":
+          description: Pilot storage not initialized
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  /pilot/events/referral:
+    post:
+      summary: Record Pilot Referral Event (Internal)
+      description: |
+        Internal v22 Phase 0 endpoint for referral state capture.
+      operationId: recordPilotReferralEvent
+      tags:
+        - Pilot
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PilotReferralCreate"
+      responses:
+        "201":
+          description: Referral event recorded
+        "400":
+          description: Validation error
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "429":
+          description: Rate limited
+        "501":
+          description: Pilot storage not initialized
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  /pilot/events/referral/{id}:
+    patch:
+      summary: Update Pilot Referral Event (Internal)
+      operationId: updatePilotReferralEvent
+      tags:
+        - Pilot
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PilotReferralUpdate"
+      responses:
+        "200":
+          description: Referral event updated
+        "400":
+          description: Validation error
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "429":
+          description: Rate limited
+        "501":
+          description: Pilot storage not initialized
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  /pilot/integration-feasibility:
+    post:
+      summary: Record Integration Feasibility Decision (Internal)
+      operationId: recordIntegrationFeasibilityDecision
+      tags:
+        - Pilot
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IntegrationFeasibilityDecision"
+      responses:
+        "201":
+          description: Decision recorded
+        "400":
+          description: Validation error
+        "401":
+          description: Unauthorized
+        "403":
+          description: Admin required
+        "429":
+          description: Rate limited
+        "501":
+          description: Pilot storage not initialized
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  /pilot/metrics/scorecard:
+    get:
+      summary: Get Pilot Scorecard (Internal)
+      operationId: getPilotScorecard
+      tags:
+        - Pilot
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: pilot_cycle_id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: org_id
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: baseline_failed_contact_rate
+          in: query
+          required: false
+          schema:
+            type: number
+            minimum: 0
+            maximum: 1
+        - name: baseline_p50_seconds_to_connection
+          in: query
+          required: false
+          schema:
+            type: number
+            minimum: 0
+      responses:
+        "200":
+          description: Pilot scorecard
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      scorecard:
+                        $ref: "#/components/schemas/PilotScorecard"
+                      gate1Evaluation:
+                        type: object
+                        nullable: true
+        "400":
+          description: Validation error
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "429":
+          description: Rate limited
+        "501":
+          description: Pilot storage not initialized
+        "500":
+          $ref: "#/components/responses/InternalError"
+
 components:
   securitySchemes:
     cookieAuth:
@@ -579,6 +773,171 @@ components:
           type: string
         how_to_use_fr:
           type: string
+          nullable: true
+
+    PilotContactAttemptCreate:
+      type: object
+      required:
+        - pilot_cycle_id
+        - service_id
+        - recorded_by_org_id
+        - attempt_channel
+        - attempt_outcome
+        - attempted_at
+      properties:
+        pilot_cycle_id:
+          type: string
+        service_id:
+          type: string
+        recorded_by_org_id:
+          type: string
+          format: uuid
+        attempt_channel:
+          type: string
+          enum: [phone, website, email, in_person, referral]
+        attempt_outcome:
+          type: string
+          enum: [connected, disconnected_number, no_response, intake_unavailable, invalid_routing, other_failure]
+        attempted_at:
+          type: string
+          format: date-time
+        resolved_at:
+          type: string
+          format: date-time
+          nullable: true
+        outcome_notes_code:
+          type: string
+          nullable: true
+
+    PilotReferralCreate:
+      type: object
+      required:
+        - pilot_cycle_id
+        - source_org_id
+        - target_service_id
+        - referral_state
+        - created_at
+        - updated_at
+      properties:
+        pilot_cycle_id:
+          type: string
+        source_org_id:
+          type: string
+          format: uuid
+        target_service_id:
+          type: string
+        referral_state:
+          type: string
+          enum: [initiated, connected, failed, client_withdrew, no_response_timeout]
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        terminal_at:
+          type: string
+          format: date-time
+          nullable: true
+        failure_reason_code:
+          type: string
+          nullable: true
+
+    PilotReferralUpdate:
+      type: object
+      required:
+        - source_org_id
+        - referral_state
+        - updated_at
+      properties:
+        source_org_id:
+          type: string
+          format: uuid
+        referral_state:
+          type: string
+          enum: [initiated, connected, failed, client_withdrew, no_response_timeout]
+        updated_at:
+          type: string
+          format: date-time
+        terminal_at:
+          type: string
+          format: date-time
+          nullable: true
+        failure_reason_code:
+          type: string
+          nullable: true
+
+    IntegrationFeasibilityDecision:
+      type: object
+      required:
+        - decision
+        - decision_date
+        - redline_checklist_version
+        - violations
+        - compensating_controls
+        - owners
+      properties:
+        decision:
+          type: string
+          enum: [go, conditional, blocked]
+        decision_date:
+          type: string
+          format: date
+        redline_checklist_version:
+          type: string
+        violations:
+          type: array
+          items:
+            type: string
+            enum:
+              - raw_query_text_required
+              - forced_user_identifying_telemetry
+              - reidentification_capability_required
+              - retention_policy_conflict
+              - auditability_gap
+        compensating_controls:
+          type: array
+          items:
+            type: string
+        owners:
+          type: array
+          items:
+            type: string
+
+    PilotScorecard:
+      type: object
+      properties:
+        pilot_cycle_id:
+          type: string
+        generated_at:
+          type: string
+          format: date-time
+        m1_failed_contact_rate:
+          type: number
+          nullable: true
+        m2_p50_seconds_to_connection:
+          type: number
+          nullable: true
+        m2_p75_seconds_to_connection:
+          type: number
+          nullable: true
+        m2_p90_seconds_to_connection:
+          type: number
+          nullable: true
+        m3_referral_completion_capture_rate:
+          type: number
+          nullable: true
+        m4_freshness_sla_compliance:
+          type: number
+          nullable: true
+        m5_repeat_failure_rate:
+          type: number
+          nullable: true
+        m6_data_decay_fatal_error_rate:
+          type: number
+          nullable: true
+        m7_preference_fit_indicator:
+          type: number
           nullable: true
 
     Error:

@@ -1,8 +1,11 @@
 ---
 status: draft
-last_updated: 2026-02-27
+last_updated: 2026-03-08
 owner: jer
 tags: [roadmap, v22.0, strategy, decision-framework, pilot]
+phase_0_status: in_progress
+gate_0_status: evidence_collection_in_progress
+approval_checklist_status: pending_locks
 ---
 
 # v22.0: Non-Duplicate Value Decision Plan (KCC + 211 Complement Strategy)
@@ -32,7 +35,12 @@ This is designed to prevent KCC from becoming:
 ## User Review Required
 
 > [!IMPORTANT]
-> This plan is decision-complete, but execution should not start until these approvals are explicit.
+> This plan is decision-complete, but Phase 1 pilot operations must not start until these approvals are explicit.
+
+Execution references:
+
+1. [v22.0 Approval Checklist](v22-0-approval-checklist.md)
+2. [v22.0 Phase 0 Implementation Plan](../implementation/v22-0-phase-0-implementation-plan.md)
 
 Required approvals:
 
@@ -44,7 +52,30 @@ Required approvals:
 6. Confirm API integration redlines (no user query-text sharing; no forced user-identifying telemetry).
 7. Confirm integration-blocked contingency path (narrow scope or responsible deprecation criteria).
 
-If any item changes, update this document before Phase 0 begins.
+If any item changes, update this document before Gate 0 sign-off.
+
+## Phase 0 Progress Snapshot (2026-03-08)
+
+Completed technical foundation:
+
+1. Pilot schema migration applied (`20260308120000_v22_pilot_phase0_tables`).
+2. Admin hardening migration applied (`20260308121000_v22_harden_bulk_update_service_status_admin_check`).
+3. Pilot storage verification scripts added (preflight + post-migration + rollback helper).
+4. Internal pilot APIs implemented and documented (`/pilot/events/*`, `/pilot/metrics/scorecard`, `/pilot/integration-feasibility`).
+5. Pilot API/schema/metrics tests implemented and passing.
+
+Still required before Gate 0 exit:
+
+1. Lock D1-D7 in the approval checklist.
+2. Record integration feasibility decision with evidence links.
+3. Complete threat model mitigation ownership and verification.
+4. Publish baseline metric outputs for first approved baseline window.
+
+## Decision Log Authority
+
+This document defines strategic intent and thresholds. Decision records and sign-off state are tracked in:
+
+1. [v22.0 Approval Checklist](v22-0-approval-checklist.md)
 
 ## Evidence-Quality Protocol (Critical)
 
@@ -575,7 +606,10 @@ The following items were accepted from external-agent reports as **investigate/v
 
 None of the above are treated as confirmed facts until validated through Phase 0 evidence protocol.
 
-## Decision Log Template (Use in Weekly Reviews)
+## Weekly Decision Journal Template (Post-Approval)
+
+Use this only for ongoing weekly operating decisions after Step 1 is approved.
+Canonical Step 1 sign-offs remain in [v22.0 Approval Checklist](v22-0-approval-checklist.md).
 
 | Date       | Decision                                                   | Rationale                                            | Evidence Used          | Alternatives Rejected | Owner         |
 | ---------- | ---------------------------------------------------------- | ---------------------------------------------------- | ---------------------- | --------------------- | ------------- |

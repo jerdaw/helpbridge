@@ -1,6 +1,6 @@
 ---
 status: stable
-last_updated: 2026-01-15
+last_updated: 2026-03-08
 owner: jer
 tags: [architecture, overview, system-design]
 ---
@@ -164,6 +164,26 @@ sequenceDiagram
 
 - **Services**: Fetched via `/api/v1/services`. Cached using SWR-like strategies in hooks.
 - **Analytics**: Search events are logged to `/api/v1/analytics/search` asynchronously.
+
+### v22 Phase 0 Pilot Instrumentation (Internal)
+
+- **Purpose**: Capture pilot-only connection outcome signals before Phase 1 feature rollout.
+- **Internal Endpoints**:
+  - `POST /api/v1/pilot/events/contact-attempt`
+  - `POST /api/v1/pilot/events/referral`
+  - `PATCH /api/v1/pilot/events/referral/{id}`
+  - `POST /api/v1/pilot/integration-feasibility`
+  - `GET /api/v1/pilot/metrics/scorecard`
+- **Security Model**:
+  - Authenticated session required for all pilot endpoints.
+  - Organization-scoped authorization enforced for event writes and scorecard reads.
+  - Admin authorization required for integration feasibility decision writes.
+- **Privacy Constraints**:
+  - Request payload validation rejects disallowed keys (`query`, `query_text`, `message`, `user_text`, `notes`).
+  - Raw query text is never accepted into pilot event contracts.
+- **Resilience**:
+  - Pilot DB operations use circuit-breaker-wrapped storage access.
+  - If pilot tables are not present, endpoints fail with explicit `501` responses to prevent silent data loss.
 
 ### Routing & Discovery
 

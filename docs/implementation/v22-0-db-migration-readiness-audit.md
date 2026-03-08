@@ -1,5 +1,5 @@
 ---
-status: draft
+status: stable
 last_updated: 2026-03-08
 owner: jer
 tags: [implementation, v22.0, database, migration, safety]
@@ -9,7 +9,7 @@ tags: [implementation, v22.0, database, migration, safety]
 
 ## Objective
 
-Establish a **safe, evidence-first migration posture** before introducing any v22.0 pilot tables.
+Establish and document a **safe, evidence-first migration posture** for introducing v22.0 pilot tables, then record post-execution verification state.
 
 This audit is intentionally non-destructive and focuses on:
 
@@ -75,21 +75,21 @@ Impact:
 
 ### 5) Mixed admin authority model persists (Medium)
 
-DB policies/functions moved toward `app_admins`/`is_admin()`, but some function and app code paths still depend on `auth.jwt()->user_metadata->role`.
+DB policies/functions moved toward `app_admins`/`is_admin()`, but legacy `user_metadata` checks historically existed and required hardening.
 
 Impact:
 
-1. Split-brain admin semantics.
+1. Split-brain admin semantics if not remediated.
 2. Harder rollout validation during migration windows.
 
-### 6) Pilot tables are referenced by API/storage but not yet in schema (Expected)
+### 6) Pilot tables initially absent from schema before migration (Expected pre-migration state)
 
 Internal pilot routes intentionally return `501` when pilot tables are absent.
 
 Impact:
 
-1. Safe fail behavior exists now.
-2. Migration must be additive-only and carefully permissioned.
+1. Safe fail behavior existed pre-migration.
+2. Migration needed to be additive-only and carefully permissioned.
 
 ## Effective DB Surface Used by Application
 
@@ -101,7 +101,7 @@ Runtime currently references these key objects:
 4. Governance/admin: `app_admins`, `organization_settings`, `organization_invitations`, `partner_terms_acceptance`, `service_submissions`, `push_subscriptions`
 5. RPCs: `soft_delete_service`, `transfer_ownership`, `log_admin_action`, `update_reindex_progress`
 
-## v22 Pilot Target Objects (Not Yet Migrated)
+## v22 Pilot Target Objects (Migrated 2026-03-08)
 
 1. `pilot_contact_attempt_events`
 2. `pilot_referral_events`
@@ -141,22 +141,26 @@ Runtime currently references these key objects:
 2. Rollback should drop only newly introduced pilot objects.
 3. Never drop/alter existing legacy objects during rollback.
 
-## Autonomous Work Completed vs Remaining
+## Execution Outcome (2026-03-08)
 
-Completed autonomously:
+Completed:
 
-1. full repository migration + runtime usage audit,
-2. risk classification,
-3. read-only live-DB preflight script.
+1. Preflight checks executed in Supabase SQL Editor.
+2. Migration `20260308120000_v22_pilot_phase0_tables.sql` applied.
+3. Hardening migration `20260308121000_v22_harden_bulk_update_service_status_admin_check.sql` applied.
+4. Post-migration verification executed:
+   1. all four pilot tables present,
+   2. full CRUD policy coverage present for each pilot table,
+   3. `bulk_update_service_status` uses `is_admin()`,
+   4. `user_metadata_function_count = 0`.
+5. Migration history repaired/synced via Supabase CLI (`migration repair ... --status applied` for both versions).
 
-Blocked pending credentials/infrastructure:
+Open follow-up items:
 
-1. live production/dev DB inventory execution,
-2. before/after row-count diff capture,
-3. dry-run migration replay in local Supabase (Docker unavailable).
+1. Refresh `README.md` setup guidance to prefer migration-driven bootstrap instead of `schema.sql` direct application.
+2. Resolve `supabase/config.toml` seed-path mismatch (`seed.sql` vs `seed-plain-language.sql`).
+3. Regenerate and validate `types/supabase.ts` against the current database schema.
 
 ## Next Gate
 
-Do **not** author/apply pilot migration SQL until preflight evidence is collected from the live database.
-
-Once preflight output is available, we can finalize an additive migration with exact constraints/policies against the observed live state.
+Proceed to Gate 0 evidence completion (baseline metrics, integration feasibility decision, threat model closure, and approval-lock completion). Schema migration gate is complete.
