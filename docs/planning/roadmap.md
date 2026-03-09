@@ -1,17 +1,17 @@
 # Kingston Care Connect: Product Roadmap
 
-> **Current Version**: v18.0 (Production Observability Complete)
-> **Next Milestone**: v22.0 (Non-Duplicate Value Decision Plan)
+> **Current Version**: v22.0 (Non-Duplicate Value Decision Plan, Phase 0)
+> **Next Milestone**: v22.0 Gate 0 Exit (baseline execution + conditional controls)
 > **Last Updated**: 2026-03-09
 > **Platform Status**: Strategic Repositioning — v22.0 Decision-Gated Planning
 
 ## 📊 Current State
 
 - **Services**: 196 manually curated social services (verified 2026-02-11)
-- **Test Coverage**: 974 passing tests (component coverage improving)
+- **Tests**: 1065 passing, 24 skipped (latest local run)
   - Branch: Coverage metrics pending update | Functions: Pending | Statements: Pending
   - Gaps: 56/85 components untested (34% coverage - up from 28%), 4 untested utility functions (geo, fuzzy, synonyms, query-expander)
-  - 7 E2E tests skipped (documented as known limitations)
+  - 7 E2E tests skipped in `tests/e2e/**` (documented as known limitations)
   - Recent: +80 component tests (OfflineBanner, LanguageSwitcher, SearchChips, Header, Footer)
 - **Load Testing**: k6 infrastructure in place, baseline metrics pending documentation
 - **Resilience**: 100% circuit breaker protection on all API routes and database operations
@@ -369,7 +369,7 @@ npm run audit:l3             # Export L3 verification candidates
 
 ---
 
-## ✅ Completed Work
+## 📚 Release History
 
 Production-readiness complete (v17.0–v18.0). Platform is resilient, secure, accessible, and performant. See [archive/](archive/) for full implementation details.
 
@@ -386,8 +386,6 @@ Production-readiness complete (v17.0–v18.0). Platform is resilient, secure, ac
   - **Documentation**: Updated README.md and AGENTS.md with v18.0 info, fixed 12 outdated references
   - **Code Quality**: Fixed 18 ESLint warnings, maintained 0 TypeScript errors
   - **Impact**: Improved security posture, increased test reliability, enhanced maintainability
-
-### Recent Releases
 
 - **v18.0: Production Observability & Operational Excellence** (2026-02-06) - **100% COMPLETE**
   - **Phase 1**: Complete circuit breaker rollout (100% API route protection)
@@ -468,7 +466,7 @@ Production-readiness complete (v17.0–v18.0). Platform is resilient, secure, ac
 
 ---
 
-## ⏸️ Paused Work
+## ⏸️ Paused Work (Additional)
 
 ### v15.1: Mobile App Launch
 
@@ -1100,8 +1098,8 @@ Based on comprehensive codebase audit (2026-02-09):
      - `/app/api/v1/services/[id]/summary/route.ts`
      - `/app/api/v1/analytics/search/route.ts`
 
-4. **Test Reliability** (~4-6h or document)
-   - [ ] Resolve or document 7 skipped E2E tests (current repo state)
+4. **Test Reliability** (~4-6h)
+   - [ ] Reduce skipped E2E tests from 7 to 0 or explicit accepted baseline
    - [x] Known limitations are documented for current skip set
 
 5. **Dependency Management** (~30min)
