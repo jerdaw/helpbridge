@@ -1,7 +1,7 @@
 # Kingston Care Connect: Product Roadmap
 
 > **Current Version**: v22.0 (Non-Duplicate Value Decision Plan, Phase 0)
-> **Next Milestone**: v22.0 Gate 0 Exit (baseline execution + conditional controls)
+> **Next Milestone**: v22.0 Gate 0 Exit (C1/C2/D4 blocker closure)
 > **Last Updated**: 2026-03-09
 > **Platform Status**: Strategic Repositioning — v22.0 Decision-Gated Planning
 
@@ -12,6 +12,7 @@
   - Branch: Coverage metrics pending update | Functions: Pending | Statements: Pending
   - Gaps: 56/85 components untested (34% coverage - up from 28%), 4 untested utility functions (geo, fuzzy, synonyms, query-expander)
   - 7 E2E tests skipped in `tests/e2e/**` (documented baseline: [E2E Skip Baseline (2026-03-09)](../testing/e2e-skip-baseline-2026-03-09.md))
+  - CI budget mode: Playwright runs on `workflow_dispatch` or `main` commits containing `[run-e2e]`
   - Recent: +80 component tests (OfflineBanner, LanguageSwitcher, SearchChips, Header, Footer)
 - **Load Testing**: k6 infrastructure in place, baseline metrics pending documentation
 - **Resilience**: 100% circuit breaker protection on all API routes and database operations
@@ -57,14 +58,13 @@ Reposition KCC from potential directory duplication to measurable last-mile outc
 2. Validate privacy-safe integration feasibility with 211 data pathways.
 3. Keep strict stop conditions for initiatives that do not outperform baseline.
 
-#### Immediate Next Steps (Phase 0)
+#### Remaining Required Actions (Gate 0)
 
-1. Complete integration conditional controls C1/C2 (`2026-03-21` target) before any external integration activation.
-2. Confirm named pilot partner list and outreach owner assignment for D4 execution.
-3. Track closure state in [v22.0 Gate 0 Evidence Status (2026-03-09)](../implementation/v22-0-gate-0-evidence-status-2026-03-09.md).
-4. Use [v22.0 Gate 0 Exit Checklist (Decision Control)](../implementation/v22-0-gate-0-exit-checklist.md) as the canonical GO/NO-GO gate.
-5. Keep user-owned blocker status synchronized in [v22.0 Gate 0 User Action Tracker](../implementation/v22-0-gate-0-user-action-tracker.md) on each gate event.
-6. Use [v22.0 Gate 0 Evidence Intake Pack](../implementation/v22-0-gate-0-evidence-intake-pack.md) for all C1/C2/D4 evidence submissions.
+1. `UA-1 / G0-3`: Attach candidate partner legal/API terms and complete clause-level C1 review (`2026-03-21` target).
+2. `UA-2 / G0-4`: Lock field-level retention windows + deletion procedure and attach privacy sign-off (`2026-03-21` target).
+3. `UA-3 / G0-8`: Attach named pilot partner list + outreach owner + execution evidence (`2026-03-21` target).
+4. Keep sync discipline using [v22.0 Gate 0 User Action Tracker](../implementation/v22-0-gate-0-user-action-tracker.md) and [v22.0 Gate 0 Evidence Intake Pack](../implementation/v22-0-gate-0-evidence-intake-pack.md).
+5. Re-evaluate Gate 0 using [v22.0 Gate 0 Exit Checklist (Decision Control)](../implementation/v22-0-gate-0-exit-checklist.md) after every accepted evidence update.
 
 #### Gate 0 Exit Blockers (NO-GO)
 
@@ -144,7 +144,7 @@ Finalize all pre-launch preparations to safely transition from development to pr
   - [ ] Critical user journey testing (6 scenarios, user execution required)
   - [ ] Data quality final review (top 20 services, user execution required)
 
-- **Phase 1.5** (6h): Pre-Launch Technical Hygiene ⚠️ **NEAR COMPLETE**
+- **Phase 1.5** (6h): Pre-Launch Technical Hygiene ✅ **COMPLETE**
   - [x] Add SEO basics (`app/robots.ts` -> `/robots.txt`, `sitemap.ts`, `not-found.tsx`, `error.tsx`, `global-error.tsx`)
   - [x] Add security.txt for responsible disclosure
   - [x] Replace console._ with logger._ in 8 files (7 API routes + FAQ page)
