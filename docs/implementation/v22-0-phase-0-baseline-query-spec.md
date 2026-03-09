@@ -13,6 +13,7 @@ Companion documents:
 
 1. [v22.0 Phase 0 Baseline Metric Definitions](v22-0-phase-0-baseline-metric-definitions.md)
 2. [v22.0 Phase 0 Implementation Plan](v22-0-phase-0-implementation-plan.md)
+3. [v22.0 Phase 0 Baseline SQL Editor Runbook](v22-0-phase-0-baseline-sql-editor-runbook.md)
 
 ## Gate 0 Minimum Mode
 
@@ -222,11 +223,15 @@ Run in order:
 3. M3 referral completion capture rate query.
 4. Record M2/M4/M5/M6/M7 as `N/A` with dependency reasons from this document.
 
+Reference helper script:
+
+1. `supabase/scripts/v22-phase0-baseline-minimum.sql`
+
 ## Baseline Query QA Checklist
 
 - [x] Query headers include `query_id` and `query_version`
 - [x] Executable queries (M1, M3) use parameterized date inputs
 - [x] Null/zero denominator behavior is explicitly handled for executable metrics
 - [x] Dependency gaps for non-executable metrics are explicitly documented
-- [ ] Baseline outputs saved with execution timestamp and owner
-- [ ] Metric outputs copied into baseline report artifact
+- [x] Baseline outputs saved with execution timestamp and owner
+- [x] Metric outputs copied into baseline report artifact

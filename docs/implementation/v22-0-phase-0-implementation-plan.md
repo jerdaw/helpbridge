@@ -32,12 +32,17 @@ Completed:
 6. Integration feasibility decision captured in conditional mode with controls C1-C3.
 7. Threat-model owner/due-date mitigation matrix completed with no unresolved critical findings.
 8. Baseline report artifact created in Gate 0 minimum mode.
+9. SQL Editor execution runbook and query helper script added for baseline M1/M3 execution.
+10. Gate 0 evidence status tracker added for centralized closure tracking.
+11. Baseline M1/M3 execution completed (window: 2026-02-10 to 2026-03-09) and recorded in baseline report.
 
 Remaining:
 
-1. Execute baseline M1/M3 queries in a Supabase-capable environment and populate numeric values in baseline report.
-2. Complete conditional integration controls C1-C3 before external activation.
-3. Complete external-claim re-validation closure.
+1. Complete conditional integration controls C1-C3 before external activation.
+
+Gate decision control:
+
+1. [v22.0 Gate 0 Exit Checklist (Decision Control)](v22-0-gate-0-exit-checklist.md)
 
 ## Scope
 
@@ -195,6 +200,7 @@ Deliverables:
 
 1. [v22.0 Phase 0 Baseline Metric Definitions](v22-0-phase-0-baseline-metric-definitions.md)
 2. [v22.0 Phase 0 Baseline Query Spec](v22-0-phase-0-baseline-query-spec.md)
+3. [v22.0 Phase 0 Baseline SQL Editor Runbook](v22-0-phase-0-baseline-sql-editor-runbook.md)
 
 ### Workstream B: Instrumentation Plumbing
 

@@ -45,6 +45,8 @@ Evidence lock references (2026-03-09):
 2. [v22.0 Integration Feasibility Decision Record](../implementation/v22-0-integration-feasibility-decision.md)
 3. [v22.0 Offline/Local Data Threat Model](../security/v22-0-offline-local-threat-model.md)
 4. [v22.0 Phase 0 Baseline Report (2026-03-09)](../implementation/v22-0-phase-0-baseline-report-2026-03-09.md)
+5. [v22.0 Gate 0 Evidence Status (2026-03-09)](../implementation/v22-0-gate-0-evidence-status-2026-03-09.md)
+6. [v22.0 Gate 0 Exit Checklist (Decision Control)](../implementation/v22-0-gate-0-exit-checklist.md)
 
 ## Sign-Off Checklist
 
@@ -72,6 +74,10 @@ Decision rule:
 2. If any criterion is `NO-GO`, Phase 0 remains blocked.
 
 Current outcome: **GO (Step 1 sign-off complete; conditional integration controls documented).**
+
+> [!WARNING]
+> **Step 1 `GO` is not Gate 0 exit approval.**
+> Gate 0 exit status is currently **NO-GO** until C1/C2 control closure and remaining operational readiness blockers are resolved in the Gate 0 evidence tracker.
 
 ## Technical Prerequisites Completed (2026-03-09)
 

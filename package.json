@@ -14,6 +14,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "ci:check": "bash scripts/validate-ci.sh",
+    "check:v22-gate0": "bash scripts/check-v22-gate0-exit.sh",
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest run --coverage",

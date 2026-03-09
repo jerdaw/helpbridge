@@ -113,6 +113,16 @@ vercel env pull --environment=production .env.production
 
 ### 4. Security Review 🔒
 
+#### v22 Conditional Integration Guard (If Applicable)
+
+- [ ] Confirm C1 legal control is complete:
+  - [ ] [v22.0 Control C1 Legal Review](../implementation/v22-0-control-c1-legal-review.md) marked complete with evidence links
+- [ ] Confirm C2 privacy retention control is complete:
+  - [ ] [v22.0 Control C2 Privacy Retention Mapping](../implementation/v22-0-control-c2-retention-mapping.md) marked complete
+- [ ] Confirm C3 activation guard is complete:
+  - [ ] [v22.0 Control C3 Integration Activation Guard](../implementation/v22-0-control-c3-integration-activation-guard.md) checklist complete
+- [ ] If any C1/C2/C3 item is incomplete, external integration activation remains blocked for this release.
+
 **Security Checks:**
 
 - [ ] No secrets committed to repository

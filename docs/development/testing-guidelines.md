@@ -110,6 +110,19 @@ E2E tests have been consistently timing out in CI due to infrastructure issues (
 
 See [ADR-015](../adr/015-non-blocking-e2e-tests.md) for full context.
 
+### Temporary CI Budget Mode (GitHub Free Tier)
+
+To conserve CI minutes while on GitHub free tier:
+
+1. `test-e2e` runs on `workflow_dispatch` by default.
+2. To run E2E on a `main` push, include `[run-e2e]` in the commit message.
+3. Use manual dispatch for intentional E2E validation windows.
+
+Local helper behavior:
+
+1. `npm run ci:check` skips Playwright tests by default.
+2. Set `RUN_PLAYWRIGHT_LOCAL=true` to include local Playwright execution when needed.
+
 ### Why Chromium Only?
 
 1. **Speed**: 5x faster than running all browsers

@@ -11,7 +11,7 @@
 - **Tests**: 1065 passing, 24 skipped (latest local run)
   - Branch: Coverage metrics pending update | Functions: Pending | Statements: Pending
   - Gaps: 56/85 components untested (34% coverage - up from 28%), 4 untested utility functions (geo, fuzzy, synonyms, query-expander)
-  - 7 E2E tests skipped in `tests/e2e/**` (documented as known limitations)
+  - 7 E2E tests skipped in `tests/e2e/**` (documented baseline: [E2E Skip Baseline (2026-03-09)](../testing/e2e-skip-baseline-2026-03-09.md))
   - Recent: +80 component tests (OfflineBanner, LanguageSwitcher, SearchChips, Header, Footer)
 - **Load Testing**: k6 infrastructure in place, baseline metrics pending documentation
 - **Resilience**: 100% circuit breaker protection on all API routes and database operations
@@ -35,19 +35,21 @@
 
 ### v22.0: Non-Duplicate Value Decision Plan 🔄 ACTIVE
 
-**Status**: PHASE 0 IN PROGRESS — Step 1 sign-off locked; baseline execution + conditional integration controls pending
+**Status**: PHASE 0 IN PROGRESS — **Gate 0 Exit NO-GO** (Step 1 sign-off locked; real-world blockers remain)
 **Priority**: CRITICAL (Strategic Non-Duplication with 211)
 **Total Effort**: 90-day decision cycle (~13 weeks)
 **Timeline**: Phase 0 (2 weeks) + Phase 1 (8 weeks) + Phase 2 decision cycle
 **Dependencies**: v22 objective evaluation artifacts + integration feasibility decision
 **Created**: 2026-02-27
-**Current State**: Pilot DB schema, RLS policies, hardened admin function, internal pilot APIs, and pilot test suite are implemented and validated. Step 1 decision locks are complete; baseline execution remains blocked in this workspace without Supabase credentials, and conditional integration controls are open.
+**Current State**: Pilot DB schema, RLS policies, hardened admin function, internal pilot APIs, and pilot test suite are implemented and validated. Step 1 decision locks are complete; baseline M1/M3 execution is recorded (both `NULL` due to zero baseline-window events), but Gate 0 remains NO-GO until legal/privacy and partner-operation blockers are closed.
 
 Reposition KCC from potential directory duplication to measurable last-mile outcome value (connection success, reliability, referral completion), with explicit kill criteria if value is not demonstrated.
 
 **👉 Detailed Plan: [v22.0 Non-Duplicate Value Decision Plan](v22-0-non-duplicate-value-decision-plan.md)**
 **👉 Approval Checklist: [v22.0 Step 1 Approval Checklist](v22-0-approval-checklist.md)**
 **👉 Phase 0 Execution Spec: [v22.0 Phase 0 Implementation Plan](../implementation/v22-0-phase-0-implementation-plan.md)**
+**👉 User-Owned Gate 0 Actions: [v22.0 Gate 0 User Action Tracker](../implementation/v22-0-gate-0-user-action-tracker.md)**
+**👉 Evidence Intake Pack: [v22.0 Gate 0 Evidence Intake Pack](../implementation/v22-0-gate-0-evidence-intake-pack.md)**
 
 #### Gate-Oriented Objectives
 
@@ -57,17 +59,19 @@ Reposition KCC from potential directory duplication to measurable last-mile outc
 
 #### Immediate Next Steps (Phase 0)
 
-1. Execute baseline M1/M3 queries in Supabase environment and write values into `v22-0-phase-0-baseline-report-2026-03-09.md`.
-2. Complete integration conditional controls C1/C2 (`2026-03-21` target) before any external integration activation.
-3. Close remaining external-claim re-validation entries with primary-source citations.
-4. Confirm named pilot partner list and outreach owner assignment for D4 execution.
+1. Complete integration conditional controls C1/C2 (`2026-03-21` target) before any external integration activation.
+2. Confirm named pilot partner list and outreach owner assignment for D4 execution.
+3. Track closure state in [v22.0 Gate 0 Evidence Status (2026-03-09)](../implementation/v22-0-gate-0-evidence-status-2026-03-09.md).
+4. Use [v22.0 Gate 0 Exit Checklist (Decision Control)](../implementation/v22-0-gate-0-exit-checklist.md) as the canonical GO/NO-GO gate.
+5. Keep user-owned blocker status synchronized in [v22.0 Gate 0 User Action Tracker](../implementation/v22-0-gate-0-user-action-tracker.md) on each gate event.
+6. Use [v22.0 Gate 0 Evidence Intake Pack](../implementation/v22-0-gate-0-evidence-intake-pack.md) for all C1/C2/D4 evidence submissions.
 
-#### Operational Follow-Up (One-Time)
+#### Gate 0 Exit Blockers (NO-GO)
 
-1. On next login to desktop WSL clone, resync to rewritten `main` history:
-   - `git fetch origin`
-   - `git checkout main`
-   - `git reset --hard origin/main`
+1. Candidate partner legal/API terms are not yet attached for C1 clause-level review.
+2. Retention windows and deletion procedure for C2 are not yet policy-locked.
+3. D4 partner outreach execution evidence is not yet complete.
+4. Baseline metrics are recorded but currently `NULL` for M1/M3 due to zero events in baseline window.
 
 #### Completed in This Cycle
 
@@ -75,6 +79,12 @@ Reposition KCC from potential directory duplication to measurable last-mile outc
 2. Legacy `user_metadata` admin gate removed from `bulk_update_service_status`; replaced with `is_admin()` check.
 3. Internal pilot endpoints implemented and documented in OpenAPI/architecture docs.
 4. Pilot API/schema/metrics tests added and passing.
+5. Gate 0 decision control document added and linked across v22 artifacts.
+6. Gate 0 user action tracker added and linked from roadmap.
+7. Gate 0 evidence intake pack added for C1/C2/D4 submission standardization.
+8. CI/release guard added (`npm run check:v22-gate0`) to block build/release paths while Gate 0 is `NO-GO`.
+9. E2E skip baseline documented and linked in roadmap + v19 execution handoff.
+10. Temporary free-tier CI budget mode enabled for Playwright E2E (manual dispatch or `[run-e2e]` on `main`).
 
 #### Gate 1 Thresholds (Pilot Cycle 1)
 
@@ -138,7 +148,7 @@ Finalize all pre-launch preparations to safely transition from development to pr
   - [x] Add SEO basics (`app/robots.ts` -> `/robots.txt`, `sitemap.ts`, `not-found.tsx`, `error.tsx`, `global-error.tsx`)
   - [x] Add security.txt for responsible disclosure
   - [x] Replace console._ with logger._ in 8 files (7 API routes + FAQ page)
-  - [ ] Fix or document remaining E2E test skips (current: 7 skipped tests)
+  - [x] Document remaining E2E test skips baseline (current: 7 skipped tests) in [E2E Skip Baseline (2026-03-09)](../testing/e2e-skip-baseline-2026-03-09.md)
   - [x] Enable Dependabot for automated dependency updates
   - [x] Bonus: Fix embeddings generation script to output formatted JSON
 

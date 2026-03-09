@@ -67,12 +67,26 @@ Completed technical foundation:
 7. Integration feasibility decision recorded as `conditional` with controls C1-C3.
 8. Offline/local threat model updated with mitigation owners/dates and no unresolved critical findings.
 9. Gate 0 minimum-mode baseline report artifact created.
+10. Gate 0 minimum-mode baseline M1/M3 execution completed with read-only linked-project queries.
 
 Still required before Gate 0 exit:
 
-1. Execute M1/M3 baseline queries in Supabase-capable environment and fill numeric values in baseline report.
-2. Complete conditional integration controls C1/C2/C3 before any external integration activation.
-3. Complete external-claim re-validation entries with primary-source citations.
+1. Complete conditional integration controls C1/C2/C3 before any external integration activation.
+
+## Gate 0 Exit Readiness (Current)
+
+- Current readiness: **NO-GO** (as of 2026-03-09)
+
+Blocking items:
+
+1. C1 legal closure is pending candidate partner terms for clause-level review.
+2. C2 privacy retention closure is pending approved retention windows and deletion procedure.
+3. Partner-operation evidence for D4 (named partner list + outreach owner execution) is pending.
+4. Baseline report is complete, but M1/M3 are `NULL` in the current window due to zero observed events.
+
+Canonical gate decision control:
+
+1. [v22.0 Gate 0 Exit Checklist (Decision Control)](../implementation/v22-0-gate-0-exit-checklist.md)
 
 ## Decision Log Authority
 

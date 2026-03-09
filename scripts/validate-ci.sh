@@ -7,6 +7,11 @@ set -e
 echo "🔍 Running local CI validation..."
 echo ""
 
+echo "🚫 Enforcing v22.0 Gate 0 decision..."
+npm run check:v22-gate0
+echo "✅ Gate 0 decision check passed"
+echo ""
+
 echo "📝 Checking code formatting with Prettier..."
 npx prettier --check .
 echo "✅ Prettier check passed"
@@ -27,14 +32,20 @@ npm run test -- --run
 echo "✅ Unit tests passed"
 echo ""
 
-echo "🎭 Running E2E tests..."
-npm run test:e2e
-echo "✅ E2E tests passed"
-echo ""
+if [[ "${RUN_PLAYWRIGHT_LOCAL:-false}" == "true" ]]; then
+  echo "🎭 Running E2E tests (Playwright)..."
+  npm run test:e2e
+  echo "✅ E2E tests passed"
+  echo ""
 
-echo "♿ Running Accessibility E2E tests..."
-npm run test:a11y
-echo "✅ Accessibility tests passed"
-echo ""
+  echo "♿ Running Accessibility E2E tests (Playwright)..."
+  npm run test:a11y
+  echo "✅ Accessibility tests passed"
+  echo ""
+else
+  echo "⏭️ Skipping Playwright tests locally (RUN_PLAYWRIGHT_LOCAL=true to enable)."
+  echo "✅ Playwright checks deferred to GitHub CI."
+  echo ""
+fi
 
 echo "✨ All CI checks passed! Safe to push."

@@ -13,6 +13,8 @@ Related:
 
 1. [v22.0 Approval Checklist](../planning/v22-0-approval-checklist.md)
 2. [v22.0 Non-Duplicate Value Decision Plan](../planning/v22-0-non-duplicate-value-decision-plan.md)
+3. [v22.0 Gate 0 User Action Tracker](v22-0-gate-0-user-action-tracker.md)
+4. [v22.0 Gate 0 Evidence Intake Pack](v22-0-gate-0-evidence-intake-pack.md)
 
 ## Decision Metadata
 
@@ -50,6 +52,14 @@ All must be marked `pass` for outcome `go`.
 | C2         | Complete privacy retention mapping for any integration payload and publish retention limits         | jer   | 2026-03-21 | Privacy review artifact + updated redline evidence links for R4        |
 | C3         | Keep integration endpoint execution disabled unless C1/C2 are marked complete                       | jer   | 2026-03-21 | Gate note in approval checklist + release checklist verification entry |
 
+### Control Status Tracker
+
+| Control ID | Status (`pending` \| `complete`) | Evidence Link                                                                                     | Last Reviewed |
+| ---------- | -------------------------------- | ------------------------------------------------------------------------------------------------- | ------------- |
+| C1         | pending                          | [v22.0 Control C1 Legal Review](v22-0-control-c1-legal-review.md)                                 | 2026-03-09    |
+| C2         | pending                          | [v22.0 Control C2 Privacy Retention Mapping](v22-0-control-c2-retention-mapping.md)               | 2026-03-09    |
+| C3         | complete                         | [v22.0 Control C3 Integration Activation Guard](v22-0-control-c3-integration-activation-guard.md) | 2026-03-09    |
+
 ## Blocked-Path Contingency (Required if Blocked)
 
 If decision is `blocked`, choose one:
@@ -68,14 +78,17 @@ Record selected contingency:
 
 ## Evidence Links
 
-| Artifact                          | Link                                                                                     |
-| --------------------------------- | ---------------------------------------------------------------------------------------- |
-| Legal review notes                | Pending capture (required by C1 before integration activation)                           |
-| Privacy review notes              | Pending capture (required by C2 before integration activation)                           |
-| Technical architecture assessment | [v22.0 Phase 0 Implementation Plan](v22-0-phase-0-implementation-plan.md)                |
-| Approval checklist update         | [v22.0 Approval Checklist](../planning/v22-0-approval-checklist.md)                      |
-| Threat-model evidence             | [v22.0 Offline/Local Data Threat Model](../security/v22-0-offline-local-threat-model.md) |
-| Decision lock memo                | [v22.0 Step 1 Decision Locks (2026-03-09)](v22-0-step-1-decision-locks-2026-03-09.md)    |
+| Artifact                          | Link                                                                                              |
+| --------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Legal review notes                | [v22.0 Control C1 Legal Review](v22-0-control-c1-legal-review.md)                                 |
+| Privacy review notes              | [v22.0 Control C2 Privacy Retention Mapping](v22-0-control-c2-retention-mapping.md)               |
+| Technical architecture assessment | [v22.0 Phase 0 Implementation Plan](v22-0-phase-0-implementation-plan.md)                         |
+| Approval checklist update         | [v22.0 Approval Checklist](../planning/v22-0-approval-checklist.md)                               |
+| User-owned blocker execution      | [v22.0 Gate 0 User Action Tracker](v22-0-gate-0-user-action-tracker.md)                           |
+| Evidence intake templates         | [v22.0 Gate 0 Evidence Intake Pack](v22-0-gate-0-evidence-intake-pack.md)                         |
+| Threat-model evidence             | [v22.0 Offline/Local Data Threat Model](../security/v22-0-offline-local-threat-model.md)          |
+| Decision lock memo                | [v22.0 Step 1 Decision Locks (2026-03-09)](v22-0-step-1-decision-locks-2026-03-09.md)             |
+| Activation guard evidence         | [v22.0 Control C3 Integration Activation Guard](v22-0-control-c3-integration-activation-guard.md) |
 
 ## Final Sign-Off
 
