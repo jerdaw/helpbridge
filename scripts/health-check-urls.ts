@@ -39,7 +39,8 @@ async function checkUrl(
       method: "HEAD",
       signal: controller.signal,
       headers: {
-        "User-Agent": "Mozilla/5.0 (compatible; KingstonCareConnect-HealthCheck/1.0; +https://kingstoncare.vercel.app)",
+        "User-Agent":
+          "Mozilla/5.0 (compatible; KingstonCareConnect-HealthCheck/1.0; +https://github.com/jerdaw/kingston-care-connect)",
       },
     })
 
@@ -52,7 +53,7 @@ async function checkUrl(
         signal: controllerGet.signal,
         headers: {
           "User-Agent":
-            "Mozilla/5.0 (compatible; KingstonCareConnect-HealthCheck/1.0; +https://kingstoncare.vercel.app)",
+            "Mozilla/5.0 (compatible; KingstonCareConnect-HealthCheck/1.0; +https://github.com/jerdaw/kingston-care-connect)",
         },
       })
       clearTimeout(timeoutGet)
