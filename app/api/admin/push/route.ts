@@ -4,6 +4,7 @@ import { createServerClient } from "@supabase/ssr"
 import { cookies } from "next/headers"
 import { handleApiError, createApiResponse, createApiError, validateContentType } from "@/lib/api-utils"
 import { assertAdminRole } from "@/lib/auth/authorization"
+import { unsafeFrom } from "@/lib/supabase"
 
 /**
  * Build OneSignal targeting filters based on target type and custom filters
@@ -151,7 +152,7 @@ export async function POST(request: NextRequest) {
     const result = (await response.json()) as { id: string }
 
     // 4. Log to Legacy Audit Table
-    await supabase.from("notification_audit").insert({
+    await unsafeFrom(supabase, "notification_audit").insert({
       title,
       message,
       notification_type: type,
@@ -161,7 +162,7 @@ export async function POST(request: NextRequest) {
     })
 
     // 5. Log to Unified Audit Table (Phase 1.3)
-    await supabase.from("audit_logs").insert({
+    await unsafeFrom(supabase, "audit_logs").insert({
       table_name: "notifications",
       record_id: result.id,
       operation: "CREATE",

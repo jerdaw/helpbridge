@@ -72,6 +72,7 @@ nav:
       - Bilingual: bilingual-dev-guide.md
   - Components: components.md
   - API: api/
+  - Deployment: deployment/
   - Development: development/
   - Governance: governance/
   - Legal: legal/

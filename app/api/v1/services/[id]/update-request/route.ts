@@ -6,6 +6,7 @@ import { createServerClient } from "@supabase/ssr"
 import { cookies } from "next/headers"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
 import { env } from "@/lib/env"
+import { unsafeFrom } from "@/lib/supabase"
 
 const ALLOWED_UPDATE_FIELDS = [
   "name",
@@ -75,7 +76,7 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
     const { field_updates, justification } = validation.data
 
     const { error } = await withCircuitBreaker(async () =>
-      supabaseAuth.from("service_update_requests").insert({
+      unsafeFrom(supabaseAuth, "service_update_requests").insert({
         service_id: serviceId,
         requested_by: user.email,
         field_updates,

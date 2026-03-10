@@ -2,11 +2,16 @@ import { describe, it, expect, vi, beforeEach } from "vitest"
 import { claimService } from "../../lib/services"
 import { supabase } from "../../lib/supabase"
 
+const { mockUnsafeFrom } = vi.hoisted(() => ({
+  mockUnsafeFrom: vi.fn(),
+}))
+
 // Mock Supabase
 vi.mock("../../lib/supabase", () => ({
   supabase: {
     from: vi.fn(),
   },
+  unsafeFrom: mockUnsafeFrom,
 }))
 
 // Mock Logger to avoid noise
@@ -20,6 +25,9 @@ vi.mock("../../lib/logger", () => ({
 describe("claimService", () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockUnsafeFrom.mockImplementation((client: { from: (table: string) => unknown }, table: string) =>
+      client.from(table)
+    )
   })
 
   it("should successfully claim an unclaimed service", async () => {

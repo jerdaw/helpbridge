@@ -4,6 +4,7 @@ import { createApiResponse, createApiError, handleApiError, validateContentType 
 import { assertServiceOwnership } from "@/lib/auth/authorization"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
 import { env } from "@/lib/env"
+import { unsafeFrom } from "@/lib/supabase"
 
 /**
  * GET /api/v1/services/[id]
@@ -85,7 +86,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     delete body.id
 
     const { data, error } = await withCircuitBreaker(async () =>
-      supabaseAuth.from("services").update(body).eq("id", id).select().single()
+      unsafeFrom(supabaseAuth, "services").update(body).eq("id", id).select().single()
     )
 
     if (error) {
@@ -141,7 +142,7 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
     delete body.org_id
 
     const { data, error } = await withCircuitBreaker(async () =>
-      supabaseAuth.from("services").update(body).eq("id", id).select().single()
+      unsafeFrom(supabaseAuth, "services").update(body).eq("id", id).select().single()
     )
 
     if (error) {
@@ -191,8 +192,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
 
     // Soft delete with circuit breaker protection
     const { error } = await withCircuitBreaker(async () =>
-      supabaseAuth
-        .from("services")
+      unsafeFrom(supabaseAuth, "services")
         .update({
           deleted_at: new Date().toISOString(),
           deleted_by: user.id,

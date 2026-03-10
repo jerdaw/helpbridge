@@ -12,7 +12,7 @@
 
 import { NextRequest, NextResponse } from "next/server"
 import { getSupabaseBreakerStats } from "@/lib/resilience/supabase-breaker"
-import { supabase } from "@/lib/supabase"
+import { getSupabaseClient, hasSupabaseCredentials, SupabaseNotConfiguredError } from "@/lib/supabase"
 import { getMetrics } from "@/lib/performance/metrics"
 import { env } from "@/lib/env"
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit"
@@ -51,9 +51,17 @@ interface HealthCheckResponse {
  */
 async function checkDatabase(): Promise<HealthCheckResponse["checks"]["database"]> {
   try {
+    if (!hasSupabaseCredentials()) {
+      return {
+        status: "down",
+        error: "Supabase credentials not configured",
+      }
+    }
+
     const startTime = performance.now()
 
     // Simple connectivity check - query system health
+    const supabase = getSupabaseClient()
     const { error } = await supabase.from("services").select("id").limit(1)
 
     const latencyMs = Math.round(performance.now() - startTime)
@@ -81,7 +89,12 @@ async function checkDatabase(): Promise<HealthCheckResponse["checks"]["database"
   } catch (error) {
     return {
       status: "down",
-      error: error instanceof Error ? error.message : String(error),
+      error:
+        error instanceof SupabaseNotConfiguredError
+          ? "Supabase credentials not configured"
+          : error instanceof Error
+            ? error.message
+            : String(error),
     }
   }
 }
@@ -152,6 +165,10 @@ async function checkAndAlertSLOViolations(compliance: ReturnType<typeof getSLOCo
  */
 async function isAuthenticated(): Promise<boolean> {
   try {
+    if (!hasSupabaseCredentials()) {
+      return false
+    }
+
     const { createServerClient } = await import("@supabase/ssr")
     const { cookies } = await import("next/headers")
 

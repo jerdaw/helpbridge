@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation" // Changed from 'next/router'
-import { supabase } from "@/lib/supabase"
 import { Service } from "@/types/service"
+import { Database } from "@/types/supabase"
 import EditServiceForm from "@/components/EditServiceForm"
 import { ServiceFormData } from "@/lib/schemas"
 import { useAuth } from "@/components/AuthProvider"
@@ -12,6 +12,10 @@ import Link from "next/link"
 import { useServiceFeedback } from "@/hooks/useServiceFeedback"
 import { ThumbsUp, AlertTriangle } from "lucide-react"
 import { useTranslations } from "next-intl"
+import { createClient } from "@/utils/supabase/client"
+import { unsafeFrom } from "@/lib/supabase"
+
+type ServiceRow = Database["public"]["Tables"]["services"]["Row"]
 
 function FeedbackStats({ serviceId }: { serviceId: string }) {
   const { stats, helpfulPercentage, totalVotes, loading } = useServiceFeedback(serviceId)
@@ -51,16 +55,19 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
 
       if (!user) return // Auth provider handles redirect, but safe guard
 
+      const supabase = createClient()
       const { data, error } = await supabase.from("services").select("*").eq("id", pageId).single()
 
       if (data) {
+        const serviceRow = data as ServiceRow
+
         // Map to Service type (similar to search.ts logic)
         const mappedData = {
-          ...data,
-          embedding: typeof data.embedding === "string" ? JSON.parse(data.embedding) : data.embedding,
-          identity_tags: typeof data.tags === "string" ? JSON.parse(data.tags) : data.tags,
-          intent_category: data.category,
-          verification_level: data.verification_status,
+          ...serviceRow,
+          embedding: typeof serviceRow.embedding === "string" ? JSON.parse(serviceRow.embedding) : serviceRow.embedding,
+          identity_tags: typeof serviceRow.tags === "string" ? JSON.parse(serviceRow.tags) : serviceRow.tags,
+          intent_category: serviceRow.category,
+          verification_level: serviceRow.verification_status,
         } as unknown as Service
         setService(mappedData)
       } else if (error) {
@@ -75,8 +82,10 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
   const handleUpdate = async (formData: ServiceFormData) => {
     if (!user || !id) return
 
+    const supabase = createClient()
+
     // Prepare for DB update
-    const updates = {
+    const updates: Database["public"]["Tables"]["services"]["Update"] = {
       name: formData.name,
       description: formData.description,
       address: formData.address,
@@ -90,10 +99,11 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
       category: formData.category,
       // tags: ... logic to save tags
       bus_routes: formData.bus_routes ? formData.bus_routes.split(",").map((s) => s.trim()) : [],
-      updated_at: new Date().toISOString(),
     }
 
-    const { error } = await supabase.from("services").update(updates).eq("id", id)
+    // Generated browser client types currently resolve this update payload to `never`.
+    // Keep the payload strongly typed above and narrow only at the call site.
+    const { error } = await unsafeFrom(supabase, "services").update(updates).eq("id", id)
 
     if (error) {
       throw new Error(error.message)

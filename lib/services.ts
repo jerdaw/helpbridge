@@ -1,4 +1,4 @@
-import { supabase } from "./supabase"
+import { supabase, unsafeFrom } from "./supabase"
 import { logger } from "./logger"
 import { Service } from "@/types/service"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
@@ -13,8 +13,7 @@ export async function claimService(serviceId: string, orgId: string) {
   try {
     const { error } = await withCircuitBreaker(
       async () =>
-        supabase
-          .from("services")
+        unsafeFrom(supabase, "services")
           .update({
             org_id: orgId,
             verification_status: "L1", // Elevate to L1 upon claiming
@@ -56,13 +55,20 @@ export async function getServiceById(id: string): Promise<Service | null> {
 
     if (!data) return null
 
+    const serviceRow = data as Record<string, unknown> & {
+      embedding?: string | number[] | null
+      tags?: string | Service["identity_tags"] | null
+      category?: Service["intent_category"]
+      verification_status?: Service["verification_level"]
+    }
+
     // Map database fields to Service type
     const service: Service = {
-      ...data,
-      embedding: typeof data.embedding === "string" ? JSON.parse(data.embedding) : data.embedding,
-      identity_tags: typeof data.tags === "string" ? JSON.parse(data.tags) : data.tags,
-      intent_category: data.category,
-      verification_level: data.verification_status,
+      ...serviceRow,
+      embedding: typeof serviceRow.embedding === "string" ? JSON.parse(serviceRow.embedding) : serviceRow.embedding,
+      identity_tags: typeof serviceRow.tags === "string" ? JSON.parse(serviceRow.tags) : serviceRow.tags,
+      intent_category: serviceRow.category,
+      verification_level: serviceRow.verification_status,
       // Ensure optional fields are handled if missing in DB but required in type (adjust as needed)
     } as unknown as Service
 
@@ -78,8 +84,7 @@ export async function getServiceById(id: string): Promise<Service | null> {
 export async function updateService(id: string, updates: Partial<Service>) {
   try {
     const { error } = await withCircuitBreaker(async () =>
-      supabase
-        .from("services")
+      unsafeFrom(supabase, "services")
         .update({
           name: updates.name,
           description: updates.description,

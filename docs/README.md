@@ -15,6 +15,7 @@
 | [`community/`](community/) | Acknowledgments and community docs |
 
 | [`development/`](development/) | Developer guides (testing, i18n, hooks, components) |
+| [`deployment/`](deployment/) | Active and legacy deployment runbooks |
 | [`governance/`](governance/) | Standards, verification protocols, documentation guidelines |
 | [`legal/`](legal/) | AI compliance, data licenses, insurance research |
 | [`planning/`](planning/) | Roadmap, version planning, and archived versions |

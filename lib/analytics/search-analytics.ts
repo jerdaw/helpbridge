@@ -1,3 +1,4 @@
+import { unsafeFrom } from "@/lib/supabase"
 import { createClient, SupabaseClient } from "@supabase/supabase-js"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
 
@@ -33,7 +34,7 @@ export async function trackSearchEvent(event: SearchEvent) {
     else if (event.resultCount <= 5) bucket = "1-5"
 
     const { error } = await withCircuitBreaker(async () =>
-      supabase!.from("search_analytics").insert({
+      unsafeFrom(supabase, "search_analytics").insert({
         category: event.category || "All",
         result_count_bucket: bucket,
         has_location: event.hasLocation,

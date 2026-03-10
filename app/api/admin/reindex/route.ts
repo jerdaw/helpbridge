@@ -6,6 +6,7 @@ import { createServerClient } from "@supabase/ssr"
 import { cookies } from "next/headers"
 import { logger } from "@/lib/logger"
 import { env } from "@/lib/env"
+import { unsafeFrom } from "@/lib/supabase"
 
 const execPromise = util.promisify(exec)
 
@@ -37,8 +38,7 @@ export async function POST() {
       .is("deleted_at", null)
 
     // Create progress record
-    const { data: progressRecord, error: progressError } = await supabase
-      .from("reindex_progress")
+    const { data: progressRecord, error: progressError } = await unsafeFrom(supabase, "reindex_progress")
       .insert({
         total_services: totalServices || 0,
         triggered_by: user.id,
@@ -99,7 +99,7 @@ async function runReindexWithProgress(
     })
 
     // Audit Log
-    await supabase.from("audit_logs").insert({
+    await unsafeFrom(supabase, "audit_logs").insert({
       table_name: "embeddings",
       record_id: "global",
       operation: "UPDATE",

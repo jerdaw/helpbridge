@@ -6,6 +6,9 @@ import { createServerClient } from "@supabase/ssr"
 import { supabase } from "@/lib/supabase"
 
 // --- Mock Setup for Chaining Supabase Calls ---
+const { mockUnsafeFrom } = vi.hoisted(() => ({
+  mockUnsafeFrom: vi.fn(),
+}))
 
 const createChainMock = () => ({
   select: vi.fn().mockReturnThis(),
@@ -23,6 +26,7 @@ vi.mock("@/lib/supabase", () => ({
   supabase: {
     from: vi.fn(),
   },
+  unsafeFrom: mockUnsafeFrom,
 }))
 
 const mockGetUser = vi.fn()
@@ -52,6 +56,12 @@ describe("API v1 Services [id]", () => {
 
     // Link public client mock (used in GET)
     vi.mocked(supabase.from).mockReturnValue(publicChain as any)
+    mockUnsafeFrom.mockImplementation((_client: unknown, table: string) => {
+      if (!tableChains[table]) {
+        tableChains[table] = createChainMock()
+      }
+      return tableChains[table]
+    })
     publicChain.single.mockResolvedValue({ data: { id: "123", name: "Test Service" }, error: null })
 
     mockGetUser.mockResolvedValue({ data: { user: { id: "user-1" } }, error: null })

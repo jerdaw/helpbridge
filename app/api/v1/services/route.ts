@@ -7,6 +7,7 @@ import { logger } from "@/lib/logger"
 import { ServiceCreateSchema } from "@/lib/schemas/service-create"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
 import { env } from "@/lib/env"
+import { unsafeFrom } from "@/lib/supabase"
 
 /**
  * GET /api/v1/services
@@ -167,7 +168,7 @@ export async function POST(request: NextRequest) {
 
     // Insert with circuit breaker protection
     const { data, error } = await withCircuitBreaker(async () =>
-      supabaseAuth.from("services").insert(serviceData).select().single()
+      unsafeFrom(supabaseAuth, "services").insert(serviceData).select().single()
     )
 
     if (error) {

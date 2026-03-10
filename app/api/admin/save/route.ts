@@ -5,6 +5,7 @@ import { assertAdminRole } from "@/lib/auth/authorization"
 import { createServerClient } from "@supabase/ssr"
 import { cookies } from "next/headers"
 import { env } from "@/lib/env"
+import { unsafeFrom } from "@/lib/supabase"
 
 export async function POST(req: NextRequest) {
   try {
@@ -40,7 +41,7 @@ export async function POST(req: NextRequest) {
 
     // 2. Transact to Supabase
     // We use upsert to create or update
-    const { error: upsertError } = await supabase.from("services").upsert({
+    const { error: upsertError } = await unsafeFrom(supabase, "services").upsert({
       ...service,
       last_verified: new Date().toISOString(),
     })
@@ -50,7 +51,7 @@ export async function POST(req: NextRequest) {
     }
 
     // 3. Audit Log
-    await supabase.from("audit_logs").insert({
+    await unsafeFrom(supabase, "audit_logs").insert({
       table_name: "services",
       record_id: service.id,
       operation: oldService ? "UPDATE" : "CREATE",

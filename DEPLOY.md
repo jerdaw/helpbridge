@@ -6,6 +6,9 @@
 > only if you intentionally need the old Vercel deployment path. Do not treat
 > it as the long-term production baseline.
 
+Current migration work should use the draft direct-VPS private proof in
+[`docs/deployment/direct-vps-proof.md`](docs/deployment/direct-vps-proof.md).
+
 This document describes the older **Vercel** deployment path.
 
 ## 1. Prerequisites

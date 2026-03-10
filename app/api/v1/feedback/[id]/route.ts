@@ -6,6 +6,7 @@ import { createServerClient } from "@supabase/ssr"
 import { cookies } from "next/headers"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
 import { env } from "@/lib/env"
+import { unsafeFrom } from "@/lib/supabase"
 
 const UpdateStatusSchema = z.object({
   status: z.enum(["pending", "reviewed", "resolved", "dismissed"]),
@@ -58,8 +59,7 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
 
     // 2. Update Status
     const { error: updateError } = await withCircuitBreaker(async () =>
-      supabaseAuth
-        .from("feedback")
+      unsafeFrom(supabaseAuth, "feedback")
         .update({
           status: status,
           resolved_at: status === "resolved" ? new Date().toISOString() : null,

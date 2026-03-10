@@ -1,9 +1,13 @@
-import { supabase } from "./supabase"
+import { supabase, unsafeFrom } from "./supabase"
 import { logger } from "./logger"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
 import { CircuitOpenError } from "@/lib/resilience/circuit-breaker"
 
 export type EventType = "view_detail" | "click_website" | "click_call"
+type AnalyticsEventRow = {
+  service_id: string
+  created_at: string
+}
 
 /**
  * Tracks a privacy-preserving analytic event.
@@ -12,7 +16,7 @@ export type EventType = "view_detail" | "click_website" | "click_call"
 export async function trackEvent(serviceId: string, eventType: EventType) {
   try {
     await withCircuitBreaker(async () =>
-      supabase.from("analytics_events").insert({
+      unsafeFrom(supabase, "analytics_events").insert({
         service_id: serviceId,
         event_type: eventType,
       })
@@ -49,10 +53,10 @@ export async function getAnalyticsForServices(serviceIds: string[]): Promise<Rec
   const sixtyDaysAgo = new Date()
   sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60)
 
-  let data
+  let data: AnalyticsEventRow[]
   try {
     const result = await withCircuitBreaker(async () =>
-      supabase.from("analytics_events").select("service_id, created_at").in("service_id", serviceIds)
+      unsafeFrom(supabase, "analytics_events").select("service_id, created_at").in("service_id", serviceIds)
     )
 
     if (result.error || !result.data) {
@@ -60,7 +64,7 @@ export async function getAnalyticsForServices(serviceIds: string[]): Promise<Rec
       return {}
     }
 
-    data = result.data
+    data = (result.data ?? []) as AnalyticsEventRow[]
   } catch (error) {
     if (error instanceof CircuitOpenError) {
       logger.warn("Analytics fetch skipped: Circuit breaker open", { component: "analytics", serviceIds })

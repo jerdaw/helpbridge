@@ -20,6 +20,7 @@ const { mockSupabaseChain } = vi.hoisted(() => {
 
 vi.mock("@/lib/supabase", () => ({
   supabase: mockSupabaseChain,
+  unsafeFrom: vi.fn((_client: unknown, _table: string) => mockSupabaseChain),
 }))
 
 vi.mock("@/lib/rate-limit", () => ({
