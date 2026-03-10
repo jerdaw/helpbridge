@@ -1,11 +1,17 @@
-# Deployment Guide: Kingston Care Connect (Vercel)
+# Deployment Guide: Kingston Care Connect (Legacy Vercel Path)
 
-This project is optimized for deployment on **Vercel**.
+> Status: Legacy deployment guide.
+>
+> The repo is being rebaselined away from Vercel dependence. Use this document
+> only if you intentionally need the old Vercel deployment path. Do not treat
+> it as the long-term production baseline.
+
+This document describes the older **Vercel** deployment path.
 
 ## 1. Prerequisites
 
 - A GitHub account (where this repo is pushed).
-- A Vercel account (Free Tier is sufficient).
+- A Vercel account (if you are intentionally using the legacy deployment path).
 - Your `OPENAI_API_KEY` (Required for the build step).
 
 ## 2. Deploy Steps
@@ -52,7 +58,7 @@ To ensure zero-downtime when creating indexes on large tables, use the provided 
 
 ## 4. Post-Deployment Verification
 
-- Visit the URL provided by Vercel (e.g., `kingston-care-connect.vercel.app`).
+- Visit the URL provided by the legacy Vercel deployment (for example, `kingston-care-connect.vercel.app`).
 - **Test Search:** Type "Food".
 - _Success:_ Results appear instantly.
 - **Test Semantic Search:** Type "I feel empty".
@@ -60,5 +66,5 @@ To ensure zero-downtime when creating indexes on large tables, use the provided 
 
 ## 4. Troubleshooting
 
-- **Build Fail:** Check Vercel Logs. If it says "Module not found", ensure `app/worker.ts` and `hooks` are committed.
+- **Build Fail:** Check Vercel logs. If it says "Module not found", ensure `app/worker.ts` and `hooks` are committed.
 - **No Lightning Bolt:** Open Browser Console (F12). Look for network errors fetching the `.onnx` model file.
