@@ -65,7 +65,8 @@ It will:
 2. replace the existing `kingston-care-connect-web` container if present,
 3. run it with `--restart unless-stopped`,
 4. publish `127.0.0.1:3300:3000`,
-5. print the expected health URL.
+5. pass required `NEXT_PUBLIC_*` values into both the image build and container runtime,
+6. print the expected health URL.
 
 ## Verified Production State
 

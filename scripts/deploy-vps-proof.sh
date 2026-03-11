@@ -13,27 +13,50 @@ tag="$(git -C "$app_dir" rev-parse --short HEAD 2>/dev/null || date -u +%Y%m%d%H
 container_name="kingston-care-connect-web"
 host_bind="127.0.0.1:3300:3000"
 
+read_env_value() {
+  local key="$1"
+  local value
+  value="$(grep -E "^${key}=" "$env_file" | tail -n 1 | cut -d= -f2- || true)"
+  value="${value%\"}"
+  value="${value#\"}"
+  value="${value%\'}"
+  value="${value#\'}"
+  printf '%s' "$value"
+}
+
 if [[ ! -f "$env_file" ]]; then
   echo "env file not found: $env_file" >&2
   exit 1
 fi
 
-build_arg_app_url=""
-build_arg_base_url=""
+next_public_supabase_url="$(read_env_value "NEXT_PUBLIC_SUPABASE_URL")"
+next_public_supabase_publishable_key="$(read_env_value "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY")"
 
-if app_url="$(grep -E '^NEXT_PUBLIC_APP_URL=' "$env_file" | tail -n 1 | cut -d= -f2-)"; then
-  if [[ -n "$app_url" ]]; then
-    build_arg_app_url=(--build-arg "NEXT_PUBLIC_APP_URL=$app_url")
-  fi
+if [[ -z "$next_public_supabase_url" || -z "$next_public_supabase_publishable_key" ]]; then
+  echo "env file must define NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY" >&2
+  exit 1
 fi
 
-if base_url="$(grep -E '^NEXT_PUBLIC_BASE_URL=' "$env_file" | tail -n 1 | cut -d= -f2-)"; then
-  if [[ -n "$base_url" ]]; then
-    build_arg_base_url=(--build-arg "NEXT_PUBLIC_BASE_URL=$base_url")
-  fi
-fi
+build_args=(
+  "--build-arg" "NEXT_PUBLIC_SUPABASE_URL=${next_public_supabase_url}"
+  "--build-arg" "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=${next_public_supabase_publishable_key}"
+)
 
-docker build "${build_arg_app_url[@]}" "${build_arg_base_url[@]}" -t "${image_name}:${tag}" "$app_dir"
+for key in \
+  NEXT_PUBLIC_APP_URL \
+  NEXT_PUBLIC_BASE_URL \
+  NEXT_PUBLIC_SEARCH_MODE \
+  NEXT_PUBLIC_ONESIGNAL_APP_ID \
+  NEXT_PUBLIC_VAPID_PUBLIC_KEY \
+  NEXT_PUBLIC_ENABLE_SEARCH_PERF_TRACKING
+do
+  value="$(read_env_value "$key")"
+  if [[ -n "$value" ]]; then
+    build_args+=("--build-arg" "${key}=${value}")
+  fi
+done
+
+docker build "${build_args[@]}" -t "${image_name}:${tag}" "$app_dir"
 
 if docker ps -a --format '{{.Names}}' | grep -Fxq "$container_name"; then
   docker rm -f "$container_name" >/dev/null

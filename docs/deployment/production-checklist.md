@@ -59,7 +59,7 @@ preserve the helper-function-based recursion repair captured in:
 Verify the VPS env file contains the required runtime values:
 
 ```bash
-sudo grep -E '^(NEXT_PUBLIC_SUPABASE_URL|NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY|NEXT_PUBLIC_APP_URL|NEXT_PUBLIC_BASE_URL|NEXT_PUBLIC_SEARCH_MODE)=' \
+sudo grep -E '^(NEXT_PUBLIC_SUPABASE_URL|NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY|NEXT_PUBLIC_APP_URL|NEXT_PUBLIC_BASE_URL|NEXT_PUBLIC_SEARCH_MODE|NEXT_PUBLIC_ONESIGNAL_APP_ID|NEXT_PUBLIC_ENABLE_SEARCH_PERF_TRACKING)=' \
   /etc/projects-merge/env/kingston-care-connect-web.env
 ```
 
@@ -67,6 +67,11 @@ Expected production host values:
 
 - `NEXT_PUBLIC_APP_URL=https://helpbridge.ca`
 - `NEXT_PUBLIC_BASE_URL=https://helpbridge.ca`
+
+Important:
+
+- `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` must be available at both image build time and container runtime.
+- `scripts/deploy-vps-proof.sh` is the supported path because it passes the required public values into the Docker build before the container starts.
 
 Optional integrations such as `SLACK_WEBHOOK_URL`, `AXIOM_*`, and `OPENAI_API_KEY`
 may be unset if they are not in active use.
