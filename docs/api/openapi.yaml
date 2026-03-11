@@ -5,7 +5,7 @@ info:
   description: |
     Public API for accessing community services in Kingston, Ontario.
 
-    **Base URL:** `https://kingston-care-connect.vercel.app/api/v1`
+    **Base URL:** `https://helpbridge.ca/api/v1`
 
     ## Authentication
     - Public endpoints (services) require no authentication.
@@ -16,7 +16,7 @@ info:
     email: support@careconnect.ca
 
 servers:
-  - url: https://kingston-care-connect.vercel.app/api/v1
+  - url: https://helpbridge.ca/api/v1
     description: Production
   - url: http://localhost:3000/api/v1
     description: Local Development

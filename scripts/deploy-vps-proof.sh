@@ -18,7 +18,22 @@ if [[ ! -f "$env_file" ]]; then
   exit 1
 fi
 
-docker build -t "${image_name}:${tag}" "$app_dir"
+build_arg_app_url=""
+build_arg_base_url=""
+
+if app_url="$(grep -E '^NEXT_PUBLIC_APP_URL=' "$env_file" | tail -n 1 | cut -d= -f2-)"; then
+  if [[ -n "$app_url" ]]; then
+    build_arg_app_url=(--build-arg "NEXT_PUBLIC_APP_URL=$app_url")
+  fi
+fi
+
+if base_url="$(grep -E '^NEXT_PUBLIC_BASE_URL=' "$env_file" | tail -n 1 | cut -d= -f2-)"; then
+  if [[ -n "$base_url" ]]; then
+    build_arg_base_url=(--build-arg "NEXT_PUBLIC_BASE_URL=$base_url")
+  fi
+fi
+
+docker build "${build_arg_app_url[@]}" "${build_arg_base_url[@]}" -t "${image_name}:${tag}" "$app_dir"
 
 if docker ps -a --format '{{.Names}}' | grep -Fxq "$container_name"; then
   docker rm -f "$container_name" >/dev/null

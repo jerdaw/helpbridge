@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 import { promises as fs } from "fs"
 import path from "path"
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://kingstoncare.ca"
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://helpbridge.ca"
 
 const locales = ["en", "fr", "zh-Hans", "ar", "pt", "es", "pa"] as const
 

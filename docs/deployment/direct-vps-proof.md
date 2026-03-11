@@ -1,31 +1,32 @@
 ---
-status: stable
+status: active
 last_updated: 2026-03-11
 owner: jer
-tags: [deployment, vps, docker, caddy, proof, supabase, rls]
+tags: [deployment, vps, docker, caddy, production, supabase, rls]
 ---
 
-# Direct VPS Private Proof
+# Direct VPS Deployment
 
-This document describes the **current active deployment proof path** for Kingston Care Connect.
+This document describes the **current active direct-VPS deployment path** for Kingston Care Connect.
 
 Current state:
 
 1. the app is packaged as a Docker container,
-2. the private VPS proof is running successfully on the Hetzner VPS,
-3. the container binds to `127.0.0.1:3300`,
-4. `GET /api/v1/health` returns healthy on the VPS,
-5. no public ingress or DNS cutover has been applied yet.
+2. the container is running successfully on the Hetzner VPS,
+3. the public host is `https://helpbridge.ca`,
+4. `www.helpbridge.ca` redirects to the apex,
+5. the container binds privately at `127.0.0.1:3300`,
+6. `GET /api/v1/health` returns healthy on the VPS and publicly.
 
-This is the active path for migration work. The root [DEPLOY.md](../../DEPLOY.md) file remains a **legacy Vercel guide** only.
+This is the active production path. The root [DEPLOY.md](../../DEPLOY.md) file remains a **legacy Vercel guide** only.
 
 ## Runtime Shape
 
-The private proof uses:
+The deployment uses:
 
 1. Docker on the host VPS,
 2. host-managed Caddy for eventual ingress,
-3. loopback-only bind during proof (`127.0.0.1:3300 -> container:3000`),
+3. loopback-only bind on the host (`127.0.0.1:3300 -> container:3000`),
 4. the Next.js standalone production output from `npm run build`.
 
 ## Local Prerequisites
@@ -60,15 +61,29 @@ It will:
 4. publish `127.0.0.1:3300:3000`,
 5. print the expected health URL.
 
-## Verified Private-Proof State
+## Verified Production State
 
-As of 2026-03-11, the private proof has been verified with:
+As of 2026-03-11, the deployment has been verified with:
 
 1. `docker ps` showing `kingston-care-connect-web` healthy on the VPS,
 2. `curl -fsS http://127.0.0.1:3300/api/v1/health`,
 3. `curl -sS -D - "http://127.0.0.1:3300/api/v1/services?limit=1"`.
+4. `curl -fsS https://helpbridge.ca/api/v1/health`,
+5. `curl -fsS https://helpbridge.ca/robots.txt`,
+6. `curl -fsS https://helpbridge.ca/sitemap.xml`.
 
-The proof should remain private until public ingress, DNS, and rollback steps are documented separately.
+Public ingress now runs through host Caddy:
+
+```caddy
+www.helpbridge.ca {
+    redir https://helpbridge.ca{uri} 308
+}
+
+helpbridge.ca {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:3300
+}
+```
 
 ## Expected Health Check
 
@@ -108,13 +123,10 @@ This repair should be treated as part of the private-proof source of truth becau
 
 ## Current Limits
 
-This document only covers the **private proof**.
+This document records the active deployment baseline.
 
-It does not yet cover:
+Follow-up documentation still needed:
 
-1. public DNS,
-2. public Caddy site blocks,
-3. apex vs `www` policy,
-4. cutover or rollback sequencing.
-
-Those should be documented only after the private proof is confirmed healthy on the VPS.
+1. a dedicated public cutover / rollback runbook,
+2. broader repo-domain canonicalization for historical docs that still reference `kingstoncare.ca`,
+3. any future status-page or subdomain policy.

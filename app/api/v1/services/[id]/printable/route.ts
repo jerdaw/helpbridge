@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getServiceById } from "@/lib/services"
 
+const PUBLIC_BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://helpbridge.ca"
+
 // Format hours for display
 function formatHours(hours: Record<string, { open: string; close: string }> | null | undefined): string {
   if (!hours) return "Contact for hours"
@@ -31,7 +33,8 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
   const hoursText =
     service.hours_text || formatHours(service.hours as Record<string, { open: string; close: string }> | null)
   const eligibility = service.eligibility_notes || service.eligibility || "Contact for eligibility information"
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(`https://kingstoncare.ca/service/${id}`)}`
+  const serviceUrl = `${PUBLIC_BASE_URL}/service/${id}`
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(serviceUrl)}`
 
   const html = `<!DOCTYPE html>
 <html lang="en">
@@ -152,7 +155,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
   <div class="footer">
     <div class="source">
       Source: Kingston Care Connect<br>
-      kingstoncare.ca
+      ${PUBLIC_BASE_URL.replace(/^https?:\/\//, "")}
     </div>
     <div class="qr-container">
       <img src="${qrCodeUrl}" alt="QR code to service page">

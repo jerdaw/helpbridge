@@ -25,9 +25,9 @@ We maintain a hand-verified dataset of the **196 highest-impact services** avail
 ## Deployment Status
 
 1. Legacy production guidance in this repo still references Vercel where explicitly marked historical.
-2. The active migration path is now the direct-VPS private proof documented in [docs/deployment/direct-vps-proof.md](docs/deployment/direct-vps-proof.md).
-3. The private proof is healthy on the Hetzner VPS at `127.0.0.1:3300`.
-4. Public ingress and DNS cutover remain future work.
+2. The active production path is now the direct-VPS deployment documented in [docs/deployment/direct-vps-proof.md](docs/deployment/direct-vps-proof.md).
+3. The app is live on the Hetzner VPS at [https://helpbridge.ca](https://helpbridge.ca).
+4. `www.helpbridge.ca` redirects to the apex and the app container remains bound privately at `127.0.0.1:3300`.
 
 ## Current Features
 

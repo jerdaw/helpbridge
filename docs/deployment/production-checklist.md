@@ -328,7 +328,7 @@ gh pr merge --squash --delete-branch
 
 **Immediate Checks (< 5 minutes):**
 
-- [ ] Production site loads (`https://kingstoncare.ca`)
+- [ ] Production site loads (`https://helpbridge.ca`)
 - [ ] No 500 errors on homepage
 - [ ] Search functionality works
 - [ ] User authentication works
@@ -338,13 +338,13 @@ gh pr merge --squash --delete-branch
 
 ```bash
 # Verify health endpoint
-curl https://kingstoncare.ca/api/v1/health
+curl https://helpbridge.ca/api/v1/health
 
 # Expected response:
 # {"status":"healthy","timestamp":"...","circuitBreaker":{...}}
 
 # Verify services endpoint
-curl https://kingstoncare.ca/api/v1/services | jq '.data | length'
+curl https://helpbridge.ca/api/v1/services | jq '.data | length'
 
 # Expected: 196+ services
 ```
@@ -401,7 +401,7 @@ vercel deployments list --prod
 vercel rollback <PREVIOUS_DEPLOYMENT_URL>
 
 # Verify rollback
-curl https://kingstoncare.ca/api/v1/health
+curl https://helpbridge.ca/api/v1/health
 ```
 
 **Rollback Triggers:**
