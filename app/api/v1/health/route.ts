@@ -221,7 +221,7 @@ export async function GET(request: NextRequest) {
   }
 
   const timestamp = new Date().toISOString()
-  const version = process.env.npm_package_version || "unknown"
+  const version = process.env.APP_VERSION || process.env.npm_package_version || "unknown"
 
   // Check database health
   const databaseCheck = await checkDatabase()

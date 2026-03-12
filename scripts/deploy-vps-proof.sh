@@ -9,7 +9,15 @@ fi
 env_file="$1"
 app_dir="$(cd "$(dirname "$0")/.." && pwd)"
 image_name="kingston-care-connect-web"
-tag="$(git -C "$app_dir" rev-parse --short HEAD 2>/dev/null || date -u +%Y%m%d%H%M%S)"
+
+if git_revision="$(git -C "$app_dir" rev-parse --short HEAD 2>/dev/null)"; then
+  tag="$git_revision"
+elif [[ -f "$app_dir/REVISION" ]]; then
+  tag="$(tr -d '[:space:]' < "$app_dir/REVISION")"
+else
+  tag="$(date -u +%Y%m%d%H%M%S)"
+fi
+
 container_name="kingston-care-connect-web"
 host_bind="127.0.0.1:3300:3000"
 
@@ -66,6 +74,7 @@ docker run -d \
   --name "$container_name" \
   --restart unless-stopped \
   --env-file "$env_file" \
+  -e "APP_VERSION=$tag" \
   -p "$host_bind" \
   "${image_name}:${tag}"
 
