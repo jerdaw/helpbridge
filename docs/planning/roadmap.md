@@ -507,7 +507,7 @@ Production-readiness complete (v17.0–v18.0). Platform is resilient, secure, ac
 
 ### v20.0: Technical Excellence & Testing (HIGH PRIORITY - Before Production)
 
-**Status**: IN PROGRESS — 21/38 items complete; completed Phase 1 work is archived and the remaining backlog is deferred behind v22/v21 priorities
+**Status**: IN PROGRESS — 21/38 items complete; completed Phase 1 work is archived and the remaining backlog is split into “can proceed now” vs “wait for v22/v21 clarity”
 **Priority**: HIGH (technical debt reduction and deeper test coverage)
 **Remaining Effort**: ~35-45 hours
 **Dependencies**: None, but execution should not displace v22 gate work
@@ -516,7 +516,7 @@ Production-readiness complete (v17.0–v18.0). Platform is resilient, secure, ac
 
 This roadmap section now tracks only the unfinished v20 backlog. Completed code quality, CI, and Phase 1 testing work has been removed from the active roadmap and preserved in the archive above.
 
-#### Remaining Backlog
+#### Can Proceed Now
 
 **Testing depth**
 
@@ -525,12 +525,6 @@ This roadmap section now tracks only the unfinished v20 backlog. Completed code 
 - `B7`: Add unhappy-path and resilience scenario tests
 - `B8`: Add end-to-end feedback workflow integration coverage
 - `B9`: Add end-to-end service update request integration coverage
-
-**French and search enrichment**
-
-- `C2`: Generate `synthetic_queries_fr` for the remaining services
-- `C5`: Populate `access_script_fr` with reviewed translations
-- `C6`: Generate and validate `hours_text_fr`
 
 **Documentation and ops**
 
@@ -547,9 +541,24 @@ This roadmap section now tracks only the unfinished v20 backlog. Completed code 
 
 **Architecture**
 
-- `G1`: Move search AI metadata out of JSON and into Supabase-backed storage
 - `G2`: Extract the shared enhancer path in `hooks/useServices.ts`
+
+These items are useful regardless of which strategic path v22 takes. Execute them only when they do not displace Gate 0 work.
+
+#### Defer Until v22/v21 Clarity
+
+**French and search enrichment**
+
+- `C2`: Generate `synthetic_queries_fr` for the remaining services
+- `C5`: Populate `access_script_fr` with reviewed translations
+- `C6`: Generate and validate `hours_text_fr`
+
+**Architecture**
+
+- `G1`: Move search AI metadata out of JSON and into Supabase-backed storage
 - `G3`: Build an admin-facing data quality dashboard
+
+These items are still valuable, but they benefit from the partner, governance, and data-shape decisions that sit in the v22/v21 path. Keep them parked unless those dependencies become clearer.
 
 #### Remaining Success Criteria
 
