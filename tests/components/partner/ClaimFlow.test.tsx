@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react"
+import { render, screen, fireEvent, act } from "@testing-library/react"
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest"
 import { ClaimFlow } from "@/components/partner/ClaimFlow"
 import { useTranslations } from "next-intl"
@@ -20,11 +20,11 @@ describe("ClaimFlow Component", () => {
     vi.clearAllMocks()
     vi.mocked(useTranslations).mockReturnValue(mockTranslations as any)
     vi.mocked(useToast).mockReturnValue({ toast: mockToast } as any)
-    // vi.useFakeTimers()
+    vi.useFakeTimers()
   })
 
   afterEach(() => {
-    // vi.useRealTimers()
+    vi.useRealTimers()
   })
 
   it("renders the claim button", () => {
@@ -67,15 +67,13 @@ describe("ClaimFlow Component", () => {
     fireEvent.change(emailInput, { target: { value: "test@org.com" } })
 
     const submitButton = screen.getByText("submit")
-    fireEvent.click(submitButton)
+
+    await act(async () => {
+      fireEvent.click(submitButton)
+      await vi.advanceTimersByTimeAsync(1500)
+    })
 
     expect(submitButton).toBeDisabled()
-
-    await waitFor(
-      () => {
-        expect(mockToast).toHaveBeenCalledWith(expect.objectContaining({ title: "success" }))
-      },
-      { timeout: 3000 }
-    )
-  })
+    expect(mockToast).toHaveBeenCalledWith(expect.objectContaining({ title: "success" }))
+  }, 10000)
 })
