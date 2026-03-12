@@ -6,7 +6,7 @@ FROM base AS deps
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN HUSKY=0 npm ci
 
 FROM base AS builder
 WORKDIR /app

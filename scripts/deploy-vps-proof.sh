@@ -64,7 +64,12 @@ do
   fi
 done
 
-docker build "${build_args[@]}" -t "${image_name}:${tag}" "$app_dir"
+if docker buildx version >/dev/null 2>&1; then
+  docker buildx build --load "${build_args[@]}" -t "${image_name}:${tag}" "$app_dir"
+else
+  echo "warning: docker buildx not available; falling back to legacy docker build" >&2
+  docker build "${build_args[@]}" -t "${image_name}:${tag}" "$app_dir"
+fi
 
 if docker ps -a --format '{{.Names}}' | grep -Fxq "$container_name"; then
   docker rm -f "$container_name" >/dev/null
