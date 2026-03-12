@@ -82,3 +82,6 @@ ios/
 *.audit.log
 lint_errors.txt
 graph.svg
+
+# local tool binaries (do not vendor large executables in git)
+bin/k6

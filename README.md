@@ -226,6 +226,8 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 | `npm run test:load:sustained` | Run sustained load test (30min)       |
 | `npm run test:load:spike`     | Run spike test (sudden traffic spike) |
 
+These commands require `k6` to be installed locally and available on your `PATH`. The repo does not vendor the binary.
+
 #### Data Validation & Audits
 
 | Command                        | Description                                  |

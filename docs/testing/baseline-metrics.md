@@ -38,7 +38,7 @@ _Blocked by environment issues._
 ## Constraints & Known Issues
 
 - **RLS Recursion**: Complex RLS policies during high-concurrency requests are causing 100% failure rates in local testing.
-- **k6 Binary**: Using local `./bin/k6` due to system path restrictions.
+- **k6 Binary**: Historical note only. Current repo practice is to use a locally installed `k6` on `PATH` rather than a vendored binary.
 
 ## Next Review
 

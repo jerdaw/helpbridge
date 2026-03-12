@@ -77,6 +77,8 @@ npm run test:load:sustained # k6 sustained load: stability test (20 VUs, 30min)
 npm run test:load:spike  # k6 spike test: sudden traffic spike (0-100 VUs)
 ```
 
+Load-testing commands require a locally installed `k6` binary on `PATH`. Do not commit vendored tool binaries such as `bin/k6`.
+
 ### Data Validation & Health Checks
 
 ```bash

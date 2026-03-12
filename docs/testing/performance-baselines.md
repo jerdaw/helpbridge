@@ -17,7 +17,7 @@ Interpretation matters:
 - Host: `Linux x86_64`
 - Node.js: `v24.12.0`
 - Next.js: `15.5.12`
-- k6: `v1.5.0` via repo-local [`bin/k6`](/home/jer/repos/helpbridge/bin/k6)
+- k6: `v1.5.0` installed locally on `PATH` (`k6 version`)
 - Build mode: standalone production server
 - Search dataset: 196 services
 - Base URL: `http://localhost:3000`

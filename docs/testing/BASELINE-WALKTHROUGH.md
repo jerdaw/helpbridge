@@ -31,6 +31,8 @@ k6 version
 
 **Expected output:** `k6 v0.x.x`
 
+The repo does not include a checked-in `k6` binary. `npm run test:load*` shells out to `k6` from your local `PATH`.
+
 **If not installed:**
 
 - **macOS:** `brew install k6`

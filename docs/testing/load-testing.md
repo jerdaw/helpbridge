@@ -2,6 +2,9 @@
 
 This guide covers load testing for HelpBridge using k6.
 
+> [!IMPORTANT]
+> HelpBridge does **not** vendor the `k6` executable in git. Install `k6` locally and ensure it is available on your shell `PATH` before running any `npm run test:load*` command.
+
 ## Overview
 
 Load testing validates that the application performs well under expected and peak traffic conditions. We use [k6](https://k6.io/) for load testing, which provides:
@@ -35,6 +38,12 @@ sudo apt-get install k6
 
 ```powershell
 choco install k6
+```
+
+**Verification:**
+
+```bash
+k6 version
 ```
 
 ### Start the Application
