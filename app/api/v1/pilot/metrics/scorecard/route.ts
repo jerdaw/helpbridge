@@ -16,7 +16,7 @@ const QuerySchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const rateLimit = await checkRateLimit(getClientIp(request), 30, 60 * 1000)
+    const rateLimit = await checkRateLimit(getClientIp(request), 30, 60 * 1000, "api:v1:pilot:metrics:scorecard")
     if (!rateLimit.success) {
       return createApiError("Rate limit exceeded", 429)
     }

@@ -6,6 +6,7 @@ import { usePushNotifications } from "@/hooks/usePushNotifications"
 import { Button } from "@/components/ui/button"
 import { Bell, BellOff, Loader2, AlertCircle } from "lucide-react"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { logger } from "@/lib/logger"
 
 export function PushOptIn() {
   const { isConfigured, isSupported, isSubscribed, permission, subscribe, unsubscribe } = usePushNotifications({
@@ -20,12 +21,20 @@ export function PushOptIn() {
 
   const handleToggle = async () => {
     setIsLoading(true)
-    if (isSubscribed) {
-      await unsubscribe()
-    } else {
-      await subscribe()
+    try {
+      if (isSubscribed) {
+        await unsubscribe()
+      } else {
+        await subscribe()
+      }
+    } catch (error) {
+      logger.error("Push notification subscription toggle failed", error, {
+        component: "PushOptIn",
+        action: isSubscribed ? "unsubscribe" : "subscribe",
+      })
+    } finally {
+      setIsLoading(false)
     }
-    setIsLoading(false)
   }
 
   if (!isSupported) {

@@ -16,7 +16,7 @@ export default defineConfig({
   reporter: process.env.CI ? "github" : "html",
   timeout: 60 * 1000, // 60s global timeout
   use: {
-    baseURL: "http://localhost:3000",
+    baseURL: process.env.PLAYWRIGHT_BASE_URL || "http://localhost:3000",
     trace: "on-first-retry",
     actionTimeout: 15000,
   },
@@ -54,9 +54,10 @@ export default defineConfig({
         },
       ],
   webServer: {
-    command: process.env.CI ? "npm run build && npm run start" : "npm run dev",
-    url: "http://localhost:3000",
-    reuseExistingServer: !process.env.CI,
+    command:
+      process.env.CI || process.env.PLAYWRIGHT_PROD_SERVER === "1" ? "node .next/standalone/server.js" : "npm run dev",
+    url: "http://localhost:3000/en",
+    reuseExistingServer: !process.env.CI && process.env.PLAYWRIGHT_PROD_SERVER !== "1",
     timeout: 300 * 1000,
   },
   workers: process.env.CI ? 2 : undefined,

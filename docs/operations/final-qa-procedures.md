@@ -163,8 +163,8 @@ curl -X POST 'https://[your-project].supabase.co/rest/v1/services' \
 **Check CSP and security headers are present:**
 
 ```bash
-# Test production URL security headers
-curl -I https://helpbridge.ca | grep -i "content-security-policy\|x-frame-options\|x-content-type-options"
+# Validate deployed runtime headers
+SECURITY_HEADERS_BASE_URL=https://helpbridge.ca npm run validate:security-headers:runtime
 ```
 
 **Expected Headers:**

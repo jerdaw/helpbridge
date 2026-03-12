@@ -483,11 +483,11 @@ export async function myProtectedAction() {
 
 We use a **pragmatic tiered testing strategy** that prioritizes dev velocity:
 
-| Tier          | Scope                         | CI Behavior                          |
-| ------------- | ----------------------------- | ------------------------------------ |
-| **Critical**  | Data integrity, API contracts | Block merge                          |
-| **Core Flow** | Crisis, Accessibility         | Block merge                          |
-| **Polish**    | UI interactions               | Skip (flaky tests use `test.skip()`) |
+| Tier          | Scope                         | CI Behavior                                        |
+| ------------- | ----------------------------- | -------------------------------------------------- |
+| **Critical**  | Data integrity, API contracts | Block merge                                        |
+| **Core Flow** | Crisis, Accessibility         | Block merge                                        |
+| **Polish**    | UI interactions               | Warn/manual; default browser suite stays skip-free |
 
 **Coverage Requirements:**
 
@@ -499,7 +499,8 @@ We use a **pragmatic tiered testing strategy** that prioritizes dev velocity:
 **Expectations when you change code:**
 
 - For non-trivial changes, run `npm run lint` and `npm run type-check`
-- If you add new behavior, add/update tests (Vitest for logic, Playwright for critical flows)
+- If you add new behavior, add/update tests (Vitest for logic, Playwright only when explicitly needed for browser-only validation)
+- Default local verification should stay on lint, type-check, build, and targeted Vitest while GitHub Actions is on free-tier budget mode; leave Playwright to CI/manual dispatch unless the user explicitly asks for a local browser repro
 
 Full details: `docs/development/testing-guidelines.md`
 

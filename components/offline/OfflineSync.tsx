@@ -10,6 +10,60 @@ export function OfflineSync() {
   const locale = useLocale()
 
   useEffect(() => {
+    if (process.env.NODE_ENV !== "production" || !("serviceWorker" in navigator)) {
+      return
+    }
+
+    let cancelled = false
+
+    const registerServiceWorker = async () => {
+      try {
+        const registrations = await navigator.serviceWorker.getRegistrations()
+
+        if (registrations.length > 0) {
+          return
+        }
+
+        const registration = await navigator.serviceWorker.register("/sw.js")
+
+        if (!cancelled) {
+          logger.info("Service worker registered", {
+            component: "OfflineSync",
+            action: "service_worker_register",
+            scope: registration.scope,
+          })
+        }
+      } catch (err) {
+        if (!cancelled) {
+          logger.warn("Service worker registration failed", {
+            component: "OfflineSync",
+            error: err instanceof Error ? err.message : String(err),
+          })
+        }
+      }
+    }
+
+    if (document.readyState === "complete") {
+      void registerServiceWorker()
+    } else {
+      const handleLoad = () => {
+        void registerServiceWorker()
+      }
+
+      window.addEventListener("load", handleLoad)
+
+      return () => {
+        cancelled = true
+        window.removeEventListener("load", handleLoad)
+      }
+    }
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  useEffect(() => {
     // Initial sync on mount
     // We use requestIdleCallback if available to avoid blocking main thread during hydration
     const runSync = () => {

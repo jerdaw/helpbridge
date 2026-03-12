@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react"
+import { useEffect } from "react"
 import { useLocale } from "next-intl"
 import { searchServices, SearchResult } from "@/lib/search"
 import { isOffline } from "@/lib/offline/status"
@@ -6,6 +6,7 @@ import { getCachedServices, setCachedServices } from "@/lib/offline/cache"
 import { logger } from "@/lib/logger"
 import { getSearchMode, serverSearch } from "@/lib/search/search-mode"
 import { type SupportedLocale } from "@/lib/schemas/search"
+import { enhanceSearchResults, filterSearchResultsByScope } from "@/lib/search/client-enhancer"
 
 interface UseServicesProps {
   query: string
@@ -35,21 +36,6 @@ export function useServices({
   setSuggestion,
 }: UseServicesProps) {
   const locale = useLocale()
-
-  // Filter results by scope
-  const filterByScope = useCallback(
-    (results: SearchResult[]): SearchResult[] => {
-      if (scope === "all") return results
-      if (scope === "kingston") {
-        return results.filter((r) => r.service.scope === "kingston" || !r.service.scope)
-      }
-      if (scope === "provincial") {
-        return results.filter((r) => r.service.scope === "ontario" || r.service.scope === "canada")
-      }
-      return results
-    },
-    [scope]
-  )
 
   useEffect(() => {
     const performSearch = async () => {
@@ -98,7 +84,7 @@ export function useServices({
         }
 
         // Apply scope filter
-        const scopedResults = filterByScope(initialResults)
+        const scopedResults = filterSearchResultsByScope(initialResults, scope)
 
         setResults(scopedResults)
         setHasSearched(true)
@@ -109,23 +95,20 @@ export function useServices({
           setCachedServices(scopedResults)
         }
 
-        // 2. Client-Side Enhancement (Personalization & Distance)
-        // We apply this for BOTH modes to ensure consistent UX
-        // (Server returns raw results; Client re-ranks for distance/identity)
-        // TODO: Move this to a shared "enhancer" function in Phase 5
+        const enhancedResults = await enhanceSearchResults({
+          query,
+          category,
+          userLocation,
+          openNow,
+          isReady,
+          mode,
+          scope,
+          generateEmbedding,
+          search: searchServices,
+        })
 
-        // 3. Progressive Upgrade (Local Vector only for now)
-        if (mode === "local" && isReady && query.trim().length > 0) {
-          const embedding = await generateEmbedding(query)
-          if (embedding) {
-            const enhancedResults = await searchServices(query, {
-              category,
-              location: userLocation,
-              vectorOverride: embedding,
-              openNow,
-            })
-            setResults(enhancedResults)
-          }
+        if (enhancedResults) {
+          setResults(enhancedResults)
         }
 
         // Analytics
@@ -169,7 +152,6 @@ export function useServices({
     setIsLoading,
     setHasSearched,
     setSuggestion,
-    filterByScope,
     locale,
   ])
 }

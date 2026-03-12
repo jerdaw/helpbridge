@@ -25,21 +25,14 @@ HelpBridge uses a **pragmatic tiered testing strategy** that prioritizes develop
 | **E2E**       | Full user flows (Chromium only)   | **Warn only**     | `crisis.spec.ts`, `accessibility.spec.ts` (ADR-015) |
 | **Polish**    | UI polish, multi-browser coverage | **Skip / Manual** | Cross-browser testing, visual regression            |
 
-### When to Skip Tests
+### Default-Suite Discipline
 
-Mark tests with `test.skip()` and a `TODO` comment when:
+The default `tests/e2e/**` Chromium suite should stay **skip-free**.
 
-- Test relies on selectors that don't match current UI
-- Test is flaky across environments (especially WSL)
-- Test blocks CI without catching real bugs
-- Fixing would take >30 min and isn't blocking a release
-
-```typescript
-// TODO: Fix - Mock data doesn't support proper navigation
-test.skip("should navigate to service detail", async ({ page }) => {
-  // Test code...
-})
-```
+- Do not leave permanent inline `test.skip()` cases in the default suite.
+- If a browser test is environment-dependent, move it into an explicit opt-in suite such as `tests/e2e/prod/` or `tests/e2e/server/`.
+- If a flow is better covered below the browser layer, replace the skipped case with deterministic API/component/hook coverage instead of carrying drift forward.
+- If you must land a temporary gap, document it in the roadmap/baseline docs and remove it quickly.
 
 ## Tech Stack
 
@@ -69,12 +62,14 @@ npm test
 # Tests with coverage
 npm run test:coverage
 
-# E2E tests - Chromium only (recommended)
-npm run test:e2e:local
-
-# E2E tests - All browsers (slow, for release validation only)
-npx playwright test
+# Default local verification
+npm run lint
+npm run type-check
+npm run build
 ```
+
+> [!TIP]
+> While GitHub Actions is running in free-tier budget mode, leave Playwright execution to CI/manual dispatch by default. Run local Playwright only when a user explicitly requests it or when debugging a browser-only regression that cannot be reproduced another way.
 
 ## CI/CD Strategy
 
@@ -123,7 +118,7 @@ To conserve CI minutes while on GitHub free tier:
 Local helper behavior:
 
 1. `npm run ci:check` skips Playwright tests by default.
-2. Set `RUN_PLAYWRIGHT_LOCAL=true` to include local Playwright execution when needed.
+2. Set `RUN_PLAYWRIGHT_LOCAL=true` only for intentional local browser-debug windows.
 
 ### Deploy posture
 
@@ -159,10 +154,10 @@ Local helper behavior:
 
 ### E2E Tests
 
-- Focus on **critical user flows**: Crisis, Data Integrity
+- Focus on **critical user flows**: crisis, offline readiness, production/browser-only regressions
 - Use Page Object Model for reusable selectors
 - Prefer `getByRole`, `getByText` over `data-testid`
-- Add `test.skip()` with TODO for known-flaky tests
+- Keep the default suite skip-free; move environment-dependent cases into explicit opt-in suites
 
 ## Mocks & Best Practices
 

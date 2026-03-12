@@ -69,7 +69,7 @@ async function getAuthenticatedUser(): Promise<{ authenticated: boolean; userId:
 export async function GET(request: NextRequest) {
   // Rate limiting: 30 requests per minute per IP
   const clientIp = getClientIp(request)
-  const rateLimit = await checkRateLimit(clientIp, 30, 60 * 1000)
+  const rateLimit = await checkRateLimit(clientIp, 30, 60 * 1000, "api:v1:metrics")
 
   if (!rateLimit.success) {
     return NextResponse.json(

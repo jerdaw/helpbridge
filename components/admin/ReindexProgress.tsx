@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 import { useTranslations } from "next-intl"
+import { logger } from "@/lib/logger"
 
 interface ReindexProgressData {
   id: string
@@ -216,7 +217,10 @@ export function ReindexHistory() {
         const data = (await response.json()) as { operations: ReindexProgressData[] }
         setOperations(data.operations || [])
       } catch (error) {
-        console.error("Failed to fetch reindex history:", error)
+        logger.error("Failed to fetch reindex history", error, {
+          component: "ReindexHistory",
+          action: "fetch_history",
+        })
       } finally {
         setLoading(false)
       }

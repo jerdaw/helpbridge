@@ -1,0 +1,20 @@
+{
+  "test": "sustained-load",
+  "timestamp": "2026-03-12T18:02:59.242Z",
+  "metrics": {
+    "totalRequests": 2242,
+    "failedRequests": 0.764049955396967,
+    "duration": {
+      "p50": 4.546246,
+      "p95": 70.50483164999999,
+      "p99": 1701.123292,
+      "max": 1701.123292,
+      "avg": 19.233416722123113
+    },
+    "vus": {
+      "max": 20
+    },
+    "searchErrors": 0.764049955396967,
+    "searchDuration": 19.425958965209634
+  }
+}

@@ -1,13 +1,7 @@
 import { test, expect } from "@playwright/test"
 
 test.describe("Data Integrity & API Verification", () => {
-  // KNOWN LIMITATION: Requires live Supabase connection (server search mode)
-  // WORKAROUND: Run locally with NEXT_PUBLIC_SEARCH_MODE=server and valid Supabase credentials
-  // TRACKING: Phase 1.5 audit (2026-02-09)
   test("Critical services have correct scope configuration", async ({ request }) => {
-    if (process.env.CI) test.skip()
-
-    // 1. Search for the 988 service via API
     const response = await request.post("/api/v1/search/services", {
       data: {
         query: "9-8-8",
@@ -19,29 +13,20 @@ test.describe("Data Integrity & API Verification", () => {
 
     expect(response.ok()).toBeTruthy()
     const json = await response.json()
-
-    // 2. Find the 988 service
-    const service988 = json.data.find((s: any) => s.id === "crisis-988")
+    const service988 = json.data.find((service: { id: string }) => service.id === "crisis-988")
 
     expect(service988).toBeDefined()
-
-    // 3. Verify it has scope: "canada" (CRITICAL for badge display)
     expect(service988.scope).toBe("canada")
   })
 
-  // KNOWN LIMITATION: Requires live Supabase connection (server search mode)
-  // WORKAROUND: Run locally with NEXT_PUBLIC_SEARCH_MODE=server and valid Supabase credentials
-  // TRACKING: Phase 1.5 audit (2026-02-09)
   test("Search API returns valid structure for all locales", async ({ request }) => {
-    if (process.env.CI) test.skip()
-
     const locales = ["en", "fr", "ar", "zh-Hans", "es", "pa", "pt"]
 
     for (const locale of locales) {
       const response = await request.post("/api/v1/search/services", {
         data: {
           query: "food",
-          locale: locale,
+          locale,
           filters: {},
           options: { limit: 1, offset: 0 },
         },

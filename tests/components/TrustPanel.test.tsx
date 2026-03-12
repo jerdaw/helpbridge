@@ -5,11 +5,6 @@ import { TestWrapper } from "@/tests/utils/test-wrapper"
 import { mockService } from "@/tests/utils/mocks"
 import { VerificationLevel } from "@/types/service"
 
-// Mock ReportIssueModal to avoid complex UI rendering
-vi.mock("@/components/feedback/ReportIssueModal", () => ({
-  ReportIssueModal: () => <div data-testid="report-issue-modal" />,
-}))
-
 const mockTrustMessages = {
   title: "Verification Information",
   lastVerified: "Last Verified",
@@ -35,6 +30,24 @@ const mockVerificationMessages = {
   L4: "Audited",
 }
 
+const mockFeedbackMessages = {
+  reportIssueTitle: "Report Issue",
+  reportIssueDescription: "Help us improve {service}",
+  issueTypeLabel: "Issue Type",
+  issueTypes: {
+    wrong_contact_info: "Wrong contact info",
+    service_closed: "Service closed",
+    eligibility_incorrect: "Eligibility incorrect",
+    other: "Other",
+  },
+  detailsLabel: "Details",
+  detailsPlaceholder: "Tell us what needs fixing",
+  cancel: "Cancel",
+  submitReport: "Submit report",
+  errorTitle: "Error",
+  errorMessage: "Something went wrong",
+}
+
 describe("TrustPanel Component", () => {
   beforeEach(() => {
     vi.clearAllMocks()
@@ -54,7 +67,15 @@ describe("TrustPanel Component", () => {
     }
 
     render(
-      <TestWrapper messages={{ Trust: mockTrustMessages, VerificationLevels: mockVerificationMessages } as any}>
+      <TestWrapper
+        messages={
+          {
+            Trust: mockTrustMessages,
+            VerificationLevels: mockVerificationMessages,
+            Feedback: mockFeedbackMessages,
+          } as any
+        }
+      >
         <TrustPanel service={service} locale="en" />
       </TestWrapper>
     )
@@ -67,7 +88,15 @@ describe("TrustPanel Component", () => {
 
   it("opens update request modal when hint is clicked", () => {
     render(
-      <TestWrapper messages={{ Trust: mockTrustMessages, VerificationLevels: mockVerificationMessages } as any}>
+      <TestWrapper
+        messages={
+          {
+            Trust: mockTrustMessages,
+            VerificationLevels: mockVerificationMessages,
+            Feedback: mockFeedbackMessages,
+          } as any
+        }
+      >
         <TrustPanel service={mockService} locale="en" />
       </TestWrapper>
     )
@@ -75,7 +104,8 @@ describe("TrustPanel Component", () => {
     const button = screen.getByText("Report wrong info")
     fireEvent.click(button)
 
-    expect(screen.getByTestId("report-issue-modal")).toBeInTheDocument()
+    expect(screen.getByRole("dialog")).toBeInTheDocument()
+    expect(screen.getByText("Report Issue")).toBeInTheDocument()
   })
 
   it("renders evidence link if provided", () => {
@@ -90,7 +120,15 @@ describe("TrustPanel Component", () => {
     }
 
     render(
-      <TestWrapper messages={{ Trust: mockTrustMessages, VerificationLevels: mockVerificationMessages } as any}>
+      <TestWrapper
+        messages={
+          {
+            Trust: mockTrustMessages,
+            VerificationLevels: mockVerificationMessages,
+            Feedback: mockFeedbackMessages,
+          } as any
+        }
+      >
         <TrustPanel service={service} locale="en" />
       </TestWrapper>
     )

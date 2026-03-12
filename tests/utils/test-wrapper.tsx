@@ -20,9 +20,9 @@ const defaultMessages = {
     reportIssueDescription: "Help us improve {service}",
     issueTypeLabel: "Issue Type",
     issueTypes: {
-      wrong_phone: "Wrong phone",
-      wrong_address: "Wrong address",
+      wrong_contact_info: "Wrong contact info",
       service_closed: "Service closed",
+      eligibility_incorrect: "Eligibility incorrect",
       other: "Other",
     },
     detailsLabel: "Message",

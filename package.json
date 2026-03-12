@@ -20,6 +20,8 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:e2e:local": "playwright test --project=chromium",
+    "test:e2e:prod-local": "npm run build && node --import tsx scripts/run-playwright-with-server.ts tests/e2e/prod",
+    "test:e2e:server-local": "cross-env NEXT_PUBLIC_SEARCH_MODE=server npm run build && cross-env NEXT_PUBLIC_SEARCH_MODE=server node --import tsx scripts/run-playwright-with-server.ts tests/e2e/server",
     "db:validate": "node --import tsx scripts/validate-data.ts",
     "db:verify": "node --import tsx scripts/verify-db-integrity.ts",
     "tools:search": "node --import tsx scripts/search-cli.ts",
@@ -50,10 +52,10 @@
     "premobile:build": "node --import tsx scripts/check-mobile-environment.ts",
     "check:root": "bash scripts/check-root-hygiene.sh",
     "test:a11y": "npx playwright test tests/e2e/accessibility-audit.spec.ts tests/e2e/accessibility-interactive.spec.ts",
-    "test:load": "[ -f ./bin/k6 ] && ./bin/k6 run tests/load/search-api.k6.js || k6 run tests/load/search-api.k6.js",
-    "test:load:smoke": "[ -f ./bin/k6 ] && ./bin/k6 run tests/load/smoke-test.k6.js || k6 run tests/load/smoke-test.k6.js",
-    "test:load:sustained": "[ -f ./bin/k6 ] && ./bin/k6 run tests/load/sustained-load.k6.js || k6 run tests/load/sustained-load.k6.js",
-    "test:load:spike": "[ -f ./bin/k6 ] && ./bin/k6 run tests/load/spike-test.k6.js || k6 run tests/load/spike-test.k6.js",
+    "test:load": "if [ -f ./bin/k6 ]; then ./bin/k6 run tests/load/search-api.k6.js; else k6 run tests/load/search-api.k6.js; fi",
+    "test:load:smoke": "if [ -f ./bin/k6 ]; then ./bin/k6 run tests/load/smoke-test.k6.js; else k6 run tests/load/smoke-test.k6.js; fi",
+    "test:load:sustained": "if [ -f ./bin/k6 ]; then ./bin/k6 run tests/load/sustained-load.k6.js; else k6 run tests/load/sustained-load.k6.js; fi",
+    "test:load:spike": "if [ -f ./bin/k6 ]; then ./bin/k6 run tests/load/spike-test.k6.js; else k6 run tests/load/spike-test.k6.js; fi",
     "analyze:load-test": "node --import tsx scripts/analyze-load-test-results.ts",
     "validate:env": "node --import tsx scripts/validate-env-config.ts",
     "qa:prelaunch": "node --import tsx scripts/run-prelaunch-qa.ts",
@@ -62,7 +64,8 @@
     "vercel:optimize": "bash scripts/apply-vercel-optimization.sh",
     "legacy:vercel:verify": "bash scripts/verify-vercel-optimization.sh",
     "legacy:vercel:optimize": "bash scripts/apply-vercel-optimization.sh",
-    "validate:security-headers": "node --import tsx scripts/validate-security-headers.ts"
+    "validate:security-headers": "node --import tsx scripts/validate-security-headers.ts",
+    "validate:security-headers:runtime": "node --import tsx scripts/validate-runtime-security-headers.ts"
   },
   "overrides": {
     "react": "$react",

@@ -204,7 +204,7 @@ async function isAuthenticated(): Promise<boolean> {
 export async function GET(request: NextRequest) {
   // Rate limiting: 10 requests per minute per IP
   const clientIp = getClientIp(request)
-  const rateLimit = await checkRateLimit(clientIp, 10, 60 * 1000)
+  const rateLimit = await checkRateLimit(clientIp, 10, 60 * 1000, "api:v1:health")
 
   if (!rateLimit.success) {
     return NextResponse.json(

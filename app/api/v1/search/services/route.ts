@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     async () => {
       // 1. Rate limiting
       const clientIp = getClientIp(request)
-      const rateLimit = await checkRateLimit(clientIp, 60, 60 * 1000) // 60/min for search
+      const rateLimit = await checkRateLimit(clientIp, 60, 60 * 1000, "api:v1:search:services") // 60/min for search
       if (!rateLimit.success) {
         return createApiError("Rate limit exceeded", 429)
       }

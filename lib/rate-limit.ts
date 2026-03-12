@@ -106,6 +106,17 @@ export interface RateLimitResult {
 }
 
 /**
+ * Build standard rate-limit response headers for blocked requests.
+ */
+export function createRateLimitHeaders(result: Pick<RateLimitResult, "reset">): HeadersInit {
+  return {
+    "X-RateLimit-Remaining": "0",
+    "X-RateLimit-Reset": result.reset.toString(),
+    "Retry-After": Math.max(0, Math.ceil(result.reset - Date.now() / 1000)).toString(),
+  }
+}
+
+/**
  * Check rate limit for a given identifier.
  *
  * @param identifier Unique key (IP or user ID)
@@ -115,8 +126,11 @@ export interface RateLimitResult {
 export async function checkRateLimit(
   identifier: string,
   limit: number = 100,
-  windowMs: number = 60 * 1000
+  windowMs: number = 60 * 1000,
+  bucket: string = "global"
 ): Promise<RateLimitResult> {
+  const scopedIdentifier = `${bucket}:${identifier}`
+
   // 1. Try Upstash
   if (ratelimit) {
     try {
@@ -139,7 +153,7 @@ export async function checkRateLimit(
         prefix: "helpbridge-ratelimit",
       })
 
-      const { success, remaining, reset } = await dynamicLimiter.limit(identifier)
+      const { success, remaining, reset } = await dynamicLimiter.limit(scopedIdentifier)
 
       return {
         success,
@@ -153,7 +167,7 @@ export async function checkRateLimit(
   }
 
   // 2. In-Memory Fallback
-  return memoryStore.check(identifier, limit, windowMs)
+  return memoryStore.check(scopedIdentifier, limit, windowMs)
 }
 
 /**

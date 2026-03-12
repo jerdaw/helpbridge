@@ -15,7 +15,7 @@ Related:
 2. [Roadmap](../planning/roadmap.md)
 3. [v22.0 Approval Checklist](../planning/v22-0-approval-checklist.md)
 4. [v22.0 Phase 0 Baseline Report (2026-03-09)](v22-0-phase-0-baseline-report-2026-03-09.md)
-5. [E2E Skip Baseline (2026-03-09)](../testing/e2e-skip-baseline-2026-03-09.md)
+5. [E2E Automation Baseline (2026-03-12)](../testing/e2e-skip-baseline-2026-03-09.md)
 
 ## Start Conditions
 
@@ -29,7 +29,7 @@ Related:
 1. Production environment audit (required).
 2. Critical user journey testing (6 scenarios, required).
 3. Top-20 service data quality final review (required).
-4. Maintain accepted baseline documentation for remaining 7 skipped E2E tests and track revisit date.
+4. Keep the default E2E suite skip-free and run the dedicated opt-in browser suites when their environments are available.
 
 ## Suggested Execution Order
 
@@ -38,7 +38,9 @@ Related:
    - `npm run qa:prelaunch`
 2. Execute manual critical user journeys and record pass/fail evidence.
 3. Execute top-20 data quality review checklist and record findings.
-4. Confirm E2E skip baseline documentation is current and linked from roadmap/handoff.
+4. Run the dedicated optional browser suites when feasible:
+   - `npm run test:e2e:prod-local`
+   - `npm run test:e2e:server-local`
 5. Update roadmap/v19 docs with actual completion state.
 
 ## Evidence Artifacts to Produce
@@ -46,5 +48,5 @@ Related:
 1. Phase 1 QA run log with timestamp and operator.
 2. User-journey test report (6 scenarios with outcomes).
 3. Top-20 data quality review sheet with fixes or accepted risks.
-4. E2E skip baseline record with owner + revisit date (currently 2026-04-15).
+4. E2E automation baseline record showing zero inline default-suite skips plus any opt-in suite outcomes.
 5. Updated roadmap blocker checklist showing closure status.

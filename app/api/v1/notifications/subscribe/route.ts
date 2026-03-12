@@ -3,6 +3,7 @@ import { createClient } from "@/utils/supabase/server"
 import { NotificationCategory, type PushSubscription } from "@/types/notifications"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
 import { logger } from "@/lib/logger"
+import { checkRateLimit, createRateLimitHeaders, getClientIp } from "@/lib/rate-limit"
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,6 +15,14 @@ export async function POST(req: NextRequest) {
 
     if (!subscription || !subscription.endpoint || !subscription.keys) {
       return NextResponse.json({ error: "Invalid subscription payload" }, { status: 400 })
+    }
+
+    const rateLimit = await checkRateLimit(getClientIp(req), 20, 60 * 60 * 1000, "api:v1:notifications:subscribe")
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429, headers: createRateLimitHeaders(rateLimit) }
+      )
     }
 
     const supabase = await createClient()

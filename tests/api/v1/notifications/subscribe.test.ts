@@ -2,10 +2,21 @@ import { describe, it, expect, vi, beforeEach } from "vitest"
 import { POST } from "@/app/api/v1/notifications/subscribe/route"
 import { createMockRequest, parseResponse } from "../../../utils/api-test-utils"
 import { createClient } from "@/utils/supabase/server"
+import { checkRateLimit } from "@/lib/rate-limit"
 
 // Mock Supabase
 vi.mock("@/utils/supabase/server", () => ({
   createClient: vi.fn(),
+}))
+
+vi.mock("@/lib/rate-limit", () => ({
+  checkRateLimit: vi.fn().mockResolvedValue({ success: true, remaining: 19, reset: 4102444800 }),
+  getClientIp: vi.fn().mockReturnValue("127.0.0.1"),
+  createRateLimitHeaders: vi.fn().mockReturnValue({
+    "X-RateLimit-Remaining": "0",
+    "X-RateLimit-Reset": "4102444800",
+    "Retry-After": "3600",
+  }),
 }))
 
 // Separate Builder and Client mocks to handle thenable chaining correctly
@@ -26,6 +37,7 @@ describe("Notifications Subscribe API", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     vi.mocked(createClient).mockResolvedValue(mockSupabase as any)
+    vi.mocked(checkRateLimit).mockResolvedValue({ success: true, remaining: 19, reset: 4102444800 })
 
     // Setup chaining: methods return the builder
     mockBuilder.select.mockReturnValue(mockBuilder)
@@ -111,5 +123,24 @@ describe("Notifications Subscribe API", () => {
     })
     const res = await POST(req)
     expect(res.status).toBe(500)
+  })
+
+  it("returns 429 when rate limited", async () => {
+    vi.mocked(checkRateLimit).mockResolvedValue({ success: false, remaining: 0, reset: 4102444800 })
+
+    const req = createMockRequest("http://localhost", {
+      method: "POST",
+      body: JSON.stringify(validPayload),
+      headers: { "Content-Type": "application/json" },
+    })
+
+    const res = await POST(req)
+    const { data } = await parseResponse<{ error: string }>(res)
+
+    expect(res.status).toBe(429)
+    expect(data.error).toBe("Too many requests. Please try again later.")
+    expect(res.headers.get("Retry-After")).toBe("3600")
+    expect(res.headers.get("X-RateLimit-Remaining")).toBe("0")
+    expect(res.headers.get("X-RateLimit-Reset")).toBe("4102444800")
   })
 })

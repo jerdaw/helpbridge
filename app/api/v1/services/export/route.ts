@@ -2,6 +2,7 @@ import { NextResponse } from "next/server"
 import { loadServices } from "@/lib/search/data"
 import type { Service, Provenance } from "@/types/service"
 import { logger } from "@/lib/logger"
+import { checkRateLimit, createRateLimitHeaders, getClientIp } from "@/lib/rate-limit"
 
 type PublicExportService = Omit<
   Service,
@@ -49,6 +50,22 @@ function sanitizeForPublicExport(service: Service): PublicExportService {
 
 export async function GET(request: Request) {
   try {
+    const dailyTag = `"${new Date().toISOString().split("T")[0]}"`
+
+    // Check If-None-Match
+    const ifNoneMatch = request.headers.get("If-None-Match")
+    if (ifNoneMatch === dailyTag) {
+      return new Response(null, { status: 304, headers: { ETag: dailyTag } })
+    }
+
+    const rateLimit = await checkRateLimit(getClientIp(request), 60, 60 * 60 * 1000, "api:v1:services:export")
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429, headers: createRateLimitHeaders(rateLimit) }
+      )
+    }
+
     const services = await loadServices()
     const publicServices = services
       .filter((s) => s.published !== false && !s.deleted_at)
@@ -59,14 +76,6 @@ export async function GET(request: Request) {
     // Actually, separating them matches the IDB structure better and reduces JSON parsing overhead on the main service object if we want.
     // But loadServices returns them integrated.
     // Let's split them for the response to match the IDB save functions we just wrote.
-
-    const dailyTag = `"${new Date().toISOString().split("T")[0]}"`
-
-    // Check If-None-Match
-    const ifNoneMatch = request.headers.get("If-None-Match")
-    if (ifNoneMatch === dailyTag) {
-      return new Response(null, { status: 304, headers: { ETag: dailyTag } })
-    }
 
     const exportData = {
       version: new Date().toISOString(), // In a real app, this should be the max(updated_at)

@@ -3,11 +3,7 @@ import { createClient } from "@/utils/supabase/server"
 import { FeedbackSubmitSchema } from "@/types/feedback"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
 import { logger } from "@/lib/logger"
-
-// Rate limit storage
-const globalWithRateLimit = global as typeof globalThis & {
-  feedbackRateLimit?: Map<string, number[]>
-}
+import { checkRateLimit, createRateLimitHeaders, getClientIp } from "@/lib/rate-limit"
 
 export async function POST(request: NextRequest) {
   try {
@@ -25,37 +21,21 @@ export async function POST(request: NextRequest) {
 
     const { service_id, feedback_type, message, category_searched } = validationResult.data
 
-    // 2. Rate Limiting (In-memory basic implementation)
-    const ip = request.headers.get("x-forwarded-for") || "anonymous"
-    const now = Date.now()
-    const rateLimitWindow = 3600000 // 1 hour
-    const maxRequests = 10
-
-    // Simple in-memory cleanup (could be moved to a separate utility/middleware)
-    // For a solo-dev/low-traffic project, this is sufficient without Redis.
-    if (!globalWithRateLimit.feedbackRateLimit) {
-      globalWithRateLimit.feedbackRateLimit = new Map()
-    }
-
-    const userRequests = globalWithRateLimit.feedbackRateLimit.get(ip) || []
-    const recentRequests = userRequests.filter((time: number) => now - time < rateLimitWindow)
-
-    if (recentRequests.length >= maxRequests) {
+    // Preserve the current public feedback throttle: 10 requests per hour per client IP.
+    const rateLimit = await checkRateLimit(getClientIp(request), 10, 60 * 60 * 1000, "api:v1:feedback:create")
+    if (!rateLimit.success) {
       return NextResponse.json(
         { success: false, message: "Too many requests. Please try again later." },
         {
           status: 429,
           headers: {
-            "Retry-After": "3600",
             "Cache-Control": "no-store",
             "X-Robots-Tag": "noindex",
+            ...createRateLimitHeaders(rateLimit),
           },
         }
       )
     }
-
-    recentRequests.push(now)
-    globalWithRateLimit.feedbackRateLimit.set(ip, recentRequests)
 
     // 3. Insert into Supabase
     const supabase = await createClient()

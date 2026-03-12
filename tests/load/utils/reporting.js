@@ -9,6 +9,12 @@
  * @returns {object} - k6 summary output configuration
  */
 export function generateSummary(testName, data) {
+  const durationValues = data.metrics.http_req_duration?.values || {}
+  const readMetric = (key, fallback = 0) => {
+    const value = durationValues[key]
+    return typeof value === "number" ? value : fallback
+  }
+
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-")
   const fileName = `tests/load/results/${testName}-${timestamp}.json`
   const latestName = `tests/load/results/${testName}-latest.json`
@@ -20,11 +26,11 @@ export function generateSummary(testName, data) {
       totalRequests: data.metrics.http_reqs.values.count,
       failedRequests: data.metrics.http_req_failed.values.rate,
       duration: {
-        p50: data.metrics.http_req_duration.values["p(50)"],
-        p95: data.metrics.http_req_duration.values["p(95)"],
-        p99: data.metrics.http_req_duration.values["p(99)"],
-        max: data.metrics.http_req_duration.values.max,
-        avg: data.metrics.http_req_duration.values.avg,
+        p50: readMetric("p(50)", readMetric("med")),
+        p95: readMetric("p(95)", readMetric("avg")),
+        p99: readMetric("p(99)", readMetric("max")),
+        max: readMetric("max"),
+        avg: readMetric("avg"),
       },
       vus: {
         max: data.metrics.vus ? data.metrics.vus.values.max : 0,

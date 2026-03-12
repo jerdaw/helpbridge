@@ -9,6 +9,7 @@ import { usePushNotifications } from "@/hooks/usePushNotifications"
 import { useHighContrast } from "@/hooks/useHighContrast"
 import { useState } from "react"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { logger } from "@/lib/logger"
 
 const AGE_GROUPS = ["youth", "adult", "senior"] as const
 const IDENTITY_OPTIONS = ["indigenous", "newcomer", "2slgbtqi+", "veteran", "disability"] as const
@@ -36,6 +37,11 @@ export function ProfileSettings({ variant = "ghost", size = "sm", showText = tru
       } else {
         await subscribe()
       }
+    } catch (error) {
+      logger.error("Profile settings notification toggle failed", error, {
+        component: "ProfileSettings",
+        action: isSubscribed ? "unsubscribe" : "subscribe",
+      })
     } finally {
       setLoading(false)
     }

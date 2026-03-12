@@ -9,6 +9,9 @@ Shared VPS facts that are not specific to HelpBridge alone are canonical in:
 
 - [Architecture](architecture.md) - System design, data flow, and core concepts
 - [AI Context](llms.txt) - Consolidated docs for LLMs (generated)
+- [Admin Operations Guide](operations/admin-operations-guide.md) - Current admin and partner ops surfaces
+- [Database Migration and Rollback Guide](operations/database-migration-and-rollback.md) - DB change execution and recovery
+- [International Privacy and Compliance Notes](legal/international-privacy-compliance-notes.md) - Current privacy posture and boundaries
 
 ## Directories
 

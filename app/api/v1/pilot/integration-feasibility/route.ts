@@ -8,7 +8,7 @@ import { insertIntegrationDecision } from "@/lib/pilot/storage"
 
 export async function POST(request: NextRequest) {
   try {
-    const rateLimit = await checkRateLimit(getClientIp(request), 10, 60 * 1000)
+    const rateLimit = await checkRateLimit(getClientIp(request), 10, 60 * 1000, "api:v1:pilot:integration-feasibility")
     if (!rateLimit.success) {
       return createApiError("Rate limit exceeded", 429)
     }

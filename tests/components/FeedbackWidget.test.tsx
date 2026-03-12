@@ -2,48 +2,91 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import { describe, it, expect, vi, beforeEach } from "vitest"
 import { FeedbackWidget } from "@/components/feedback/FeedbackWidget"
 import { TestWrapper } from "@/tests/utils/test-wrapper"
+import { useNetworkStatus } from "@/hooks/useNetworkStatus"
+import { queueFeedback } from "@/lib/offline/feedback"
 
-// Mock Toast
 const mockToast = vi.fn()
+const mockLoggerError = vi.fn()
+const fetchMock = vi.fn()
+
 vi.mock("@/components/ui/use-toast", () => ({
   useToast: () => ({
     toast: mockToast,
   }),
 }))
 
-// Mock ReportIssueModal
-vi.mock("@/components/feedback/ReportIssueModal", () => ({
-  ReportIssueModal: () => <div data-testid="report-issue-modal" />,
+vi.mock("@/hooks/useNetworkStatus", () => ({
+  useNetworkStatus: vi.fn(),
 }))
 
-// Mock fetch
-global.fetch = vi.fn()
+vi.mock("@/lib/offline/feedback", () => ({
+  queueFeedback: vi.fn(),
+}))
 
-const mockFeedbackMessages = {
-  widgetTitle: "Was this helpful?",
-  widgetSubtitle: "Help us improve",
-  yes: "Yes",
-  no: "No",
-  reportIssue: "Report Problem",
-  alreadyVotedMessage: "Thanks for voting!",
-  voteSuccessTitle: "Success",
-  voteSuccessMessage: "Vote saved",
-  errorTitle: "Error",
-  errorMessage: "Something went wrong",
-}
+vi.mock("@/lib/logger", () => ({
+  logger: {
+    error: (...args: unknown[]) => mockLoggerError(...args),
+  },
+}))
+
+global.fetch = fetchMock as typeof fetch
+
+const messages = {
+  Feedback: {
+    widgetTitle: "Was this helpful?",
+    widgetSubtitle: "Help us improve",
+    yes: "Yes",
+    no: "No",
+    reportIssue: "Report Problem",
+    alreadyVotedMessage: "Thanks for voting!",
+    voteSuccessTitle: "Vote saved",
+    voteSuccessMessage: "Your vote was recorded",
+    errorTitle: "Error",
+    errorMessage: "Something went wrong",
+    reportIssueTitle: "Report Issue",
+    reportIssueDescription: "Help us improve {service}",
+    issueTypeLabel: "Issue Type",
+    issueTypes: {
+      wrong_contact_info: "Wrong contact info",
+      service_closed: "Service closed",
+      eligibility_incorrect: "Eligibility incorrect",
+      other: "Other",
+    },
+    detailsLabel: "Details",
+    detailsPlaceholder: "Tell us what needs fixing",
+    cancel: "Cancel",
+    submitReport: "Submit report",
+    issueReportedTitle: "Issue reported",
+    issueReportedMessage: "Thanks for flagging this",
+  },
+  Offline: {
+    savedForLater: "Saved for later",
+    savedMessage: "We will sync this when you are back online",
+  },
+} as const
 
 describe("FeedbackWidget Component", () => {
   const serviceId = "svc-123"
   const serviceName = "Test Service"
+  const mockUseNetworkStatus = vi.mocked(useNetworkStatus)
+  const mockQueueFeedback = vi.mocked(queueFeedback)
 
   beforeEach(() => {
     vi.clearAllMocks()
-    ;(global.fetch as any).mockResolvedValue({ ok: true })
+    mockUseNetworkStatus.mockReturnValue({
+      isOnline: true,
+      isOffline: false,
+      connectionType: "unknown",
+    })
+    fetchMock.mockResolvedValue({
+      ok: true,
+      json: vi.fn().mockResolvedValue({ success: true }),
+    })
   })
 
   it("renders with vote buttons", () => {
     render(
-      <TestWrapper messages={{ Feedback: mockFeedbackMessages } as any}>
+      <TestWrapper messages={messages as any}>
         <FeedbackWidget serviceId={serviceId} serviceName={serviceName} />
       </TestWrapper>
     )
@@ -55,7 +98,7 @@ describe("FeedbackWidget Component", () => {
 
   it("submits helpful vote", async () => {
     render(
-      <TestWrapper messages={{ Feedback: mockFeedbackMessages } as any}>
+      <TestWrapper messages={messages as any}>
         <FeedbackWidget serviceId={serviceId} serviceName={serviceName} />
       </TestWrapper>
     )
@@ -76,16 +119,22 @@ describe("FeedbackWidget Component", () => {
     })
 
     expect(await screen.findByText("Thanks for voting!")).toBeInTheDocument()
-    await waitFor(() => {
-      expect(mockToast).toHaveBeenCalledWith(expect.objectContaining({ title: "Success" }))
-    })
+    expect(mockToast).toHaveBeenCalledWith(
+      expect.objectContaining({
+        title: "Vote saved",
+        description: "Your vote was recorded",
+      })
+    )
   })
 
-  it("handles fetch error", async () => {
-    ;(global.fetch as any).mockResolvedValue({ ok: false })
+  it("handles vote fetch error", async () => {
+    fetchMock.mockResolvedValue({
+      ok: false,
+      json: vi.fn().mockResolvedValue({ success: false }),
+    })
 
     render(
-      <TestWrapper messages={{ Feedback: mockFeedbackMessages } as any}>
+      <TestWrapper messages={messages as any}>
         <FeedbackWidget serviceId={serviceId} serviceName={serviceName} />
       </TestWrapper>
     )
@@ -97,15 +146,115 @@ describe("FeedbackWidget Component", () => {
     })
   })
 
-  it("opens dialog on click", () => {
+  it("opens the canonical issue dialog from the widget", () => {
     render(
-      <TestWrapper messages={{ Feedback: mockFeedbackMessages }}>
+      <TestWrapper messages={messages as any}>
         <FeedbackWidget serviceId={serviceId} serviceName={serviceName} />
       </TestWrapper>
     )
 
     fireEvent.click(screen.getByRole("button", { name: /Report Problem/i }))
 
-    expect(screen.getByTestId("report-issue-modal")).toBeInTheDocument()
+    expect(screen.getByRole("dialog")).toBeInTheDocument()
+    expect(screen.getByText("Report Issue")).toBeInTheDocument()
+  })
+
+  it("submits an issue report through /api/v1/feedback", async () => {
+    render(
+      <TestWrapper messages={messages as any}>
+        <FeedbackWidget serviceId={serviceId} serviceName={serviceName} />
+      </TestWrapper>
+    )
+
+    fireEvent.click(screen.getByRole("button", { name: /Report Problem/i }))
+    fireEvent.click(screen.getByLabelText("Wrong contact info"))
+    fireEvent.change(screen.getByLabelText("Details"), { target: { value: "Phone number is outdated" } })
+    fireEvent.click(screen.getByRole("button", { name: "Submit report" }))
+
+    await waitFor(() => {
+      expect(global.fetch).toHaveBeenCalledWith(
+        "/api/v1/feedback",
+        expect.objectContaining({
+          method: "POST",
+          body: JSON.stringify({
+            service_id: serviceId,
+            feedback_type: "issue",
+            message: "[Type: wrong_contact_info] Phone number is outdated",
+          }),
+        })
+      )
+    })
+
+    expect(mockToast).toHaveBeenCalledWith(
+      expect.objectContaining({
+        title: "Issue reported",
+        description: "Thanks for flagging this",
+      })
+    )
+  })
+
+  it("shows an error toast when issue submission fails", async () => {
+    fetchMock.mockResolvedValue({
+      ok: false,
+      json: vi.fn().mockResolvedValue({ success: false, message: "Failed" }),
+    })
+
+    render(
+      <TestWrapper messages={messages as any}>
+        <FeedbackWidget serviceId={serviceId} serviceName={serviceName} />
+      </TestWrapper>
+    )
+
+    fireEvent.click(screen.getByRole("button", { name: /Report Problem/i }))
+    fireEvent.change(screen.getByLabelText("Details"), { target: { value: "This service is closed" } })
+    fireEvent.click(screen.getByRole("button", { name: "Submit report" }))
+
+    await waitFor(() => {
+      expect(mockToast).toHaveBeenCalledWith(expect.objectContaining({ variant: "destructive" }))
+    })
+
+    expect(mockLoggerError).toHaveBeenCalledWith(
+      "Issue report submission failed",
+      expect.any(Error),
+      expect.objectContaining({
+        component: "ReportIssueModal",
+        serviceId,
+      })
+    )
+  })
+
+  it("queues issue reports while offline", async () => {
+    mockUseNetworkStatus.mockReturnValue({
+      isOnline: false,
+      isOffline: true,
+      connectionType: "none",
+    })
+
+    render(
+      <TestWrapper messages={messages as any}>
+        <FeedbackWidget serviceId={serviceId} serviceName={serviceName} />
+      </TestWrapper>
+    )
+
+    fireEvent.click(screen.getByRole("button", { name: /Report Problem/i }))
+    fireEvent.change(screen.getByLabelText("Details"), { target: { value: "Eligibility info is missing" } })
+    fireEvent.click(screen.getByRole("button", { name: "Submit report" }))
+
+    await waitFor(() => {
+      expect(mockQueueFeedback).toHaveBeenCalledWith({
+        feedback_type: "issue",
+        service_id: serviceId,
+        message: "[Type: other] Eligibility info is missing",
+        category_searched: "",
+      })
+    })
+
+    expect(global.fetch).not.toHaveBeenCalled()
+    expect(mockToast).toHaveBeenCalledWith(
+      expect.objectContaining({
+        title: "Saved for later",
+        description: "We will sync this when you are back online",
+      })
+    )
   })
 })

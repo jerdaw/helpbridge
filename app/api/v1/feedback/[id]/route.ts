@@ -7,6 +7,7 @@ import { cookies } from "next/headers"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
 import { env } from "@/lib/env"
 import { unsafeFrom } from "@/lib/supabase"
+import { checkRateLimit, createRateLimitHeaders, getClientIp } from "@/lib/rate-limit"
 
 const UpdateStatusSchema = z.object({
   status: z.enum(["pending", "reviewed", "resolved", "dismissed"]),
@@ -15,6 +16,16 @@ const UpdateStatusSchema = z.object({
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { id: feedbackId } = await params
+    const rateLimit = await checkRateLimit(getClientIp(request), 60, 60 * 1000, "api:v1:feedback:update")
+    if (!rateLimit.success) {
+      return createApiError(
+        "Too many requests. Please try again later.",
+        429,
+        undefined,
+        createRateLimitHeaders(rateLimit)
+      )
+    }
+
     const cookieStore = await cookies()
     const supabaseAuth = createServerClient(
       env.NEXT_PUBLIC_SUPABASE_URL || "",

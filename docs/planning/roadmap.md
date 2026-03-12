@@ -8,18 +8,16 @@
 ## 📊 Current State
 
 - **Services**: 196 manually curated social services (verified 2026-02-11)
-- **Tests**: 1080 passing, 24 skipped (latest full local run)
-  - Coverage metrics need a fresh `npm run test:coverage` snapshot before publishing new percentages
-  - Remaining testing backlog centers on component smoke coverage, unhappy-path coverage, feedback/update integrations, and E2E stabilization
-  - 7 E2E tests skipped in `tests/e2e/**` (documented baseline: [E2E Skip Baseline (2026-03-09)](../testing/e2e-skip-baseline-2026-03-09.md))
+- **Tests**: targeted autonomous backlog suites green as of 2026-03-12; full aggregate counts need a fresh `npm run test:coverage` snapshot
+  - High-value component smoke coverage, unhappy-path coverage, and live feedback/update integration coverage all advanced in the latest autonomous pass
+  - Default `tests/e2e/**` Chromium suite now carries 0 inline skips; production-only and server-mode checks moved to dedicated commands in [E2E Automation Baseline (2026-03-12)](../testing/e2e-skip-baseline-2026-03-09.md)
   - CI budget mode: Playwright runs on `workflow_dispatch` or `main` commits containing `[run-e2e]`
-  - Recent: full local suite green at 1080/1104 tests
 - **Load Testing**: k6 infrastructure and baseline documentation are in place; follow-up work is comparative analysis and ongoing refresh
 - **Resilience**: 100% circuit breaker protection on all API routes and database operations
-- **Security**: Dependency hygiene automation is in place (Dependabot, CI validation, header checks); deeper scanning remains on the backlog
+- **Security**: Dependency hygiene automation is in place (Dependabot, dependency review on PRs, CI validation, header checks)
 - **Accessibility**: WCAG 2.1 AA compliant (automated testing via Axe-core)
 - **Languages**: 7 locales (EN, FR, ZH-Hans, AR, PT, ES, PA)
-  - All 7 locale files are at key parity (964/964 keys each)
+  - All 7 locale files remain at translation-key parity
   - Advanced French service-data fields remain incomplete (`access_script_fr`, `hours_text_fr`, `eligibility_notes_fr`, `synthetic_queries_fr`)
 - **Offline-Ready**: PWA with IndexedDB fallback and background sync
 - **Push Notifications**: Optional only; UI and SDK remain disabled unless OneSignal is explicitly configured
@@ -67,6 +65,15 @@ Reposition HelpBridge from potential directory duplication to measurable last-mi
 4. Keep sync discipline using [v22.0 Gate 0 User Action Tracker](../implementation/v22-0-gate-0-user-action-tracker.md) and [v22.0 Gate 0 Evidence Intake Pack](../implementation/v22-0-gate-0-evidence-intake-pack.md).
 5. Re-evaluate Gate 0 using [v22.0 Gate 0 Exit Checklist (Decision Control)](../implementation/v22-0-gate-0-exit-checklist.md) after every accepted evidence update.
 
+#### Agent-Executable Follow-Through (Blocked on User Evidence)
+
+These tasks are repo-local and automatable, but they start only after the corresponding human-owned evidence exists:
+
+1. Update Gate 0 trackers and control docs after each accepted `UA-1` / `UA-2` / `UA-3` evidence drop.
+2. Sync the integration decision record, approval checklist references, and evidence matrix to the latest blocker state.
+3. Re-evaluate the Gate 0 exit checklist and re-run `npm run check:v22-gate0`.
+4. Keep pilot API/schema/tests/docs aligned with any approved Gate 0 control changes.
+
 #### Gate 0 Exit Blockers (NO-GO)
 
 1. Candidate partner legal/API terms are not yet attached for C1 clause-level review.
@@ -84,7 +91,7 @@ Reposition HelpBridge from potential directory duplication to measurable last-mi
 6. Gate 0 user action tracker added and linked from roadmap.
 7. Gate 0 evidence intake pack added for C1/C2/D4 submission standardization.
 8. CI/release guard added (`npm run check:v22-gate0`) to block build/release paths while Gate 0 is `NO-GO`.
-9. E2E skip baseline documented and linked in roadmap + v19 execution handoff.
+9. E2E automation baseline documented and linked in roadmap + v19 execution handoff.
 10. Temporary free-tier CI budget mode enabled for Playwright E2E (manual dispatch or `[run-e2e]` on `main`).
 
 #### Gate 1 Thresholds (Pilot Cycle 1)
@@ -107,6 +114,12 @@ Reposition HelpBridge from potential directory duplication to measurable last-mi
 **Completed**: 2026-02-10 (automation & documentation)
 
 Keep launch-prep procedures ready while the live VPS deployment remains stable and v22 determines whether broader launch execution should proceed.
+
+#### Automation Boundary
+
+1. Agent-executable work in this stream is already complete: QA automation, environment validation, launch docs, rollback procedures, communication templates, beta materials, and E2E skip-baseline documentation.
+2. Remaining work in this stream is intentionally human-executed: production environment audit, real-user journey testing, top-20 service review, beta operations, and launch communications.
+3. Repo-local follow-through can resume once v22 permits it: running automation, updating execution logs/checklists, and fixing issues surfaced by the scripted checks.
 
 ---
 
@@ -149,9 +162,10 @@ Keep launch-prep procedures ready while the live VPS deployment remains stable a
   - [x] Add SEO basics (`app/robots.ts` -> `/robots.txt`, `sitemap.ts`, `not-found.tsx`, `error.tsx`, `global-error.tsx`)
   - [x] Add security.txt for responsible disclosure
   - [x] Replace console._ with logger._ in 8 files (7 API routes + FAQ page)
-  - [x] Document remaining E2E test skips baseline (current: 7 skipped tests) in [E2E Skip Baseline (2026-03-09)](../testing/e2e-skip-baseline-2026-03-09.md)
+  - [x] Document the E2E automation baseline in [E2E Automation Baseline (2026-03-12)](../testing/e2e-skip-baseline-2026-03-09.md)
   - [x] Enable Dependabot for automated dependency updates
   - [x] Bonus: Fix embeddings generation script to output formatted JSON
+  - [x] Follow-up: remove inline default-suite E2E skips and move environment-dependent checks into opt-in automation commands
 
 - **Phase 2** (4-6h): User-Facing Documentation ✅ **COMPLETE**
   - [x] User guide (EN + FR)
@@ -507,43 +521,29 @@ Production-readiness complete (v17.0–v18.0). Platform is resilient, secure, ac
 
 ### v20.0: Technical Excellence & Testing (HIGH PRIORITY - Before Production)
 
-**Status**: IN PROGRESS — 21/38 items complete; completed Phase 1 work is archived and the remaining backlog is split into “can proceed now” vs “wait for v22/v21 clarity”
+**Status**: MAINTENANCE MODE — autonomous repo-local backlog pass complete; active scope is now limited to E2E suite upkeep plus deferred strategic items
 **Priority**: HIGH (technical debt reduction and deeper test coverage)
-**Remaining Effort**: ~35-45 hours
-**Dependencies**: None, but execution should not displace v22 gate work
-**Completion**: 21/38 items done
-**Archive**: Completed v20.0 Phase 1 execution details live in [2026-02-12-v20-0-phase-1-implementation-plan.md](archive/2026-02-12-v20-0-phase-1-implementation-plan.md)
+**Remaining Effort**: ~4-8 hours of periodic maintenance plus deferred work after v22/v21 clarity
+**Dependencies**: None for `B6`; deferred items still depend on v22/v21 direction
+**Archive**:
 
-This roadmap section now tracks only the unfinished v20 backlog. Completed code quality, CI, and Phase 1 testing work has been removed from the active roadmap and preserved in the archive above.
+- Phase 1 execution details: [2026-02-12-v20-0-phase-1-implementation-plan.md](archive/2026-02-12-v20-0-phase-1-implementation-plan.md)
+- Autonomous backlog closeout: [2026-03-12-v20-0-autonomous-backlog-closeout.md](archive/2026-03-12-v20-0-autonomous-backlog-closeout.md)
 
-#### Can Proceed Now
+This roadmap section now tracks only the unfinished v20 scope. Completed testing, security, documentation, and architecture batches are archived in the records above and summarized in [v20.0 Autonomous Backlog Summary (2026-03-12)](../implementation/v20-0-autonomous-backlog-summary-2026-03-12.md).
+
+#### Can Proceed Now (Agent-Executable / Repo-Local)
 
 **Testing depth**
 
-- `B5`: Add smoke tests for 40+ untested components
-- `B6`: Stabilize the 7 skipped E2E tests without breaking the free-tier CI budget posture
-- `B7`: Add unhappy-path and resilience scenario tests
-- `B8`: Add end-to-end feedback workflow integration coverage
-- `B9`: Add end-to-end service update request integration coverage
+- `B6`: Maintain the skip-free default E2E suite and keep the opt-in production/server-mode suites healthy
 
-**Documentation and ops**
+**Execution rule**
 
-- `D2`: Create an admin operations guide
-- `D4`: Add GDPR/international compliance documentation
-- `D5`: Document database migration and rollback procedures
-- `D6`: Refresh `docs/testing/performance-baselines.md` with current numbers
-
-**Security and privacy**
-
-- `F1`: Add deeper dependency scanning in CI
-- `F2`: Add automated CSP/security-header verification at runtime
-- `F3`: Expand rate-limit coverage across non-search API routes
-
-**Architecture**
-
-- `G2`: Extract the shared enhancer path in `hooks/useServices.ts`
-
-These items are useful regardless of which strategic path v22 takes. Execute them only when they do not displace Gate 0 work.
+1. These items are useful regardless of which strategic path v22 takes.
+2. They are the default agent-executable backlog when Gate 0 is waiting on external evidence.
+3. Each change batch should also run and fix repo-local validation where feasible: `npm run lint`, `npm run type-check`, targeted tests, and build/Vitest checks by default.
+4. Leave Playwright execution to CI/manual dispatch while GitHub Actions remains on free-tier budget mode unless a specific browser-only regression needs local reproduction.
 
 #### Defer Until v22/v21 Clarity
 
@@ -563,7 +563,7 @@ These items are still valuable, but they benefit from the partner, governance, a
 #### Remaining Success Criteria
 
 - Publish a fresh coverage snapshot and continue moving statement coverage toward 75%
-- Reduce skipped E2E tests or keep every remaining skip explicitly documented
+- Keep the default E2E suite skip-free and keep the dedicated opt-in browser suites green in CI/manual validation windows
 - Complete advanced French service-data coverage for the highest-value fields
 - Close the remaining documentation and operational procedure gaps
 - Tighten security and architecture follow-through without creating roadmap drift
@@ -802,8 +802,8 @@ Based on comprehensive codebase audit (2026-02-09):
      - `/app/api/v1/analytics/search/route.ts`
 
 4. **Test Reliability** (~4-6h)
-   - [ ] Reduce skipped E2E tests from 7 to 0 or explicit accepted baseline
-   - [x] Known limitations are documented for current skip set
+   - [x] Remove inline skipped tests from the default E2E suite and move environment-dependent coverage to explicit opt-in commands
+   - [x] Known limitations and opt-in suites are documented in the current automation baseline
 
 5. **Dependency Management** (~30min)
    - [x] Add `.github/dependabot.yml` for automated security updates
@@ -811,6 +811,7 @@ Based on comprehensive codebase audit (2026-02-09):
 ### Recommended (High Priority, Not Blocking)
 
 6. **Input Validation Hardening** (~1h)
+   - Captured in `v20.0` as `F4`
    - Stricten `field_updates: z.record(z.any())` in `/app/api/v1/services/[id]/update-request/route.ts`
    - Use explicit allowed field list instead of `any()`
 

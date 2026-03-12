@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { createClient } from "@/utils/supabase/server"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
 import { logger } from "@/lib/logger"
+import { checkRateLimit, createRateLimitHeaders, getClientIp } from "@/lib/rate-limit"
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,6 +10,14 @@ export async function POST(req: NextRequest) {
 
     if (!endpoint) {
       return NextResponse.json({ error: "Missing endpoint" }, { status: 400 })
+    }
+
+    const rateLimit = await checkRateLimit(getClientIp(req), 20, 60 * 60 * 1000, "api:v1:notifications:unsubscribe")
+    if (!rateLimit.success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429, headers: createRateLimitHeaders(rateLimit) }
+      )
     }
 
     const supabase = await createClient()

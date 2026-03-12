@@ -38,25 +38,21 @@ test.describe("About & Partners Pages", () => {
     await expect(page.getByText("Monthly Audits")).toBeVisible()
   })
 
-  // TODO: Fix - Navigation links don't trigger URL change (stays on /en)
-  test.skip("Navigation links work", async ({ page, isMobile }) => {
+  test("Navigation links work", async ({ page, isMobile }) => {
     await page.goto("/")
+    await page.waitForURL(/\/en/)
 
-    // Check About Link
     if (isMobile) {
       await page.getByRole("button", { name: "Open menu" }).click()
     }
-    await page.getByRole("link", { name: "About" }).first().click()
-    await expect(page).toHaveURL(/.*\/about/)
+    await page.locator('a[href$="/about"]').first().click()
+    await expect(page).toHaveURL(/\/about$/)
 
-    // Check Partners Link from About Page
-    // On mobile, secondary navs might be different from desktop
-    // But page content links should be accessible
     await page.getByRole("link", { name: "View Partners" }).click()
-    await expect(page).toHaveURL(/.*\/about\/partners/)
+    await expect(page.getByRole("heading", { name: "Built on Trusted Sources" })).toBeVisible()
+    await expect(page).toHaveURL(/\/about\/partners$/)
 
-    // Check Footer Link from Partners Page
     await page.getByRole("contentinfo").getByRole("link", { name: "About Us" }).click()
-    await expect(page).toHaveURL(/.*\/about/)
+    await expect(page).toHaveURL(/\/about$/)
   })
 })

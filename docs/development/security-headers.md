@@ -121,7 +121,11 @@ form-action 'self';
 Security headers are validated automatically in CI via:
 
 ```bash
+# Validate configured headers in next.config.ts
 npm run validate:security-headers
+
+# Validate live response headers from a running app
+SECURITY_HEADERS_BASE_URL=http://127.0.0.1:3000 npm run validate:security-headers:runtime
 ```
 
 **What It Checks**:
@@ -136,19 +140,29 @@ npm run validate:security-headers
 
 The validation runs as part of the `static-analysis` job in `.github/workflows/ci.yml`. If validation fails, the CI build is blocked.
 
+Runtime validation also runs in `.github/workflows/production-smoke.yml` against the deployed `https://helpbridge.ca` responses.
+
 ### Manual Validation
 
 Run locally before committing security header changes:
 
 ```bash
-# Validate security headers
+# Validate next.config.ts security header configuration
 npm run validate:security-headers
 
-# Test headers in dev server
+# Start the app in another terminal
 npm run dev
 
-# Check headers with curl
-curl -I http://localhost:3000 | grep -i "x-frame\|content-security\|strict-transport"
+# Validate live response headers from the running app
+SECURITY_HEADERS_BASE_URL=http://127.0.0.1:3000 npm run validate:security-headers:runtime
+```
+
+Use `SECURITY_HEADERS_PATHS` to override the checked routes if needed:
+
+```bash
+SECURITY_HEADERS_BASE_URL=http://127.0.0.1:3000 \
+SECURITY_HEADERS_PATHS=/en,/api/v1/health \
+npm run validate:security-headers:runtime
 ```
 
 ### Browser Testing
@@ -166,7 +180,7 @@ curl -I http://localhost:3000 | grep -i "x-frame\|content-security\|strict-trans
 - [Security Headers](https://securityheaders.com/) - Online header scanner
 - [Mozilla Observatory](https://observatory.mozilla.org/) - Comprehensive security scan
 
-**Note**: Local development (`localhost`) will show warning about HSTS not applying (expected - HSTS only works on HTTPS).
+**Note**: Browser HSTS enforcement still requires HTTPS, but the runtime validator checks whether the header is present on responses.
 
 ## Modifying Security Headers
 
@@ -204,6 +218,7 @@ Only modify security headers if:
 
    ```bash
    npm run validate:security-headers
+   SECURITY_HEADERS_BASE_URL=http://127.0.0.1:3000 npm run validate:security-headers:runtime
    ```
 
 5. **Test in browser** - verify the change doesn't break functionality

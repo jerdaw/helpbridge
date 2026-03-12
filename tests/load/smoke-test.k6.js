@@ -54,7 +54,7 @@ export default function smokeTest() {
     "health check has JSON response": (r) => {
       try {
         const body = JSON.parse(r.body)
-        return body.status && body.checks
+        return Boolean(body.status && typeof body.timestamp === "string")
       } catch {
         return false
       }

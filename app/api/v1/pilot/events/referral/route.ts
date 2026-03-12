@@ -8,7 +8,7 @@ import { insertReferralEvent } from "@/lib/pilot/storage"
 
 export async function POST(request: NextRequest) {
   try {
-    const rateLimit = await checkRateLimit(getClientIp(request), 60, 60 * 1000)
+    const rateLimit = await checkRateLimit(getClientIp(request), 60, 60 * 1000, "api:v1:pilot:events:referral:create")
     if (!rateLimit.success) {
       return createApiError("Rate limit exceeded", 429)
     }

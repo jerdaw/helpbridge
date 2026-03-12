@@ -1,0 +1,18 @@
+{
+  "test": "smoke-test",
+  "timestamp": "2026-03-12T18:09:39.642Z",
+  "metrics": {
+    "totalRequests": 30,
+    "failedRequests": 0,
+    "duration": {
+      "p50": 62.448325,
+      "p95": 98.60798099999994,
+      "p99": 334.636169,
+      "max": 334.636169,
+      "avg": 74.33276603333334
+    },
+    "vus": {
+      "max": 1
+    }
+  }
+}

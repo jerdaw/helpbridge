@@ -11,6 +11,17 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Verify public health endpoint
         run: |
           python - <<'PY'
@@ -41,3 +52,8 @@ jobs:
           grep -Fx 'Sitemap: https://helpbridge.ca/sitemap.xml' robots.txt
           curl -fsS https://helpbridge.ca/sitemap.xml > sitemap.xml
           grep -F '<loc>https://helpbridge.ca/' sitemap.xml
+
+      - name: Verify runtime security headers
+        run: npm run validate:security-headers:runtime
+        env:
+          SECURITY_HEADERS_BASE_URL: https://helpbridge.ca

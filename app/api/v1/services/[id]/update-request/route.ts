@@ -1,5 +1,4 @@
 import { NextRequest } from "next/server"
-import { z } from "zod"
 import { createApiError, handleApiError, createApiResponse, validateContentType } from "@/lib/api-utils"
 import { assertServiceOwnership } from "@/lib/auth/authorization"
 import { createServerClient } from "@supabase/ssr"
@@ -7,34 +6,8 @@ import { cookies } from "next/headers"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
 import { env } from "@/lib/env"
 import { unsafeFrom } from "@/lib/supabase"
-
-const ALLOWED_UPDATE_FIELDS = [
-  "name",
-  "name_fr",
-  "description",
-  "description_fr",
-  "phone",
-  "email",
-  "url",
-  "address",
-  "hours",
-  "hours_text",
-  "hours_text_fr",
-  "eligibility_notes",
-  "eligibility_notes_fr",
-  "access_script",
-  "access_script_fr",
-  "coordinates",
-  "status",
-] as const
-
-const UpdateRequestSchema = z.object({
-  field_updates: z.record(
-    z.enum(ALLOWED_UPDATE_FIELDS),
-    z.union([z.string(), z.number(), z.boolean(), z.null(), z.record(z.unknown())])
-  ),
-  justification: z.string().max(500).optional(),
-})
+import { ServiceUpdateSubmitSchema } from "@/types/feedback"
+import { checkRateLimit, createRateLimitHeaders, getClientIp } from "@/lib/rate-limit"
 
 export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -67,10 +40,20 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
 
     validateContentType(request)
     const body = await request.json()
-    const validation = UpdateRequestSchema.safeParse(body)
+    const validation = ServiceUpdateSubmitSchema.safeParse(body)
 
     if (!validation.success) {
       return createApiError("Invalid update data", 400, validation.error.flatten())
+    }
+
+    const rateLimit = await checkRateLimit(getClientIp(request), 20, 60 * 60 * 1000, "api:v1:services:update-request")
+    if (!rateLimit.success) {
+      return createApiError(
+        "Too many requests. Please try again later.",
+        429,
+        undefined,
+        createRateLimitHeaders(rateLimit)
+      )
     }
 
     const { field_updates, justification } = validation.data

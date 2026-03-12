@@ -1,40 +1,42 @@
 ---
 status: stable
-last_updated: 2026-03-09
+last_updated: 2026-03-12
 owner: jer
 tags: [testing, e2e, baseline, known-limitations, v19.0]
 ---
 
-# E2E Skip Baseline (2026-03-09)
+# E2E Automation Baseline (2026-03-12)
 
-This document records the accepted baseline for currently skipped E2E tests in v19 Phase 1.5.
+This document records the accepted browser-automation baseline after the inline-skip cleanup completed on **2026-03-12**.
 
 Policy:
 
-1. Skips are allowed only with explicit rationale, workaround, owner, and revisit date.
-2. New skips require updates to this baseline file and roadmap references.
+1. The default `tests/e2e/**` Chromium suite should not carry inline `test.skip()` debt.
+2. Environment-dependent checks should move into explicit opt-in automation commands, not remain as hidden default-suite skips.
+3. New permanent skips require updates to this baseline file and roadmap references.
 
-## Current Skip Inventory (Total: 7)
+## Current Default-Suite Skip Inventory
 
-| Test File                          | Test Name                                                  | Skip Type               | Rationale                                                                                                       | Workaround                                                                              | Owner | Revisit Date |
-| ---------------------------------- | ---------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----- | ------------ |
-| `tests/e2e/about.spec.ts`          | `Navigation links work`                                    | unconditional           | Locale route transition assertion is flaky; URL remains on locale root in CI runs.                              | Validate navigation links manually in Phase 1 QA browser walkthrough.                   | jer   | 2026-04-15   |
-| `tests/e2e/dashboard.spec.ts`      | `should navigate to partner login`                         | unconditional           | Full partner auth redirect flow requires stable Supabase auth-state mocking not present in current E2E harness. | Manual partner-login verification with Supabase-enabled local/production environment.   | jer   | 2026-04-15   |
-| `tests/e2e/offline.spec.ts`        | `Service worker is registered (manual)`                    | unconditional           | Service worker registration is production-only; disabled in dev/CI execution mode.                              | Validate via `npm run build && npm start` and manual browser SW inspection.             | jer   | 2026-04-15   |
-| `tests/e2e/multi-lingual.spec.ts`  | `Language selector switches locales and updates UI labels` | unconditional           | Sequential Radix popover locale switching is flaky in CI timing conditions.                                     | Validate core switching in `tests/e2e/language.spec.ts` plus manual multi-locale sweep. | jer   | 2026-04-15   |
-| `tests/e2e/multi-lingual.spec.ts`  | `Provincial crisis lines are visible and labeled`          | unconditional           | Depends on fixture/data alignment for `crisis-988` with `scope=canada` and badge rendering.                     | Verify badge behavior manually with server search mode and known dataset.               | jer   | 2026-04-15   |
-| `tests/e2e/data-integrity.spec.ts` | `Critical services have correct scope configuration`       | conditional (`CI` only) | Requires live Supabase + server search mode; not stable in CI environment.                                      | Run locally with `NEXT_PUBLIC_SEARCH_MODE=server` and valid Supabase credentials.       | jer   | 2026-04-15   |
-| `tests/e2e/data-integrity.spec.ts` | `Search API returns valid structure for all locales`       | conditional (`CI` only) | Requires live Supabase + server search mode; CI environment lacks required data/auth context.                   | Run locally with `NEXT_PUBLIC_SEARCH_MODE=server` and valid Supabase credentials.       | jer   | 2026-04-15   |
+Total inline skips in `tests/e2e/**`: **0**
+
+## Dedicated Opt-In Suites
+
+These checks remain automated, but they now live behind explicit commands because they require production-like or server-mode environments:
+
+| Command                         | Purpose                                                                     | Environment                                                                                           |
+| ------------------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `npm run test:e2e:prod-local`   | Verify production-only browser behavior such as service worker registration | local production build plus Playwright-managed standalone server                                      |
+| `npm run test:e2e:server-local` | Verify server-search/data-integrity behavior                                | local production build with `NEXT_PUBLIC_SEARCH_MODE=server` and Playwright-managed standalone server |
 
 ## Acceptance Decision
 
-- Baseline accepted for v19 Phase 1.5: `yes`
-- Scope: launch-readiness execution while v22 Gate 0 evidence is still closing
-- Follow-up requirement: re-evaluate all 7 skips by `2026-04-15`
+- Default-suite skip baseline accepted: `yes`
+- Scope: launch-readiness automation while v22 Gate 0 evidence is still closing
+- Follow-up requirement: keep the opt-in suites runnable and documented
 
 ## Change Control
 
-When skip count or rationale changes:
+When default-suite skip count or opt-in suite expectations change:
 
 1. Update this file.
 2. Update [Roadmap](../planning/roadmap.md) skip references.

@@ -172,6 +172,21 @@ If a Dependabot PR has merge conflicts:
 
 Dependabot also creates **security updates** when vulnerabilities are detected.
 
+## Pull Request Dependency Review
+
+HelpBridge now also runs GitHub's dependency review action on pull requests via `.github/workflows/dependency-review.yml`.
+
+What it does:
+
+- compares dependency manifest and lockfile changes introduced by the PR
+- fails the PR when newly introduced dependencies carry **high** or **critical** advisories
+- complements `npm audit` instead of replacing it
+
+What it does not do:
+
+- it does not block on unrelated historical ecosystem noise outside the PR diff
+- it does not replace local review of changelogs, bundle impact, or framework compatibility
+
 ### Identifying Security Updates
 
 Security PRs are labeled with:

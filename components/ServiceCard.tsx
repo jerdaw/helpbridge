@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { motion } from "framer-motion"
 import { MapPin, Phone, ShieldCheck, Flag, ArrowRight, HeartPulse, Home, Utensils, AlertTriangle } from "lucide-react"
 import { Service, VerificationLevel, IntentCategory } from "../types/service"
-import { FeedbackModal } from "@/components/FeedbackModal"
+import { ReportIssueModal } from "@/components/feedback/ReportIssueModal"
 import { Link } from "../i18n/routing"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -229,7 +229,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, highlightTokens = []
                 {t("ServiceDetail.report")}
               </button>
             </div>
-            <FeedbackModal
+            <ReportIssueModal
               serviceId={service.id}
               serviceName={service.name}
               isOpen={feedbackOpen}

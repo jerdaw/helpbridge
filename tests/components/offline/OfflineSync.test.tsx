@@ -36,13 +36,16 @@ describe("OfflineSync", () => {
 
   let requestIdleCallbackSpy: any
   let onlineListeners: ((event: Event) => void)[] = []
+  let originalServiceWorkerDescriptor: PropertyDescriptor | undefined
 
   beforeEach(() => {
     vi.clearAllMocks()
+    vi.unstubAllEnvs()
     mockUseLocale.mockReturnValue("en")
     mockSyncOfflineData.mockResolvedValue({ status: "synced" } as any)
     mockSyncPendingFeedback.mockResolvedValue(undefined)
     onlineListeners = []
+    originalServiceWorkerDescriptor = Object.getOwnPropertyDescriptor(window.navigator, "serviceWorker")
 
     // Ensure requestIdleCallback exists before spying
     if (!window.requestIdleCallback) {
@@ -71,6 +74,11 @@ describe("OfflineSync", () => {
 
   afterEach(() => {
     requestIdleCallbackSpy?.mockRestore()
+    if (originalServiceWorkerDescriptor) {
+      Object.defineProperty(window.navigator, "serviceWorker", originalServiceWorkerDescriptor)
+    } else {
+      Reflect.deleteProperty(window.navigator, "serviceWorker")
+    }
     vi.restoreAllMocks()
   })
 
@@ -132,6 +140,84 @@ describe("OfflineSync", () => {
       await waitFor(() => {
         expect(mockLogger.error).toHaveBeenCalledWith("Pending feedback sync failed", error, {
           component: "OfflineSync",
+        })
+      })
+    })
+  })
+
+  describe("Service worker registration", () => {
+    it("registers /sw.js in production when no service worker is active", async () => {
+      vi.stubEnv("NODE_ENV", "production")
+
+      const getRegistrations = vi.fn().mockResolvedValue([])
+      const register = vi.fn().mockResolvedValue({ scope: "/" })
+
+      Object.defineProperty(window.navigator, "serviceWorker", {
+        configurable: true,
+        value: {
+          getRegistrations,
+          register,
+        },
+      })
+
+      render(<OfflineSync />)
+
+      await waitFor(() => {
+        expect(getRegistrations).toHaveBeenCalled()
+        expect(register).toHaveBeenCalledWith("/sw.js")
+      })
+
+      expect(mockLogger.info).toHaveBeenCalledWith("Service worker registered", {
+        component: "OfflineSync",
+        action: "service_worker_register",
+        scope: "/",
+      })
+    })
+
+    it("does not re-register when a service worker already exists", async () => {
+      vi.stubEnv("NODE_ENV", "production")
+
+      const getRegistrations = vi.fn().mockResolvedValue([{ scope: "/" }])
+      const register = vi.fn()
+
+      Object.defineProperty(window.navigator, "serviceWorker", {
+        configurable: true,
+        value: {
+          getRegistrations,
+          register,
+        },
+      })
+
+      render(<OfflineSync />)
+
+      await waitFor(() => {
+        expect(getRegistrations).toHaveBeenCalled()
+      })
+
+      expect(register).not.toHaveBeenCalled()
+    })
+
+    it("logs a warning when service worker registration fails", async () => {
+      vi.stubEnv("NODE_ENV", "production")
+
+      const getRegistrations = vi.fn().mockResolvedValue([])
+      const error = new Error("registration failed")
+      const register = vi.fn().mockRejectedValue(error)
+
+      Object.defineProperty(window.navigator, "serviceWorker", {
+        configurable: true,
+        value: {
+          getRegistrations,
+          register,
+        },
+      })
+
+      render(<OfflineSync />)
+
+      await waitFor(() => {
+        expect(mockLogger.warn).toHaveBeenCalledWith("Service worker registration failed", {
+          component: "OfflineSync",
+          error: "registration failed",
         })
       })
     })

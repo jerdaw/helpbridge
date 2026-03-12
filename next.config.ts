@@ -108,6 +108,8 @@ const withPWA = withPWAInit({
   },
   workboxOptions: {
     importScripts: ["/custom-sw.js"],
+    // Allow the main localized app chunk to be precached while keeping a bounded install size.
+    maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
     runtimeCaching: [
       {
         // Next.js build output (hashed + immutable)

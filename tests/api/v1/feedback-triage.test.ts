@@ -2,6 +2,17 @@ import "../../setup/next-mocks"
 import { describe, it, expect, vi, beforeEach } from "vitest"
 import { PATCH } from "@/app/api/v1/feedback/[id]/route"
 import { createServerClient } from "@supabase/ssr"
+import { checkRateLimit } from "@/lib/rate-limit"
+
+vi.mock("@/lib/rate-limit", () => ({
+  checkRateLimit: vi.fn().mockResolvedValue({ success: true, remaining: 59, reset: 4102444800 }),
+  getClientIp: vi.fn().mockReturnValue("127.0.0.1"),
+  createRateLimitHeaders: vi.fn().mockReturnValue({
+    "X-RateLimit-Remaining": "0",
+    "X-RateLimit-Reset": "4102444800",
+    "Retry-After": "60",
+  }),
+}))
 
 const mockGetUser = vi.fn()
 const mockSelect = vi.fn()
@@ -47,6 +58,7 @@ describe("Feedback Triage API", () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
+    vi.mocked(checkRateLimit).mockResolvedValue({ success: true, remaining: 59, reset: 4102444800 })
 
     mockSelect.mockReturnValue({
       eq: mockEq,
@@ -165,5 +177,24 @@ describe("Feedback Triage API", () => {
 
     const response = await PATCH(request as any, { params })
     expect(response.status).toBe(400)
+  })
+
+  it("returns 429 when rate limited", async () => {
+    vi.mocked(checkRateLimit).mockResolvedValue({ success: false, remaining: 0, reset: 4102444800 })
+
+    const request = new Request(`http://localhost/api/v1/feedback/${feedbackId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ status: "resolved" }),
+    })
+
+    const response = await PATCH(request as any, { params })
+    const json = (await response.json()) as any
+
+    expect(response.status).toBe(429)
+    expect(json.error.message).toBe("Too many requests. Please try again later.")
+    expect(response.headers.get("Retry-After")).toBe("60")
+    expect(response.headers.get("X-RateLimit-Remaining")).toBe("0")
+    expect(response.headers.get("X-RateLimit-Reset")).toBe("4102444800")
   })
 })

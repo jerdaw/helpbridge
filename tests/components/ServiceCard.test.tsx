@@ -170,7 +170,7 @@ describe("ServiceCard Component", () => {
     const reportBtn = screen.getByText(/Report/i)
     fireEvent.click(reportBtn)
 
-    // Check if FeedbackModal is rendered (by checking its content)
     expect(screen.getByRole("dialog")).toBeInTheDocument()
+    expect(screen.getByText("Report Issue")).toBeInTheDocument()
   })
 })

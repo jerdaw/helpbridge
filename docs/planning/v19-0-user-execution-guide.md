@@ -139,9 +139,9 @@ This guide walks you through **exactly what you need to do** to take HelpBridge 
 
 **How:**
 
-1. Run in terminal (replace URL):
+1. Run in terminal:
    ```bash
-   curl -I https://helpbridge.ca | grep -i "content-security-policy\|x-frame-options"
+   SECURITY_HEADERS_BASE_URL=https://helpbridge.ca npm run validate:security-headers:runtime
    ```
 2. Confirm headers present:
    - `Content-Security-Policy`

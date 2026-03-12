@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest"
-import { checkRateLimit, getClientIp } from "@/lib/rate-limit"
+import { checkRateLimit, createRateLimitHeaders, getClientIp } from "@/lib/rate-limit"
 
 describe("Rate Limiting", () => {
   beforeEach(() => {
@@ -76,6 +76,21 @@ describe("Rate Limiting", () => {
       expect(result2.remaining).toBe(limit - 1)
     })
 
+    it("tracks the same identifier independently across buckets", async () => {
+      const identifier = "shared-ip"
+      const limit = 1
+      const windowMs = 10000
+
+      await checkRateLimit(identifier, limit, windowMs, "bucket-a")
+
+      const sameBucket = await checkRateLimit(identifier, limit, windowMs, "bucket-a")
+      expect(sameBucket.success).toBe(false)
+
+      const differentBucket = await checkRateLimit(identifier, limit, windowMs, "bucket-b")
+      expect(differentBucket.success).toBe(true)
+      expect(differentBucket.remaining).toBe(0)
+    })
+
     it("returns correct reset timestamp", async () => {
       const identifier = "test-user-4"
       const limit = 5
@@ -148,6 +163,20 @@ describe("Rate Limiting", () => {
 
       const ip = getClientIp(request)
       expect(ip).toBe("192.168.1.1")
+    })
+  })
+
+  describe("createRateLimitHeaders", () => {
+    it("returns standard 429 headers", () => {
+      vi.setSystemTime(new Date("2026-03-12T15:00:00Z"))
+
+      const headers = createRateLimitHeaders({ reset: Math.ceil(Date.parse("2026-03-12T16:00:00Z") / 1000) })
+
+      expect(headers).toEqual({
+        "X-RateLimit-Remaining": "0",
+        "X-RateLimit-Reset": "1773331200",
+        "Retry-After": "3600",
+      })
     })
   })
 })

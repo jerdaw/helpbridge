@@ -28,7 +28,7 @@ import { unsafeFrom } from "@/lib/supabase"
 export async function GET(request: NextRequest) {
   // Rate limiting: 100 requests per minute per IP
   const clientIp = getClientIp(request)
-  const rateLimit = await checkRateLimit(clientIp, 100, 60 * 1000)
+  const rateLimit = await checkRateLimit(clientIp, 100, 60 * 1000, "api:v1:services:list")
 
   if (!rateLimit.success) {
     const response = createApiError("Rate limit exceeded. Try again later.", 429)

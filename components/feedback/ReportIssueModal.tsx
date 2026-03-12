@@ -20,6 +20,7 @@ import { FeedbackSubmitSchema, FeedbackApiResponse } from "@/types/feedback"
 import { useNetworkStatus } from "@/hooks/useNetworkStatus"
 import { queueFeedback } from "@/lib/offline/feedback"
 import { AccessibleFormField } from "@/components/forms/AccessibleFormField"
+import { logger } from "@/lib/logger"
 
 interface ReportIssueModalProps {
   serviceId: string
@@ -94,7 +95,11 @@ export function ReportIssueModal({ serviceId, serviceName, isOpen, onClose }: Re
         throw new Error(data.message || "Failed")
       }
     } catch (err) {
-      console.error(err)
+      logger.error("Issue report submission failed", err, {
+        component: "ReportIssueModal",
+        serviceId,
+        issueType,
+      })
       toast({
         title: t("errorTitle"),
         description: t("errorMessage"),

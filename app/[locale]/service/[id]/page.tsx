@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation"
 import { getServiceById } from "@/lib/services"
-import { generateFeedbackLink } from "@/lib/feedback"
 import { Metadata } from "next"
 import {
   MapPin,
@@ -9,7 +8,6 @@ import {
   Clock,
   ShieldCheck,
   CheckCircle2,
-  Flag,
   AlertTriangle,
   FileText,
   Wallet,
@@ -27,10 +25,10 @@ import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
 import { VerificationLevel, IntentCategory } from "@/types/service"
 import { EmergencyDisclaimer } from "@/components/ui/EmergencyDisclaimer"
-import { ClaimFlow } from "@/components/partner/ClaimFlow"
 import { FeedbackWidget } from "@/components/feedback/FeedbackWidget"
 import { TrustPanel } from "@/components/services/TrustPanel"
 import { ServiceActionBar } from "@/components/services/ServiceActionBar"
+import { PartnerActionsPanel } from "@/components/services/PartnerActionsPanel"
 
 interface Props {
   params: Promise<{ id: string; locale: string }>
@@ -415,24 +413,7 @@ export default async function ServicePage({ params, searchParams }: Props) {
 
                 <TrustPanel service={service} locale={locale} />
 
-                <div className="mt-6 border-t border-neutral-100 pt-6 dark:border-neutral-800">
-                  <div className="mt-4">
-                    <a
-                      href={generateFeedbackLink(service)}
-                      className="flex min-h-[44px] w-full items-center justify-center gap-2 rounded-lg border border-transparent py-2 text-xs font-medium text-neutral-500 transition-colors hover:border-neutral-200 hover:bg-neutral-50 hover:text-neutral-700"
-                    >
-                      <Flag className="h-3 w-3" aria-hidden="true" />
-                      {t("reportIssue")}
-                    </a>
-                  </div>
-
-                  {!isVerified && (
-                    <div className="mt-4 border-t border-neutral-100 pt-4 text-center dark:border-neutral-800">
-                      <p className="mb-2 text-xs text-neutral-500">{t("claimText")}</p>
-                      <ClaimFlow serviceName={name} />
-                    </div>
-                  )}
-                </div>
+                <PartnerActionsPanel serviceId={service.id} serviceName={name} showClaimAction={!isVerified} />
               </Card>
             </div>
           </div>
