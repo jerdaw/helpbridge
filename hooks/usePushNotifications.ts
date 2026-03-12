@@ -1,40 +1,65 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
-import OneSignal from "react-onesignal"
 import { env } from "@/lib/env"
 import { logger } from "@/lib/logger"
 
-export function usePushNotifications() {
+type OneSignalClient = (typeof import("react-onesignal"))["default"]
+
+interface UsePushNotificationsOptions {
+  enabled?: boolean
+}
+
+export function usePushNotifications({ enabled = true }: UsePushNotificationsOptions = {}) {
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [isSupported, setIsSupported] = useState(false)
   const [permission, setPermission] = useState<NotificationPermission>("default")
   const initRef = useRef(false)
+  const initPromiseRef = useRef<Promise<void> | null>(null)
+  const oneSignalRef = useRef<OneSignalClient | null>(null)
 
   useEffect(() => {
-    // Client-side only
-    if (typeof window === "undefined" || initRef.current) return
-
-    // Check if push is supported
-    if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
-      setIsSupported(false)
+    if (typeof window === "undefined") {
       return
     }
 
-    setIsSupported(true)
+    const hasBrowserSupport = "serviceWorker" in navigator && "PushManager" in window
+    const hasAppId = Boolean(env.NEXT_PUBLIC_ONESIGNAL_APP_ID)
 
-    // Init OneSignal
-    const initOneSignal = async () => {
+    setIsSupported(hasBrowserSupport && hasAppId)
+    setPermission(Notification.permission)
+  }, [])
+
+  const initializeOneSignal = async () => {
+    if (typeof window === "undefined" || initRef.current) {
+      return
+    }
+
+    if (initPromiseRef.current) {
+      await initPromiseRef.current
+      return
+    }
+
+    initPromiseRef.current = (async () => {
       try {
+        if (!("serviceWorker" in navigator) || !("PushManager" in window)) {
+          setIsSupported(false)
+          return
+        }
+
         if (!env.NEXT_PUBLIC_ONESIGNAL_APP_ID) {
+          setIsSupported(false)
           logger.warn("[OneSignal] App ID not found")
           return
         }
 
+        const { default: OneSignal } = await import("react-onesignal")
         await OneSignal.init({
           appId: env.NEXT_PUBLIC_ONESIGNAL_APP_ID,
           allowLocalhostAsSecureOrigin: true, // For dev
         })
+
+        oneSignalRef.current = OneSignal
         initRef.current = true
 
         // Initial state check
@@ -53,23 +78,36 @@ export function usePushNotifications() {
         })
       } catch (err) {
         logger.error("[OneSignal] Init failed", err)
+        setIsSupported(false)
+      } finally {
+        initPromiseRef.current = null
       }
-    }
+    })()
 
-    initOneSignal()
-  }, [])
+    await initPromiseRef.current
+  }
+
+  useEffect(() => {
+    if (!enabled || !isSupported || initRef.current) return
+
+    void initializeOneSignal()
+  }, [enabled, isSupported])
 
   /**
    * Request permission and subscribe
    */
   const subscribe = async () => {
-    if (!initRef.current) return
+    await initializeOneSignal()
+
+    const oneSignal = oneSignalRef.current
+    if (!oneSignal) return
+
     try {
       // 1. Request Browser Permission
-      await OneSignal.Notifications.requestPermission()
+      await oneSignal.Notifications.requestPermission()
 
       // 2. Opt In (if not auto-subscribed)
-      const pushSubscription = OneSignal.User?.PushSubscription
+      const pushSubscription = oneSignal.User?.PushSubscription
       if (pushSubscription) {
         await pushSubscription.optIn()
       }
@@ -84,9 +122,13 @@ export function usePushNotifications() {
    * Unsubscribe (Opt Out)
    */
   const unsubscribe = async () => {
-    if (!initRef.current) return
+    await initializeOneSignal()
+
+    const oneSignal = oneSignalRef.current
+    if (!oneSignal) return
+
     try {
-      const pushSubscription = OneSignal.User?.PushSubscription
+      const pushSubscription = oneSignal.User?.PushSubscription
       if (pushSubscription) {
         await pushSubscription.optOut()
         setIsSubscribed(false)
@@ -102,6 +144,6 @@ export function usePushNotifications() {
     permission,
     subscribe,
     unsubscribe,
-    OneSignal, // Export instance if needed elsewhere
+    OneSignal: oneSignalRef.current, // Export instance if needed elsewhere
   }
 }

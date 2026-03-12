@@ -22,11 +22,11 @@ interface ProfileSettingsProps {
 export function ProfileSettings({ variant = "ghost", size = "sm", showText = true }: ProfileSettingsProps) {
   const t = useTranslations("Settings")
   const { context, updateAgeGroup, toggleIdentity, optIn, optOut } = useUserContext()
-  const { isSupported, isSubscribed, subscribe, unsubscribe } = usePushNotifications()
   const { isHighContrast, toggleHighContrast } = useHighContrast()
   const tAccess = useTranslations("Accessibility")
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
+  const { isSupported, isSubscribed, subscribe, unsubscribe } = usePushNotifications({ enabled: open })
 
   const toggleSubscription = async () => {
     setLoading(true)

@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase"
 
 // Mock Supabase
 vi.mock("@/lib/supabase", () => ({
+  hasSupabaseCredentials: vi.fn(() => true),
   supabase: {
     from: vi.fn(() => ({
       select: vi.fn().mockReturnThis(),
@@ -93,5 +94,22 @@ describe("useServiceFeedback", () => {
 
     expect(result.current.error).toBeDefined()
     expect(result.current.stats).toBe(null)
+  })
+
+  it("returns empty stats when Supabase is not configured", async () => {
+    const { hasSupabaseCredentials } = await import("@/lib/supabase")
+    vi.mocked(hasSupabaseCredentials).mockReturnValue(false)
+
+    const { result } = renderHook(() => useServiceFeedback(serviceId))
+
+    await waitFor(() => expect(result.current.loading).toBe(false))
+
+    expect(result.current.stats).toEqual({
+      helpful_yes_count: 0,
+      helpful_no_count: 0,
+      open_issues_count: 0,
+      last_feedback_at: null,
+    })
+    expect(result.current.error).toBe(null)
   })
 })

@@ -1,20 +1,23 @@
 import { render, screen, waitFor } from "@testing-library/react"
 import { AuthProvider } from "@/components/AuthProvider"
-import { describe, it, expect, vi } from "vitest"
+import { beforeEach, describe, expect, it, vi } from "vitest"
 
 // Hoist mocks to avoid reference error
-const { mockGetSession, mockSubscribe } = vi.hoisted(() => {
+const { mockGetSession, mockHasSupabaseCredentials, mockSubscribe } = vi.hoisted(() => {
   return {
     mockGetSession: vi.fn(),
     mockSubscribe: vi.fn(),
+    mockHasSupabaseCredentials: vi.fn(),
   }
 })
 
 // Setup returns
 mockGetSession.mockResolvedValue({ data: { session: null }, error: null })
 mockSubscribe.mockReturnValue({ data: { subscription: { unsubscribe: vi.fn() } } })
+mockHasSupabaseCredentials.mockReturnValue(true)
 
 vi.mock("@/lib/supabase", () => ({
+  hasSupabaseCredentials: mockHasSupabaseCredentials,
   supabase: {
     auth: {
       getSession: mockGetSession,
@@ -33,6 +36,13 @@ vi.mock("next/navigation", () => ({
 }))
 
 describe("AuthProvider Component", () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    mockGetSession.mockResolvedValue({ data: { session: null }, error: null })
+    mockSubscribe.mockReturnValue({ data: { subscription: { unsubscribe: vi.fn() } } })
+    mockHasSupabaseCredentials.mockReturnValue(true)
+  })
+
   it("renders children", async () => {
     render(
       <AuthProvider>
@@ -50,5 +60,19 @@ describe("AuthProvider Component", () => {
     )
     await waitFor(() => expect(mockGetSession).toHaveBeenCalled())
     expect(mockSubscribe).toHaveBeenCalled()
+  })
+
+  it("skips auth bootstrap when Supabase is not configured", async () => {
+    mockHasSupabaseCredentials.mockReturnValue(false)
+
+    render(
+      <AuthProvider>
+        <div>Child Content</div>
+      </AuthProvider>
+    )
+
+    await waitFor(() => expect(screen.getByText("Child Content")).toBeInTheDocument())
+    expect(mockGetSession).not.toHaveBeenCalled()
+    expect(mockSubscribe).not.toHaveBeenCalled()
   })
 })

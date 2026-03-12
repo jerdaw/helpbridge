@@ -2,7 +2,8 @@
 
 import { createContext, useContext, useEffect, useState } from "react"
 import { User, Session } from "@supabase/supabase-js"
-import { supabase } from "@/lib/supabase"
+import { hasSupabaseCredentials, supabase } from "@/lib/supabase"
+import { logger } from "@/lib/logger"
 import { useRouter } from "next/navigation"
 
 interface AuthContextType {
@@ -24,33 +25,71 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
+  const authEnabled = hasSupabaseCredentials()
 
   useEffect(() => {
+    if (!authEnabled) {
+      setLoading(false)
+      return
+    }
+
+    let isMounted = true
+    let unsubscribe = () => {}
+
     // Check active session
     const initSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession()
-      setSession(session)
-      setUser(session?.user ?? null)
-      setLoading(false)
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession()
+
+        if (!isMounted) {
+          return
+        }
+
+        setSession(session)
+        setUser(session?.user ?? null)
+        setLoading(false)
+
+        const {
+          data: { subscription },
+        } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+          if (!isMounted) {
+            return
+          }
+
+          setSession(nextSession)
+          setUser(nextSession?.user ?? null)
+          setLoading(false)
+          router.refresh()
+        })
+
+        unsubscribe = () => subscription.unsubscribe()
+      } catch (error) {
+        logger.warn("Supabase auth unavailable; continuing without session support", {
+          component: "AuthProvider",
+          error,
+        })
+
+        if (isMounted) {
+          setLoading(false)
+        }
+      }
     }
-    initSession()
 
-    // Listen for changes
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-      setUser(session?.user ?? null)
-      setLoading(false)
-      router.refresh() // Refresh server components
-    })
+    void initSession()
 
-    return () => subscription.unsubscribe()
-  }, [router])
+    return () => {
+      isMounted = false
+      unsubscribe()
+    }
+  }, [authEnabled, router])
 
   const signOut = async () => {
+    if (!authEnabled) {
+      return
+    }
+
     await supabase.auth.signOut()
     router.refresh()
   }

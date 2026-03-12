@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { supabase } from "@/lib/supabase"
+import { hasSupabaseCredentials, supabase } from "@/lib/supabase"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { AccessibleFormField } from "@/components/forms/AccessibleFormField"
@@ -16,6 +16,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
   const t = useTranslations("Login")
+  const authConfigured = hasSupabaseCredentials()
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -23,6 +24,10 @@ export default function LoginPage() {
     setMessage(null)
 
     try {
+      if (!authConfigured) {
+        throw new Error("Sign-in is unavailable on this deployment.")
+      }
+
       const { error } = await supabase.auth.signInWithOtp({
         email,
         options: {
@@ -109,7 +114,7 @@ export default function LoginPage() {
                 <div>
                   <Button
                     type="submit"
-                    disabled={loading}
+                    disabled={loading || !authConfigured}
                     className="shadow-primary-500/20 h-12 w-full text-base shadow-lg"
                   >
                     {loading ? t("sending") : t("submit")}

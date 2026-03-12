@@ -92,6 +92,14 @@ describe("usePushNotifications Hook", () => {
     })
   })
 
+  it("defers OneSignal init until explicitly enabled", async () => {
+    renderHook(() => usePushNotifications({ enabled: false }))
+
+    await waitFor(() => {
+      expect(OneSignal.init).not.toHaveBeenCalled()
+    })
+  })
+
   it("subscribes using OneSignal", async () => {
     const { result } = renderHook(() => usePushNotifications())
 

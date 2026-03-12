@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { supabase } from "@/lib/supabase"
+import { hasSupabaseCredentials, supabase } from "@/lib/supabase"
 import { logger } from "@/lib/logger"
 
 const NO_ROWS_FOUND_ERROR_CODES = ["PGRST116", "406"]
@@ -17,6 +17,13 @@ interface ServiceFeedbackStats {
   last_feedback_at: string | null
 }
 
+const EMPTY_FEEDBACK_STATS: ServiceFeedbackStats = {
+  helpful_yes_count: 0,
+  helpful_no_count: 0,
+  open_issues_count: 0,
+  last_feedback_at: null,
+}
+
 export function useServiceFeedback(serviceId: string) {
   const [stats, setStats] = useState<ServiceFeedbackStats | null>(null)
   const [loading, setLoading] = useState(true)
@@ -24,10 +31,20 @@ export function useServiceFeedback(serviceId: string) {
 
   useEffect(() => {
     async function fetchStats() {
-      if (!serviceId) return
+      if (!serviceId) {
+        setLoading(false)
+        return
+      }
 
       try {
         setLoading(true)
+        setError(null)
+
+        if (!hasSupabaseCredentials()) {
+          setStats(EMPTY_FEEDBACK_STATS)
+          return
+        }
+
         // Query the materialized view
 
         const { data, error } = await supabase
@@ -38,12 +55,7 @@ export function useServiceFeedback(serviceId: string) {
 
         if (error) {
           if (NO_ROWS_FOUND_ERROR_CODES.includes(error.code)) {
-            setStats({
-              helpful_yes_count: 0,
-              helpful_no_count: 0,
-              open_issues_count: 0,
-              last_feedback_at: null,
-            })
+            setStats(EMPTY_FEEDBACK_STATS)
           } else {
             logger.error("Error fetching feedback stats", error)
             setError(error as unknown as Error)
