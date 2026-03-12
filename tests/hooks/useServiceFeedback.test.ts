@@ -3,6 +3,14 @@ import { describe, it, expect, vi, beforeEach } from "vitest"
 import { useServiceFeedback } from "@/hooks/useServiceFeedback"
 import { supabase } from "@/lib/supabase"
 
+vi.mock("@/lib/logger", () => ({
+  logger: {
+    error: vi.fn(),
+    warn: vi.fn(),
+    info: vi.fn(),
+  },
+}))
+
 // Mock Supabase
 vi.mock("@/lib/supabase", () => ({
   hasSupabaseCredentials: vi.fn(() => true),
@@ -23,6 +31,13 @@ describe("useServiceFeedback", () => {
   })
 
   it("initializes with loading state", () => {
+    const pendingSingle = vi.fn(() => new Promise(() => undefined))
+    ;(supabase.from as any).mockImplementation(() => ({
+      select: vi.fn().mockReturnThis(),
+      eq: vi.fn().mockReturnThis(),
+      single: pendingSingle,
+    }))
+
     const { result } = renderHook(() => useServiceFeedback(serviceId))
     expect(result.current.loading).toBe(true)
     expect(result.current.stats).toBe(null)

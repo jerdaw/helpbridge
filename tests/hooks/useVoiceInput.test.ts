@@ -1,9 +1,17 @@
 import { describe, it, expect, vi, beforeEach } from "vitest"
-import { renderHook } from "@testing-library/react"
+import { act, renderHook, waitFor } from "@testing-library/react"
 
 // Mock dependencies before importing hook
 vi.mock("@/lib/ai/transcriber", () => ({
   transcribeAudio: vi.fn(),
+}))
+
+vi.mock("@/lib/logger", () => ({
+  logger: {
+    error: vi.fn(),
+    warn: vi.fn(),
+    info: vi.fn(),
+  },
 }))
 
 describe("useVoiceInput", () => {
@@ -74,10 +82,11 @@ describe("useVoiceInput", () => {
     const { useVoiceInput } = await import("@/hooks/useVoiceInput")
     const { result } = renderHook(() => useVoiceInput(onResult))
 
-    await result.current.startListening()
+    await act(async () => {
+      await result.current.startListening()
+    })
 
-    // Wait for async state update
-    await vi.waitFor(() => {
+    await waitFor(() => {
       expect(result.current.state).toBe("listening")
       expect(result.current.error).toBeNull()
     })
@@ -98,10 +107,11 @@ describe("useVoiceInput", () => {
     const { useVoiceInput } = await import("@/hooks/useVoiceInput")
     const { result } = renderHook(() => useVoiceInput(onResult))
 
-    await result.current.startListening()
+    await act(async () => {
+      await result.current.startListening()
+    })
 
-    // Wait for async state update
-    await vi.waitFor(() => {
+    await waitFor(() => {
       expect(result.current.state).toBe("error")
       expect(result.current.error).toBe("Microphone access denied")
     })
@@ -135,11 +145,14 @@ describe("useVoiceInput", () => {
     const { useVoiceInput } = await import("@/hooks/useVoiceInput")
     const { result } = renderHook(() => useVoiceInput(onResult))
 
-    await result.current.startListening()
-    await result.current.stopListening()
+    await act(async () => {
+      await result.current.startListening()
+    })
+    await act(async () => {
+      await result.current.stopListening()
+    })
 
-    // Wait for async processing
-    await vi.waitFor(() => {
+    await waitFor(() => {
       expect(result.current.state).toBe("idle")
     })
 
@@ -169,8 +182,12 @@ describe("useVoiceInput", () => {
     const { useVoiceInput } = await import("@/hooks/useVoiceInput")
     const { result } = renderHook(() => useVoiceInput(onResult))
 
-    await result.current.startListening()
-    await result.current.stopListening()
+    await act(async () => {
+      await result.current.startListening()
+    })
+    await act(async () => {
+      await result.current.stopListening()
+    })
 
     expect(result.current.state).toBe("idle")
     expect(onResult).not.toHaveBeenCalled()
@@ -203,10 +220,14 @@ describe("useVoiceInput", () => {
     const { useVoiceInput } = await import("@/hooks/useVoiceInput")
     const { result } = renderHook(() => useVoiceInput(onResult))
 
-    await result.current.startListening()
-    await result.current.stopListening()
+    await act(async () => {
+      await result.current.startListening()
+    })
+    await act(async () => {
+      await result.current.stopListening()
+    })
 
-    await vi.waitFor(() => {
+    await waitFor(() => {
       expect(result.current.state).toBe("idle")
       expect(result.current.error).toBe("Failed to transcribe")
     })
@@ -239,10 +260,14 @@ describe("useVoiceInput", () => {
     const { useVoiceInput } = await import("@/hooks/useVoiceInput")
     const { result } = renderHook(() => useVoiceInput(onResult))
 
-    await result.current.startListening()
-    await result.current.stopListening()
+    await act(async () => {
+      await result.current.startListening()
+    })
+    await act(async () => {
+      await result.current.stopListening()
+    })
 
-    await vi.waitFor(() => {
+    await waitFor(() => {
       expect(result.current.state).toBe("idle")
     })
 
@@ -255,7 +280,9 @@ describe("useVoiceInput", () => {
     const { result } = renderHook(() => useVoiceInput(onResult))
 
     // Stop without starting
-    result.current.stopListening()
+    act(() => {
+      result.current.stopListening()
+    })
 
     expect(result.current.state).toBe("idle")
   })
