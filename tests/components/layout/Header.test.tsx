@@ -11,6 +11,10 @@ vi.mock("next-intl", () => ({
   useTranslations: vi.fn(),
 }))
 
+vi.mock("@/i18n/routing", () => ({
+  usePathname: vi.fn(() => "/"),
+}))
+
 vi.mock("next/image", () => ({
   // eslint-disable-next-line @next/next/no-img-element
   default: ({ src, alt }: { src: string; alt: string }) => <img src={src} alt={alt} />,
@@ -46,10 +50,12 @@ vi.mock("framer-motion", () => ({
 }))
 
 import { useAuth } from "@/components/layout/AuthProvider"
+import { usePathname } from "@/i18n/routing"
 import { useTranslations } from "next-intl"
 
 describe("Header", () => {
   const mockUseAuth = vi.mocked(useAuth)
+  const mockUsePathname = vi.mocked(usePathname)
   const mockUseTranslations = vi.mocked(useTranslations)
 
   const mockT = vi.fn((key: string) => {
@@ -62,6 +68,11 @@ describe("Header", () => {
       signOut: "Sign Out",
       partners: "Partners",
       emergency: "Emergency",
+      link: "Reference Sources",
+      suggest: "Suggest Service",
+      settings: "Settings",
+      mainNavigation: "Main navigation",
+      partnerLogin: "Partner Login",
     }
     return translations[key] || key
   })
@@ -69,6 +80,7 @@ describe("Header", () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockUseAuth.mockReturnValue({ user: null, loading: false, session: null, signOut: vi.fn() } as any)
+    mockUsePathname.mockReturnValue("/")
     mockUseTranslations.mockReturnValue(mockT as any)
 
     // Mock window.scrollY
@@ -209,6 +221,13 @@ describe("Header", () => {
 
       const links = screen.getAllByRole("link")
       expect(links.length).toBeGreaterThan(0)
+    })
+
+    it("should mark the current navigation item", () => {
+      mockUsePathname.mockReturnValue("/about")
+      render(<Header />)
+
+      expect(screen.getByRole("link", { name: "About" })).toHaveAttribute("aria-current", "page")
     })
   })
 

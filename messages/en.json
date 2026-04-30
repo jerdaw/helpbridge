@@ -1188,55 +1188,24 @@
   },
   "About": {
     "hero": {
-      "title": "The Kingston 150",
-      "subtitle": "A governance-first search engine for Kingston's most essential social services. Verified, accessible, and privacy-focused."
+      "eyebrow": "About CareConnect",
+      "title": "A private directory for finding verified support in Kingston",
+      "subtitle": "CareConnect helps people search local food, housing, crisis, health, and community services without accounts, tracking, or extra steps.",
+      "primaryCta": "Search services",
+      "secondaryCta": "View sources"
     },
-    "governanceText": "This platform adheres to the Kingston 150 Governance Schema (V7), ensuring all service data is verified, categorized, and provenance-tracked.",
     "landAcknowledgment": {
       "title": "Land Acknowledgment",
       "text": "Kingston, known as Katarokwi, is situated on the ancestral and traditional homelands of the Huron-Wendat, Anishinaabe, and Haudenosaunee Confederacy. We acknowledge our responsibility to honour the land, water, and skies with respect and preservation."
     },
-    "metrics": {
-      "verified": {
-        "title": "153 Verified Services",
-        "description": "Hand-curated for high impact. No noise, just help."
-      },
-      "offline": {
-        "title": "Works Offline",
-        "description": "Installable as an app. Search without an internet connection."
-      },
-      "multilingual": {
-        "title": "Multi-Lingual",
-        "description": "Full support for 5 languages, including Canadian French."
-      },
-      "community": {
-        "title": "Community Led",
-        "description": "Data verification by local partners, not web scrapers."
-      }
-    },
-    "howItWorks": {
-      "title": "How It Works",
-      "subtitle": "Find help without accounts, tracking, or extra steps.",
-      "step1": {
-        "title": "Search",
-        "description": "Use keywords, categories, or plain language."
-      },
-      "step2": {
-        "title": "Narrow",
-        "description": "Filter by hours, location, and the kind of support you need."
-      },
-      "step3": {
-        "title": "Connect",
-        "description": "Call, get directions, or visit the service website."
-      }
-    },
     "governance": {
-      "title": "Data Governance",
-      "description": "Unlike massive search engines, we don't sell your data. CareConnect is built on a 'Privacy-First' architecture that ensures your search history never leaves your device."
+      "title": "How the directory is maintained",
+      "description": "CareConnect is an information directory. Service records are reviewed against public and community reference sources, and privacy is treated as a product requirement, not an add-on."
     },
     "cta": {
-      "title": "Ready to find help?",
-      "search": "Browse Services",
+      "title": "Start with the directory",
+      "description": "Search now, or review the sources that help guide listing updates.",
+      "search": "Search services",
       "partners": "View Reference Sources"
     },
     "sourceGovernance": {

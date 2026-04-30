@@ -8,18 +8,17 @@ test.describe("About & Partners Pages", () => {
     await page.waitForLoadState("domcontentloaded") // Wait for DOM readiness instead of network idle
 
     // Check Hero
-    await expect(page.getByRole("heading", { name: "The Kingston 150" })).toBeVisible()
-
-    // Check Metrics
-    await expect(page.getByText("153 Verified Services")).toBeVisible()
-    await expect(page.getByText("Works Offline")).toBeVisible()
+    await expect(
+      page.getByRole("heading", { name: "A private directory for finding verified support in Kingston" })
+    ).toBeVisible()
 
     // Check Sections
-    await expect(page.getByRole("heading", { name: "How It Works" })).toBeVisible()
-    await expect(page.getByRole("heading", { name: "Data Governance" })).toBeVisible()
+    await expect(page.getByRole("heading", { name: "Built for verified, private discovery" })).toBeVisible()
+    await expect(page.getByRole("heading", { name: "What CareConnect does and doesn't do" })).toBeVisible()
+    await expect(page.getByRole("heading", { name: "How the directory is maintained" })).toBeVisible()
 
     // Check CTA
-    await expect(page.getByRole("link", { name: "Browse Services" })).toBeVisible()
+    await expect(page.getByRole("heading", { name: "Start with the directory" })).toBeVisible()
   })
 
   test("Partners page loads and displays logos", async ({ page }) => {
@@ -48,7 +47,7 @@ test.describe("About & Partners Pages", () => {
     await page.locator('a[href$="/about"]').first().click()
     await expect(page).toHaveURL(/\/about$/)
 
-    await page.getByRole("link", { name: "View Partners" }).click()
+    await page.getByRole("link", { name: "View Reference Sources" }).click()
     await expect(page.getByRole("heading", { name: "Built on Trusted Sources" })).toBeVisible()
     await expect(page).toHaveURL(/\/about\/partners$/)
 

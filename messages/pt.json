@@ -900,55 +900,24 @@
   },
   "About": {
     "hero": {
-      "title": "Kingston 150",
-      "subtitle": "Um motor de busca focado na governação para os serviços sociais mais vitais de Kingston. Verificado, acessível e privacidade em primeiro lugar."
+      "eyebrow": "Sobre o CareConnect",
+      "title": "Um diretório privado para encontrar apoio verificado em Kingston",
+      "subtitle": "O CareConnect ajuda as pessoas a pesquisar serviços locais de alimentação, habitação, crise, saúde e comunidade sem contas, rastreamento ou etapas extras.",
+      "primaryCta": "Pesquisar serviços",
+      "secondaryCta": "Ver fontes"
     },
-    "governanceText": "Esta plataforma adere ao Esquema de Governação Kingston 150 (V7), garantindo que todos os dados de serviço são verificados, categorizados e rastreados quanto à proveniência.",
     "landAcknowledgment": {
       "title": "Reconhecimento de Terras",
       "text": "Kingston, conhecida como Katarokwi, situa-se nos territórios ancestrais e tradicionais da Confederação Huron-Wendat, Anishinaabe e Haudenosaunee. Reconhecemos a nossa responsabilidade de respeitar e cuidar da terra, da água e dos céus."
     },
-    "metrics": {
-      "verified": {
-        "title": "153 Serviços Verificados",
-        "description": "Escolhidos a dedo para alto impacto. Sem ruído, apenas ajuda."
-      },
-      "offline": {
-        "title": "Funciona Offline",
-        "description": "Instalável como uma aplicação. Pesquise sem internet."
-      },
-      "multilingual": {
-        "title": "Multilingue",
-        "description": "Suporte total para 6 idiomas, incluindo Francês Canadiano."
-      },
-      "community": {
-        "title": "Liderado pela Comunidade",
-        "description": "Validação de dados por parceiros locais, não por web scrapers."
-      }
-    },
-    "howItWorks": {
-      "title": "Como Funciona",
-      "subtitle": "Encontre ajuda sem contas, rastreamento ou etapas extras.",
-      "step1": {
-        "title": "Buscar",
-        "description": "Use palavras-chave, categorias ou linguagem natural."
-      },
-      "step2": {
-        "title": "Refinar",
-        "description": "Filtre por horário, localização e tipo de apoio necessário."
-      },
-      "step3": {
-        "title": "Conectar",
-        "description": "Ligue, obtenha rotas ou visite o site do serviço."
-      }
-    },
     "governance": {
-      "title": "Governação de Dados",
-      "description": "Ao contrário dos grandes motores de busca, não vendemos os seus dados. O CareConnect é construído numa arquitetura de 'Privacidade Primeiro'."
+      "title": "Como o diretório é mantido",
+      "description": "O CareConnect é um diretório de informações. Os registros de serviço são revisados com fontes públicas e comunitárias, e a privacidade é tratada como requisito do produto, não como um complemento."
     },
     "cta": {
-      "title": "Pronto para encontrar ajuda?",
-      "search": "Explorar Serviços",
+      "title": "Comece pelo diretório",
+      "description": "Pesquise agora ou veja as fontes que ajudam a orientar as atualizações das listagens.",
+      "search": "Pesquisar serviços",
       "partners": "Ver fontes de referência"
     },
     "sourceGovernance": {

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
+import { usePathname } from "@/i18n/routing"
 import LanguageSwitcher from "./LanguageSwitcher"
 import { cn } from "@/lib/utils"
 import { Menu, X } from "lucide-react"
@@ -24,9 +25,23 @@ export function Header({ forceSolid = false }: { forceSolid?: boolean } = {}) {
   const t = useTranslations("Navigation")
   const tPartners = useTranslations("Partners")
   const tEmergency = useTranslations("EmergencyModal")
+  const pathname = usePathname()
 
   // Combine forceSolid with scroll detection
   const isSolid = forceSolid || scrolled
+
+  const navItems = [
+    { href: "/about", label: t("about"), exact: true },
+    { href: "/about/partners", label: tPartners("link"), exact: false },
+    { href: "/submit-service", label: t("suggest"), exact: false },
+    { href: "/settings", label: t("settings"), exact: false },
+  ] as const
+
+  const isActivePath = (href: string, exact?: boolean) => {
+    const currentPath = pathname === "/" ? pathname : pathname.replace(/\/$/, "")
+    if (href === "/") return currentPath === "/"
+    return exact ? currentPath === href : currentPath === href || currentPath.startsWith(`${href}/`)
+  }
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -108,42 +123,25 @@ export function Header({ forceSolid = false }: { forceSolid?: boolean } = {}) {
 
             {/* Navigation Links Group */}
             <nav className="flex items-center gap-5" aria-label={t("mainNavigation")}>
-              <Link
-                href="/about"
-                className={cn(
-                  "hover:text-primary-500 text-sm font-medium transition-colors",
-                  "text-neutral-800 dark:text-neutral-200"
-                )}
-              >
-                {t("about")}
-              </Link>
-              <Link
-                href="/about/partners"
-                className={cn(
-                  "hover:text-primary-500 text-sm font-medium transition-colors",
-                  "text-neutral-800 dark:text-neutral-200"
-                )}
-              >
-                {tPartners("link")}
-              </Link>
-              <Link
-                href="/submit-service"
-                className={cn(
-                  "hover:text-primary-500 text-sm font-medium transition-colors",
-                  "text-neutral-800 dark:text-neutral-200"
-                )}
-              >
-                {t("suggest")}
-              </Link>
-              <Link
-                href="/settings"
-                className={cn(
-                  "hover:text-primary-500 text-sm font-medium transition-colors",
-                  "text-neutral-800 dark:text-neutral-200"
-                )}
-              >
-                {t("settings")}
-              </Link>
+              {navItems.map(({ href, label, exact }) => {
+                const active = isActivePath(href, exact)
+
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "after:bg-primary-500/70 relative px-0.5 py-1.5 text-sm font-medium transition-colors duration-200 after:absolute after:-bottom-0.5 after:left-1/2 after:h-px after:w-6 after:-translate-x-1/2 after:rounded-full",
+                      active
+                        ? "text-primary-700 dark:text-primary-200 after:opacity-100"
+                        : "hover:text-primary-600 dark:hover:text-primary-200 text-neutral-800 after:opacity-0 dark:text-neutral-200"
+                    )}
+                  >
+                    {label}
+                  </Link>
+                )
+              })}
             </nav>
 
             {/* Separator */}
@@ -208,30 +206,25 @@ export function Header({ forceSolid = false }: { forceSolid?: boolean } = {}) {
                 <div className="my-2 h-px bg-neutral-200 dark:bg-neutral-700" />
 
                 {/* Navigation Links */}
-                <Link
-                  href="/about"
-                  className="rounded-md px-3 py-2.5 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
-                >
-                  {t("about")}
-                </Link>
-                <Link
-                  href="/about/partners"
-                  className="rounded-md px-3 py-2.5 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
-                >
-                  {tPartners("link")}
-                </Link>
-                <Link
-                  href="/submit-service"
-                  className="rounded-md px-3 py-2.5 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
-                >
-                  {t("suggest")}
-                </Link>
-                <Link
-                  href="/settings"
-                  className="rounded-md px-3 py-2.5 text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
-                >
-                  {t("settings")}
-                </Link>
+                {navItems.map(({ href, label, exact }) => {
+                  const active = isActivePath(href, exact)
+
+                  return (
+                    <Link
+                      key={href}
+                      href={href}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "before:bg-primary-500/70 relative rounded-md px-3 py-2.5 text-sm font-medium transition-colors before:absolute before:top-2 before:bottom-2 before:left-0 before:w-0.5 before:rounded-full before:opacity-0",
+                        active
+                          ? "text-primary-700 dark:text-primary-200 before:opacity-100"
+                          : "text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
+                      )}
+                    >
+                      {label}
+                    </Link>
+                  )
+                })}
 
                 <div className="my-2 h-px bg-neutral-200 dark:bg-neutral-700" />
 

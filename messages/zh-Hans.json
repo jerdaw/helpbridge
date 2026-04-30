@@ -900,55 +900,24 @@
   },
   "About": {
     "hero": {
-      "title": "金斯顿150",
-      "subtitle": "金斯顿最重要社会服务的治理优先搜索引擎。经过验证、可访问且注重隐私。"
+      "eyebrow": "关于 CareConnect",
+      "title": "用于查找金斯顿已验证支持服务的私密目录",
+      "subtitle": "CareConnect 帮助人们搜索本地食物、住房、危机、健康和社区服务，无需账户、跟踪或额外步骤。",
+      "primaryCta": "搜索服务",
+      "secondaryCta": "查看来源"
     },
-    "governanceText": "该平台遵循金斯顿150治理方案（V7），确保所有服务数据经过验证、分类和来源跟踪。",
     "landAcknowledgment": {
       "title": "土地承认",
       "text": "金斯顿，也称为卡塔罗魁，位于休伦-温达特、阿尼西纳贝和豪德诺索尼联盟的祖传土地上。我们承认有责任以尊重和保护的态度对待土地、水和天空。"
     },
-    "metrics": {
-      "verified": {
-        "title": "153 验证服务",
-        "description": "手工策划以获得高影响力。没有噪音，只有帮助。"
-      },
-      "offline": {
-        "title": "离线工作",
-        "description": "可安装为应用程序。无需互联网连接即可搜索。"
-      },
-      "multilingual": {
-        "title": "多语言",
-        "description": "全面支持5种语言，包括加拿大法语。"
-      },
-      "community": {
-        "title": "社区主导",
-        "description": "由本地合作伙伴进行数据验证，而不是网络爬虫。"
-      }
-    },
-    "howItWorks": {
-      "title": "工作原理",
-      "subtitle": "无需账户、跟踪或额外步骤即可找到帮助。",
-      "step1": {
-        "title": "搜索",
-        "description": "使用关键词、类别或自然语言。"
-      },
-      "step2": {
-        "title": "缩小范围",
-        "description": "按开放时间、位置和所需支持类型筛选。"
-      },
-      "step3": {
-        "title": "联系",
-        "description": "致电、获取路线或访问服务网站。"
-      }
-    },
     "governance": {
-      "title": "数据治理",
-      "description": "与大型搜索引擎不同，我们不出售您的数据。金斯顿关怀连接建立在'隐私优先'架构上。"
+      "title": "目录如何维护",
+      "description": "CareConnect 是一个信息目录。服务记录会根据公共和社区参考来源进行审查，隐私被视为产品要求，而不是附加功能。"
     },
     "cta": {
-      "title": "准备好寻找帮助了吗？",
-      "search": "浏览服务",
+      "title": "从目录开始",
+      "description": "立即搜索，或查看帮助指导条目更新的来源。",
+      "search": "搜索服务",
       "partners": "查看参考来源"
     },
     "sourceGovernance": {

@@ -2,12 +2,10 @@ import { describe, it, expect, vi } from "vitest"
 import { fireEvent } from "@testing-library/react"
 import { renderWithProviders, screen } from "@/tests/utils/test-wrapper"
 import CategoryBrowseGrid from "@/components/home/CategoryBrowseGrid"
-import CareConnectBoundaries from "@/components/about/CareConnectBoundaries"
 import HomeStats from "@/components/home/HomeStats"
 import HowItWorks from "@/components/home/HowItWorks"
 import PartnerCTA from "@/components/home/PartnerCTA"
 import SafetyAlert from "@/components/home/SafetyAlert"
-import SourceGovernanceBand from "@/components/about/SourceGovernanceBand"
 import ModelStatus from "@/components/home/ModelStatus"
 import ScopeFilterBar from "@/components/home/ScopeFilterBar"
 
@@ -90,62 +88,6 @@ const messages = {
       neuralSearchActive: "Neural search active",
     },
   },
-  About: {
-    howItWorks: {
-      title: "How it works",
-      subtitle: "Three steps",
-      step1: { title: "Search", description: "Use keywords, categories, or plain language." },
-      step2: { title: "Narrow", description: "Filter by hours, location, and support type." },
-      step3: { title: "Connect", description: "Call, get directions, or visit the service website." },
-    },
-    sourceGovernance: {
-      eyebrow: "Source review",
-      title: "Built for verified, private discovery",
-      description: "CareConnect is a directory.",
-      items: {
-        sources: {
-          title: "Reference sources",
-          description: "See sources used for review.",
-        },
-        review: {
-          title: "Manual review",
-          description: "Listings are checked.",
-        },
-        privacy: {
-          title: "No search tracking",
-          description: "Searches stay private.",
-        },
-        languages: {
-          title: "Accessible by design",
-          description: "Seven languages are supported.",
-        },
-      },
-    },
-    boundaries: {
-      eyebrow: "Clear boundaries",
-      title: "What CareConnect does and doesn't do",
-      description: "Find the next step.",
-      does: {
-        title: "CareConnect helps you",
-        items: {
-          0: "Search verified listings",
-          1: "Keep searches private",
-          2: "Find contact actions",
-          3: "See why results matched",
-        },
-      },
-      doesnt: {
-        title: "CareConnect does not",
-        items: {
-          0: "Dispatch emergency help",
-          1: "Guarantee availability",
-          2: "Replace provider confirmation",
-          3: "Profile public searches",
-        },
-      },
-      note: "Verify details with the provider.",
-    },
-  },
   CrisisAlert: {
     title: "Immediate help is available",
     message: "If this is urgent, call now.",
@@ -188,20 +130,6 @@ describe("Home surface smoke coverage", () => {
     expect(screen.getByRole("link", { name: "Suggest a service" })).toHaveAttribute("href", "/submit-service")
 
     rerender(<div />)
-  })
-
-  it("renders about credibility sections", () => {
-    renderWithProviders(
-      <div>
-        <SourceGovernanceBand />
-        <CareConnectBoundaries />
-      </div>,
-      { messages }
-    )
-
-    expect(screen.getByRole("heading", { name: "Built for verified, private discovery" })).toBeInTheDocument()
-    expect(screen.getByRole("heading", { name: "What CareConnect does and doesn't do" })).toBeInTheDocument()
-    expect(screen.getByRole("link", { name: /Reference sources/i })).toHaveAttribute("href", "/en/about/partners")
   })
 
   it("shows the crisis safety alert for crisis-like queries", () => {
