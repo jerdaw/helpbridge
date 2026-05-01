@@ -1,6 +1,6 @@
 ---
 status: stable
-last_updated: 2026-01-15
+last_updated: 2026-04-30
 owner: jer
 tags: [development, components, ui]
 ---
@@ -135,6 +135,23 @@ The resting homepage discovery layer is composed of `HomeStats`,
   localized copy and card details; avoid reintroducing a separate trust-strip
   row for privacy/offline/language claims unless the homepage information
   architecture is revisited.
+
+### About Page Surfaces
+
+The About page uses a single editorial content rail with the hero, integrated
+trust overview, boundaries surface, context cards, and final CTA aligned to the
+same grid.
+
+- `AboutTrustOverview` owns the source review, privacy/accessibility trust
+  items, and "does / doesn't do" boundaries content.
+- Avoid reintroducing homepage metrics, duplicated trust-strip content, or
+  separate stacked governance sections on `/about`.
+- The primary About CTAs use `about-gradient-border-button` only as a scoped
+  page helper for the solid `#6366f1` fill and white text treatment; keep the
+  underlying `Button` sizing/elevation consistent with neighboring outline
+  buttons.
+- Keep `/about` focused on trust, boundaries, source context, and governance
+  context rather than marketing-style feature cards.
 
 ### ServiceCardSkeleton
 

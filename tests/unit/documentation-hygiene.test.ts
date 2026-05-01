@@ -164,13 +164,18 @@ describe("documentation hygiene", () => {
   it("tracks the latest maintenance archive in planning docs", () => {
     const planningIndex = readDoc("docs/planning/README.md")
     const roadmap = readDoc("docs/planning/roadmap.md")
+    const components = readDoc("docs/development/components.md")
 
+    expect(planningIndex).toContain("2026-04-30-v20-0-about-page-polish.md")
     expect(planningIndex).toContain("2026-04-29-v20-0-homepage-search-ux-polish.md")
     expect(planningIndex).toContain("2026-04-23-v20-0-quiet-github-automation-and-url-health-hardening.md")
     expect(planningIndex).toContain("2026-04-28-v22-0-gate-0-prep-and-deploy-contract-alignment.md")
+    expect(roadmap).toContain("About page polish (2026-04-30)")
     expect(roadmap).toContain("Homepage search UX polish (2026-04-29)")
     expect(roadmap).toContain("Quiet GitHub automation and URL health hardening (2026-04-23)")
     expect(roadmap).toContain("Gate 0 prep and deploy-contract alignment (2026-04-28)")
+    expect(components).toContain("About Page Surfaces")
+    expect(components).toContain("AboutTrustOverview")
   })
 
   it("keeps Gate 0 prep packets from counting as closure evidence", () => {
