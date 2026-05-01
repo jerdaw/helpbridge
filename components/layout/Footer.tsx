@@ -57,22 +57,22 @@ export function Footer() {
             <h3 className="text-lg font-semibold text-white">{t("quickLinks.community")}</h3>
             <ul className="space-y-3 text-neutral-400">
               <li>
-                <Link href="/search?category=food" className="hover:text-primary-400 transition-colors">
+                <Link href="/?category=Food" className="hover:text-primary-400 transition-colors">
                   {t("quickLinks.food")}
                 </Link>
               </li>
               <li>
-                <Link href="/search?category=housing" className="hover:text-primary-400 transition-colors">
+                <Link href="/?category=Housing" className="hover:text-primary-400 transition-colors">
                   {t("quickLinks.housing")}
                 </Link>
               </li>
               <li>
-                <Link href="/search?category=health" className="hover:text-primary-400 transition-colors">
+                <Link href="/?category=Health" className="hover:text-primary-400 transition-colors">
                   {t("quickLinks.health")}
                 </Link>
               </li>
               <li>
-                <Link href="/search?category=crisis" className="hover:text-primary-400 transition-colors">
+                <Link href="/?category=Crisis" className="hover:text-primary-400 transition-colors">
                   {t("quickLinks.crisis")}
                 </Link>
               </li>

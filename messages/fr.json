@@ -783,7 +783,7 @@
   },
   "Settings": {
     "title": "Paramètres",
-    "description": "Gérez vos préférences d'application et les paramètres de votre appareil.",
+    "description": "Gérez les préférences conservées sur cet appareil, y compris l’accessibilité, la personnalisation, l’état de connexion et les notifications.",
     "connectionStatus": "Statut de la connexion",
     "onlineMessage": "Vous êtes actuellement en ligne. Les mises à jour seront reçues automatiquement.",
     "offlineMessage": "Vous êtes actuellement hors ligne. Utilisation des données mises en cache.",
@@ -823,7 +823,33 @@
         "housing": "Refuge et Logement",
         "health": "Alertes santé",
         "general": "Mises à jour générales"
-      }
+      },
+      "description": "Des notifications facultatives du navigateur peuvent signaler les changements de services lorsque c’est pris en charge.",
+      "notConfiguredDesc": "Les notifications ne sont pas configurées pour cet environnement. Les autres paramètres restent disponibles sur cet appareil."
+    },
+    "heroEyebrow": "Paramètres de l’appareil",
+    "privacyTitle": "Privé par défaut",
+    "privacyItems": {
+      "device": "Les préférences sont enregistrées sur cet appareil pour rendre le répertoire plus familier sans créer de compte.",
+      "privacy": "Les choix de personnalisation servent seulement à adapter votre expérience de recherche locale.",
+      "offline": "L’état de connexion aide à expliquer quand des renseignements de service mis en cache peuvent être utilisés."
+    },
+    "personalization": {
+      "title": "Personnalisation",
+      "description": "Choisissez un contexte facultatif qui peut aider à faire ressortir des services adaptés à votre situation.",
+      "activeCount": "{count, plural, =0 {Aucun choix actif} one {# choix actif} other {# choix actifs}}",
+      "localOnly": "Ces choix restent dans votre navigateur et peuvent être effacés à tout moment."
+    },
+    "accessibility": {
+      "title": "Accessibilité",
+      "description": "Augmentez le contraste pour une présentation visuelle plus forte dans l’application."
+    },
+    "connectionType": "Connexion : {type}",
+    "connectionTypes": {
+      "wifi": "Wi-Fi",
+      "cellular": "Cellulaire",
+      "none": "Aucune connexion",
+      "unknown": "Gérée par le navigateur"
     }
   },
   "Eligibility": {
@@ -1274,14 +1300,25 @@
   },
   "Login": {
     "title": "Connexion partenaire",
+    "heroEyebrow": "Accès partenaire",
     "subtitle": "Accédez à votre tableau de bord pour gérer les services",
+    "formTitle": "Connexion par courriel",
+    "formDescription": "Utilisez l'adresse courriel associée à votre organisation.",
+    "trustTitle": "Un accès ciblé",
+    "trustItems": {
+      "review": "Les outils partenaires servent aux fiches de services revues et aux mises à jour des sources.",
+      "magicLink": "Les liens magiques sont envoyés par courriel; aucun mot de passe n'est stocké dans ce navigateur.",
+      "privacy": "Les détails de la revue des sources sont disponibles avant toute demande d'accès partenaire."
+    },
     "emailLabel": "Adresse courriel",
     "emailPlaceholder": "vous@organisation.org",
     "submit": "Se connecter avec un courriel",
     "sending": "Envoi du lien magique...",
     "newToCareConnect": "Nouveau sur CareConnect ?",
-    "applyPartner": "Demander un compte partenaire",
-    "successMessage": "Lien magique envoyé ! Vérifiez votre courriel pour vous connecter."
+    "applyPartner": "Découvrir le fonctionnement de la revue des sources",
+    "successMessage": "Lien magique envoyé ! Vérifiez votre courriel pour vous connecter.",
+    "unavailableMessage": "La connexion n'est pas disponible sur ce déploiement.",
+    "fallbackError": "Une erreur est survenue. Veuillez réessayer."
   },
   "Impact": {
     "title": "Impact communautaire",
@@ -1329,8 +1366,10 @@
     "checkConnection": "Vérifier la connexion",
     "savedForLater": "Enregistré pour plus tard",
     "savedMessage": "Votre commentaire sera envoyé une fois en ligne.",
+    "heroEyebrow": "Mode hors ligne",
     "title": "Vous êtes hors ligne",
     "description": "Veuillez vous reconnecter à Internet pour rechercher des services.",
+    "statusTitle": "État de la connexion",
     "snapshotUpdated": "Dernière mise à jour hors ligne : {timeAgo} ({date}).",
     "snapshotUnavailable": "L'heure de la dernière mise à jour hors ligne est indisponible.",
     "snapshotStaleWarning": "Cette copie hors ligne peut être obsolète. Vérifiez les heures, la disponibilité et l'itinéraire avant de vous y fier.",
@@ -1338,11 +1377,13 @@
     "recentlyViewed": "Services récemment consultés",
     "cachedData": "Données en cache disponibles ci-dessous",
     "emergencyContacts": "Contacts d'urgence toujours disponibles",
+    "emergencyNote": "Les numéros d'urgence restent disponibles sans Internet.",
     "crisisLine": "Ligne de crise",
     "crisisLineDesc": "Santé mentale 24/7",
     "emergency": "Urgence",
     "emergencyDesc": "Police / Pompiers / Ambulance",
-    "callButton": "Appeler"
+    "callButton": "Appeler",
+    "cachedServicesDescription": "Les services consultés récemment peuvent être disponibles sur cet appareil."
   },
   "Admin": {
     "title": "Admin Dashboard",

@@ -742,7 +742,7 @@
   "Settings": {
     "personalizePrompt": "个性化您的结果",
     "title": "设置",
-    "description": "管理您的应用程序首选项和设备设置。",
+    "description": "管理保存在此设备上的偏好设置，包括无障碍、个性化、连接状态和通知。",
     "connectionStatus": "连接状态",
     "onlineMessage": "您当前在线。更新将自动接收。",
     "offlineMessage": "您当前离线。正在使用缓存数据。",
@@ -781,7 +781,33 @@
         "housing": "庇护所和住房",
         "health": "健康警报",
         "general": "一般更新"
-      }
+      },
+      "description": "在浏览器支持时，可选通知可以帮助显示服务变更。",
+      "notConfiguredDesc": "此环境未配置通知。此设备上的其他设置仍可使用。"
+    },
+    "heroEyebrow": "设备设置",
+    "privacyTitle": "默认保护隐私",
+    "privacyItems": {
+      "device": "偏好设置保存在此设备上，不需要创建账户也能让目录更符合你的使用习惯。",
+      "privacy": "个性化选择只用于调整你的本地搜索体验。",
+      "offline": "连接状态会说明何时可能使用缓存的服务信息。"
+    },
+    "personalization": {
+      "title": "个性化",
+      "description": "选择可选背景信息，帮助显示可能更适合你情况的服务。",
+      "activeCount": "{count, plural, =0 {没有启用的选择} one {# 个启用的选择} other {# 个启用的选择}}",
+      "localOnly": "这些选择保留在你的浏览器中，并且可以随时清除。"
+    },
+    "accessibility": {
+      "title": "无障碍",
+      "description": "提高对比度，让整个应用的视觉呈现更清晰。"
+    },
+    "connectionType": "连接：{type}",
+    "connectionTypes": {
+      "wifi": "Wi-Fi",
+      "cellular": "蜂窝网络",
+      "none": "无连接",
+      "unknown": "由浏览器管理"
     }
   },
   "Eligibility": {
@@ -1232,14 +1258,25 @@
   },
   "Login": {
     "title": "合作伙伴登录",
+    "heroEyebrow": "合作伙伴访问",
     "subtitle": "访问您的仪表盘以管理服务",
+    "formTitle": "使用电子邮件登录",
+    "formDescription": "请使用与您的组织关联的电子邮件地址。",
+    "trustTitle": "访问保持专注",
+    "trustItems": {
+      "review": "合作伙伴工具用于已审核的服务记录和来源更新。",
+      "magicLink": "神奇链接会通过电子邮件发送；此浏览器不会存储密码。",
+      "privacy": "在请求合作伙伴访问权限之前，可以先查看来源审核详情。"
+    },
     "emailLabel": "电子邮件地址",
     "emailPlaceholder": "you@organization.org",
     "submit": "使用电子邮件登录",
     "sending": "正在发送神奇链接...",
     "newToCareConnect": "CareConnect 新手？",
-    "applyPartner": "申请合作伙伴账户",
-    "successMessage": "神奇链接已发送！请查收邮件以登录。"
+    "applyPartner": "了解来源审核的工作方式",
+    "successMessage": "神奇链接已发送！请查收邮件以登录。",
+    "unavailableMessage": "此部署目前无法登录。",
+    "fallbackError": "出现问题。请重试。"
   },
   "Badges": {
     "ontarioWide": "安大略省范围",
@@ -1321,8 +1358,10 @@
     "checkConnection": "检查连接",
     "savedForLater": "已保存以供稍后使用",
     "savedMessage": "您的反馈将在重新联网后发送。",
+    "heroEyebrow": "离线模式",
     "title": "您已离线",
     "description": "请重新连接到互联网以搜索服务。",
+    "statusTitle": "连接状态",
     "snapshotUpdated": "上次离线更新：{timeAgo}（{date}）。",
     "snapshotUnavailable": "无法获取上次离线更新时间。",
     "snapshotStaleWarning": "此离线副本可能已过期。依赖它之前，请确认开放时间、可用性和路线信息。",
@@ -1330,11 +1369,13 @@
     "recentlyViewed": "最近查看的服务",
     "cachedData": "缓存数据如下",
     "emergencyContacts": "紧急联系方式始终可用",
+    "emergencyNote": "即使没有互联网，也可以使用紧急电话号码。",
     "crisisLine": "危机热线",
     "crisisLineDesc": "24/7 心理健康",
     "emergency": "紧急情况",
     "emergencyDesc": "警察 / 消防 / 急救",
-    "callButton": "拨打"
+    "callButton": "拨打",
+    "cachedServicesDescription": "最近查看的服务可能可从此设备获取。"
   },
   "Admin": {
     "title": "Admin Dashboard",

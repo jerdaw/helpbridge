@@ -743,7 +743,7 @@
     "personalizePrompt": "Personalize os seus resultados",
     "personalizeDescription": "Partilhe opcionalmente a sua situação para ver serviços para os quais pode ser elegível. Estes dados nunca saem do seu dispositivo.",
     "title": "Definições",
-    "description": "Gerir preferências da aplicação e definições do dispositivo.",
+    "description": "Gira preferências que ficam neste dispositivo, incluindo acessibilidade, personalização, estado da ligação e notificações.",
     "connectionStatus": "Estado da ligação",
     "onlineMessage": "Está atualmente online. As atualizações serão recebidas automaticamente.",
     "offlineMessage": "Está atualmente offline. Usando dados em cache.",
@@ -781,7 +781,33 @@
         "housing": "Abrigo e Habitação",
         "health": "Alertas de Saúde",
         "general": "Atualizações Gerais"
-      }
+      },
+      "description": "Notificações opcionais do navegador podem ajudar a mostrar alterações nos serviços quando suportadas.",
+      "notConfiguredDesc": "As notificações não estão configuradas para este ambiente. As outras definições continuam disponíveis neste dispositivo."
+    },
+    "heroEyebrow": "Definições do dispositivo",
+    "privacyTitle": "Privado por predefinição",
+    "privacyItems": {
+      "device": "As preferências são guardadas neste dispositivo para tornar o diretório mais familiar sem criar uma conta.",
+      "privacy": "As escolhas de personalização são usadas apenas para ajustar a sua experiência de pesquisa local.",
+      "offline": "O estado da ligação ajuda a explicar quando podem ser usadas informações de serviços em cache."
+    },
+    "personalization": {
+      "title": "Personalização",
+      "description": "Escolha contexto opcional que pode ajudar a destacar serviços adequados à sua situação.",
+      "activeCount": "{count, plural, =0 {Nenhuma escolha ativa} one {# escolha ativa} other {# escolhas ativas}}",
+      "localOnly": "Estas escolhas ficam no seu navegador e podem ser apagadas a qualquer momento."
+    },
+    "accessibility": {
+      "title": "Acessibilidade",
+      "description": "Aumente o contraste para uma apresentação visual mais forte em toda a aplicação."
+    },
+    "connectionType": "Ligação: {type}",
+    "connectionTypes": {
+      "wifi": "Wi-Fi",
+      "cellular": "Celular",
+      "none": "Sem ligação",
+      "unknown": "Gerida pelo navegador"
     }
   },
   "Eligibility": {
@@ -1232,14 +1258,25 @@
   },
   "Login": {
     "title": "Login de Parceiro",
+    "heroEyebrow": "Acesso de parceiro",
     "subtitle": "Aceda ao seu painel para gerir serviços",
+    "formTitle": "Entrar com email",
+    "formDescription": "Use o endereço de email associado à sua organização.",
+    "trustTitle": "Acesso focado",
+    "trustItems": {
+      "review": "As ferramentas de parceiro são para registos de serviços revistos e atualizações de fontes.",
+      "magicLink": "Os magic links são enviados por email; nenhuma palavra-passe é guardada neste navegador.",
+      "privacy": "Os detalhes da revisão de fontes estão disponíveis antes de qualquer pedido de acesso de parceiro."
+    },
     "emailLabel": "Endereço de Email",
     "emailPlaceholder": "voce@organizacao.org",
     "submit": "Entrar com Email",
     "sending": "A enviar magic link...",
     "newToCareConnect": "Novo no CareConnect?",
-    "applyPartner": "Candidatar-se a uma conta de parceiro",
-    "successMessage": "Magic link enviado! Verifique o seu email para entrar."
+    "applyPartner": "Saiba como funciona a revisão de fontes",
+    "successMessage": "Magic link enviado! Verifique o seu email para entrar.",
+    "unavailableMessage": "O login não está disponível nesta implementação.",
+    "fallbackError": "Algo correu mal. Tente novamente."
   },
   "Badges": {
     "ontarioWide": "Em todo o Ontário",
@@ -1321,8 +1358,10 @@
     "checkConnection": "Verificar ligação",
     "savedForLater": "Guardado para mais tarde",
     "savedMessage": "O seu feedback será enviado quando estiver online.",
+    "heroEyebrow": "Modo offline",
     "title": "Está offline",
     "description": "Por favor, ligue-se à Internet para pesquisar serviços.",
+    "statusTitle": "Estado da ligação",
     "snapshotUpdated": "Última atualização offline: {timeAgo} ({date}).",
     "snapshotUnavailable": "A hora da última atualização offline não está disponível.",
     "snapshotStaleWarning": "Esta cópia offline pode estar desatualizada. Confirme horários, disponibilidade e direções antes de confiar nela.",
@@ -1330,11 +1369,13 @@
     "recentlyViewed": "Serviços vistos recentemente",
     "cachedData": "Dados em cache disponíveis abaixo",
     "emergencyContacts": "Contactos de emergência sempre disponíveis",
+    "emergencyNote": "Os números de emergência continuam disponíveis sem Internet.",
     "crisisLine": "Linha de Crise",
     "crisisLineDesc": "Saúde Mental 24/7",
     "emergency": "Emergência",
     "emergencyDesc": "Polícia / Bombeiros / Ambulância",
-    "callButton": "Ligar"
+    "callButton": "Ligar",
+    "cachedServicesDescription": "Serviços vistos recentemente podem estar disponíveis neste dispositivo."
   },
   "Admin": {
     "title": "Admin Dashboard",

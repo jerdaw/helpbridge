@@ -84,6 +84,17 @@ describe("Footer", () => {
       expect(links.length).toBeGreaterThan(0)
     })
 
+    it("should route community category links through the homepage search state", () => {
+      const { container } = render(<Footer />)
+
+      const hrefs = Array.from(container.querySelectorAll("a")).map((link) => link.getAttribute("href"))
+
+      expect(hrefs).toEqual(
+        expect.arrayContaining(["/?category=Food", "/?category=Housing", "/?category=Health", "/?category=Crisis"])
+      )
+      expect(hrefs.some((href) => href?.startsWith("/search"))).toBe(false)
+    })
+
     it("should have accessible contact links", () => {
       render(<Footer />)
 

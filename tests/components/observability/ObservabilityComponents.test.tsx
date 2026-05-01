@@ -7,10 +7,12 @@ import { SLOComplianceCard } from "@/components/observability/SLOComplianceCard"
 import { SLODisclaimerBanner } from "@/components/observability/SLODisclaimerBanner"
 import { AutoRefresh } from "@/components/observability/AutoRefresh"
 import { CircuitState } from "@/lib/resilience/circuit-breaker"
+import { REPOSITORY_URL } from "@/lib/brand"
 import { act } from "react-dom/test-utils"
 import { renderWithProviders, screen } from "@/tests/utils/test-wrapper"
 
 const refreshMock = vi.fn()
+const SLO_RUNBOOK_URL = `${REPOSITORY_URL}/blob/main/docs/runbooks/slo-violation.md`
 
 vi.mock("next/navigation", () => ({
   useRouter: () => ({
@@ -116,6 +118,13 @@ describe("Observability component smoke coverage", () => {
     expect(screen.getByText("SLO Violation")).toBeInTheDocument()
     expect(screen.getByText(/Active SLO Violations:/)).toBeInTheDocument()
     expect(screen.getByText("SLO Targets are Provisional")).toBeInTheDocument()
+
+    for (const linkName of ["See runbook", "SLO Violation Runbook"]) {
+      const link = screen.getByRole("link", { name: linkName })
+      expect(link).toHaveAttribute("href", SLO_RUNBOOK_URL)
+      expect(link).toHaveAttribute("target", "_blank")
+      expect(link).toHaveAttribute("rel", "noopener noreferrer")
+    }
 
     rerender(
       <div>

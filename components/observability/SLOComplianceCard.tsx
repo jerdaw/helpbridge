@@ -7,11 +7,14 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Progress } from "@/components/ui/progress"
 import type { SLOComplianceSummary } from "@/lib/observability/slo-tracker"
 import { getSLOSummary } from "@/lib/config/slo-targets"
+import { REPOSITORY_URL } from "@/lib/brand"
 import { useTranslations } from "next-intl"
 
 interface SLOComplianceCardProps {
   compliance: SLOComplianceSummary
 }
+
+const SLO_RUNBOOK_URL = `${REPOSITORY_URL}/blob/main/docs/runbooks/slo-violation.md`
 
 /**
  * SLO Compliance Dashboard Card
@@ -50,7 +53,12 @@ export function SLOComplianceCard({ compliance }: SLOComplianceCardProps) {
             <AlertTriangle className="h-4 w-4" />
             <AlertDescription>
               <strong>{t("activeViolationsLabel")}</strong> {overall.violations.join(", ")}.{" "}
-              <a href="/docs/runbooks/slo-violation.md" className="underline hover:text-red-800">
+              <a
+                href={SLO_RUNBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-red-800"
+              >
                 {t("seeRunbook")}
               </a>
             </AlertDescription>
@@ -170,7 +178,12 @@ export function SLOComplianceCard({ compliance }: SLOComplianceCardProps) {
         <div className="bg-muted text-muted-foreground mt-6 rounded-lg p-4 text-sm">
           <p>
             <strong>{t("helpText.term")}</strong> {t("helpText.description")}{" "}
-            <a href="/docs/runbooks/slo-violation.md" className="hover:text-foreground underline">
+            <a
+              href={SLO_RUNBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground underline"
+            >
               {t("helpText.runbook")}
             </a>{" "}
             {t("helpText.trailing")}

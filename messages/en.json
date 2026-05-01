@@ -1013,7 +1013,7 @@
   },
   "Settings": {
     "title": "Settings",
-    "description": "Manage your application preferences and device settings.",
+    "description": "Manage preferences that stay on this device, including accessibility, personalization, connection status, and notifications.",
     "connectionStatus": "Connection Status",
     "onlineMessage": "You are currently online. Updates will be received automatically.",
     "offlineMessage": "You are currently offline. Using cached data.",
@@ -1053,7 +1053,33 @@
         "housing": "Shelter & Housing",
         "health": "Health Alerts",
         "general": "General Updates"
-      }
+      },
+      "description": "Optional browser notifications can help surface service changes when supported.",
+      "notConfiguredDesc": "Notifications are not configured for this environment. Other settings remain available on this device."
+    },
+    "heroEyebrow": "Device settings",
+    "privacyTitle": "Private by default",
+    "privacyItems": {
+      "device": "Preferences are saved on this device so the directory can feel familiar without creating an account.",
+      "privacy": "Personalization choices are used only to adjust your local search experience.",
+      "offline": "Connection status helps explain when cached service information may be used."
+    },
+    "personalization": {
+      "title": "Personalization",
+      "description": "Choose optional context that can help surface services that may fit your situation.",
+      "activeCount": "{count, plural, =0 {No active choices} one {# active choice} other {# active choices}}",
+      "localOnly": "These choices stay in your browser and can be cleared at any time."
+    },
+    "accessibility": {
+      "title": "Accessibility",
+      "description": "Increase contrast for a stronger visual presentation across the app."
+    },
+    "connectionType": "Connection: {type}",
+    "connectionTypes": {
+      "wifi": "Wi-Fi",
+      "cellular": "Cellular",
+      "none": "No connection",
+      "unknown": "Browser managed"
     }
   },
   "Eligibility": {
@@ -1504,14 +1530,25 @@
   },
   "Login": {
     "title": "Partner Login",
+    "heroEyebrow": "Partner access",
     "subtitle": "Access your dashboard to manage services",
+    "formTitle": "Sign in with email",
+    "formDescription": "Use the email address connected with your organization.",
+    "trustTitle": "Access stays focused",
+    "trustItems": {
+      "review": "Partner tools are for reviewed service records and source updates.",
+      "magicLink": "Magic links are sent by email; no password is stored in this browser.",
+      "privacy": "Source review details are available before any partner access is requested."
+    },
     "emailLabel": "Email address",
     "emailPlaceholder": "you@organization.org",
     "submit": "Sign in with Email",
     "sending": "Sending Magic Link...",
     "newToCareConnect": "New to CareConnect?",
-    "applyPartner": "Apply for a Partner Account",
-    "successMessage": "Magic link sent! Check your email to sign in."
+    "applyPartner": "Learn how source review works",
+    "successMessage": "Magic link sent! Check your email to sign in.",
+    "unavailableMessage": "Sign-in is unavailable on this deployment.",
+    "fallbackError": "Something went wrong. Please try again."
   },
   "Impact": {
     "title": "Community Impact",
@@ -1559,8 +1596,10 @@
     "checkConnection": "Check Connection",
     "savedForLater": "Saved for later",
     "savedMessage": "Your feedback will be sent when you're back online.",
+    "heroEyebrow": "Offline mode",
     "title": "You are offline",
     "description": "Please reconnect to the internet to search for services.",
+    "statusTitle": "Connection status",
     "snapshotUpdated": "Last offline update: {timeAgo} ({date}).",
     "snapshotUnavailable": "Last offline update time unavailable.",
     "snapshotStaleWarning": "This offline copy may be outdated. Confirm hours, availability, and directions before relying on it.",
@@ -1568,11 +1607,13 @@
     "recentlyViewed": "Recently Viewed Services",
     "cachedData": "Cached data is available below",
     "emergencyContacts": "Emergency Contacts Always Available",
+    "emergencyNote": "Emergency phone numbers remain available without internet.",
     "crisisLine": "Crisis Line",
     "crisisLineDesc": "24/7 Mental Health",
     "emergency": "Emergency",
     "emergencyDesc": "Police / Fire / Ambulance",
-    "callButton": "Call"
+    "callButton": "Call",
+    "cachedServicesDescription": "Recently viewed services may be available from this device."
   },
   "NotFound": {
     "title": "Page Not Found",

@@ -545,7 +545,18 @@ body {
 /* Buttons need clear borders */
 .high-contrast button,
 .high-contrast [role="button"] {
+  background-color: #000000 !important;
   border: 2px solid #ffffff !important;
+  color: #ffffff !important;
+}
+
+.high-contrast button:hover,
+.high-contrast [role="button"]:hover {
+  background-color: #111111 !important;
+}
+
+.high-contrast [role="switch"] > span {
+  background-color: #ffffff !important;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

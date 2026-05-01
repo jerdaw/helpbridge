@@ -1,6 +1,6 @@
 ---
 status: stable
-last_updated: 2026-04-30
+last_updated: 2026-05-01
 owner: jer
 tags: [planning, roadmap, v22.0, governance]
 ---
@@ -9,7 +9,7 @@ tags: [planning, roadmap, v22.0, governance]
 
 > **Current Version**: v22.0 (Non-Duplicate Value Decision Plan, Phase 0)
 > **Next Milestone**: v22.0 Gate 0 Exit (C1/D4 blocker closure)
-> **Last Updated**: 2026-04-30
+> **Last Updated**: 2026-05-01
 > **Platform Status**: Strategic Repositioning - v22.0 Decision-Gated Planning
 
 ## Current State
@@ -171,6 +171,11 @@ These items are worth doing only if they do not distract from Gate 0 closure:
 4. Expand exact-English duplicate i18n auditing from the current focused namespaces to all used translation keys after the remaining legacy translation debt is localized.
 5. From the admissions backlog, only execute the still-open Tier 0 items that strengthen pilot readiness or evidence discipline: `A1` and bounded `A6` / `A16`.
 6. Keep docs dependencies bounded to the MkDocs 1.x line during routine maintenance, but defer any platform migration here until the earlier Zensical waves succeed and this repo's required plugin parity is proven.
+7. Keep the public surface and route-reference backlog batched as bounded maintenance, not feature expansion:
+   - **Batch A - route-reference cleanup (completed 2026-05-01)**: footer community links use the homepage's supported category query pattern, the partner-login CTA points to `/about/partners`, and admin observability runbook links open the GitHub docs source externally.
+   - **Batch B - high-value public workflows (completed 2026-05-01)**: `/service/[id]`, `/login`, and `/offline` now share the polished public-page visual system; login runtime messages are localized, offline support is clearer, and service-detail privacy-gated map behavior remains intact.
+   - **Batch C - trust, legal, and help surfaces**: review and polish `/privacy`, `/terms`, `/content-policy`, `/partner-terms`, `/accessibility`, `/faq`, `/user-guide`, and `/impact` as one static-page batch so copy, visual system, sitemap, and i18n stay consistent.
+   - **Batch D - authenticated operational surfaces**: revisit `/dashboard/**` and `/admin/**` only after public navigation is coherent or a partner/admin workflow makes the work necessary.
 
 ## On Hold
 

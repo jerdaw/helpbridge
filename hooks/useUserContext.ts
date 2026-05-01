@@ -10,12 +10,14 @@ const DEFAULT_CONTEXT: UserContext = {
   hasOptedIn: false,
 }
 
+const LEGACY_USER_CONTEXT_KEYS = [...LEGACY_BRAND_KEYS.userContext]
+
 export function useUserContext() {
   const [context, setContext, clearContext] = useLocalStorage<UserContext>(
     "careconnect_user_context",
     DEFAULT_CONTEXT,
     {
-      legacyKeys: [...LEGACY_BRAND_KEYS.userContext],
+      legacyKeys: LEGACY_USER_CONTEXT_KEYS,
     }
   )
 

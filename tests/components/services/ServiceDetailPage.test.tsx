@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest"
 import ServicePage from "@/app/[locale]/service/[id]/page"
 import { getServiceById } from "@/lib/services"
 import { mockService } from "@/tests/utils/mocks"
+import { IntentCategory } from "@/types/service"
 
 vi.mock("next/navigation", () => ({
   notFound: vi.fn(),
@@ -86,6 +87,9 @@ describe("Service detail page", () => {
 
     const { container } = render(page)
 
+    expect(screen.getByRole("heading", { name: mockService.name })).toBeInTheDocument()
+    expect(screen.getByText("aboutService")).toBeInTheDocument()
+    expect(screen.getByTestId("service-action-bar")).toBeInTheDocument()
     expect(screen.getByTestId("trust-panel")).toHaveTextContent(mockService.id)
     expect(screen.getByTestId("partner-actions-panel")).toHaveTextContent(mockService.id)
     expect(screen.getByTestId("feedback-widget")).toHaveTextContent(mockService.id)
@@ -134,5 +138,24 @@ describe("Service detail page", () => {
 
     expect(screen.getByText("staleRecordTitle")).toBeInTheDocument()
     expect(screen.getByText("staleRecordDescription")).toBeInTheDocument()
+  })
+
+  it("renders the emergency banner for crisis services", async () => {
+    vi.mocked(getServiceById).mockResolvedValueOnce({
+      ...mockService,
+      email: "",
+      phone: "",
+      url: "",
+      intent_category: IntentCategory.Crisis,
+    })
+
+    const page = await ServicePage({
+      params: Promise.resolve({ id: mockService.id, locale: "en" }),
+      searchParams: Promise.resolve({}),
+    })
+
+    render(page)
+
+    expect(screen.getByTestId("emergency-disclaimer")).toBeInTheDocument()
   })
 })

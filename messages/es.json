@@ -743,7 +743,7 @@
     "personalizePrompt": "Personaliza tus resultados",
     "personalizeDescription": "Opcionalmente comparte tu situación para ver servicios para los que podrías calificar. Estos datos nunca salen de tu dispositivo.",
     "title": "Configuración",
-    "description": "Administre sus preferencias de la aplicación y la configuración del dispositivo.",
+    "description": "Administra las preferencias que se guardan en este dispositivo, incluida la accesibilidad, la personalización, el estado de conexión y las notificaciones.",
     "connectionStatus": "Estado de la conexión",
     "onlineMessage": "Actualmente está en línea. Las actualizaciones se recibirán automáticamente.",
     "offlineMessage": "Actualmente está desconectado. Usando datos en caché.",
@@ -781,7 +781,33 @@
         "housing": "Refugio y Vivienda",
         "health": "Alertas de Salud",
         "general": "Actualizaciones Generales"
-      }
+      },
+      "description": "Las notificaciones opcionales del navegador pueden ayudar a mostrar cambios en los servicios cuando sean compatibles.",
+      "notConfiguredDesc": "Las notificaciones no están configuradas para este entorno. Las demás opciones siguen disponibles en este dispositivo."
+    },
+    "heroEyebrow": "Configuración del dispositivo",
+    "privacyTitle": "Privado por defecto",
+    "privacyItems": {
+      "device": "Las preferencias se guardan en este dispositivo para que el directorio resulte familiar sin crear una cuenta.",
+      "privacy": "Las opciones de personalización solo se usan para ajustar tu experiencia de búsqueda local.",
+      "offline": "El estado de conexión ayuda a explicar cuándo se puede usar información de servicios en caché."
+    },
+    "personalization": {
+      "title": "Personalización",
+      "description": "Elige contexto opcional que puede ayudar a mostrar servicios que se ajusten a tu situación.",
+      "activeCount": "{count, plural, =0 {Sin opciones activas} one {# opción activa} other {# opciones activas}}",
+      "localOnly": "Estas opciones permanecen en tu navegador y se pueden borrar en cualquier momento."
+    },
+    "accessibility": {
+      "title": "Accesibilidad",
+      "description": "Aumenta el contraste para una presentación visual más fuerte en toda la aplicación."
+    },
+    "connectionType": "Conexión: {type}",
+    "connectionTypes": {
+      "wifi": "Wi-Fi",
+      "cellular": "Celular",
+      "none": "Sin conexión",
+      "unknown": "Gestionada por el navegador"
     }
   },
   "Eligibility": {
@@ -1232,14 +1258,25 @@
   },
   "Login": {
     "title": "Acceso para Socios",
+    "heroEyebrow": "Acceso para socios",
     "subtitle": "Acceda a su panel para administrar servicios",
+    "formTitle": "Iniciar sesión con correo",
+    "formDescription": "Use el correo electrónico conectado con su organización.",
+    "trustTitle": "Acceso enfocado",
+    "trustItems": {
+      "review": "Las herramientas para socios son para registros de servicios revisados y actualizaciones de fuentes.",
+      "magicLink": "Los enlaces mágicos se envían por correo; no se guarda ninguna contraseña en este navegador.",
+      "privacy": "Los detalles de la revisión de fuentes están disponibles antes de solicitar acceso de socio."
+    },
     "emailLabel": "Correo electrónico",
     "emailPlaceholder": "tu@organizacion.org",
     "submit": "Iniciar sesión con correo",
     "sending": "Enviando enlace mágico...",
     "newToCareConnect": "¿Nuevo en CareConnect?",
-    "applyPartner": "Solicitar cuenta de socio",
-    "successMessage": "¡Enlace mágico enviado! Revisa tu correo para iniciar sesión."
+    "applyPartner": "Conoce cómo funciona la revisión de fuentes",
+    "successMessage": "¡Enlace mágico enviado! Revisa tu correo para iniciar sesión.",
+    "unavailableMessage": "El inicio de sesión no está disponible en este despliegue.",
+    "fallbackError": "Algo salió mal. Inténtalo de nuevo."
   },
   "Badges": {
     "ontarioWide": "En todo Ontario",
@@ -1321,8 +1358,10 @@
     "checkConnection": "Verificar conexión",
     "savedForLater": "Guardado para más tarde",
     "savedMessage": "Su comentario se enviará cuando vuelva a estar en línea.",
+    "heroEyebrow": "Modo sin conexión",
     "title": "Estás desconectado",
     "description": "Por favor, conéctese a Internet para buscar servicios.",
+    "statusTitle": "Estado de conexión",
     "snapshotUpdated": "Última actualización sin conexión: {timeAgo} ({date}).",
     "snapshotUnavailable": "La hora de la última actualización sin conexión no está disponible.",
     "snapshotStaleWarning": "Esta copia sin conexión puede estar desactualizada. Confirma horarios, disponibilidad y direcciones antes de confiar en ella.",
@@ -1330,11 +1369,13 @@
     "recentlyViewed": "Servicios vistos recientemente",
     "cachedData": "Datos en caché disponibles a continuación",
     "emergencyContacts": "Contactos de emergencia siempre disponibles",
+    "emergencyNote": "Los números de emergencia permanecen disponibles sin Internet.",
     "crisisLine": "Línea de Crisis",
     "crisisLineDesc": "Salud Mental 24/7",
     "emergency": "Emergencia",
     "emergencyDesc": "Policía / Bomberos / Ambulancia",
-    "callButton": "Llamar"
+    "callButton": "Llamar",
+    "cachedServicesDescription": "Los servicios vistos recientemente pueden estar disponibles desde este dispositivo."
   },
   "Admin": {
     "title": "Admin Dashboard",

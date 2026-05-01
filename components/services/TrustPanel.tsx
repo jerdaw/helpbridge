@@ -52,7 +52,7 @@ export function TrustPanel({ service, locale }: TrustPanelProps) {
   return (
     <>
       <Card
-        className="border-primary-100 bg-primary-50/10 dark:border-primary-900/10 dark:bg-primary-900/5 mt-6 overflow-hidden"
+        className="overflow-hidden border-neutral-200/75 bg-white/82 shadow-[0_14px_34px_rgba(15,23,42,0.05)] ring-1 ring-white/70 backdrop-blur-md dark:border-white/10 dark:bg-white/[0.06] dark:ring-white/10"
         variant="default"
         padding="none"
       >

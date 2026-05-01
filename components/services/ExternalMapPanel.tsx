@@ -28,7 +28,7 @@ export function ExternalMapPanel({
 
   if (isLoaded) {
     return (
-      <div className={cn("overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-700", className)}>
+      <div className={cn("overflow-hidden rounded-xl border border-neutral-200/80 dark:border-white/10", className)}>
         <iframe
           title={mapTitle}
           width="100%"
@@ -47,7 +47,7 @@ export function ExternalMapPanel({
   return (
     <div
       className={cn(
-        "rounded-lg border border-neutral-200 bg-neutral-50/80 p-4 dark:border-neutral-700 dark:bg-neutral-900/60",
+        "rounded-xl border border-neutral-200/80 bg-white/65 p-4 shadow-inner backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.04]",
         className
       )}
     >

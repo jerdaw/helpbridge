@@ -54,21 +54,22 @@ export function useLocalStorage<T>(
   // persists the new value to localStorage.
   const setValue = useCallback(
     (value: T | ((prev: T) => T)) => {
-      try {
-        // Allow value to be a function so we have same API as useState
-        const valueToStore = value instanceof Function ? value(storedValue) : value
-        // Save state
-        setStoredValue(valueToStore)
-        // Save to local storage (client-side only)
-        if (typeof window !== "undefined") {
-          window.localStorage.setItem(key, JSON.stringify(valueToStore))
-          legacyKeys?.forEach((legacyKey) => window.localStorage.removeItem(legacyKey))
+      setStoredValue((prevValue) => {
+        try {
+          // Allow value to be a function so we have the same API as useState.
+          const valueToStore = value instanceof Function ? value(prevValue) : value
+          if (typeof window !== "undefined") {
+            window.localStorage.setItem(key, JSON.stringify(valueToStore))
+            legacyKeys?.forEach((legacyKey) => window.localStorage.removeItem(legacyKey))
+          }
+          return valueToStore
+        } catch (error) {
+          logger.error("Error setting localStorage key", error, { key })
+          return prevValue
         }
-      } catch (error) {
-        logger.error("Error setting localStorage key", error, { key })
-      }
+      })
     },
-    [key, legacyKeys, storedValue]
+    [key, legacyKeys]
   )
 
   // Remove value from localStorage

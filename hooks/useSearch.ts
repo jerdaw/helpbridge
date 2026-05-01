@@ -6,6 +6,8 @@ import { logger } from "@/lib/logger"
 import { useUserContext } from "./useUserContext"
 import { LEGACY_BRAND_KEYS } from "@/lib/legacy-brand"
 
+const LEGACY_SAVED_SEARCH_KEYS = [...LEGACY_BRAND_KEYS.savedSearches]
+
 /**
  * Primary search state management hook.
  * Handles query state, category filtering, geolocation, and saved searches.
@@ -28,7 +30,7 @@ export function useSearch(initialQuery = "") {
 
   // Use the new utility hooks
   const [savedSearches, setSavedSearches] = useLocalStorage<string[]>("careconnect_saved_searches", [], {
-    legacyKeys: [...LEGACY_BRAND_KEYS.savedSearches],
+    legacyKeys: LEGACY_SAVED_SEARCH_KEYS,
   })
   const { coordinates: userLocation, isLocating, error: geoError, requestLocation, clearLocation } = useGeolocation()
 

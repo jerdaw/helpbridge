@@ -38,8 +38,12 @@ describe("OfflinePage", () => {
     const translations: Record<string, string> = {
       title: "You are offline",
       description: "Please reconnect to the internet to search for services.",
+      heroEyebrow: "Offline mode",
+      statusTitle: "Connection status",
       recentlyViewed: "Recently Viewed Services",
+      cachedServicesDescription: "Recently viewed services may be available from this device.",
       emergencyContacts: "Emergency Contacts Always Available",
+      emergencyNote: "Emergency phone numbers remain available without internet.",
       crisisLine: "Crisis Line",
       crisisLineDesc: "24/7 Mental Health",
       emergency: "Emergency",
@@ -70,8 +74,16 @@ describe("OfflinePage", () => {
 
     render(<OfflinePage />)
 
+    expect(screen.getByText("Offline mode")).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Connection status" })).toBeInTheDocument()
     expect(screen.getByTestId("offline-snapshot-status")).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Emergency Contacts Always Available" })).toBeInTheDocument()
+    expect(screen.getByText("Emergency phone numbers remain available without internet.")).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: /Call/ })).toHaveAttribute("href", "tel:6135444229")
+    expect(screen.getByRole("link", { name: /911/ })).toHaveAttribute("href", "tel:911")
+    expect(screen.getByRole("button", { name: "Retry Connection" })).toBeInTheDocument()
     expect(screen.getByText("Recently Viewed Services")).toBeInTheDocument()
+    expect(screen.getByText("Recently viewed services may be available from this device.")).toBeInTheDocument()
     expect(screen.getByTestId("service-card")).toHaveTextContent("Cached Service")
   })
 })
