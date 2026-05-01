@@ -216,7 +216,7 @@
       "noLogging": "无查询日志：您的搜索词是匿名处理的。"
     },
     "contact": "有问题？请联系 privacy@careconnect.ing",
-    "lastUpdated": "Last Updated: {date}",
+    "lastUpdated": "上次审查：2026年5月1日",
     "sections": {
       "overview": {
         "title": "概览",
@@ -262,7 +262,8 @@
         "title": "联系我们",
         "content": "电子邮件：privacy@careconnect.ing"
       }
-    }
+    },
+    "eyebrow": "隐私"
   },
   "ServiceCard": {
     "reportIssue": "报告问题"
@@ -1087,7 +1088,7 @@
   },
   "Terms": {
     "title": "服务条款",
-    "lastUpdated": "Last Updated: {date}",
+    "lastUpdated": "上次审查：2026年5月1日",
     "sections": {
       "acceptance": {
         "title": "接受条款",
@@ -1145,7 +1146,9 @@
         "title": "联系信息",
         "content": "有关这些条款的问题：legal@careconnect.ing"
       }
-    }
+    },
+    "eyebrow": "条款",
+    "description": "将 CareConnect 作为信息目录使用的条款。CareConnect 不提供紧急、医疗、法律、财务或咨询服务。"
   },
   "Emergency": {
     "compact": "紧急情况请拨打 911",
@@ -1167,7 +1170,7 @@
   },
   "AccessibilityPolicy": {
     "title": "无障碍政策",
-    "lastUpdated": "Last Updated: {date}",
+    "lastUpdated": "上次审查：2026年5月1日",
     "commitment": "CareConnect 致力于确保残疾人的平等访问和参与。我们努力及时满足残疾人的无障碍需求。",
     "standards": "我们致力于满足《安大略省残疾人无障碍法案》(AODA) 和《Web 内容无障碍指南》(WCAG) 2.1 AA 级的要求。",
     "headings": {
@@ -1192,11 +1195,12 @@
       "intro": "我们欢迎对 CareConnect 无障碍性的反馈。如果您遇到无障碍障碍，请告诉我们：",
       "email": "电子邮件：accessibility@careconnect.ing",
       "formats": "本网站上的信息可根据要求提供其他格式。"
-    }
+    },
+    "eyebrow": "无障碍"
   },
   "PartnerTerms": {
     "title": "合作伙伴条款",
-    "lastUpdated": "Last Updated: {date}",
+    "lastUpdated": "上次审查：2026年5月1日",
     "sections": {
       "eligibility": {
         "title": "合作伙伴资格",
@@ -1218,12 +1222,14 @@
         "title": "终止",
         "content": "任何一方均可终止此合作伙伴关系。CareConnect 可因违反条款或信息不准确而终止。"
       }
-    }
+    },
+    "eyebrow": "合作伙伴访问",
+    "description": "适用于请求或维护列表访问权限的授权组织代表的条款。"
   },
   "ContentPolicy": {
     "title": "内容政策",
     "description": "我们维护安全、准确和值得信赖的社区指南的准则。",
-    "lastUpdated": "最后更新",
+    "lastUpdated": "上次审查：2026年5月1日",
     "sections": {
       "prohibited": {
         "title": "禁止内容",
@@ -1241,7 +1247,8 @@
         "title": "申诉流程",
         "content": "<p>如果您的列表提交被拒绝或内容被删除：</p><ul><li>您可以通过联系 <strong>moderation@careconnect.ing</strong> 申诉决定。</li><li>请提供支持您申诉的具体证据（例如，官方网站链接、注册文件）。</li><li>最终决定由 CareConnect 治理委员会做出。</ul>"
       }
-    }
+    },
+    "eyebrow": "内容标准"
   },
   "ClaimFlow": {
     "button": "认领列表",
@@ -1331,7 +1338,8 @@
     "voluntaryFeedback": "所有反馈均为自愿",
     "commitmentTitle": "我们的承诺",
     "commitmentText": "我们每季度发布这些报告，以对我们服务的社区负责。您的隐私是不容谈判的。",
-    "metricsTemporarilyUnavailable": "部分实时影响指标暂时不可用。当前显示安全回退状态。"
+    "metricsTemporarilyUnavailable": "部分实时影响指标暂时不可用。当前显示安全回退状态。",
+    "eyebrow": "社区问责"
   },
   "Trust": {
     "title": "数据治理与信任",
@@ -1623,11 +1631,15 @@
   },
   "UserGuide": {
     "title": "用户指南 - CareConnect",
-    "description": "了解如何使用 CareConnect 查找本地服务和支持。"
+    "description": "了解如何使用 CareConnect 查找本地服务和支持。",
+    "eyebrow": "指南",
+    "lastUpdated": "上次审查：2026年5月1日"
   },
   "FAQ": {
     "title": "常见问题 - CareConnect",
-    "description": "关于 CareConnect、数据验证和隐私的常见问题。"
+    "description": "关于 CareConnect、数据验证和隐私的常见问题。",
+    "eyebrow": "帮助",
+    "lastUpdated": "上次审查：2026年5月1日"
   },
   "Home": {
     "modelStatus": {

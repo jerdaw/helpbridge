@@ -22,5 +22,17 @@ describe("metadata routes", () => {
     expect(robots().sitemap).toBe("https://example.test/sitemap.xml")
     expect(entries[0]?.url).toBe("https://example.test/en")
     expect(entries[0]?.alternates?.languages?.fr).toBe("https://example.test/fr")
+    expect(entries.map((entry) => entry.url)).toEqual(
+      expect.arrayContaining([
+        "https://example.test/en/privacy",
+        "https://example.test/en/terms",
+        "https://example.test/en/content-policy",
+        "https://example.test/en/partner-terms",
+        "https://example.test/en/accessibility",
+        "https://example.test/en/faq",
+        "https://example.test/en/user-guide",
+        "https://example.test/en/impact",
+      ])
+    )
   })
 })

@@ -216,7 +216,7 @@
       "noLogging": "Sem Registo de Consultas: Os seus termos de pesquisa são processados anonimamente."
     },
     "contact": "Dúvidas? Contacte-nos em privacy@careconnect.ing",
-    "lastUpdated": "Última atualização: {date}",
+    "lastUpdated": "Última revisão: 1 de maio de 2026",
     "sections": {
       "overview": {
         "title": "Visão Geral da Política de Privacidade",
@@ -262,7 +262,8 @@
         "title": "Contacte-nos",
         "content": "Email: privacy@careconnect.ing"
       }
-    }
+    },
+    "eyebrow": "Privacidade"
   },
   "ServiceCard": {
     "reportIssue": "Reportar problema"
@@ -1087,7 +1088,7 @@
   },
   "Terms": {
     "title": "Termos de Serviço",
-    "lastUpdated": "Última atualização: {date}",
+    "lastUpdated": "Última revisão: 1 de maio de 2026",
     "sections": {
       "acceptance": {
         "title": "Aceitação dos Termos",
@@ -1145,7 +1146,9 @@
         "title": "Informações de Contacto",
         "content": "Para questões sobre estes termos: legal@careconnect.ing"
       }
-    }
+    },
+    "eyebrow": "Termos",
+    "description": "Termos para usar o CareConnect como diretório informativo. O CareConnect não presta serviços de emergência, médicos, jurídicos, financeiros ou de aconselhamento."
   },
   "Emergency": {
     "compact": "Para emergências, ligue 911",
@@ -1167,7 +1170,7 @@
   },
   "AccessibilityPolicy": {
     "title": "Política de Acessibilidade",
-    "lastUpdated": "Última atualização: {date}",
+    "lastUpdated": "Última revisão: 1 de maio de 2026",
     "commitment": "O CareConnect está empenhado em garantir acesso igual e participação para pessoas com deficiência. Esforçamo-nos para satisfazer as necessidades de acessibilidade das pessoas com deficiência de forma atempada.",
     "standards": "Estamos empenhados em cumprir os requisitos do Accessibility for Ontarians with Disabilities Act (AODA) e Web Content Accessibility Guidelines (WCAG) 2.1 Nível AA.",
     "headings": {
@@ -1192,11 +1195,12 @@
       "intro": "Agradecemos feedback sobre a acessibilidade do CareConnect. Por favor, diga-nos se encontrar barreiras de acessibilidade:",
       "email": "Email: accessibility@careconnect.ing",
       "formats": "Informações neste website estão disponíveis em formatos alternativos mediante pedido."
-    }
+    },
+    "eyebrow": "Acessibilidade"
   },
   "PartnerTerms": {
     "title": "Termos de Serviço para Parceiros",
-    "lastUpdated": "Última atualização: {date}",
+    "lastUpdated": "Última revisão: 1 de maio de 2026",
     "sections": {
       "eligibility": {
         "title": "Elegibilidade do Parceiro",
@@ -1218,12 +1222,14 @@
         "title": "Rescisão",
         "content": "Qualquer uma das partes pode rescindir esta parceria. O CareConnect pode rescindir por violação dos termos ou informações imprecisas."
       }
-    }
+    },
+    "eyebrow": "Acesso de parceiro",
+    "description": "Termos para representantes autorizados de organizações que solicitam ou mantêm acesso a listagens."
   },
   "ContentPolicy": {
     "title": "Política de Conteúdo",
     "description": "As nossas diretrizes para manter um diretório comunitário seguro, preciso e confiável.",
-    "lastUpdated": "Última atualização",
+    "lastUpdated": "Última revisão: 1 de maio de 2026",
     "sections": {
       "prohibited": {
         "title": "Conteúdo Proibido",
@@ -1241,7 +1247,8 @@
         "title": "Processo de Recurso",
         "content": "<p>Se o seu pedido de listagem foi rejeitado ou o seu conteúdo foi removido:</p><ul><li>Pode recorrer da decisão contactando <strong>moderation@careconnect.ing</strong>.</li><li>Por favor, forneça provas específicas que apoiem o seu recurso (ex: links para websites oficiais, documentos de registo).</li><li>As decisões finais são tomadas pelo Comité de Governação do CareConnect.</li></ul>"
       }
-    }
+    },
+    "eyebrow": "Normas de conteúdo"
   },
   "ClaimFlow": {
     "button": "Reivindicar Listagem",
@@ -1331,7 +1338,8 @@
     "voluntaryFeedback": "Todo feedback é opcional",
     "commitmentTitle": "Nosso Compromisso",
     "commitmentText": "Publicamos esses relatórios trimestralmente para sermos responsáveis perante a comunidade que servimos. Sua privacidade não é negociável.",
-    "metricsTemporarilyUnavailable": "Algumas métricas de impacto em tempo real estão temporariamente indisponíveis. A mostrar um estado seguro de fallback."
+    "metricsTemporarilyUnavailable": "Algumas métricas de impacto em tempo real estão temporariamente indisponíveis. A mostrar um estado seguro de fallback.",
+    "eyebrow": "Responsabilidade comunitária"
   },
   "Trust": {
     "title": "Governança de Dados e Confiança",
@@ -1623,11 +1631,15 @@
   },
   "UserGuide": {
     "title": "Guia do Usuário - CareConnect",
-    "description": "Aprenda como usar o CareConnect para encontrar serviços e apoio local."
+    "description": "Aprenda como usar o CareConnect para encontrar serviços e apoio local.",
+    "eyebrow": "Guia",
+    "lastUpdated": "Última revisão: 1 de maio de 2026"
   },
   "FAQ": {
     "title": "Perguntas Frequentes - CareConnect",
-    "description": "Perguntas frequentes sobre CareConnect, verificação de dados e privacidade."
+    "description": "Perguntas frequentes sobre CareConnect, verificação de dados e privacidade.",
+    "eyebrow": "Ajuda",
+    "lastUpdated": "Última revisão: 1 de maio de 2026"
   },
   "Home": {
     "modelStatus": {

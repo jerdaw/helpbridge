@@ -16,11 +16,15 @@
   },
   "UserGuide": {
     "title": "User Guide - CareConnect",
-    "description": "Learn how to use CareConnect to find local services and support."
+    "description": "Learn how to use CareConnect to find local services and support.",
+    "eyebrow": "Guide",
+    "lastUpdated": "Last reviewed: May 1, 2026"
   },
   "FAQ": {
     "title": "FAQ - CareConnect",
-    "description": "Frequently asked questions about CareConnect, data verification, and privacy."
+    "description": "Frequently asked questions about CareConnect, data verification, and privacy.",
+    "eyebrow": "Help",
+    "lastUpdated": "Last reviewed: May 1, 2026"
   },
   "Footer": {
     "disclaimer": "Find verified local services and community resources.",
@@ -858,7 +862,7 @@
       "noLogging": "No Query Logging: Your search terms are processed anonymously and are not linked to your identity."
     },
     "contact": "Questions? Contact us at privacy@careconnect.ing",
-    "lastUpdated": "Last Updated: {date}",
+    "lastUpdated": "Last reviewed: May 1, 2026",
     "sections": {
       "overview": {
         "title": "Privacy Policy Overview",
@@ -904,7 +908,8 @@
         "title": "Contact Us",
         "content": "Email: privacy@careconnect.ing"
       }
-    }
+    },
+    "eyebrow": "Privacy"
   },
   "ServiceCard": {
     "reportIssue": "Report Issue"
@@ -1211,7 +1216,7 @@
   "ContentPolicy": {
     "title": "Content Moderation Policy",
     "description": "Our guidelines for maintaining a safe, accurate, and trustworthy community directory.",
-    "lastUpdated": "Last Updated",
+    "lastUpdated": "Last reviewed: May 1, 2026",
     "sections": {
       "prohibited": {
         "title": "Prohibited Content",
@@ -1229,7 +1234,8 @@
         "title": "Appeals Process",
         "content": "<p>If your listing submission was rejected or your content removed:</p><ul><li>You may appeal the decision by contacting <strong>moderation@careconnect.ing</strong>.</li><li>Please provide specific evidence supporting your appeal (e.g., official website links, registration documents).</li><li>Final decisions are made by the CareConnect Governance Committee.</li></ul>"
       }
-    }
+    },
+    "eyebrow": "Content standards"
   },
   "Accessibility": {
     "title": "Accessibility",
@@ -1375,7 +1381,7 @@
   },
   "Terms": {
     "title": "Terms of Service",
-    "lastUpdated": "Last Updated: {date}",
+    "lastUpdated": "Last reviewed: May 1, 2026",
     "sections": {
       "acceptance": {
         "title": "Acceptance of Terms",
@@ -1433,7 +1439,9 @@
         "title": "Contact Information",
         "content": "For questions about these Terms: legal@careconnect.ing"
       }
-    }
+    },
+    "eyebrow": "Terms",
+    "description": "Terms for using CareConnect as an information directory. CareConnect does not provide emergency, medical, legal, financial, or counselling services."
   },
   "Emergency": {
     "compact": "For emergencies, call 911",
@@ -1462,7 +1470,7 @@
   },
   "AccessibilityPolicy": {
     "title": "Accessibility Policy",
-    "lastUpdated": "Last Updated: {date}",
+    "lastUpdated": "Last reviewed: May 1, 2026",
     "commitment": "CareConnect is committed to ensuring equal access and participation for people with disabilities. We strive to meet the accessibility needs of persons with disabilities in a timely manner.",
     "standards": "We are committed to meeting the requirements of the Accessibility for Ontarians with Disabilities Act (AODA) and the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA.",
     "headings": {
@@ -1487,11 +1495,12 @@
       "intro": "We welcome feedback on the accessibility of CareConnect. Please let us know if you encounter accessibility barriers:",
       "email": "Email: accessibility@careconnect.ing",
       "formats": "Information on this website is available in alternative formats upon request."
-    }
+    },
+    "eyebrow": "Accessibility"
   },
   "PartnerTerms": {
     "title": "Partner Terms of Service",
-    "lastUpdated": "Last Updated: {date}",
+    "lastUpdated": "Last reviewed: May 1, 2026",
     "sections": {
       "eligibility": {
         "title": "Partner Eligibility",
@@ -1513,7 +1522,9 @@
         "title": "Termination",
         "content": "Either party may terminate this partnership. CareConnect may terminate for terms violation or inaccurate info."
       }
-    }
+    },
+    "eyebrow": "Partner access",
+    "description": "Terms for authorized organization representatives who request or maintain listing access."
   },
   "ClaimFlow": {
     "button": "Claim This Listing",
@@ -1569,7 +1580,8 @@
     "noCookies": "No analytics cookies",
     "voluntaryFeedback": "All feedback is optional",
     "commitmentTitle": "Our Commitment",
-    "commitmentText": "We publish these reports quarterly to stay accountable to the community we serve. Your privacy is not negotiable."
+    "commitmentText": "We publish these reports quarterly to stay accountable to the community we serve. Your privacy is not negotiable.",
+    "eyebrow": "Community accountability"
   },
   "Trust": {
     "title": "Data Governance & Trust",

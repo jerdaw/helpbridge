@@ -1,6 +1,6 @@
 # Frequently Asked Questions (FAQ)
 
-**Last Updated:** February 2026
+**Last reviewed:** May 1, 2026
 
 ---
 
@@ -8,7 +8,7 @@
 
 ### What is CareConnect?
 
-CareConnect is a free search engine that helps you find social services in Kingston, Ontario. We have information on about 200 services including food banks, crisis support, housing help, health services, and more.
+CareConnect is a free search engine that helps you find social services in Kingston, Ontario. We have information on 196 verified services including food banks, crisis support, housing help, health services, and more.
 
 **It's like Google, but only for social services in Kingston.**
 

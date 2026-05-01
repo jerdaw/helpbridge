@@ -1,6 +1,6 @@
 # CareConnect : Guide de l'utilisateur
 
-**Dernière mise à jour :** Février 2026
+**Dernière révision :** 1 mai 2026
 **Version :** 1.0
 
 ---
@@ -47,7 +47,7 @@ CareConnect est un moteur de recherche pour les services sociaux. Il vous aide �
 - **Emploi** et programmes d'éducation
 - **Services familiaux** (garde d'enfants, soutien parental)
 
-Nous avons des informations sur environ **200 services** à Kingston.
+Nous avons des informations sur **196 services vérifiés** à Kingston.
 
 ### Qui peut utiliser ceci ?
 

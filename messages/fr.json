@@ -16,11 +16,15 @@
   },
   "UserGuide": {
     "title": "Guide d'utilisation - CareConnect",
-    "description": "Apprenez à utiliser CareConnect pour trouver des services et du soutien locaux."
+    "description": "Apprenez à utiliser CareConnect pour trouver des services et du soutien locaux.",
+    "eyebrow": "Guide",
+    "lastUpdated": "Dernière révision : 1 mai 2026"
   },
   "FAQ": {
     "title": "FAQ - CareConnect",
-    "description": "Questions fréquemment posées sur CareConnect, la vérification des données et la confidentialité."
+    "description": "Questions fréquemment posées sur CareConnect, la vérification des données et la confidentialité.",
+    "eyebrow": "Aide",
+    "lastUpdated": "Dernière révision : 1 mai 2026"
   },
   "Footer": {
     "disclaimer": "Trouvez des services locaux vérifiés et des ressources communautaires.",
@@ -235,7 +239,7 @@
       "noLogging": "Pas d'enregistrement de requêtes : Vos termes de recherche sont traités de manière anonyme et ne sont pas liés à votre identité."
     },
     "contact": "Des questions ? Contactez-nous à privacy@careconnect.ing",
-    "lastUpdated": "Dernière mise à jour : {date}",
+    "lastUpdated": "Dernière révision : 1 mai 2026",
     "sections": {
       "overview": {
         "title": "Aperçu de la politique",
@@ -281,7 +285,8 @@
         "title": "Contactez-nous",
         "content": "Email : privacy@careconnect.ing"
       }
-    }
+    },
+    "eyebrow": "Confidentialité"
   },
   "ServiceCard": {
     "reportIssue": "Signaler un problème"
@@ -981,7 +986,7 @@
   "ContentPolicy": {
     "title": "Politique de Modération du Contenu",
     "description": "Nos directives pour maintenir un répertoire communautaire sûr, précis et digne de confiance.",
-    "lastUpdated": "Dernière mise à jour",
+    "lastUpdated": "Dernière révision : 1 mai 2026",
     "sections": {
       "prohibited": {
         "title": "Contenu Interdit",
@@ -999,7 +1004,8 @@
         "title": "Processus d'Appel",
         "content": "<p>Si votre soumission a été rejetée ou votre contenu supprimé :</p><ul><li>Vous pouvez faire appel de la décision en contactant <strong>moderation@careconnect.ing</strong>.</li><li>Veuillez fournir des preuves spécifiques à l'appui de votre appel.</li><li>Les décisions finales sont prises par le comité de gouvernance de CareConnect.</li></ul>"
       }
-    }
+    },
+    "eyebrow": "Normes de contenu"
   },
   "Accessibility": {
     "title": "Accessibilité",
@@ -1145,7 +1151,7 @@
   },
   "Terms": {
     "title": "Conditions d'utilisation",
-    "lastUpdated": "Dernière mise à jour : {date}",
+    "lastUpdated": "Dernière révision : 1 mai 2026",
     "sections": {
       "acceptance": {
         "title": "Acceptation des conditions",
@@ -1203,7 +1209,9 @@
         "title": "Coordonnées",
         "content": "Pour toute question concernant ces conditions : legal@careconnect.ing"
       }
-    }
+    },
+    "eyebrow": "Conditions",
+    "description": "Conditions d'utilisation de CareConnect comme répertoire d'information. CareConnect ne fournit pas de services d'urgence, médicaux, juridiques, financiers ni de counseling."
   },
   "Emergency": {
     "compact": "Pour les urgences, composez le 911",
@@ -1232,7 +1240,7 @@
   },
   "AccessibilityPolicy": {
     "title": "Politique d'accessibilité",
-    "lastUpdated": "Dernière mise à jour : {date}",
+    "lastUpdated": "Dernière révision : 1 mai 2026",
     "commitment": "CareConnect s'engage à garantir l'égalité d'accès et de participation aux personnes handicapées. Nous nous efforçons de répondre aux besoins d'accessibilité en temps opportun.",
     "standards": "Nous nous engageons à respecter les exigences de la Loi sur l'accessibilité pour les personnes handicapées de l'Ontario (LAPHO) et les Règles pour l'accessibilité des contenus Web (WCAG) 2.1 Niveau AA.",
     "headings": {
@@ -1257,11 +1265,12 @@
       "intro": "Nous accueillons vos commentaires sur l'accessibilité. Veuillez nous faire savoir si vous rencontrez des obstacles :",
       "email": "Courriel : accessibility@careconnect.ing",
       "formats": "Les informations sur ce site sont disponibles dans des formats alternatifs sur demande."
-    }
+    },
+    "eyebrow": "Accessibilité"
   },
   "PartnerTerms": {
     "title": "Conditions de service des partenaires",
-    "lastUpdated": "Dernière mise à jour : {date}",
+    "lastUpdated": "Dernière révision : 1 mai 2026",
     "sections": {
       "eligibility": {
         "title": "Admissibilité des partenaires",
@@ -1283,7 +1292,9 @@
         "title": "Résiliation",
         "content": "Chaque partie peut résilier ce partenariat. CareConnect peut résilier pour violation des conditions."
       }
-    }
+    },
+    "eyebrow": "Accès partenaire",
+    "description": "Conditions pour les représentants autorisés d'organisations qui demandent ou maintiennent un accès aux fiches."
   },
   "ClaimFlow": {
     "button": "Revendiquer cette fiche",
@@ -1339,7 +1350,8 @@
     "voluntaryFeedback": "Tous les commentaires sont facultatifs",
     "commitmentTitle": "Notre engagement",
     "commitmentText": "Nous publions ces rapports chaque trimestre pour rester responsables envers la communauté que nous servons. Votre vie privée n'est pas négociable.",
-    "metricsTemporarilyUnavailable": "Certaines métriques d’impact en direct sont temporairement indisponibles. Affichage d’un état de repli sûr."
+    "metricsTemporarilyUnavailable": "Certaines métriques d’impact en direct sont temporairement indisponibles. Affichage d’un état de repli sûr.",
+    "eyebrow": "Responsabilité communautaire"
   },
   "Trust": {
     "title": "Gouvernance des données et confiance",

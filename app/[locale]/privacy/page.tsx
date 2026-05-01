@@ -1,9 +1,9 @@
 "use client"
 
 import { useTranslations } from "next-intl"
-import { Header } from "@/components/layout/Header"
-import { Footer } from "@/components/layout/Footer"
-import { Section } from "@/components/ui/section"
+import { ShieldCheck } from "lucide-react"
+import { StaticPageShell } from "@/components/layout/StaticPageShell"
+import { StaticMarkdown } from "@/components/layout/StaticMarkdown"
 
 export default function PrivacyPage() {
   const t = useTranslations("Privacy")
@@ -23,36 +23,23 @@ export default function PrivacyPage() {
   ]
 
   return (
-    <div className="flex min-h-screen flex-col bg-stone-50 font-sans dark:bg-neutral-950">
-      <Header />
-
-      <main id="main-content" className="flex-1">
-        <Section className="py-20">
-          <div className="mx-auto max-w-3xl rounded-2xl bg-white p-8 shadow-sm sm:p-12 dark:bg-neutral-900">
-            <h1 className="heading-display mb-2 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-white">
-              {t("title")}
-            </h1>
-            <p className="mb-12 text-neutral-500 dark:text-neutral-400">
-              {t("lastUpdated", { date: new Date().toLocaleDateString() })}
-            </p>
-
-            <div className="space-y-12">
-              {sections.map((sectionId) => (
-                <section key={sectionId} id={sectionId} className="scroll-mt-24">
-                  <h2 className="mb-4 text-xl font-bold text-neutral-900 dark:text-white">
-                    {t(`sections.${sectionId}.title`)}
-                  </h2>
-                  <div className="prose prose-neutral dark:prose-invert max-w-none text-neutral-600 dark:text-neutral-300">
-                    <p className="leading-relaxed whitespace-pre-line">{t(`sections.${sectionId}.content`)}</p>
-                  </div>
-                </section>
-              ))}
-            </div>
-          </div>
-        </Section>
-      </main>
-
-      <Footer />
-    </div>
+    <StaticPageShell
+      eyebrow={t("eyebrow")}
+      title={t("title")}
+      description={t("intro")}
+      meta={t("lastUpdated")}
+      icon={<ShieldCheck className="h-5 w-5" aria-hidden="true" />}
+    >
+      <div className="space-y-10">
+        {sections.map((sectionId) => (
+          <section key={sectionId} id={sectionId} className="scroll-mt-32">
+            <h2 className="mb-4 text-xl font-bold text-neutral-950 dark:text-white">
+              {t(`sections.${sectionId}.title`)}
+            </h2>
+            <StaticMarkdown>{t(`sections.${sectionId}.content`)}</StaticMarkdown>
+          </section>
+        ))}
+      </div>
+    </StaticPageShell>
   )
 }

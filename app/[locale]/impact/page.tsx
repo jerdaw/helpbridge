@@ -1,8 +1,6 @@
 import { createClient } from "@/utils/supabase/server"
 import { getTranslations } from "next-intl/server"
-import { Header } from "@/components/layout/Header"
-import { Footer } from "@/components/layout/Footer"
-import { Section } from "@/components/ui/section"
+import { StaticPageShell } from "@/components/layout/StaticPageShell"
 import { Card } from "@/components/ui/card"
 import { ThumbsUp, CheckCircle2, ShieldCheck, MessageSquare, TrendingUp } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
@@ -21,13 +19,20 @@ interface MetricCardProps {
 
 function MetricCard({ title, value, description, icon }: MetricCardProps) {
   return (
-    <Card className="p-6">
-      <div className="flex items-start gap-4">
-        <div className="bg-primary-100 dark:bg-primary-900/30 rounded-full p-3">{icon}</div>
-        <div>
-          <p className="text-sm text-neutral-500 dark:text-neutral-400">{title}</p>
-          <p className="text-3xl font-bold tracking-tight">{value}</p>
-          <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">{description}</p>
+    <Card
+      padding="none"
+      className="border-neutral-200/75 bg-white/86 shadow-[0_14px_34px_rgba(15,23,42,0.05)] ring-1 ring-white/70 backdrop-blur-md dark:border-white/10 dark:bg-white/[0.06] dark:ring-white/10"
+    >
+      <div className="p-5 md:p-6">
+        <div className="flex items-start gap-4">
+          <div className="bg-accent-50 text-accent-700 dark:bg-accent-500/10 dark:text-accent-200 rounded-xl p-3 ring-1 ring-black/5 dark:ring-white/10">
+            {icon}
+          </div>
+          <div>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">{title}</p>
+            <p className="text-3xl font-bold tracking-tight text-neutral-950 dark:text-white">{value}</p>
+            <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">{description}</p>
+          </div>
         </div>
       </div>
     </Card>
@@ -45,11 +50,11 @@ interface ImpactMetrics {
 }
 
 async function loadImpactMetrics(): Promise<ImpactMetrics> {
-  const supabase = await createClient()
   const ninetyDaysAgo = new Date()
   ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90)
 
   try {
+    const supabase = await createClient()
     const [
       helpfulYesResult,
       helpfulNoResult,
@@ -124,22 +129,25 @@ export default async function ImpactPage() {
   const totalFeedback = totalHelpful + safeTotalIssues
 
   return (
-    <main id="main-content" className="flex min-h-screen flex-col bg-stone-50 dark:bg-neutral-950">
-      <Header />
-
-      <Section className="pt-32 pb-16">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="heading-display mb-4 text-4xl font-bold md:text-5xl">{t("title")}</h1>
-          <p className="mx-auto max-w-2xl text-lg text-neutral-600 dark:text-neutral-300">{t("subtitle")}</p>
-        </div>
-      </Section>
-
-      <Section className="py-12">
-        <div className="mx-auto max-w-6xl">
-          <h2 className="heading-display mb-6 text-2xl font-bold">{t("metricsTitle")}</h2>
+    <StaticPageShell
+      eyebrow={t("eyebrow")}
+      title={t("title")}
+      description={t("subtitle")}
+      icon={<TrendingUp className="h-5 w-5" aria-hidden="true" />}
+      maxWidth="wide"
+      articleClassName="border-0 bg-transparent p-0 shadow-none ring-0 dark:bg-transparent dark:ring-0"
+    >
+      <div className="space-y-8">
+        <section aria-labelledby="impact-metrics-heading">
+          <h2
+            id="impact-metrics-heading"
+            className="heading-display mb-6 text-2xl font-bold text-neutral-950 dark:text-white"
+          >
+            {t("metricsTitle")}
+          </h2>
 
           {metrics.degraded && (
-            <Alert className="mb-6">
+            <Alert className="mb-6 border-amber-200/80 bg-amber-50/80 text-amber-900 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-100">
               <AlertDescription>{t("metricsTemporarilyUnavailable")}</AlertDescription>
             </Alert>
           )}
@@ -149,67 +157,71 @@ export default async function ImpactPage() {
               title={t("satisfactionTitle")}
               value={`${helpfulRate}%`}
               description={t("satisfactionDesc", { count: totalHelpful })}
-              icon={<ThumbsUp className="text-primary-600 h-6 w-6" />}
+              icon={<ThumbsUp className="h-6 w-6" aria-hidden="true" />}
             />
 
             <MetricCard
               title={t("issuesResolvedTitle")}
               value={safeResolvedIssues}
               description={t("issuesResolvedDesc", { total: safeTotalIssues })}
-              icon={<CheckCircle2 className="h-6 w-6 text-green-600" />}
+              icon={<CheckCircle2 className="h-6 w-6" aria-hidden="true" />}
             />
 
             <MetricCard
               title={t("servicesVerifiedTitle")}
               value={metrics.verifiedRecently}
               description={t("servicesVerifiedDesc", { total: metrics.totalServices })}
-              icon={<ShieldCheck className="h-6 w-6 text-blue-600" />}
+              icon={<ShieldCheck className="h-6 w-6" aria-hidden="true" />}
             />
 
             <MetricCard
               title={t("feedbackTitle")}
               value={totalFeedback || 0}
               description={t("feedbackDesc")}
-              icon={<MessageSquare className="h-6 w-6 text-purple-600" />}
+              icon={<MessageSquare className="h-6 w-6" aria-hidden="true" />}
             />
           </div>
-        </div>
-      </Section>
+        </section>
 
-      <Section className="bg-white py-12 dark:bg-neutral-900">
-        <div className="mx-auto max-w-4xl">
-          <h2 className="heading-display mb-6 text-2xl font-bold">{t("privacyTitle")}</h2>
+        <section
+          aria-labelledby="impact-privacy-heading"
+          className="rounded-2xl border border-neutral-200/75 bg-white/86 p-6 shadow-[0_14px_34px_rgba(15,23,42,0.05)] ring-1 ring-white/70 backdrop-blur-md md:p-8 dark:border-white/10 dark:bg-white/[0.06] dark:ring-white/10"
+        >
+          <h2
+            id="impact-privacy-heading"
+            className="heading-display mb-4 text-2xl font-bold text-neutral-950 dark:text-white"
+          >
+            {t("privacyTitle")}
+          </h2>
+          <p className="max-w-3xl text-neutral-700 dark:text-neutral-300">{t("privacyText")}</p>
 
-          <div className="prose dark:prose-invert max-w-none">
-            <p className="text-neutral-600 dark:text-neutral-300">{t("privacyText")}</p>
-
-            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-              <div className="flex items-center gap-3 rounded-lg border border-neutral-200 p-4 dark:border-neutral-800">
-                <ShieldCheck className="h-5 w-5 text-green-600 dark:text-green-400" />
-                <span className="text-sm">{t("noTracking")}</span>
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+            {[t("noTracking"), t("noCookies"), t("voluntaryFeedback")].map((item) => (
+              <div
+                key={item}
+                className="flex items-center gap-3 rounded-xl border border-neutral-200/70 bg-white/65 p-4 dark:border-white/10 dark:bg-white/[0.04]"
+              >
+                <ShieldCheck className="h-5 w-5 text-emerald-600 dark:text-emerald-300" aria-hidden="true" />
+                <span className="text-sm text-neutral-800 dark:text-neutral-200">{item}</span>
               </div>
-              <div className="flex items-center gap-3 rounded-lg border border-neutral-200 p-4 dark:border-neutral-800">
-                <ShieldCheck className="h-5 w-5 text-green-600 dark:text-green-400" />
-                <span className="text-sm">{t("noCookies")}</span>
-              </div>
-              <div className="flex items-center gap-3 rounded-lg border border-neutral-200 p-4 dark:border-neutral-800">
-                <ShieldCheck className="h-5 w-5 text-green-600 dark:text-green-400" />
-                <span className="text-sm">{t("voluntaryFeedback")}</span>
-              </div>
-            </div>
+            ))}
           </div>
-        </div>
-      </Section>
+        </section>
 
-      <Section className="py-12">
-        <div className="mx-auto max-w-4xl text-center">
-          <TrendingUp className="text-primary-500 mx-auto mb-4 h-12 w-12" />
-          <h2 className="heading-display mb-4 text-2xl font-bold">{t("commitmentTitle")}</h2>
-          <p className="text-neutral-600 dark:text-neutral-300">{t("commitmentText")}</p>
-        </div>
-      </Section>
-
-      <Footer />
-    </main>
+        <section
+          aria-labelledby="impact-commitment-heading"
+          className="rounded-2xl border border-neutral-200/75 bg-white/74 p-6 text-center shadow-[0_14px_34px_rgba(15,23,42,0.04)] ring-1 ring-white/70 backdrop-blur-md md:p-8 dark:border-white/10 dark:bg-white/[0.05] dark:ring-white/10"
+        >
+          <TrendingUp className="text-accent-700 dark:text-accent-300 mx-auto mb-4 h-10 w-10" aria-hidden="true" />
+          <h2
+            id="impact-commitment-heading"
+            className="heading-display mb-4 text-2xl font-bold text-neutral-950 dark:text-white"
+          >
+            {t("commitmentTitle")}
+          </h2>
+          <p className="mx-auto max-w-3xl text-neutral-700 dark:text-neutral-300">{t("commitmentText")}</p>
+        </section>
+      </div>
+    </StaticPageShell>
   )
 }
