@@ -1028,23 +1028,68 @@
   },
   "PartnersPage": {
     "hero": {
-      "title": "Construit sur des sources fiables",
-      "subtitle": "CareConnect utilise des sources de référence publiques et communautaires pour soutenir la curation et la vérification manuelles. Les partenariats formels sont indiqués séparément lorsqu'ils sont confirmés."
+      "eyebrow": "Sources de référence",
+      "title": "Comment CareConnect examine les renseignements de source",
+      "subtitle": "CareConnect utilise des sources de référence publiques et communautaires comme points de départ pour l'examen manuel. Une source de référence aide la curation; elle n'est pas présentée comme une approbation ou un partenariat officiel sauf si cette relation est confirmée."
     },
-    "verification": {
-      "title": "Comment la revue des sources fonctionne",
-      "step1": "Revue des sources",
-      "step2": "Vérification manuelle",
-      "step3": "Audits mensuels",
-      "description": "CareConnect examine les sources de référence publiques, applique une vérification manuelle et poursuit des audits périodiques pour les fiches actives."
+    "heroCard": {
+      "title": "Le modèle de sources",
+      "description": "L'examen des sources garde le répertoire bien ancré tout en maintenant la distinction entre références publiques, curation manuelle et confirmation par les fournisseurs.",
+      "items": {
+        "public": "Les références publiques et communautaires aident à repérer les services et à recouper les détails.",
+        "reviewed": "Les fiches sont examinées avant d'apparaître comme services vérifiés.",
+        "separate": "Les partenariats officiels sont indiqués séparément lorsqu'ils sont confirmés."
+      }
+    },
+    "sources": {
+      "eyebrow": "Ensemble de références actuel",
+      "title": "Sources utilisées pour soutenir l'examen",
+      "description": "Ces organismes et répertoires aident à orienter le processus d'examen. CareConnect vérifie tout de même les détails des fiches avant de présenter les services dans le répertoire.",
+      "items": {
+        "twoOneOne": {
+          "label": "Référence de répertoire",
+          "description": "Référence provinciale de services sociaux utilisée pour comparer les catégories, le langage d'admission et les coordonnées publiques."
+        },
+        "city": {
+          "label": "Référence municipale",
+          "description": "Référence municipale de programmes et de services publics utilisée pour situer le contexte local des services à Kingston."
+        },
+        "unitedWay": {
+          "label": "Référence communautaire",
+          "description": "Référence régionale du secteur communautaire utilisée pour comprendre les organismes locaux et les réseaux de soutien."
+        },
+        "kchc": {
+          "label": "Référence santé",
+          "description": "Référence locale de santé et de services communautaires utilisée pour contextualiser les renseignements sur les cliniques et les programmes communautaires."
+        }
+      }
+    },
+    "review": {
+      "eyebrow": "Flux d'examen",
+      "title": "Comment les références deviennent des fiches vérifiées",
+      "description": "Une source peut orienter l'équipe d'examen, mais elle ne devient pas automatiquement une fiche. CareConnect garde les étapes explicites pour que les utilisateurs comprennent ce que signifie vérifié.",
+      "steps": {
+        "source": {
+          "title": "Commencer par les références publiques",
+          "description": "Les répertoires connus, les pages municipales et les sources communautaires aident à repérer les dossiers qui pourraient appartenir au répertoire."
+        },
+        "curation": {
+          "title": "Vérifier la fiche manuellement",
+          "description": "Les détails sont examinés pour la portée, l'admissibilité, les moyens de contact et les limites de sécurité avant qu'un service soit présenté comme vérifié."
+        },
+        "maintenance": {
+          "title": "Revoir les fiches actives",
+          "description": "Les corrections, les changements de sources et les renseignements périmés sont réintégrés à l'examen périodique pour que le répertoire reste utile."
+        }
+      }
     },
     "cta": {
       "title": "Suggérer un service ou une source",
-      "subtitle": "Êtes-vous un fournisseur de services ou un organisme communautaire ? Envoyez-nous une correction, une source ou une suggestion de service à examiner.",
-      "button": "Suggérer un service"
+      "subtitle": "Êtes-vous un fournisseur de services ou un organisme communautaire? Envoyez-nous une correction, une source ou une suggestion de service à examiner.",
+      "button": "Suggérer un service",
+      "search": "Rechercher des services"
     },
-    "logoAlt": "Logo de {name}",
-    "referenceLabel": "Organisation de référence"
+    "logoAlt": "Logo de {name}"
   },
   "Partners": {
     "link": "Pour les partenaires"

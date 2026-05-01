@@ -973,23 +973,68 @@
   },
   "PartnersPage": {
     "hero": {
-      "title": "建立在可信来源上",
-      "subtitle": "CareConnect 使用公共和社区参考来源来支持人工整理与核实。正式合作关系会在确认后单独说明。"
+      "eyebrow": "参考来源",
+      "title": "CareConnect 如何审查来源信息",
+      "subtitle": "CareConnect 将公共和社区参考来源作为人工审查的输入。参考来源有助于指导整理；除非关系已经确认，否则不会被表述为背书或正式合作。"
     },
-    "verification": {
-      "title": "来源审查如何进行",
-      "step1": "来源审查",
-      "step2": "人工核实",
-      "step3": "月度审计",
-      "description": "CareConnect 会审查公开参考资料，进行人工核实，并持续对现有条目开展定期审计。"
+    "heroCard": {
+      "title": "来源模型",
+      "description": "来源审查让目录保持有依据，同时区分公共参考、人工整理和服务提供方确认。",
+      "items": {
+        "public": "公共和社区参考有助于发现服务并交叉核对详情。",
+        "reviewed": "条目在作为已核实服务显示前会经过审查。",
+        "separate": "正式合作关系会在确认后单独标注。"
+      }
+    },
+    "sources": {
+      "eyebrow": "当前参考集",
+      "title": "用于支持审查的来源",
+      "description": "这些组织和目录有助于指导审查流程。CareConnect 仍会在目录中展示服务前核查条目详情。",
+      "items": {
+        "twoOneOne": {
+          "label": "目录参考",
+          "description": "省级社会服务目录参考，用于比较类别、接收服务语言和公开联系方式。"
+        },
+        "city": {
+          "label": "市政参考",
+          "description": "市政项目和公共服务参考，用于了解 Kingston 本地服务背景。"
+        },
+        "unitedWay": {
+          "label": "社区参考",
+          "description": "区域社区部门参考，用于了解本地组织和支持生态。"
+        },
+        "kchc": {
+          "label": "健康参考",
+          "description": "本地健康和社区服务参考，用于补充诊所和社区项目信息的背景。"
+        }
+      }
+    },
+    "review": {
+      "eyebrow": "审查流程",
+      "title": "参考信息如何成为已核实条目",
+      "description": "来源可以为审查团队指明方向，但不会自动成为条目。CareConnect 保持审查步骤清晰，让用户理解已核实的含义。",
+      "steps": {
+        "source": {
+          "title": "从公共参考开始",
+          "description": "已知目录、市政页面和社区来源有助于发现可能适合纳入目录的记录。"
+        },
+        "curation": {
+          "title": "人工核查条目",
+          "description": "在服务显示为已核实前，会审查范围、资格、联系方式和安全边界。"
+        },
+        "maintenance": {
+          "title": "重新检查现有条目",
+          "description": "更正、来源变化和过期资料会重新进入定期审查，以保持目录实用。"
+        }
+      }
     },
     "cta": {
       "title": "推荐服务或来源",
       "subtitle": "您是服务提供者或社区机构吗？欢迎提交更正、参考来源或服务建议以供审核。",
-      "button": "建议服务"
+      "button": "建议服务",
+      "search": "搜索服务"
     },
-    "logoAlt": "{name} 徽标",
-    "referenceLabel": "参考机构"
+    "logoAlt": "{name} 徽标"
   },
   "Terms": {
     "title": "服务条款",

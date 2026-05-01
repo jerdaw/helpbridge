@@ -21,20 +21,20 @@ test.describe("About & Partners Pages", () => {
     await expect(page.getByRole("heading", { name: "Start with the directory" })).toBeVisible()
   })
 
-  test("Partners page loads and displays logos", async ({ page }) => {
+  test("Reference sources page loads and displays source cards", async ({ page }) => {
     await page.goto("/about/partners")
 
     // Check Hero
-    await expect(page.getByRole("heading", { name: "Built on Trusted Sources" })).toBeVisible()
+    await expect(page.getByRole("heading", { name: "How CareConnect reviews source information" })).toBeVisible()
 
-    // Check Partner Cards (text content since we used placeholders)
+    // Check Reference Source Cards
     await expect(page.getByText("211 Ontario")).toBeVisible()
     await expect(page.getByText("City of Kingston")).toBeVisible()
     await expect(page.getByText("United Way KFL&A")).toBeVisible()
 
     // Check Verification Process
-    await expect(page.getByRole("heading", { name: "Source Verification" })).toBeVisible()
-    await expect(page.getByText("Monthly Audits")).toBeVisible()
+    await expect(page.getByRole("heading", { name: "How references become verified listings" })).toBeVisible()
+    await expect(page.getByText("Revisit active listings")).toBeVisible()
   })
 
   test("Navigation links work", async ({ page, isMobile }) => {
@@ -48,7 +48,7 @@ test.describe("About & Partners Pages", () => {
     await expect(page).toHaveURL(/\/about$/)
 
     await page.getByRole("link", { name: "View Reference Sources" }).click()
-    await expect(page.getByRole("heading", { name: "Built on Trusted Sources" })).toBeVisible()
+    await expect(page.getByRole("heading", { name: "How CareConnect reviews source information" })).toBeVisible()
     await expect(page).toHaveURL(/\/about\/partners$/)
 
     await page.getByRole("contentinfo").getByRole("link", { name: "About Us" }).click()

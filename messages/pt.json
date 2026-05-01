@@ -973,23 +973,68 @@
   },
   "PartnersPage": {
     "hero": {
-      "title": "Construído em Fontes Confiáveis",
-      "subtitle": "O CareConnect utiliza fontes de referência públicas e comunitárias para apoiar a curadoria e a verificação manuais. As parcerias formais são identificadas separadamente quando confirmadas."
+      "eyebrow": "Fontes de referência",
+      "title": "Como o CareConnect revê informações de fontes",
+      "subtitle": "O CareConnect utiliza fontes de referência públicas e comunitárias como insumos para revisão manual. Uma fonte de referência ajuda a orientar a curadoria; ela não é apresentada como endosso ou parceria oficial, a menos que essa relação seja confirmada."
     },
-    "verification": {
-      "title": "Como funciona a revisão de fontes",
-      "step1": "Revisão das fontes",
-      "step2": "Verificação manual",
-      "step3": "Auditorias Mensais",
-      "description": "O CareConnect revê material de referência público, aplica verificação manual e mantém auditorias periódicas para listagens ativas."
+    "heroCard": {
+      "title": "O modelo de fontes",
+      "description": "A revisão de fontes mantém o diretório fundamentado e preserva a separação entre referências públicas, curadoria manual e confirmação do prestador.",
+      "items": {
+        "public": "Referências públicas e comunitárias ajudam a identificar serviços e conferir detalhes.",
+        "reviewed": "As listagens são revistas antes de aparecerem como serviços verificados.",
+        "separate": "Parcerias formais são identificadas separadamente quando confirmadas."
+      }
+    },
+    "sources": {
+      "eyebrow": "Conjunto atual de referências",
+      "title": "Fontes usadas para apoiar a revisão",
+      "description": "Estas organizações e diretórios ajudam a orientar o processo de revisão. O CareConnect ainda verifica os detalhes das listagens antes de apresentar serviços no diretório.",
+      "items": {
+        "twoOneOne": {
+          "label": "Referência de diretório",
+          "description": "Referência provincial de serviços sociais usada para comparar categorias, linguagem de admissão e detalhes públicos de contato."
+        },
+        "city": {
+          "label": "Referência municipal",
+          "description": "Referência de programas municipais e serviços públicos usada para orientar o contexto local de serviços em Kingston."
+        },
+        "unitedWay": {
+          "label": "Referência comunitária",
+          "description": "Referência regional do setor comunitário usada para entender organizações locais e ecossistemas de apoio."
+        },
+        "kchc": {
+          "label": "Referência de saúde",
+          "description": "Referência local de saúde e serviços comunitários usada para contextualizar informações de clínicas e programas comunitários."
+        }
+      }
+    },
+    "review": {
+      "eyebrow": "Fluxo de revisão",
+      "title": "Como referências se tornam listagens verificadas",
+      "description": "Uma fonte pode orientar a equipe de revisão, mas não se torna automaticamente uma listagem. O CareConnect mantém as etapas explícitas para que as pessoas entendam o que verificado significa.",
+      "steps": {
+        "source": {
+          "title": "Começar com referências públicas",
+          "description": "Diretórios conhecidos, páginas municipais e fontes comunitárias ajudam a identificar registros que podem pertencer ao diretório."
+        },
+        "curation": {
+          "title": "Verificar a listagem manualmente",
+          "description": "Os detalhes são revistos quanto a escopo, elegibilidade, caminhos de contato e limites de segurança antes de um serviço ser apresentado como verificado."
+        },
+        "maintenance": {
+          "title": "Revisitar listagens ativas",
+          "description": "Correções, mudanças nas fontes e informações desatualizadas retornam à revisão periódica para que o diretório continue útil."
+        }
+      }
     },
     "cta": {
       "title": "Sugira um serviço ou fonte",
       "subtitle": "É um prestador de serviços ou uma organização comunitária? Envie-nos uma correção, uma fonte ou uma sugestão de serviço para revisão.",
-      "button": "Sugerir um Serviço"
+      "button": "Sugerir um serviço",
+      "search": "Pesquisar serviços"
     },
-    "logoAlt": "Logótipo de {name}",
-    "referenceLabel": "Organização de referência"
+    "logoAlt": "Logótipo de {name}"
   },
   "Terms": {
     "title": "Termos de Serviço",

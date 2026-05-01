@@ -973,23 +973,68 @@
   },
   "PartnersPage": {
     "hero": {
-      "title": "Construido sobre Fuentes Confiables",
-      "subtitle": "CareConnect utiliza fuentes de referencia públicas y comunitarias para apoyar la curación y verificación manual. Las alianzas formales se identifican por separado cuando están confirmadas."
+      "eyebrow": "Fuentes de referencia",
+      "title": "Cómo CareConnect revisa la información de las fuentes",
+      "subtitle": "CareConnect usa fuentes de referencia públicas y comunitarias como insumos para la revisión manual. Una fuente de referencia ayuda a orientar la curación; no se presenta como respaldo ni como alianza oficial a menos que esa relación esté confirmada."
     },
-    "verification": {
-      "title": "Cómo funciona la revisión de fuentes",
-      "step1": "Revisión de fuentes",
-      "step2": "Verificación manual",
-      "step3": "Auditorías Mensuales",
-      "description": "CareConnect revisa material de referencia público, aplica verificación manual y mantiene auditorías periódicas para los listados activos."
+    "heroCard": {
+      "title": "El modelo de fuentes",
+      "description": "La revisión de fuentes mantiene el directorio bien fundamentado y conserva la separación entre referencias públicas, curación manual y confirmación del proveedor.",
+      "items": {
+        "public": "Las referencias públicas y comunitarias ayudan a identificar servicios y contrastar detalles.",
+        "reviewed": "Los listados se revisan antes de aparecer como servicios verificados.",
+        "separate": "Las alianzas formales se etiquetan por separado cuando se confirman."
+      }
+    },
+    "sources": {
+      "eyebrow": "Conjunto actual de referencias",
+      "title": "Fuentes usadas para apoyar la revisión",
+      "description": "Estas organizaciones y directorios ayudan a orientar el proceso de revisión. CareConnect todavía verifica los detalles de los listados antes de presentar servicios en el directorio.",
+      "items": {
+        "twoOneOne": {
+          "label": "Referencia de directorio",
+          "description": "Referencia provincial de servicios sociales usada para comparar categorías, lenguaje de admisión y datos públicos de contacto."
+        },
+        "city": {
+          "label": "Referencia municipal",
+          "description": "Referencia de programas municipales y servicios públicos usada para orientar el contexto local de servicios en Kingston."
+        },
+        "unitedWay": {
+          "label": "Referencia comunitaria",
+          "description": "Referencia regional del sector comunitario usada para entender organizaciones locales y ecosistemas de apoyo."
+        },
+        "kchc": {
+          "label": "Referencia de salud",
+          "description": "Referencia local de salud y servicios comunitarios usada para contextualizar información de clínicas y programas comunitarios."
+        }
+      }
+    },
+    "review": {
+      "eyebrow": "Flujo de revisión",
+      "title": "Cómo las referencias se convierten en listados verificados",
+      "description": "Una fuente puede orientar al equipo de revisión, pero no se convierte automáticamente en un listado. CareConnect mantiene explícitos los pasos de revisión para que las personas entiendan qué significa verificado.",
+      "steps": {
+        "source": {
+          "title": "Empezar con referencias públicas",
+          "description": "Directorios conocidos, páginas municipales y fuentes comunitarias ayudan a identificar registros que podrían pertenecer al directorio."
+        },
+        "curation": {
+          "title": "Revisar el listado manualmente",
+          "description": "Los detalles se revisan por alcance, elegibilidad, vías de contacto y límites de seguridad antes de presentar un servicio como verificado."
+        },
+        "maintenance": {
+          "title": "Revisar listados activos",
+          "description": "Correcciones, cambios de fuentes e información desactualizada vuelven a la revisión periódica para que el directorio siga siendo útil."
+        }
+      }
     },
     "cta": {
       "title": "Sugiere un servicio o una fuente",
       "subtitle": "¿Eres un proveedor de servicios u organización comunitaria? Envíanos una corrección, una fuente o una sugerencia de servicio para revisión.",
-      "button": "Sugerir un Servicio"
+      "button": "Sugerir un servicio",
+      "search": "Buscar servicios"
     },
-    "logoAlt": "Logotipo de {name}",
-    "referenceLabel": "Organización de referencia"
+    "logoAlt": "Logotipo de {name}"
   },
   "Terms": {
     "title": "Términos de Servicio",

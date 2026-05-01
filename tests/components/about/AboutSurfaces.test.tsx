@@ -18,6 +18,23 @@ function AboutCopyProbe() {
   )
 }
 
+function PartnersCopyProbe() {
+  const t = useTranslations("PartnersPage")
+
+  return (
+    <section>
+      <h1>{t("hero.title")}</h1>
+      <p>{t("hero.subtitle")}</p>
+      <h2>{t("sources.title")}</h2>
+      <p>{t("sources.items.twoOneOne.description")}</p>
+      <h2>{t("review.title")}</h2>
+      <p>{t("review.steps.maintenance.description")}</p>
+      <Link href="/submit-service">{t("cta.button")}</Link>
+      <Link href="/">{t("cta.search")}</Link>
+    </section>
+  )
+}
+
 describe("About page surfaces", () => {
   it("renders current About hero copy without stale milestone language", () => {
     renderWithProviders(<AboutCopyProbe />, { messages: enMessages })
@@ -36,5 +53,18 @@ describe("About page surfaces", () => {
     expect(screen.getByRole("heading", { name: "What CareConnect does and doesn't do" })).toBeInTheDocument()
     expect(screen.getByText("Search verified social-service listings")).toBeInTheDocument()
     expect(screen.getByText("Guarantee hours, eligibility, or real-time availability")).toBeInTheDocument()
+  })
+
+  it("renders reference source copy as a review model rather than a partner claim", () => {
+    renderWithProviders(<PartnersCopyProbe />, { messages: enMessages })
+
+    expect(screen.getByRole("heading", { name: "How CareConnect reviews source information" })).toBeInTheDocument()
+    expect(screen.getByText(/not presented as an endorsement or official partnership/i)).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "Sources used to support review" })).toBeInTheDocument()
+    expect(screen.getByText(/Province-wide social-service directory reference/i)).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: "How references become verified listings" })).toBeInTheDocument()
+    expect(screen.getByText(/fed back into periodic review/i)).toBeInTheDocument()
+    expect(screen.getByRole("link", { name: "Suggest a service" })).toHaveAttribute("href", "/submit-service")
+    expect(screen.getByRole("link", { name: "Search services" })).toHaveAttribute("href", "/")
   })
 })

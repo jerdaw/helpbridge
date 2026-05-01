@@ -1261,23 +1261,68 @@
   },
   "PartnersPage": {
     "hero": {
-      "title": "Built on Trusted Sources",
-      "subtitle": "CareConnect uses public and community reference sources to support manual curation and verification. Formal partnerships are identified separately when confirmed."
+      "eyebrow": "Reference sources",
+      "title": "How CareConnect reviews source information",
+      "subtitle": "CareConnect uses public and community reference sources as inputs for manual review. A reference source helps guide curation; it is not presented as an endorsement or official partnership unless that relationship is confirmed."
     },
-    "verification": {
-      "title": "How Source Review Works",
-      "step1": "Source Review",
-      "step2": "Manual Verification",
-      "step3": "Monthly Audits",
-      "description": "CareConnect reviews public reference material, applies manual verification, and continues periodic audits for active listings."
+    "heroCard": {
+      "title": "The source model",
+      "description": "Source review keeps the directory grounded while preserving the boundary between public references, manual curation, and provider confirmation.",
+      "items": {
+        "public": "Public and community references help identify services and cross-check details.",
+        "reviewed": "Listings are reviewed before they appear as verified services.",
+        "separate": "Formal partnerships are labeled separately when confirmed."
+      }
+    },
+    "sources": {
+      "eyebrow": "Current reference set",
+      "title": "Sources used to support review",
+      "description": "These organizations and directories help orient the review process. CareConnect still checks listing details before presenting services in the directory.",
+      "items": {
+        "twoOneOne": {
+          "label": "Directory reference",
+          "description": "Province-wide social-service directory reference used to compare categories, intake language, and public contact details."
+        },
+        "city": {
+          "label": "Municipal reference",
+          "description": "Municipal program and public-service reference used to orient local service context in Kingston."
+        },
+        "unitedWay": {
+          "label": "Community reference",
+          "description": "Regional community-sector reference used to understand local organizations and support ecosystems."
+        },
+        "kchc": {
+          "label": "Health reference",
+          "description": "Local health and community-services reference used to contextualize clinic and community program information."
+        }
+      }
+    },
+    "review": {
+      "eyebrow": "Review workflow",
+      "title": "How references become verified listings",
+      "description": "A source can point the review team in the right direction, but it does not automatically become a listing. CareConnect keeps the review steps explicit so users can understand what verified means.",
+      "steps": {
+        "source": {
+          "title": "Start with public references",
+          "description": "Known directories, municipal pages, and community sources help identify records that may belong in the directory."
+        },
+        "curation": {
+          "title": "Check the listing by hand",
+          "description": "Details are reviewed for scope, eligibility, contact paths, and safety boundaries before a service is presented as verified."
+        },
+        "maintenance": {
+          "title": "Revisit active listings",
+          "description": "Corrections, source changes, and stale information are fed back into periodic review so the directory can stay useful."
+        }
+      }
     },
     "cta": {
-      "title": "Suggest a Service or Source",
+      "title": "Suggest a service or source",
       "subtitle": "Are you a service provider or community organization? Send us a correction, source, or service suggestion for review.",
-      "button": "Suggest a Service"
+      "button": "Suggest a service",
+      "search": "Search services"
     },
-    "logoAlt": "{name} logo",
-    "referenceLabel": "Reference organization"
+    "logoAlt": "{name} logo"
   },
   "Terms": {
     "title": "Terms of Service",
