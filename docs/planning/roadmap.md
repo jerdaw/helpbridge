@@ -27,6 +27,7 @@ tags: [planning, roadmap, v22.0, governance]
 - **Languages**: 7 locales at translation-key parity
 - **Homepage search UX**: resting hero now keeps quick-search chips and a restrained service/category/language metrics rail, while compact utility/category filters appear only in the active search/results state
 - **About page UX**: `/about` now uses a coherent trust/context layout, shared content rail, smooth page-level background, and primary CTA styling aligned with the theme button system
+- **Public and operational surface polish**: `/about/partners`, `/submit-service`, `/settings`, `/service/[id]`, `/login`, `/offline`, static legal/help/trust pages, and authenticated `/dashboard/**` plus `/admin/**` surfaces now share the polished page system; authenticated visual QA remains environment-gated and tracked below
 - **Dashboard trust/resilience**: partner overview metrics are live, degraded read states are explicit, and localized dashboard/admin redirects now preserve locale
 - **Search explainability**: public search results now surface deduplicated match reasons with an accessible disclosure for deeper scoring context
 - **Stale-data governance**: search now excludes records beyond the 180-day freshness window, freshness badges distinguish expired records, and direct-linked detail pages show an explicit stale-record warning
@@ -171,12 +172,7 @@ These items are worth doing only if they do not distract from Gate 0 closure:
 4. Expand exact-English duplicate i18n auditing from the current focused namespaces to all used translation keys after the remaining legacy translation debt is localized.
 5. From the admissions backlog, only execute the still-open Tier 0 items that strengthen pilot readiness or evidence discipline: `A1` and bounded `A6` / `A16`.
 6. Keep docs dependencies bounded to the MkDocs 1.x line during routine maintenance, but defer any platform migration here until the earlier Zensical waves succeed and this repo's required plugin parity is proven.
-7. Keep the public surface and route-reference backlog batched as bounded maintenance, not feature expansion:
-   - **Batch A - route-reference cleanup (completed 2026-05-01)**: footer community links use the homepage's supported category query pattern, the partner-login CTA points to `/about/partners`, and admin observability runbook links open the GitHub docs source externally.
-   - **Batch B - high-value public workflows (completed 2026-05-01)**: `/service/[id]`, `/login`, and `/offline` now share the polished public-page visual system; login runtime messages are localized, offline support is clearer, and service-detail privacy-gated map behavior remains intact.
-   - **Batch C - trust, legal, and help surfaces (completed 2026-05-01)**: `/privacy`, `/terms`, `/content-policy`, `/partner-terms`, `/accessibility`, `/faq`, `/user-guide`, and `/impact` now share the polished static-page shell, stable last-reviewed copy, current 196-service language, and focused route/page coverage.
-   - **Batch D - authenticated operational surfaces (completed 2026-05-01)**: `/dashboard/**` and `/admin/**` now share the polished operational shell, localized partner navigation, consistent glass surfaces, and focused dashboard/admin component coverage without changing auth, API, schema, or service-data behavior.
-8. Complete authenticated desktop/mobile visual QA for `/dashboard/**` and `/admin/**` once a valid local Supabase environment and signed-in partner/admin session are available. Batch D implementation is code-complete, but authenticated browser review remains environment-gated because this local workspace currently lacks `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+7. Complete authenticated desktop/mobile visual QA for `/dashboard/**` and `/admin/**` once a valid local Supabase environment and signed-in partner/admin session are available. The authenticated-surface implementation is code-complete, but authenticated browser review remains environment-gated because this local workspace currently lacks `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
 
 ## On Hold
 
@@ -268,6 +264,7 @@ References:
 
 ### Recent Completed Milestones
 
+- **Public and operational surface polish (2026-05-01)**: completed the bounded reference sources, suggest-service intake, route-reference cleanup, public workflow, static legal/help/trust, settings, and authenticated dashboard/admin polish wave without changing service-data, search, auth, or schema contracts; archived in [2026-05-01 v20.0 Public and Operational Surface Polish](archive/2026-05-01-v20-0-public-and-operational-surface-polish.md).
 - **About page polish (2026-04-30)**: rebuilt `/about` as a calmer trust and context page, removed duplicated homepage-style sections, restored the page-level background wash, aligned hero/source/context/CTA sections on a shared rail, and refined the primary CTA treatment without changing service data or search behavior; archived in [2026-04-30 v20.0 About Page Polish](archive/2026-04-30-v20-0-about-page-polish.md).
 - **Homepage search UX polish (2026-04-29)**: moved filters into the active search/results state, compacted category controls with an accessible "more categories" expansion, restored and refined the service/category/language metrics rail, folded trust-strip content into a clearer `How It Works` flow, tuned desktop/mobile section spacing and footer layout, and refreshed related copy/i18n/test coverage; archived in [2026-04-29 v20.0 Homepage Search UX Polish](archive/2026-04-29-v20-0-homepage-search-ux-polish.md).
 - **Gate 0 prep and deploy-contract alignment (2026-04-28)**: added prep-only C1/D4 evidence packets, synchronized Gate 0 tracker wording without closing evidence blockers, aligned active CareConnect deploy/rollback docs with the `platform-ops` sudo-required frontend env-file contract, and archived the pass in [2026-04-28 v22.0 Gate 0 Prep and Deploy Contract Alignment](archive/2026-04-28-v22-0-gate-0-prep-and-deploy-contract-alignment.md).
@@ -300,6 +297,7 @@ The project already has the technical base for a live, privacy-first, resilient 
 ### Archive and Historical Plans
 
 - [Planning Archive](archive/)
+- [v20.0 Public and Operational Surface Polish Archive](archive/2026-05-01-v20-0-public-and-operational-surface-polish.md)
 - [v20.0 About Page Polish Archive](archive/2026-04-30-v20-0-about-page-polish.md)
 - [v20.0 Quiet GitHub Automation and URL Health Hardening Archive](archive/2026-04-23-v20-0-quiet-github-automation-and-url-health-hardening.md)
 - [v22.0 Gate 0 Wait Maintenance Bundle Archive](archive/2026-04-05-v22-0-gate-0-wait-maintenance-bundle.md)

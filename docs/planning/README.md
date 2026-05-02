@@ -25,6 +25,10 @@ This directory contains planning and strategy documents for CareConnect.
 
 ### Detailed Documentation (Optional)
 
+- [v20.0 Public and Operational Surface Polish Archive (2026-05-01)](archive/2026-05-01-v20-0-public-and-operational-surface-polish.md)
+  - Completed reference sources, suggest-service intake, settings, public workflow, static legal/help/trust, and authenticated operational surface polish
+  - **Reading time:** 5 minutes
+
 - [v20.0 About Page Polish Archive (2026-04-30)](archive/2026-04-30-v20-0-about-page-polish.md)
   - Completed About page layout, background, section rhythm, shared-rail alignment, and CTA styling polish
   - **Reading time:** 5 minutes
@@ -108,6 +112,7 @@ docs/planning/
 ├── README.md ← You are here
 ├── roadmap.md (main roadmap, updated for v22.0)
 ├── archive/ (completed version plans)
+├── archive/2026-05-01-v20-0-public-and-operational-surface-polish.md
 ├── archive/2026-04-30-v20-0-about-page-polish.md
 ├── archive/2026-04-29-v20-0-homepage-search-ux-polish.md
 ├── archive/2026-04-28-v22-0-gate-0-prep-and-deploy-contract-alignment.md
