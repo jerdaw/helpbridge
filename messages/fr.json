@@ -690,6 +690,19 @@
         "updateAllFailed": "La mise à jour des notifications a échoué"
       },
       "temporarilyUnavailable": "Les notifications sont temporairement indisponibles. Veuillez réessayer plus tard."
+    },
+    "navigation": {
+      "overview": "Vue d'ensemble",
+      "services": "Mes services",
+      "notifications": "Notifications",
+      "feedback": "Commentaires",
+      "analytics": "Analytique",
+      "settings": "Paramètres",
+      "publicSite": "Voir le site public",
+      "signOut": "Se déconnecter",
+      "roleLabel": "Administrateur de l'organisation",
+      "openMenu": "Ouvrir le menu de l'espace de travail",
+      "closeMenu": "Fermer le menu de l'espace de travail"
     }
   },
   "ServiceDetail": {

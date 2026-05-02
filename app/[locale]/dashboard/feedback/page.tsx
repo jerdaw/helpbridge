@@ -2,7 +2,7 @@ import { createClient } from "@/utils/supabase/server"
 import { getTranslations } from "next-intl/server"
 import { logger } from "@/lib/logger"
 import { FeedbackList } from "@/components/dashboard/FeedbackList"
-import { DashboardPageHeader } from "@/components/dashboard/DashboardPageHeader"
+import { DashboardShell } from "@/components/dashboard/DashboardShell"
 import { redirect } from "@/i18n/routing"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
@@ -100,14 +100,13 @@ export default async function FeedbackPage({ params }: { params: Promise<{ local
   }
 
   return (
-    <div className="space-y-6">
-      <DashboardPageHeader title={t("title")} subtitle={t("description")} />
+    <DashboardShell title={t("title")} subtitle={t("description")} maxWidth="wide">
       {result.degraded && (
         <Alert>
           <AlertDescription>{t("temporarilyUnavailable")}</AlertDescription>
         </Alert>
       )}
       <FeedbackList feedback={result.feedback} />
-    </div>
+    </DashboardShell>
   )
 }

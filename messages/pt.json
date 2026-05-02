@@ -644,6 +644,19 @@
         "updateAllFailed": "Falha ao atualizar as notificações"
       },
       "temporarilyUnavailable": "As notificações estão temporariamente indisponíveis. Tente novamente mais tarde."
+    },
+    "navigation": {
+      "overview": "Visão geral",
+      "services": "Meus serviços",
+      "notifications": "Notificações",
+      "feedback": "Comentários",
+      "analytics": "Análises",
+      "settings": "Configurações",
+      "publicSite": "Ver site público",
+      "signOut": "Sair",
+      "roleLabel": "Administrador da organização",
+      "openMenu": "Abrir menu do espaço de trabalho",
+      "closeMenu": "Fechar menu do espaço de trabalho"
     }
   },
   "ServiceDetail": {

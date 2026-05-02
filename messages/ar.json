@@ -656,6 +656,19 @@
         "updateAllFailed": "فشل تحديث الإشعارات"
       },
       "temporarilyUnavailable": "الإشعارات غير متاحة مؤقتًا. يرجى المحاولة لاحقًا."
+    },
+    "navigation": {
+      "overview": "نظرة عامة",
+      "services": "خدماتي",
+      "notifications": "الإشعارات",
+      "feedback": "الملاحظات",
+      "analytics": "التحليلات",
+      "settings": "الإعدادات",
+      "publicSite": "عرض الموقع العام",
+      "signOut": "تسجيل الخروج",
+      "roleLabel": "مسؤول المؤسسة",
+      "openMenu": "فتح قائمة مساحة العمل",
+      "closeMenu": "إغلاق قائمة مساحة العمل"
     }
   },
   "ServiceDetail": {

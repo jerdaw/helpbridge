@@ -25,7 +25,7 @@ export function CircuitBreakerCard({ stats }: CircuitBreakerCardProps) {
   }
 
   return (
-    <Card>
+    <Card className="border-neutral-200/75 bg-white/86 shadow-[0_14px_34px_rgba(15,23,42,0.05)] ring-1 ring-white/70 backdrop-blur-md dark:border-white/10 dark:bg-white/[0.06] dark:ring-white/10">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>

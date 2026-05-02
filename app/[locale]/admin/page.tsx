@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { AccessibleFormField } from "@/components/forms/AccessibleFormField"
 import { ReindexProgress } from "@/components/admin/ReindexProgress"
 import { useTranslations } from "next-intl"
+import { DashboardShell, DashboardSurface } from "@/components/dashboard/DashboardShell"
 
 export default function AdminPage() {
   const t = useTranslations("Admin")
@@ -84,92 +85,104 @@ export default function AdminPage() {
     }, 3000)
   }
 
-  if (isLoading) return <div className="p-8">{t("loading")}</div>
+  if (isLoading) {
+    return (
+      <main id="main-content" tabIndex={-1} className="min-h-screen focus:outline-none">
+        <DashboardShell title={t("title")} maxWidth="wide">
+          <DashboardSurface>
+            <div className="flex items-center justify-center p-12 text-neutral-600 dark:text-neutral-300">
+              {t("loading")}
+            </div>
+          </DashboardSurface>
+        </DashboardShell>
+      </main>
+    )
+  }
 
   return (
-    <main
-      id="main-content"
-      tabIndex={-1}
-      className="min-h-screen bg-neutral-100 p-8 focus:outline-none dark:bg-neutral-900"
-    >
-      <header className="mb-8 flex items-center justify-between">
-        <h1 className="heading-display text-2xl font-bold text-neutral-900 dark:text-white">{t("title")}</h1>
-        <div className="flex gap-4">
-          <span className="font-mono text-sm text-red-500">{status}</span>
-          <Button variant="secondary" onClick={handleReindex} disabled={showReindexProgress}>
-            <RefreshCw className={showReindexProgress ? "h-4 w-4 animate-spin" : "h-4 w-4"} /> {t("actions.reindexAi")}
-          </Button>
-        </div>
-      </header>
-
-      {/* Reindex Progress */}
-      {showReindexProgress && reindexProgressId && (
-        <div className="mb-8">
-          <ReindexProgress progressId={reindexProgressId} onComplete={handleReindexComplete} />
-        </div>
-      )}
-
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-        {/* List Column */}
-        <div className="space-y-4 lg:col-span-1">
-          <div className="flex items-center justify-between">
-            <h2 className="font-semibold text-neutral-500">{t("servicesList.title", { count: services.length })}</h2>
-            <Button
-              variant="default"
-              size="icon"
-              className="rounded-full"
-              onClick={() =>
-                setSelectedService({
-                  id: "new-" + Date.now(),
-                  name: t("newService.name"),
-                  description: "",
-                  url: "",
-                  phone: "",
-                  address: "",
-                  intent_category: IntentCategory.Food,
-                  verification_level: VerificationLevel.L0,
-                  synthetic_queries: [],
-                  identity_tags: [],
-                  provenance: {
-                    verified_by: "admin",
-                    verified_at: new Date().toISOString(),
-                    evidence_url: "",
-                    method: "manual-entry",
-                  },
-                })
-              }
-            >
-              <Plus className="h-5 w-5" />
+    <main id="main-content" tabIndex={-1} className="min-h-screen focus:outline-none">
+      <DashboardShell
+        title={t("title")}
+        maxWidth="wide"
+        actions={
+          <>
+            <span className="font-mono text-sm text-red-500">{status}</span>
+            <Button variant="secondary" onClick={handleReindex} disabled={showReindexProgress}>
+              <RefreshCw className={showReindexProgress ? "h-4 w-4 animate-spin" : "h-4 w-4"} />{" "}
+              {t("actions.reindexAi")}
             </Button>
+          </>
+        }
+      >
+        {/* Reindex Progress */}
+        {showReindexProgress && reindexProgressId && (
+          <div className="mb-8">
+            <ReindexProgress progressId={reindexProgressId} onComplete={handleReindexComplete} />
           </div>
-          <div className="h-[80vh] space-y-2 overflow-y-auto pr-2">
-            {services.map((s) => (
-              <button
-                key={s.id}
-                type="button"
-                onClick={() => setSelectedService(s)}
-                className={`w-full cursor-pointer rounded-lg border p-3 text-left text-sm transition-colors ${
-                  selectedService?.id === s.id
-                    ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
-                    : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950"
-                }`}
-              >
-                <div className="font-medium">{s.name}</div>
-                <div className="text-neutral-400">{s.intent_category}</div>
-              </button>
-            ))}
-          </div>
-        </div>
+        )}
 
-        {/* Editor Column */}
-        <div className="rounded-xl bg-white p-6 shadow-sm lg:col-span-2 dark:bg-neutral-950">
-          {selectedService ? (
-            <ServiceEditor service={selectedService} onSave={handleSave} isSaving={isSaving} />
-          ) : (
-            <div className="flex h-full items-center justify-center text-neutral-400">{t("servicesList.empty")}</div>
-          )}
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          {/* List Column */}
+          <DashboardSurface className="lg:col-span-1" contentClassName="space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="font-semibold text-neutral-500">{t("servicesList.title", { count: services.length })}</h2>
+              <Button
+                variant="default"
+                size="icon"
+                className="rounded-full"
+                onClick={() =>
+                  setSelectedService({
+                    id: "new-" + Date.now(),
+                    name: t("newService.name"),
+                    description: "",
+                    url: "",
+                    phone: "",
+                    address: "",
+                    intent_category: IntentCategory.Food,
+                    verification_level: VerificationLevel.L0,
+                    synthetic_queries: [],
+                    identity_tags: [],
+                    provenance: {
+                      verified_by: "admin",
+                      verified_at: new Date().toISOString(),
+                      evidence_url: "",
+                      method: "manual-entry",
+                    },
+                  })
+                }
+              >
+                <Plus className="h-5 w-5" />
+              </Button>
+            </div>
+            <div className="h-[80vh] space-y-2 overflow-y-auto pr-2">
+              {services.map((s) => (
+                <button
+                  key={s.id}
+                  type="button"
+                  onClick={() => setSelectedService(s)}
+                  className={`w-full cursor-pointer rounded-lg border p-3 text-left text-sm transition-colors ${
+                    selectedService?.id === s.id
+                      ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
+                      : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950"
+                  }`}
+                >
+                  <div className="font-medium">{s.name}</div>
+                  <div className="text-neutral-400">{s.intent_category}</div>
+                </button>
+              ))}
+            </div>
+          </DashboardSurface>
+
+          {/* Editor Column */}
+          <DashboardSurface className="lg:col-span-2" contentClassName="min-h-[36rem]">
+            {selectedService ? (
+              <ServiceEditor service={selectedService} onSave={handleSave} isSaving={isSaving} />
+            ) : (
+              <div className="flex h-full items-center justify-center text-neutral-400">{t("servicesList.empty")}</div>
+            )}
+          </DashboardSurface>
         </div>
-      </div>
+      </DashboardShell>
     </main>
   )
 }

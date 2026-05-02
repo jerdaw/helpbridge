@@ -27,6 +27,7 @@ import { SLODisclaimerBanner } from "@/components/observability/SLODisclaimerBan
 import { getSLOComplianceSummary } from "@/lib/observability/slo-tracker"
 import { getTranslations } from "next-intl/server"
 import { redirect } from "@/i18n/routing"
+import { DashboardShell } from "@/components/dashboard/DashboardShell"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -75,32 +76,26 @@ export default async function ObservabilityPage({ params }: { params: Promise<{ 
   const sloCompliance = getSLOComplianceSummary()
 
   return (
-    <div className="container mx-auto space-y-6 p-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold">{t("title")}</h1>
-          <p className="text-muted-foreground">{t("description")}</p>
-        </div>
-        <RefreshButton />
-      </div>
+    <main id="main-content" tabIndex={-1} className="min-h-screen focus:outline-none">
+      <DashboardShell title={t("title")} subtitle={t("description")} actions={<RefreshButton />} maxWidth="wide">
+        {/* SLO Provisional Disclaimer */}
+        <SLODisclaimerBanner />
 
-      {/* SLO Provisional Disclaimer */}
-      <SLODisclaimerBanner />
+        {/* SLO Compliance */}
+        <SLOComplianceCard compliance={sloCompliance} />
 
-      {/* SLO Compliance */}
-      <SLOComplianceCard compliance={sloCompliance} />
+        {/* System Health Summary */}
+        <HealthSummary circuitBreaker={circuitBreakerStats} metrics={performanceMetrics} />
 
-      {/* System Health Summary */}
-      <HealthSummary circuitBreaker={circuitBreakerStats} metrics={performanceMetrics} />
+        {/* Circuit Breaker Status */}
+        <CircuitBreakerCard stats={circuitBreakerStats} />
 
-      {/* Circuit Breaker Status */}
-      <CircuitBreakerCard stats={circuitBreakerStats} />
+        {/* Performance Metrics */}
+        <PerformanceCharts metrics={performanceMetrics} />
 
-      {/* Performance Metrics */}
-      <PerformanceCharts metrics={performanceMetrics} />
-
-      {/* Auto-refresh every 60 seconds */}
-      <AutoRefresh />
-    </div>
+        {/* Auto-refresh every 60 seconds */}
+        <AutoRefresh />
+      </DashboardShell>
+    </main>
   )
 }

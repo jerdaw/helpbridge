@@ -7,13 +7,14 @@ import { Database } from "@/types/supabase"
 import EditServiceForm from "@/components/edit-service/EditServiceForm"
 import { ServiceFormData } from "@/lib/schemas/form"
 import { useAuth } from "@/components/layout/AuthProvider"
-import { ArrowLeft, Eye, Loader2 } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { ArrowLeft, Eye, Loader2, ThumbsUp, AlertTriangle } from "lucide-react"
 import { useServiceFeedback } from "@/hooks/useServiceFeedback"
-import { ThumbsUp, AlertTriangle } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { createClient } from "@/utils/supabase/client"
 import { logger } from "@/lib/logger"
 import { mapServiceRowToService } from "@/lib/service-db"
+import { DashboardEmptyState, DashboardShell, DashboardSurface } from "@/components/dashboard/DashboardShell"
 
 function FeedbackStats({ serviceId }: { serviceId: string }) {
   const { stats, helpfulPercentage, totalVotes, loading } = useServiceFeedback(serviceId)
@@ -102,43 +103,39 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
 
   if (loading) {
     return (
-      <div className="flex h-64 items-center justify-center">
-        <Loader2 className="text-primary-500 h-8 w-8 animate-spin" />
-      </div>
+      <DashboardShell title={t("editService")} maxWidth="narrow">
+        <DashboardSurface>
+          <div className="flex h-64 items-center justify-center">
+            <Loader2 className="text-primary-500 h-8 w-8 animate-spin" />
+          </div>
+        </DashboardSurface>
+      </DashboardShell>
     )
   }
 
   if (!service) {
     return (
-      <div className="py-12 text-center">
-        <h2 className="text-xl font-semibold text-neutral-900 dark:text-white">{t("serviceNotFound")}</h2>
-        <Link href="/dashboard/services" className="mt-4 inline-block text-blue-600 hover:underline">
-          &larr; {t("backToServices")}
-        </Link>
-      </div>
+      <DashboardShell title={t("editService")} maxWidth="narrow">
+        <DashboardEmptyState
+          icon={AlertTriangle}
+          title={t("serviceNotFound")}
+          description={t("backToServices")}
+          action={
+            <Button asChild variant="outline">
+              <Link href="/dashboard/services">&larr; {t("backToServices")}</Link>
+            </Button>
+          }
+        />
+      </DashboardShell>
     )
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Link
-            href="/dashboard/services"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-neutral-300 ring-inset hover:bg-neutral-50 dark:bg-neutral-800 dark:ring-neutral-700 dark:hover:bg-neutral-700"
-          >
-            <ArrowLeft className="h-4 w-4 text-neutral-600 dark:text-neutral-400" />
-          </Link>
-          <div>
-            <h1 className="heading-display text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
-              {t("editService")}
-            </h1>
-            <div className="mt-1 flex items-center gap-3">
-              <p className="text-sm text-neutral-600 dark:text-neutral-400">{service.name}</p>
-              <FeedbackStats serviceId={id} />
-            </div>
-          </div>
-        </div>
+    <DashboardShell
+      title={t("editService")}
+      subtitle={service.name}
+      maxWidth="narrow"
+      actions={
         <Link
           href={`/service/${id}`}
           target="_blank"
@@ -148,9 +145,21 @@ export default function EditServicePage({ params }: { params: Promise<{ id: stri
           <Eye className="h-4 w-4" />
           {t("preview")}
         </Link>
+      }
+    >
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <Button variant="outline" asChild>
+          <Link href="/dashboard/services">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {t("backToServices")}
+          </Link>
+        </Button>
+        <FeedbackStats serviceId={id} />
       </div>
 
-      <EditServiceForm service={service} onSubmit={handleUpdate} />
-    </div>
+      <DashboardSurface>
+        <EditServiceForm service={service} onSubmit={handleUpdate} />
+      </DashboardSurface>
+    </DashboardShell>
   )
 }

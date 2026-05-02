@@ -644,6 +644,19 @@
         "updateAllFailed": "ਨੋਟੀਫਿਕੇਸ਼ਨਾਂ ਨੂੰ ਅਪਡੇਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
       },
       "temporarilyUnavailable": "ਨੋਟੀਫਿਕੇਸ਼ਨ ਅਸਥਾਈ ਤੌਰ ਤੇ ਉਪਲਬਧ ਨਹੀਂ ਹਨ। ਬਾਅਦ ਵਿੱਚ ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+    },
+    "navigation": {
+      "overview": "ਝਲਕ",
+      "services": "ਮੇਰੀਆਂ ਸੇਵਾਵਾਂ",
+      "notifications": "ਸੂਚਨਾਵਾਂ",
+      "feedback": "ਫੀਡਬੈਕ",
+      "analytics": "ਵਿਸ਼ਲੇਸ਼ਣ",
+      "settings": "ਸੈਟਿੰਗਾਂ",
+      "publicSite": "ਜਨਤਕ ਸਾਈਟ ਵੇਖੋ",
+      "signOut": "ਸਾਈਨ ਆਉਟ",
+      "roleLabel": "ਸੰਸਥਾ ਪ੍ਰਸ਼ਾਸਕ",
+      "openMenu": "ਵਰਕਸਪੇਸ ਮੀਨੂ ਖੋਲ੍ਹੋ",
+      "closeMenu": "ਵਰਕਸਪੇਸ ਮੀਨੂ ਬੰਦ ਕਰੋ"
     }
   },
   "ServiceDetail": {

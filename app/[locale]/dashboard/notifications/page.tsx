@@ -7,8 +7,7 @@ import { createClient } from "@/utils/supabase/client"
 import { useAuth } from "@/components/layout/AuthProvider"
 import { useToast } from "@/components/ui/use-toast"
 import { useLocale, useTranslations } from "next-intl"
-import { DashboardPageHeader } from "@/components/dashboard/DashboardPageHeader"
-import { EmptyState } from "@/components/ui/empty-state"
+import { DashboardEmptyState, DashboardShell, DashboardSurface } from "@/components/dashboard/DashboardShell"
 import { markNotificationReadAction, markAllNotificationsReadAction } from "@/lib/actions/dashboard-notifications"
 
 interface Notification {
@@ -97,30 +96,32 @@ export default function NotificationsPage() {
 
   if (loading) {
     return (
-      <div className="flex justify-center p-12">
-        <Loader2 className="text-primary-500 h-8 w-8 animate-spin" />
-      </div>
+      <DashboardShell title={t("pageTitle")} subtitle={t("pageSubtitle")}>
+        <DashboardSurface>
+          <div className="flex justify-center p-12">
+            <Loader2 className="text-primary-500 h-8 w-8 animate-spin" />
+          </div>
+        </DashboardSurface>
+      </DashboardShell>
     )
   }
 
   return (
-    <div className="space-y-6">
-      <DashboardPageHeader
-        title={t("pageTitle")}
-        subtitle={t("pageSubtitle")}
-        actions={
-          notifications.some((n: Notification) => !n.read) ? (
-            <Button variant="link" onClick={markAllAsRead}>
-              {t("markAllAsRead")}
-            </Button>
-          ) : undefined
-        }
-      />
-
+    <DashboardShell
+      title={t("pageTitle")}
+      subtitle={t("pageSubtitle")}
+      actions={
+        notifications.some((n: Notification) => !n.read) ? (
+          <Button variant="link" onClick={markAllAsRead}>
+            {t("markAllAsRead")}
+          </Button>
+        ) : undefined
+      }
+    >
       {notifications.length === 0 ? (
-        <EmptyState icon={BellOff} title={t("noNotifications")} description={t("pageSubtitle")} />
+        <DashboardEmptyState icon={BellOff} title={t("noNotifications")} description={t("pageSubtitle")} />
       ) : (
-        <div className="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <DashboardSurface contentClassName="p-0">
           <ul className="divide-y divide-neutral-200 dark:divide-neutral-800">
             {notifications.map((notification: Notification) => (
               <li
@@ -151,8 +152,8 @@ export default function NotificationsPage() {
               </li>
             ))}
           </ul>
-        </div>
+        </DashboardSurface>
       )}
-    </div>
+    </DashboardShell>
   )
 }

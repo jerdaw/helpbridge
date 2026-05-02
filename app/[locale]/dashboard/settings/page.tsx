@@ -14,7 +14,7 @@ import { Separator } from "@/components/ui/separator"
 import { Loader2, Save, Shield, Bell, Users } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { MemberManagement } from "@/components/dashboard/MemberManagement"
-import { DashboardPageHeader } from "@/components/dashboard/DashboardPageHeader"
+import { DashboardEmptyState, DashboardShell, DashboardSurface } from "@/components/dashboard/DashboardShell"
 import type { Database } from "@/types/supabase"
 import { updateOrganizationAction, upsertOrganizationSettingsAction } from "@/lib/actions/dashboard-settings"
 
@@ -51,6 +51,8 @@ export default function SettingsPage() {
     email_on_service_update: true,
     weekly_analytics_report: false,
   })
+  const cardClass =
+    "border-neutral-200/75 bg-white/86 shadow-[0_14px_34px_rgba(15,23,42,0.05)] ring-1 ring-white/70 backdrop-blur-md dark:border-white/10 dark:bg-white/[0.06] dark:ring-white/10"
 
   useEffect(() => {
     async function fetchData() {
@@ -157,23 +159,29 @@ export default function SettingsPage() {
 
   if (loading) {
     return (
-      <div className="flex justify-center p-12">
-        <Loader2 className="h-8 w-8 animate-spin text-neutral-400" />
-      </div>
+      <DashboardShell title={t("title")} subtitle={t("description")} maxWidth="narrow">
+        <DashboardSurface>
+          <div className="flex justify-center p-12">
+            <Loader2 className="h-8 w-8 animate-spin text-neutral-400" />
+          </div>
+        </DashboardSurface>
+      </DashboardShell>
     )
   }
 
   if (!org) {
-    return <div className="p-8 text-center text-neutral-500">{t("noOrganization")}</div>
+    return (
+      <DashboardShell title={t("title")} subtitle={t("description")} maxWidth="narrow">
+        <DashboardEmptyState icon={Shield} title={t("noOrganization")} description={t("description")} />
+      </DashboardShell>
+    )
   }
 
   return (
-    <div className="mx-auto max-w-4xl space-y-8">
-      <DashboardPageHeader title={t("title")} subtitle={t("description")} />
-
+    <DashboardShell title={t("title")} subtitle={t("description")} maxWidth="narrow">
       <div className="grid gap-8">
         {/* Organization Information */}
-        <Card>
+        <Card className={cardClass}>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Shield className="text-primary-600 h-5 w-5" />
@@ -242,7 +250,7 @@ export default function SettingsPage() {
         </Card>
 
         {/* Notification Preferences */}
-        <Card>
+        <Card className={cardClass}>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Bell className="text-primary-600 h-5 w-5" />
@@ -296,7 +304,7 @@ export default function SettingsPage() {
         </Card>
 
         {/* Team Members */}
-        <Card>
+        <Card className={cardClass}>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Users className="text-primary-600 h-5 w-5" />
@@ -309,6 +317,6 @@ export default function SettingsPage() {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </DashboardShell>
   )
 }

@@ -644,6 +644,19 @@
         "updateAllFailed": "更新通知失败"
       },
       "temporarilyUnavailable": "通知暂时不可用，请稍后再试。"
+    },
+    "navigation": {
+      "overview": "概览",
+      "services": "我的服务",
+      "notifications": "通知",
+      "feedback": "反馈",
+      "analytics": "分析",
+      "settings": "设置",
+      "publicSite": "查看公开网站",
+      "signOut": "退出登录",
+      "roleLabel": "机构管理员",
+      "openMenu": "打开工作区菜单",
+      "closeMenu": "关闭工作区菜单"
     }
   },
   "ServiceDetail": {

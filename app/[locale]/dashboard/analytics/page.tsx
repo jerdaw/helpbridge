@@ -1,8 +1,7 @@
 import { createClient } from "@/utils/supabase/server"
 import { AnalyticsCard } from "@/components/dashboard/AnalyticsCard"
 import { getTranslations } from "next-intl/server"
-import { DashboardPageHeader } from "@/components/dashboard/DashboardPageHeader"
-import { Card } from "@/components/ui/card"
+import { DashboardShell, DashboardSurface } from "@/components/dashboard/DashboardShell"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { withCircuitBreaker } from "@/lib/resilience/supabase-breaker"
 import { logger } from "@/lib/logger"
@@ -104,9 +103,7 @@ export default async function PartnerAnalyticsPage() {
   const helpfulRate = totalFeedback ? Math.round((totalHelpful / totalFeedback) * 100) + "%" : "0%"
 
   return (
-    <div className="space-y-6 p-6">
-      <DashboardPageHeader title={t("title")} subtitle={t("dashboard.description")} />
-
+    <DashboardShell title={t("title")} subtitle={t("dashboard.description")} maxWidth="wide">
       {degraded && (
         <Alert>
           <AlertDescription>{t("dashboard.temporarilyUnavailable")}</AlertDescription>
@@ -138,11 +135,11 @@ export default async function PartnerAnalyticsPage() {
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* Service Performance Table */}
-        <Card className="p-4">
-          <div className="mb-4">
-            <h3 className="font-semibold">{t("dashboard.tables.performance.title")}</h3>
-            <p className="text-sm text-neutral-500">{t("dashboard.tables.performance.description")}</p>
-          </div>
+        <DashboardSurface
+          title={t("dashboard.tables.performance.title")}
+          description={t("dashboard.tables.performance.description")}
+          contentClassName="p-0"
+        >
           <div className="relative w-full overflow-auto">
             <table className="w-full caption-bottom text-sm">
               <thead className="[&_tr]:border-b">
@@ -183,14 +180,14 @@ export default async function PartnerAnalyticsPage() {
               </tbody>
             </table>
           </div>
-        </Card>
+        </DashboardSurface>
 
         {/* Services Needing Attention */}
-        <Card className="p-4">
-          <div className="mb-4">
-            <h3 className="font-semibold">{t("dashboard.tables.issues.title")}</h3>
-            <p className="text-sm text-neutral-500">{t("dashboard.tables.issues.description")}</p>
-          </div>
+        <DashboardSurface
+          title={t("dashboard.tables.issues.title")}
+          description={t("dashboard.tables.issues.description")}
+          contentClassName="p-0"
+        >
           <div className="relative w-full overflow-auto">
             <table className="w-full caption-bottom text-sm">
               <thead className="[&_tr]:border-b">
@@ -225,8 +222,8 @@ export default async function PartnerAnalyticsPage() {
               </tbody>
             </table>
           </div>
-        </Card>
+        </DashboardSurface>
       </div>
-    </div>
+    </DashboardShell>
   )
 }

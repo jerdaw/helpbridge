@@ -830,6 +830,19 @@
         "updateFailed": "Failed to update notification",
         "updateAllFailed": "Failed to update notifications"
       }
+    },
+    "navigation": {
+      "overview": "Overview",
+      "services": "My Services",
+      "notifications": "Notifications",
+      "feedback": "Feedback",
+      "analytics": "Analytics",
+      "settings": "Settings",
+      "publicSite": "View Public Site",
+      "signOut": "Sign Out",
+      "roleLabel": "Organization Admin",
+      "openMenu": "Open workspace menu",
+      "closeMenu": "Close workspace menu"
     }
   },
   "Freshness": {

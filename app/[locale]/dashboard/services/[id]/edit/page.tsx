@@ -2,7 +2,10 @@ import { notFound } from "next/navigation"
 import { getTranslations } from "next-intl/server"
 import { createClient } from "@/utils/supabase/server"
 import { getServiceById } from "@/lib/services"
-import { redirect } from "@/i18n/routing"
+import { Link, redirect } from "@/i18n/routing"
+import { DashboardShell, DashboardSurface } from "@/components/dashboard/DashboardShell"
+import { Button } from "@/components/ui/button"
+import { ArrowLeft } from "lucide-react"
 
 interface Props {
   params: Promise<{ id: string; locale: string }>
@@ -34,19 +37,24 @@ export default async function EditServicePage({ params }: Props) {
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <h1 className="heading-display text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">
-          {t("editService")}
-        </h1>
-        <p className="mt-2 text-sm text-neutral-500 dark:text-neutral-400">{service.name}</p>
-      </div>
-
-      <div className="bg-white p-8 shadow-sm ring-1 ring-neutral-900/5 sm:rounded-xl dark:bg-neutral-900">
+    <DashboardShell
+      title={t("editService")}
+      subtitle={service.name}
+      maxWidth="narrow"
+      actions={
+        <Button variant="outline" asChild>
+          <Link href="/dashboard/services">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {t("services.viewPage.backToServices")}
+          </Link>
+        </Button>
+      }
+    >
+      <DashboardSurface>
         {/* We need a client component to wrap the action for the form if we want to pass it as a prop */}
         <EditServiceClientWrapper service={service} id={id} locale={locale} />
-      </div>
-    </div>
+      </DashboardSurface>
+    </DashboardShell>
   )
 }
 

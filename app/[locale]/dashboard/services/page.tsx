@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server"
 import { createClient } from "@/utils/supabase/server"
 import { PartnerServiceList } from "@/components/partner/PartnerServiceList"
 import { Skeleton } from "@/components/ui/skeleton"
-import { DashboardPageHeader } from "@/components/dashboard/DashboardPageHeader"
+import { DashboardShell } from "@/components/dashboard/DashboardShell"
 import { Button } from "@/components/ui/button"
 import { Link, redirect } from "@/i18n/routing"
 import { Plus } from "lucide-react"
@@ -28,21 +28,20 @@ export default async function PartnerServicesPage({ params }: { params: Promise<
   }
 
   return (
-    <div className="space-y-6">
-      <DashboardPageHeader
-        title={t("services.title")}
-        actions={
-          <Button asChild>
-            <Link href="/dashboard/services/create">
-              <Plus className="mr-2 h-4 w-4" />
-              {t("services.createService")}
-            </Link>
-          </Button>
-        }
-      />
+    <DashboardShell
+      title={t("services.title")}
+      actions={
+        <Button asChild>
+          <Link href="/dashboard/services/create">
+            <Plus className="mr-2 h-4 w-4" />
+            {t("services.createService")}
+          </Link>
+        </Button>
+      }
+    >
       <Suspense fallback={<Skeleton className="h-64 w-full" />}>
         <PartnerServiceList partnerId={currentUser.id} locale={locale} />
       </Suspense>
-    </div>
+    </DashboardShell>
   )
 }

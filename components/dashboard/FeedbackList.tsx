@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { useTranslations } from "next-intl"
 import { FeedbackDetail } from "./FeedbackDetail"
+import { DashboardSurface } from "@/components/dashboard/DashboardShell"
 
 interface FeedbackItem {
   id: string
@@ -43,7 +44,7 @@ export function FeedbackList({ feedback }: FeedbackListProps) {
 
   return (
     <>
-      <div className="rounded-md border bg-white dark:bg-neutral-900">
+      <DashboardSurface contentClassName="p-0">
         <div className="relative w-full overflow-auto">
           <table className="w-full caption-bottom text-sm">
             <thead className="[&_tr]:border-b">
@@ -110,7 +111,7 @@ export function FeedbackList({ feedback }: FeedbackListProps) {
             </tbody>
           </table>
         </div>
-      </div>
+      </DashboardSurface>
 
       <FeedbackDetail feedback={selectedFeedback} open={!!selectedFeedback} onClose={() => setSelectedFeedback(null)} />
     </>

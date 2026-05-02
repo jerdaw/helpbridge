@@ -28,7 +28,7 @@ export function SLOComplianceCard({ compliance }: SLOComplianceCardProps) {
   const { uptime, errorBudget, latency, overall } = compliance
 
   return (
-    <Card>
+    <Card className="border-neutral-200/75 bg-white/86 shadow-[0_14px_34px_rgba(15,23,42,0.05)] ring-1 ring-white/70 backdrop-blur-md dark:border-white/10 dark:bg-white/[0.06] dark:ring-white/10">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
         <CardTitle className="text-2xl font-bold">{t("title")}</CardTitle>
         <Badge variant={overall.compliant ? "default" : "destructive"} className="text-sm">

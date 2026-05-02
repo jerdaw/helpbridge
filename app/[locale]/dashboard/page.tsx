@@ -1,10 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ShieldCheck, Eye, MousePointerClick, TrendingUp, FileText } from "lucide-react"
 import { Link } from "@/i18n/routing"
 import { createClient } from "@/utils/supabase/server"
 import { getTranslations } from "next-intl/server"
-import { DashboardPageHeader } from "@/components/dashboard/DashboardPageHeader"
+import { DashboardShell, DashboardSurface } from "@/components/dashboard/DashboardShell"
 import { redirect } from "@/i18n/routing"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { loadDashboardOverviewMetrics } from "@/lib/dashboard/overview-metrics"
@@ -50,11 +50,11 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
   const viewsChange = formatChange(metrics.totalViews.change, t)
   const referralsChange = formatChange(metrics.referrals.change, t)
   const hasVerificationWork = metrics.servicesNeedingVerification > 0
+  const metricCardClass =
+    "border-neutral-200/75 bg-white/86 shadow-[0_14px_34px_rgba(15,23,42,0.05)] ring-1 ring-white/70 backdrop-blur-md dark:border-white/10 dark:bg-white/[0.06] dark:ring-white/10"
 
   return (
-    <div className="mx-auto max-w-6xl space-y-8">
-      <DashboardPageHeader title={t("welcomeTitle")} subtitle={t("welcomeSubtitle")} />
-
+    <DashboardShell title={t("welcomeTitle")} subtitle={t("welcomeSubtitle")} maxWidth="wide">
       {degraded && (
         <Alert>
           <AlertDescription>{t("temporarilyUnavailable")}</AlertDescription>
@@ -63,7 +63,7 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
 
       {/* Stats Grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Card variant="interactive">
+        <Card variant="interactive" className={metricCardClass}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-neutral-500">{t("totalViews")}</CardTitle>
             <Eye className="h-4 w-4 text-neutral-400" />
@@ -77,7 +77,7 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
           </CardContent>
         </Card>
 
-        <Card variant="interactive">
+        <Card variant="interactive" className={metricCardClass}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-neutral-500">{t("referrals")}</CardTitle>
             <MousePointerClick className="h-4 w-4 text-neutral-400" />
@@ -91,7 +91,7 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
           </CardContent>
         </Card>
 
-        <Card variant="interactive">
+        <Card variant="interactive" className={metricCardClass}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-neutral-500">{t("verifiedServices")}</CardTitle>
             <ShieldCheck className="h-4 w-4 text-neutral-400" />
@@ -104,7 +104,7 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
           </CardContent>
         </Card>
 
-        <Card variant="interactive">
+        <Card variant="interactive" className={metricCardClass}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-neutral-500">{t("updateRequests")}</CardTitle>
             <FileText className="h-4 w-4 text-neutral-400" />
@@ -118,41 +118,30 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
 
       {/* Recent Activity / Prompt */}
       <div className="grid gap-6 md:grid-cols-2">
-        <Card className="col-span-1">
-          <CardHeader>
-            <CardTitle>{t("dataQualityScore")}</CardTitle>
-            <CardDescription>{t("dataQualityDesc")}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center gap-4">
-              <div className="relative flex h-24 w-24 items-center justify-center rounded-full border-8 border-neutral-200">
-                <span className="text-3xl font-bold text-neutral-500">--</span>
-              </div>
-              <div className="space-y-1">
-                <p className="font-medium">{t("definitionPendingTitle")}</p>
-                <p className="text-sm text-neutral-500">{t("definitionPendingDescription")}</p>
-              </div>
+        <DashboardSurface title={t("dataQualityScore")} description={t("dataQualityDesc")}>
+          <div className="flex items-center gap-4">
+            <div className="relative flex h-24 w-24 shrink-0 items-center justify-center rounded-full border-8 border-neutral-200/80 bg-white/70 dark:border-white/10 dark:bg-white/[0.04]">
+              <span className="text-3xl font-bold text-neutral-500">--</span>
             </div>
-          </CardContent>
-        </Card>
+            <div className="space-y-1">
+              <p className="font-medium text-neutral-950 dark:text-white">{t("definitionPendingTitle")}</p>
+              <p className="text-sm text-neutral-600 dark:text-neutral-300">{t("definitionPendingDescription")}</p>
+            </div>
+          </div>
+        </DashboardSurface>
 
-        <Card className="from-primary-900 to-primary-800 col-span-1 border-none bg-gradient-to-br text-white">
-          <CardHeader>
-            <CardTitle className="text-white">{t("verifyListingsTitle")}</CardTitle>
-            <CardDescription className="text-primary-100">
-              {hasVerificationWork
-                ? t("verifyListingsNeedsAttention", { count: metrics.servicesNeedingVerification })
-                : t("verifyListingsAllCaughtUp")}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button variant="secondary" className="w-full sm:w-auto" asChild>
-              <Link href="/dashboard/services">
-                {hasVerificationWork ? t("startVerification") : t("manageServices")}
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
+        <DashboardSurface
+          title={t("verifyListingsTitle")}
+          description={
+            hasVerificationWork
+              ? t("verifyListingsNeedsAttention", { count: metrics.servicesNeedingVerification })
+              : t("verifyListingsAllCaughtUp")
+          }
+        >
+          <Button className="w-full sm:w-auto" asChild>
+            <Link href="/dashboard/services">{hasVerificationWork ? t("startVerification") : t("manageServices")}</Link>
+          </Button>
+        </DashboardSurface>
       </div>
 
       {/* Quick Link - Manage Services */}
@@ -161,6 +150,6 @@ export default async function DashboardPage({ params }: { params: Promise<{ loca
           <Link href="/dashboard/services">{t("manageServices")} &rarr;</Link>
         </Button>
       </div>
-    </div>
+    </DashboardShell>
   )
 }

@@ -10,6 +10,7 @@ import { logger } from "@/lib/logger"
 import { validateCSVBatch, normalizeCSVHeaders, type CSVRowValidationResult } from "@/lib/schemas/service-csv-import"
 import { parseServiceImportCSV } from "@/lib/import/service-csv"
 import { cn } from "@/lib/utils"
+import { DashboardShell } from "@/components/dashboard/DashboardShell"
 
 export default function BulkImportPage() {
   const t = useTranslations("Dashboard.services.import")
@@ -169,33 +170,27 @@ export default function BulkImportPage() {
 
   const validCount = validationResults.filter((r) => r.isValid).length
   const invalidCount = validationResults.filter((r) => !r.isValid).length
+  const panelClass =
+    "border-neutral-200/75 bg-white/86 shadow-[0_14px_34px_rgba(15,23,42,0.05)] ring-1 ring-white/70 backdrop-blur-md dark:border-white/10 dark:bg-white/[0.06] dark:ring-white/10"
 
   return (
-    <div className="mx-auto max-w-4xl space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <nav className="mb-2 flex items-center text-sm text-neutral-500">
-            <Link href="/dashboard/services" className="transition-colors hover:text-neutral-900">
-              {t("breadcrumbServices")}
-            </Link>
-            <span className="mx-2">/</span>
-            <span className="font-medium text-neutral-900 dark:text-white">{t("breadcrumbImport")}</span>
-          </nav>
-          <h1 className="heading-display text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">
-            {t("title")}
-          </h1>
-          <p className="mt-2 text-lg text-neutral-600 dark:text-neutral-400">{t("subtitle")}</p>
-        </div>
-      </div>
-
+    <DashboardShell
+      title={t("title")}
+      subtitle={t("subtitle")}
+      maxWidth="narrow"
+      actions={
+        <Button variant="outline" asChild>
+          <Link href="/dashboard/services">{t("breadcrumbServices")}</Link>
+        </Button>
+      }
+    >
       {/* Upload Area */}
       {uploadStatus === "idle" && (
         <Card
           className={cn(
             "relative flex h-64 w-full flex-col items-center justify-center border-2 border-dashed transition-all",
-            dragActive
-              ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
-              : "border-neutral-300 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900"
+            panelClass,
+            dragActive ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20" : "border-neutral-300 dark:border-neutral-700"
           )}
           role="region"
           aria-label="File upload area"
@@ -307,7 +302,7 @@ export default function BulkImportPage() {
 
       {/* Validation Summary */}
       {file && validationResults.length > 0 && uploadStatus === "idle" && (
-        <Card className="p-6">
+        <Card className={cn("p-6", panelClass)}>
           <h3 className="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">{t("validationResults")}</h3>
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center gap-3 rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-900/20">
@@ -370,7 +365,7 @@ export default function BulkImportPage() {
 
       {/* Data Preview */}
       {file && parsedData.length > 0 && uploadStatus === "idle" && (
-        <Card className="overflow-hidden">
+        <Card className={cn("overflow-hidden", panelClass)}>
           <div className="flex items-center justify-between border-b border-neutral-200 px-6 py-4 dark:border-neutral-800">
             <h3 className="font-semibold text-neutral-900 dark:text-white">{t("dataPreview")}</h3>
             <span className="text-xs text-neutral-500">{t("showingFirst10")}</span>
@@ -429,6 +424,6 @@ export default function BulkImportPage() {
           </div>
         </Card>
       )}
-    </div>
+    </DashboardShell>
   )
 }

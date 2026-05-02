@@ -14,6 +14,7 @@ import { createServiceAction } from "@/lib/actions/services"
 import type { ServiceCreateInput } from "@/lib/schemas/service-create"
 import { logger } from "@/lib/logger"
 import { Link, useRouter } from "@/i18n/routing"
+import { DashboardShell } from "@/components/dashboard/DashboardShell"
 
 const INTENT_CATEGORIES = [
   { value: "Food", key: "food" },
@@ -41,6 +42,8 @@ export default function CreateServicePage() {
     intent_category: "Community",
     scope: "kingston",
   })
+  const cardClass =
+    "border-neutral-200/75 bg-white/86 shadow-[0_14px_34px_rgba(15,23,42,0.05)] ring-1 ring-white/70 backdrop-blur-md dark:border-white/10 dark:bg-white/[0.06] dark:ring-white/10"
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -75,23 +78,23 @@ export default function CreateServicePage() {
   }
 
   return (
-    <div className="mx-auto max-w-4xl space-y-8">
-      <div className="flex items-center gap-4">
-        <Button variant="ghost" size="icon" asChild>
+    <DashboardShell
+      title={t("title")}
+      subtitle={t("subtitle")}
+      maxWidth="narrow"
+      actions={
+        <Button variant="outline" asChild>
           <Link href="/dashboard/services" locale={locale}>
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {t("actions.cancel")}
           </Link>
         </Button>
-        <div>
-          <h1 className="heading-display text-3xl font-bold tracking-tight">{t("title")}</h1>
-          <p className="mt-2 text-neutral-600 dark:text-neutral-400">{t("subtitle")}</p>
-        </div>
-      </div>
-
+      }
+    >
       <form onSubmit={handleSubmit}>
         <div className="grid gap-8">
           {/* Basic Information */}
-          <Card>
+          <Card className={cardClass}>
             <CardHeader>
               <CardTitle>{t("sections.basic.title")}</CardTitle>
               <CardDescription>{t("sections.basic.description")}</CardDescription>
@@ -173,7 +176,7 @@ export default function CreateServicePage() {
           </Card>
 
           {/* Contact Information */}
-          <Card>
+          <Card className={cardClass}>
             <CardHeader>
               <CardTitle>{t("sections.contact.title")}</CardTitle>
               <CardDescription>{t("sections.contact.description")}</CardDescription>
@@ -232,7 +235,7 @@ export default function CreateServicePage() {
           </Card>
 
           {/* Additional Details */}
-          <Card>
+          <Card className={cardClass}>
             <CardHeader>
               <CardTitle>{t("sections.additional.title")}</CardTitle>
               <CardDescription>{t("sections.additional.description")}</CardDescription>
@@ -300,6 +303,6 @@ export default function CreateServicePage() {
           </div>
         </div>
       </form>
-    </div>
+    </DashboardShell>
   )
 }
