@@ -193,7 +193,7 @@ export default function BulkImportPage() {
             dragActive ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20" : "border-neutral-300 dark:border-neutral-700"
           )}
           role="region"
-          aria-label="File upload area"
+          aria-label={t("uploadRegionLabel")}
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
           onDragOver={handleDrag}
@@ -235,7 +235,7 @@ export default function BulkImportPage() {
             accept=".csv"
             className="hidden"
             onChange={handleChange}
-            aria-label="Upload CSV file"
+            aria-label={t("uploadInputLabel")}
           />
         </Card>
       )}

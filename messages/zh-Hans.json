@@ -447,7 +447,9 @@
         "empty": "empty",
         "validRowsReady": "{count} valid rows ready to import",
         "processing": "Processing...",
-        "importServices": "Import {count} Services"
+        "importServices": "Import {count} Services",
+        "uploadRegionLabel": "CSV 文件上传区域",
+        "uploadInputLabel": "上传 CSV 文件"
       },
       "viewPage": {
         "editService": "Edit Service",
@@ -1403,7 +1405,8 @@
     "loading": "Loading Admin...",
     "actions": {
       "reindexAi": "Re-index AI",
-      "saveChanges": "Save Changes"
+      "saveChanges": "Save Changes",
+      "createService": "创建服务"
     },
     "status": {
       "loadError": "Error loading data. Are you in Dev mode?",

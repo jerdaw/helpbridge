@@ -124,6 +124,7 @@ export default function DashboardSidebar() {
           <Link
             href="/"
             target="_blank"
+            rel="noopener noreferrer"
             className="group hover:text-primary-700 flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm font-medium text-neutral-600 transition-all hover:bg-white hover:shadow-sm dark:text-neutral-400 dark:hover:bg-white/5 dark:hover:text-neutral-100"
           >
             <ExternalLink className="h-4 w-4" aria-hidden="true" />

@@ -144,9 +144,10 @@ export default function NotificationsPage() {
                     size="icon"
                     onClick={() => markAsRead(notification.id)}
                     className="h-8 w-8 flex-shrink-0 rounded-full"
+                    aria-label={t("markAsRead")}
                     title={t("markAsRead")}
                   >
-                    <Check className="h-4 w-4" />
+                    <Check className="h-4 w-4" aria-hidden="true" />
                   </Button>
                 )}
               </li>

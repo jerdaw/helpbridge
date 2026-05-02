@@ -130,6 +130,7 @@ export default function AdminPage() {
                 variant="default"
                 size="icon"
                 className="rounded-full"
+                aria-label={t("actions.createService")}
                 onClick={() =>
                   setSelectedService({
                     id: "new-" + Date.now(),

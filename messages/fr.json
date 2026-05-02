@@ -503,7 +503,9 @@
         "empty": "empty",
         "validRowsReady": "{count} valid rows ready to import",
         "processing": "Processing...",
-        "importServices": "Import {count} Services"
+        "importServices": "Import {count} Services",
+        "uploadRegionLabel": "Zone de téléversement du fichier CSV",
+        "uploadInputLabel": "Téléverser un fichier CSV"
       },
       "viewPage": {
         "editService": "Edit Service",
@@ -1415,7 +1417,8 @@
     "loading": "Loading Admin...",
     "actions": {
       "reindexAi": "Re-index AI",
-      "saveChanges": "Save Changes"
+      "saveChanges": "Save Changes",
+      "createService": "Créer un service"
     },
     "status": {
       "loadError": "Error loading data. Are you in Dev mode?",
