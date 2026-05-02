@@ -176,6 +176,7 @@ These items are worth doing only if they do not distract from Gate 0 closure:
    - **Batch B - high-value public workflows (completed 2026-05-01)**: `/service/[id]`, `/login`, and `/offline` now share the polished public-page visual system; login runtime messages are localized, offline support is clearer, and service-detail privacy-gated map behavior remains intact.
    - **Batch C - trust, legal, and help surfaces (completed 2026-05-01)**: `/privacy`, `/terms`, `/content-policy`, `/partner-terms`, `/accessibility`, `/faq`, `/user-guide`, and `/impact` now share the polished static-page shell, stable last-reviewed copy, current 196-service language, and focused route/page coverage.
    - **Batch D - authenticated operational surfaces (completed 2026-05-01)**: `/dashboard/**` and `/admin/**` now share the polished operational shell, localized partner navigation, consistent glass surfaces, and focused dashboard/admin component coverage without changing auth, API, schema, or service-data behavior.
+8. Complete authenticated desktop/mobile visual QA for `/dashboard/**` and `/admin/**` once a valid local Supabase environment and signed-in partner/admin session are available. Batch D implementation is code-complete, but authenticated browser review remains environment-gated because this local workspace currently lacks `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
 
 ## On Hold
 
